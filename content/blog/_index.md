@@ -2,4 +2,4 @@
 title: "Yifei's Blog"
 ---
 
-Welcome to my Blog, I will share my thoughts about research, such as instersing articles,promising papers. Most articles here are in Chinese, some are in English, it depends on my mood:)
+Welcome to my blog! Here I share my thoughts on research, including interesting articles and promising papers I come across. Most posts are in Chinese, with some in English—it really just depends on my mood :)

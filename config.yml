@@ -74,13 +74,13 @@ languages:
   zh:
     languageName: "中文"
     weight: 2
-    title: "宋轶飞的个人网站"
+    title: "宋逸飞的个人网站"
     params:
-      description: "本网站展示宋轶飞的研究论文、课程材料、简历、博客和联系信息。"
+      description: "本网站展示宋逸飞的研究论文、课程材料、简历、博客和联系信息。"
       profileMode:
         enabled: true
-        title: 宋轶飞
-        subtitle: "我是法国国家科学研究中心（CNRS）和洛林大学的博士生，导师为<a href=\"https://members.loria.fr/CGardent/\" target=\"_blank\" style=\"text-decoration: underline;\">Claire Gardent</a>（CNRS）和Albert Gatt（乌得勒支大学）。<br><br>我拥有索邦大学计算机科学学士学位和洛桑联邦理工学院计算机科学硕士学位。我的研究重点是自然语言生成（NLG），特别关注大语言模型的强化学习、多语言NLP、可控文本生成、对齐和评估。"
+        title: 宋逸飞
+        subtitle: "我目前就职于法国国家科学研究中心（CNRS），同时也是洛林大学的博士生。很荣幸在<a href=\"https://members.loria.fr/CGardent/\" target=\"_blank\" style=\"text-decoration: underline;\">Claire Gardent</a>（CNRS）和Albert Gatt（乌得勒支大学）的指导下进行研究。<br><br>我分别在索邦大学（Sorbonne University）和洛桑联邦理工学院（EPFL）获得计算机科学学士和硕士学位。我的研究重点是自然语言生成（NLG），尤其是基于大语言模型的强化学习、多语言的自然语言处理、可控文本生成、多模态对齐和生成文本的评估。"
         imageUrl: "icon.png"
         imageWidth: 160
         imageHeight: 160
@@ -114,7 +114,7 @@ languages:
       profileMode:
         enabled: true
         title: Yifei Song
-        subtitle: "Je suis doctorant au Centre National de la Recherche Scientifique (CNRS) et à l'Université de Lorraine, sous la supervision de <a href=\"https://members.loria.fr/CGardent/\" target=\"_blank\" style=\"text-decoration: underline;\">Claire Gardent</a> (CNRS) et Albert Gatt (Université d'Utrecht).<br><br>Je suis titulaire d'une licence en informatique de l'Université de la Sorbonne et d'un master en informatique de l'EPFL. Mes recherches portent sur la génération de langage naturel (NLG), avec un intérêt particulier pour l'apprentissage par renforcement pour les grands modèles de langage, le NLP multilingue, la génération de texte contrôlable, l'alignement et l'évaluation."
+        subtitle: "Je suis doctorant à l’Université de Lorraine et au Centre National de la Recherche Scientifique (CNRS), sous la supervision de <a href=\"https://members.loria.fr/CGardent/\" target=\"_blank\" style=\"text-decoration: underline;\">Claire Gardent</a> (CNRS) et d’Albert Gatt (Université d’Utrecht).<br><br>Je suis titulaire d’une licence en informatique de Sorbonne Université, d’un diplôme d’ingénieur en informatique et d’un master en informatique de l’EPFL. Mes recherches portent sur la génération de langage naturel (NLG), avec un intérêt particulier pour l’apprentissage par renforcement appliqué aux grands modèles de langage, le traitement automatique multilingue du langage, la génération contrôlée de texte, l’alignement multimodal ainsi que l’évaluation."
         imageUrl: "icon.png"
         imageWidth: 160
         imageHeight: 160
