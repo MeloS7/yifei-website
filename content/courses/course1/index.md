@@ -20,9 +20,9 @@ author: "Yifei Song"
 description: "This graduate course (2nd-year master) presents the application of recent prompt engineering." 
 summary: "This graduate course is offered to second-year master’s students in NLP at IDMC. It covers recent prompt engineering techniques for large language models (LLMs), applied to tasks such as classification, LLM-as-a-Judge, preference modeling, and natural language generation (NLG)." 
 cover:
-    image: "refinement_pipeline.png"
+    image: "courses/course1/refinement_pipeline.png"
     alt: "Prompt Engineering"
-    relative: true
+    relative: false
 editPost:
     URL: "https://idmc.univ-lorraine.fr/courses/master-degree-2-nlp/"
     Text: "Course portal"
