@@ -41,6 +41,27 @@
         {{- end }}
         <h1>{{ .title | default site.Title | markdownify }}</h1>
         <span>{{ .subtitle | markdownify }}</span>
+        {{- if site.Params.socialIcons }}
+        <div class="social-icons">
+            {{- range site.Params.socialIcons }}
+            {{- $url := .url }}
+            {{- if or (eq .name "CV") (eq .name "Location") }}
+                {{- $url = .url | absURL }}
+            {{- else if hasPrefix .url "http" }}
+                {{- $url = .url }}
+            {{- else if hasPrefix .url "mailto:" }}
+                {{- $url = .url }}
+            {{- else }}
+                {{- $url = .url | absLangURL }}
+            {{- end }}
+            <a href="{{ $url }}" target="{{ if and (ne .name "CV") (ne .name "Location") (ne .name "Email") }}_blank{{ end }}" 
+               rel="noopener noreferrer" title="{{ .name }}">
+                {{- partial "svg.html" . }}
+            </a>
+            {{- end }}
+        </div>
+        {{- end }}
+        
         {{- if .buttons }}
         <div class="buttons">
             {{- range .buttons }}

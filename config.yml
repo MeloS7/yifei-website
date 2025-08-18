@@ -143,6 +143,15 @@ languages:
 params:
     description: "This website hosts Yifei Song's research papers, course materials, curriculum vitae, blog, and contact information."
     author: Yifei Song
+    socialIcons:
+        - name: CV
+          url: cv.pdf
+        - name: Email
+          url: mailto:yifei.song@loria.fr
+        - name: Location
+          url: location/
+        - name: GitHub
+          url: https://github.com/MeloS7
     # googleAnalyticsID: "G-XXXXX"
     DateFormat: "January 2006"
     defaultTheme: light
@@ -174,30 +183,6 @@ params:
         threshold: 0.4
         minMatchCharLength: 0
         keys: ["title", "permalink", "summary", "content"]
-    socialIcons:
-        - name: CV
-          url: cv.pdf
-        - name: Email
-          url: mailto:yifei.song@loria.fr
-        # - name: Zoom
-        #   url: https://www.zoom.us/my/igelfeld
-        - name: Location
-          url: location/
-        # - name: Office Hours
-        #   url: officehours/
-        # - name: Google Scholar
-        #   url: https://scholar.google.com/citations?user=cL23w-4AAAAJ
-        - name: GitHub
-          url: https://github.com/MeloS7
-        # - name: Substack
-        #   url: https://pmichaillat.substack.com
-        # - name: YouTube
-        #   url: https://www.youtube.com/@pmichaillat
-        # - name: Twitter
-        #   url: https://x.com/pmichaillat
-        # - name: Bluesky
-        #   url: https://bsky.app/profile/pmichaillat.bsky.social
-
     assets:
         disableScrollBarStyle: true
     cover:
