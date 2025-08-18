@@ -2,8 +2,19 @@ baseURL: "https://melos7.github.io/yifei-website/"
 title: Yifei Song's Website
 theme: PaperMod
 
+# 多语言配置
+defaultContentLanguage: "en"
+defaultContentLanguageInSubdir: false
+
 enableInlineShortcodes: true
 enableRobotsTXT: true
+
+# 启用搜索功能
+outputs:
+    home:
+        - HTML
+        - RSS
+        - JSON
 pagination:
   pagerSize: 20
 
@@ -20,7 +31,52 @@ menu:
           weight: 3
         - name: Blog
           url: blog/
-          weight: 4 
+          weight: 4
+        - name: Search
+          url: search/
+          weight: 5
+
+languages:
+  en:
+    languageName: "English"
+    weight: 1
+    title: "Yifei Song's Website"
+    params:
+      description: "This website hosts Yifei Song's research papers, course materials, curriculum vitae, blog, and contact information."
+    menu:
+      main:
+        - name: Papers
+          url: /papers/
+          weight: 2
+        - name: Courses
+          url: /courses/
+          weight: 3
+        - name: Blog
+          url: /blog/
+          weight: 4
+        - name: Search
+          url: /search/
+          weight: 5
+  zh:
+    languageName: "中文"
+    weight: 2
+    title: "宋轶飞的个人网站"
+    params:
+      description: "本网站展示宋轶飞的研究论文、课程材料、简历、博客和联系信息。"
+    menu:
+      main:
+        - name: 论文
+          url: /zh/papers/
+          weight: 2
+        - name: 课程
+          url: /zh/courses/
+          weight: 3
+        - name: 博客
+          url: /zh/blog/
+          weight: 4
+        - name: 搜索
+          url: /zh/search/
+          weight: 5 
 
 
 params:
@@ -47,10 +103,20 @@ params:
     UseHugoToc: true
     comments: false
     math: true
+    
+    # 搜索功能配置
+    fuseOpts:
+        isCaseSensitive: false
+        shouldSort: true
+        location: 0
+        distance: 1000
+        threshold: 0.4
+        minMatchCharLength: 0
+        keys: ["title", "permalink", "summary", "content"]
     profileMode:
           enabled: true
           title: Yifei Song
-          subtitle: "I am a PhD student at French National Centre for Scientific Research (CNRS) and Université de Lorraine, under the supervision of <a href=\"https://members.loria.fr/CGardent/\" target=\"_blank\" style=\"text-decoration: underline;\">Claire Gardent</a> (CNRS) and Albert Gatt (Utrecht University).<br><br>I hold a BSc in Computer Science from Sorbonne University and an MSc in Computer Science from EPFL. My research focuses on Natural Language Generation (NLG), with particular interests in reinforcement learning for large language models, multilingual NLP, controlled generation, alignment, and evaluation."
+          subtitle: "I am a PhD student at French National Centre for Scientific Research (CNRS) and Université de Lorraine, under the supervision of <a href=\"https://members.loria.fr/CGardent/\" target=\"_blank\" style=\"text-decoration: underline;\">Claire Gardent</a> (CNRS) and Albert Gatt (Utrecht University).<br><br>I hold a BSc in Computer Science from Sorbonne University and an MSc in Computer Science from EPFL. My research focuses on Natural Language Generation (NLG), with particular interests in reinforcement learning for large language models, multilingual NLP, controllable text generation, alignment, and evaluation."
           imageUrl: "icon.png"
           imageWidth: 160
           imageHeight: 160

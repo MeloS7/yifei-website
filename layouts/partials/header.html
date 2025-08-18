@@ -100,25 +100,15 @@
 
                 {{- $lang := .Lang}}
                 {{- $separator := or $label_text (not site.Params.disableThemeToggle)}}
-                {{- with site.Home.Translations }}
+                <!-- Show current language -->
                 <ul class="lang-switch">
                     {{- if $separator }}<li>|</li>{{ end }}
-                    {{- range . -}}
-                    {{- if ne $lang .Lang }}
                     <li>
-                        <a href="{{- .Permalink -}}" title="{{ .Language.Params.languageAltTitle | default (.Language.LanguageName | emojify) | default (.Lang | title) }}"
-                            aria-label="{{ .Language.LanguageName | default (.Lang | title) }}">
-                            {{- if (and site.Params.displayFullLangName (.Language.LanguageName)) }}
-                            {{- .Language.LanguageName | emojify -}}
-                            {{- else }}
-                            {{- .Lang | title -}}
-                            {{- end -}}
-                        </a>
+                        <span class="current-language">
+                            {{- if eq $lang "zh" }}ZH{{- else }}EN{{- end }}
+                        </span>
                     </li>
-                    {{- end -}}
-                    {{- end}}
                 </ul>
-                {{- end }}
             </div>
         </div>
         {{- $currentPage := . }}
@@ -127,6 +117,26 @@
             {{- $menu_item_url := (cond (strings.HasSuffix .URL "/") .URL (printf "%s/" .URL) ) | absLangURL }}
             {{- $page_url:= $currentPage.Permalink | absLangURL }}
             {{- $is_search := eq (site.GetPage .KeyName).Layout `search` }}
+            
+            {{- if eq .Name "Blog" }}
+            <!-- Blog dropdown menu -->
+            <li class="dropdown">
+                <button type="button" class="dropdown-toggle" title="Blog">
+                    <span {{- if or (hasPrefix $page_url "/blog/") (hasPrefix $page_url "/zh/blog/") }} class="active" {{- end }}>
+                        {{- .Pre }}
+                        {{- .Name -}}
+                        {{ .Post -}}
+                        <svg style="margin-left: 4px;" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M6 9l6 6 6-6"/>
+                        </svg>
+                    </span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a href="{{ site.BaseURL }}blog/">English Blog</a></li>
+                    <li><a href="{{ site.BaseURL }}zh/blog/">中文博客</a></li>
+                </ul>
+            </li>
+            {{- else }}
             <li>
                 <a href="{{ .URL | absLangURL }}" title="{{ .Title | default .Name }} {{- cond $is_search (" (Alt + /)" | safeHTMLAttr) ("" | safeHTMLAttr ) }}"
                 {{- cond $is_search (" accesskey=/" | safeHTMLAttr) ("" | safeHTMLAttr ) }}>
@@ -146,6 +156,211 @@
                 </a>
             </li>
             {{- end }}
+            {{- end }}
         </ul>
     </nav>
 </header>
+
+<!-- Dropdown menu styles and JavaScript -->
+<style>
+.dropdown {
+    position: relative !important;
+    display: inline-block !important;
+}
+
+.dropdown-toggle {
+    cursor: pointer;
+    background: none;
+    border: none;
+    font: inherit;
+    color: inherit;
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+}
+
+.dropdown-menu {
+    display: none !important;
+    position: absolute !important;
+    top: 100% !important;
+    left: 0 !important;
+    min-width: 120px !important;
+    background-color: var(--entry) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: 4px !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+    z-index: 1000 !important;
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    margin-top: 0px !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    transition: opacity 0.2s ease, visibility 0.2s ease !important;
+}
+
+.dropdown-menu li {
+    padding: 0;
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 8px 16px;
+    color: var(--primary);
+    text-decoration: none;
+    font-size: 14px;
+    transition: background-color 0.2s ease;
+    white-space: nowrap;
+}
+
+.dropdown-menu a:hover {
+    background-color: var(--theme);
+    color: var(--tertiary);
+}
+
+.dropdown-toggle svg {
+    transition: transform 0.2s ease;
+}
+
+/* Make sure parent containers don't hide overflow */
+.header, .nav, #menu {
+    overflow: visible !important;
+}
+
+/* Add a bridge area to prevent dropdown from closing */
+.dropdown::before {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: transparent;
+    z-index: 999;
+}
+
+/* Expand hover area slightly */
+.dropdown {
+    padding-bottom: 5px !important;
+}
+
+/* CSS-only hover fallback - strongest possible selector */
+nav#menu .dropdown:hover .dropdown-menu,
+.header nav .dropdown:hover .dropdown-menu,
+#menu li.dropdown:hover ul.dropdown-menu {
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: translateY(0) !important;
+    position: absolute !important;
+    z-index: 9999 !important;
+}
+
+nav#menu .dropdown:hover .dropdown-toggle svg,
+.header nav .dropdown:hover .dropdown-toggle svg {
+    transform: rotate(180deg) !important;
+}
+
+/* Force show when JS adds show class */
+.dropdown-menu.show {
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: translateY(0) !important;
+}
+
+/* Override any theme hiding */
+.dropdown-menu[style*="display: block"] {
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* Better responsive dropdown */
+@media (max-width: 768px) {
+    .dropdown-menu {
+        left: -50px;
+        min-width: 140px;
+    }
+    
+    .dropdown-menu a {
+        padding: 12px 16px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .dropdown-menu {
+        left: -80px;
+        min-width: 120px;
+    }
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const dropdown = document.querySelector('.dropdown');
+    const dropdownToggle = document.querySelector('.dropdown-toggle');
+    const dropdownMenu = document.querySelector('.dropdown-menu');
+    
+    if (dropdown && dropdownToggle && dropdownMenu) {
+        
+        let hideTimeout;
+        
+        // Show dropdown on hover
+        dropdown.addEventListener('mouseenter', function() {
+            clearTimeout(hideTimeout);
+            dropdownMenu.style.cssText = 'display: block !important; opacity: 1 !important; visibility: visible !important; position: absolute !important; z-index: 9999 !important;';
+            dropdownMenu.classList.add('show');
+        });
+        
+        // Also show when hovering over the menu itself
+        dropdownMenu.addEventListener('mouseenter', function() {
+            clearTimeout(hideTimeout);
+            dropdownMenu.style.cssText = 'display: block !important; opacity: 1 !important; visibility: visible !important; position: absolute !important; z-index: 9999 !important;';
+            dropdownMenu.classList.add('show');
+        });
+        
+        // Hide dropdown with delay when mouse leaves
+        dropdown.addEventListener('mouseleave', function() {
+            hideTimeout = setTimeout(function() {
+                dropdownMenu.style.cssText = 'display: none !important; opacity: 0 !important; visibility: hidden !important;';
+                dropdownMenu.classList.remove('show');
+            }, 150); // 150ms delay
+        });
+        
+        // Hide dropdown with delay when leaving menu
+        dropdownMenu.addEventListener('mouseleave', function() {
+            hideTimeout = setTimeout(function() {
+                dropdownMenu.style.cssText = 'display: none !important; opacity: 0 !important; visibility: hidden !important;';
+                dropdownMenu.classList.remove('show');
+            }, 150); // 150ms delay
+        });
+        
+        // Toggle dropdown on click (for mobile)
+        dropdownToggle.addEventListener('click', function(e) {
+            if (dropdownMenu.classList.contains('show')) {
+                dropdownMenu.style.cssText = 'display: none !important; opacity: 0 !important; visibility: hidden !important;';
+                dropdownMenu.classList.remove('show');
+            } else {
+                dropdownMenu.style.cssText = 'display: block !important; opacity: 1 !important; visibility: visible !important;';
+                dropdownMenu.classList.add('show');
+            }
+        });
+        
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!dropdown.contains(e.target)) {
+                dropdownMenu.style.cssText = 'display: none !important; opacity: 0 !important; visibility: hidden !important;';
+                dropdownMenu.classList.remove('show');
+            }
+        });
+        
+
+    } else {
+        console.error('Missing dropdown elements!');
+    }
+});
+</script>

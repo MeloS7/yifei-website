@@ -1,0 +1,327 @@
+{{- define "main" }}
+
+{{- if not .IsHome | and .Title }}
+<header class="page-header">
+  {{- partial "breadcrumbs.html" . }}
+  <h1>{{ .Title }}</h1>
+  <!-- Language switcher below title -->
+  <div class="language-switcher-header">
+    <a href="{{ site.BaseURL }}blog/" class="lang-link active">English</a>
+    <span class="lang-divider">|</span>
+    <a href="{{ site.BaseURL }}zh/blog/" class="lang-link">中文</a>
+  </div>
+  {{- if .Description }}
+  <div class="post-description">
+    {{ .Description }}
+  </div>
+  {{- end }}
+</header>
+{{- end }}
+
+{{- if .Content }}
+<div class="post-content">
+  {{- if not (.Param "disableAnchoredHeadings") }}
+  {{- partial "anchored_headings.html" .Content -}}
+  {{- else }}{{ .Content }}{{ end }}
+</div>
+{{- end }}
+
+<!-- 搜索和过滤器区域 -->
+<div class="blog-search-filters" style="margin-bottom: 2rem; padding: 1rem; background: rgba(var(--theme), 0.05); border-radius: 8px;">
+  <div id="searchbox" style="margin-bottom: 1rem;">
+    <input id="searchInput" placeholder="Search blog posts..." 
+           aria-label="search" type="search" autocomplete="off" maxlength="64"
+           style="width: 100%; padding: 0.5rem; border: 1px solid rgba(var(--theme), 0.3); border-radius: 4px;">
+    <ul id="searchResults" aria-label="search results" style="list-style: none; padding: 0; margin-top: 0.5rem;"></ul>
+  </div>
+  
+  <!-- 标签过滤器 -->
+  <div class="filter-section">
+    <h3 style="margin: 0 0 0.5rem 0; font-size: 1rem;">Filter by Tags:</h3>
+    <div class="tags-filter" id="tagsFilter">
+      {{- $allTags := slice }}
+      {{- range .RegularPages }}
+        {{- range .Params.tags }}
+          {{- $allTags = $allTags | append . }}
+        {{- end }}
+      {{- end }}
+      {{- $uniqueTags := $allTags | uniq | sort }}
+      {{- range $uniqueTags }}
+      <button class="tag-filter-btn" data-tag="{{ . }}" 
+              style="margin: 0.25rem; padding: 0.25rem 0.5rem; border: 1px solid rgba(var(--theme), 0.3); 
+                     background: rgba(var(--theme), 0.1); border-radius: 4px; cursor: pointer;">
+        {{ . }}
+      </button>
+      {{- end }}
+      <button class="tag-filter-btn active" data-tag="all" 
+              style="margin: 0.25rem; padding: 0.25rem 0.5rem; border: 1px solid rgba(var(--theme), 0.5); 
+                     background: rgba(var(--theme), 0.2); border-radius: 4px; cursor: pointer;">
+        All
+      </button>
+    </div>
+  </div>
+  
+  <!-- 时间过滤器 -->
+  <div class="filter-section" style="margin-top: 1rem;">
+    <h3 style="margin: 0 0 0.5rem 0; font-size: 1rem;">Filter by Time:</h3>
+    <select id="timeFilter" style="padding: 0.5rem; border: 1px solid rgba(var(--theme), 0.3); border-radius: 4px;">
+      <option value="all">All Time</option>
+      <option value="2025">2025</option>
+      <option value="2024">2024</option>
+      <option value="2023">2023</option>
+      <option value="older">Older</option>
+    </select>
+  </div>
+  
+
+</div>
+
+{{- $pages := .RegularPages }}
+{{- $paginator := .Paginate $pages }}
+
+<!-- 博客文章列表 -->
+<div id="blogPosts">
+{{- range $index, $page := $paginator.Pages }}
+<article class="post-entry blog-post" 
+         data-tags="{{ delimit $page.Params.tags "," }}" 
+         data-year="{{ $page.Date.Format "2006" }}"
+         data-date="{{ $page.Date.Format "2006-01-02" }}">
+  {{- $isHidden := (.Param "cover.hiddenInList") | default (.Param "cover.hidden") | default false }}
+  {{- partial "cover.html" (dict "cxt" . "IsSingle" false "isHidden" $isHidden) }}
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">
+      {{- .Title }}
+      {{- if .Draft }}
+      <span class="entry-hint" title="Draft">
+        <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" fill="currentColor">
+          <path
+            d="M160-410v-60h300v60H160Zm0-165v-60h470v60H160Zm0-165v-60h470v60H160Zm360 580v-123l221-220q9-9 20-13t22-4q12 0 23 4.5t20 13.5l37 37q9 9 13 20t4 22q0 11-4.5 22.5T862.09-380L643-160H520Zm300-263-37-37 37 37ZM580-220h38l121-122-18-19-19-18-122 121v38Zm141-141-19-18 37 37-18-19Z" />
+        </svg>
+      </span>
+      {{- end }}
+    </h2>
+  </header>
+  {{- if (ne (.Param "hideSummary") true) }}
+  <div class="entry-content">
+    <p>{{ .Summary | plainify | htmlUnescape }}{{ if .Truncated }}...{{ end }}</p>
+  </div>
+  {{- end }}
+  {{- if not (.Param "hideMeta") }}
+  <footer class="entry-footer">
+    {{- partial "post_meta.html" . -}}
+  </footer>
+  {{- end }}
+  <a class="entry-link" aria-label="post link to {{ .Title | plainify }}" href="{{ .Permalink }}"></a>
+</article>
+{{- end }}
+</div>
+
+{{- if gt $paginator.TotalPages 1 }}
+<footer class="page-footer">
+  <nav class="pagination">
+    {{- if $paginator.HasPrev }}
+    <a class="prev" href="{{ $paginator.Prev.URL | absURL }}">
+      «&nbsp;{{ i18n "prev_page" }}&nbsp;
+      {{- if (.Param "ShowPageNums") }}
+      {{- sub $paginator.PageNumber 1 }}/{{ $paginator.TotalPages }}
+      {{- end }}
+    </a>
+    {{- end }}
+    {{- if $paginator.HasNext }}
+    <a class="next" href="{{ $paginator.Next.URL | absURL }}">
+      {{- i18n "next_page" }}&nbsp;
+      {{- if (.Param "ShowPageNums") }}
+      {{- add 1 $paginator.PageNumber }}/{{ $paginator.TotalPages }}
+      {{- end }}&nbsp;»
+    </a>
+    {{- end }}
+  </nav>
+</footer>
+{{- end }}
+
+<!-- 自定义搜索和过滤JavaScript -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const searchInput = document.getElementById('searchInput');
+    const timeFilter = document.getElementById('timeFilter');
+    const tagButtons = document.querySelectorAll('.tag-filter-btn');
+    const blogPosts = document.querySelectorAll('.blog-post');
+    
+    let activeTag = 'all';
+    let activeYear = 'all';
+    
+    // 搜索功能
+    searchInput.addEventListener('input', function() {
+        filterPosts();
+    });
+    
+    // 时间过滤
+    timeFilter.addEventListener('change', function() {
+        activeYear = this.value;
+        filterPosts();
+    });
+    
+    // 标签过滤
+    tagButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            // 移除所有active状态
+            tagButtons.forEach(btn => btn.classList.remove('active'));
+            // 添加当前按钮的active状态
+            this.classList.add('active');
+            activeTag = this.dataset.tag;
+            filterPosts();
+        });
+    });
+    
+    function filterPosts() {
+        const searchTerm = searchInput.value.toLowerCase();
+        
+        blogPosts.forEach(post => {
+            const title = post.querySelector('h2').textContent.toLowerCase();
+            const content = post.querySelector('.entry-content p')?.textContent.toLowerCase() || '';
+            const tags = post.dataset.tags.toLowerCase();
+            const year = post.dataset.year;
+            
+            // 搜索匹配
+            const matchesSearch = !searchTerm || 
+                title.includes(searchTerm) || 
+                content.includes(searchTerm) || 
+                tags.includes(searchTerm);
+            
+            // 标签匹配
+            const matchesTag = activeTag === 'all' || 
+                tags.includes(activeTag.toLowerCase());
+            
+            // 时间匹配
+            let matchesTime = true;
+            if (activeYear !== 'all') {
+                if (activeYear === 'older') {
+                    matchesTime = parseInt(year) < 2023;
+                } else {
+                    matchesTime = year === activeYear;
+                }
+            }
+            
+            // 显示或隐藏文章
+            if (matchesSearch && matchesTag && matchesTime) {
+                post.style.display = 'block';
+            } else {
+                post.style.display = 'none';
+            }
+        });
+    }
+});
+</script>
+
+<style>
+.tag-filter-btn.active {
+    background: rgba(var(--theme), 0.3) !important;
+    border-color: rgba(var(--theme), 0.7) !important;
+}
+
+.tag-filter-btn:hover {
+    background: rgba(var(--theme), 0.2) !important;
+}
+
+.blog-search-filters {
+    transition: all 0.3s ease;
+}
+
+#searchInput:focus {
+    outline: none;
+    border-color: rgba(var(--theme), 0.7);
+    box-shadow: 0 0 0 2px rgba(var(--theme), 0.2);
+}
+
+.language-switcher a {
+    transition: all 0.3s ease;
+}
+
+.language-switcher a:hover {
+    background: rgba(var(--theme), 0.2) !important;
+}
+
+/* Language switcher header styles */
+.language-switcher-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+.lang-link {
+    color: var(--secondary);
+    text-decoration: none;
+    transition: color 0.2s ease;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+}
+
+.lang-link:hover {
+    color: var(--primary);
+    background: rgba(var(--theme), 0.1);
+}
+
+.lang-link.active {
+    color: var(--primary);
+    font-weight: 600;
+    background: rgba(var(--theme), 0.15);
+}
+
+.lang-divider {
+    color: var(--tertiary);
+}
+
+/* Language indicator styles */
+.page-title-with-lang {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.language-indicator {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--secondary);
+    margin-bottom: 0.5rem;
+}
+
+.current-lang.active {
+    color: var(--primary);
+    font-weight: 600;
+}
+
+.switch-lang {
+    color: var(--secondary);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.switch-lang:hover {
+    color: var(--primary);
+    text-decoration: underline;
+}
+
+.lang-divider {
+    color: var(--tertiary);
+}
+
+@media (max-width: 768px) {
+    .page-title-with-lang {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .language-indicator {
+        order: -1;
+        margin-bottom: 0.5rem;
+    }
+}
+</style>
+
+{{- end }}{{- /* end main */ -}}
