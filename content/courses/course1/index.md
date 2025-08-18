@@ -31,7 +31,7 @@ disableAnchoredHeadings: false
 
 ---
 
-## Week1: Introduction
+## Week1: Introduction (2025-09-05)
 
 In this session, you will learn/revisit key prompting techniques and see how they are implemented in code. These techniques form the foundation for the more advanced topics we'll explore in later sessions.
 
