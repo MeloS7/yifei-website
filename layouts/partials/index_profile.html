@@ -1,0 +1,106 @@
+<div class="profile">
+    {{- with site.Params.profileMode }}
+    <div class="profile_inner">
+        <!-- Language switcher for homepage -->
+        <div class="homepage-language-switcher" style="text-align: center; margin-bottom: 20px;">
+            <a href="{{ site.BaseURL }}" class="lang-link {{ if eq site.Language.Lang "en" }}active{{ end }}">English</a>
+            <span class="lang-divider"> | </span>
+            <a href="{{ site.BaseURL }}zh/" class="lang-link {{ if eq site.Language.Lang "zh" }}active{{ end }}">中文</a>
+            <span class="lang-divider"> | </span>
+            <a href="{{ site.BaseURL }}fr/" class="lang-link {{ if eq site.Language.Lang "fr" }}active{{ end }}">Français</a>
+        </div>
+        
+        {{- if .imageUrl -}}
+        {{- $img := "" }}
+        {{- if not (urls.Parse .imageUrl).IsAbs }}
+            {{- $img = resources.Get .imageUrl }}
+        {{- end }}
+        {{- if $img }}
+            {{- $processableFormats := (slice "jpg" "jpeg" "png" "tif" "bmp" "gif") -}}
+            {{- if hugo.IsExtended -}}
+                {{- $processableFormats = $processableFormats | append "webp" -}}
+            {{- end -}}
+            {{- $prod := (hugo.IsProduction | or (eq site.Params.env "production")) }}
+            {{- if and (in $processableFormats $img.MediaType.SubType) (eq $prod true)}}
+                {{- if (not (and (not .imageHeight) (not .imageWidth))) }}
+                    {{- $img = $img.Resize (printf "%dx%d" .imageWidth .imageHeight) }}
+                {{- else if .imageHeight }}
+                    {{- $img = $img.Resize (printf "x%d" .imageHeight) }}
+                {{ else if .imageWidth }}
+                    {{- $img = $img.Resize (printf "%dx" .imageWidth) }}
+                {{ else }}
+                    {{- $img = $img.Resize "150x150" }}
+                {{- end }}
+            {{- end }}
+            <img draggable="false" src="{{ $img.Permalink }}" alt="{{ .imageTitle | default "profile image" }}" title="{{ .imageTitle }}"
+                height="{{ .imageHeight | default 150 }}" width="{{ .imageWidth | default 150 }}" />
+        {{- else }}
+        <img draggable="false" src="{{ .imageUrl | absURL }}" alt="{{ .imageTitle | default "profile image" }}" title="{{ .imageTitle }}"
+            height="{{ .imageHeight | default 150 }}" width="{{ .imageWidth | default 150 }}" />
+        {{- end }}
+        {{- end }}
+        <h1>{{ .title | default site.Title | markdownify }}</h1>
+        <span>{{ .subtitle | markdownify }}</span>
+        {{- if .buttons }}
+        <div class="buttons">
+            {{- range .buttons }}
+            <a class="button" href="{{ .url | absLangURL }}" rel="noopener" title="{{ .name }}">
+                <span class="button-inner">
+                    {{ .name }}
+                </span>
+            </a>
+            {{- end }}
+        </div>
+        {{- end }}
+    </div>
+    {{- end}}{{/* End profile */}}
+</div>
+
+<style>
+.homepage-language-switcher {
+    font-size: 14px;
+    color: var(--secondary);
+}
+
+.homepage-language-switcher .lang-link {
+    color: var(--secondary);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.homepage-language-switcher .lang-link:hover {
+    color: var(--primary);
+    text-decoration: underline;
+}
+
+.homepage-language-switcher .lang-link.active {
+    color: var(--primary);
+    font-weight: 600;
+}
+
+.homepage-language-switcher .lang-divider {
+    color: var(--secondary);
+    margin: 0 4px;
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // 动态设置首页语言标识
+    const currentPath = window.location.pathname;
+    const langLinks = document.querySelectorAll('.homepage-language-switcher .lang-link');
+    
+    // 移除所有active类
+    langLinks.forEach(link => link.classList.remove('active'));
+    
+    // 根据当前路径设置active类
+    if (currentPath.includes('/zh/')) {
+        document.querySelector('.homepage-language-switcher .lang-link[href*="zh/"]').classList.add('active');
+    } else if (currentPath.includes('/fr/')) {
+        document.querySelector('.homepage-language-switcher .lang-link[href*="fr/"]').classList.add('active');
+    } else {
+        document.querySelector('.homepage-language-switcher .lang-link[href="' + document.querySelector('meta[name="base-url"]')?.content + '"]')?.classList.add('active') ||
+        document.querySelector('.homepage-language-switcher .lang-link:first-child').classList.add('active');
+    }
+});
+</script>

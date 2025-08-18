@@ -98,14 +98,13 @@
                 </button>
                 {{- end }}
 
-                {{- $lang := .Lang}}
                 {{- $separator := or $label_text (not site.Params.disableThemeToggle)}}
                 <!-- Show current language -->
                 <ul class="lang-switch">
                     {{- if $separator }}<li>|</li>{{ end }}
                     <li>
-                        <span class="current-language">
-                            {{- if eq $lang "zh" }}ZH{{- else }}EN{{- end }}
+                        <span class="current-language" id="current-lang">
+                            {{- if or (eq .Lang "zh") (strings.HasPrefix .RelPermalink "/zh/") }}ZH{{- else if or (eq .Lang "fr") (strings.HasPrefix .RelPermalink "/fr/") }}FR{{- else }}EN{{- end }}
                         </span>
                     </li>
                 </ul>
@@ -328,7 +327,7 @@ document.addEventListener('DOMContentLoaded', function() {
             hideTimeout = setTimeout(function() {
                 dropdownMenu.style.cssText = 'display: none !important; opacity: 0 !important; visibility: hidden !important;';
                 dropdownMenu.classList.remove('show');
-            }, 150); // 150ms delay
+            }, 300); // 300ms delay
         });
         
         // Hide dropdown with delay when leaving menu
@@ -336,7 +335,7 @@ document.addEventListener('DOMContentLoaded', function() {
             hideTimeout = setTimeout(function() {
                 dropdownMenu.style.cssText = 'display: none !important; opacity: 0 !important; visibility: hidden !important;';
                 dropdownMenu.classList.remove('show');
-            }, 150); // 150ms delay
+            }, 300); // 300ms delay
         });
         
         // Toggle dropdown on click (for mobile)
@@ -361,6 +360,19 @@ document.addEventListener('DOMContentLoaded', function() {
 
     } else {
         console.error('Missing dropdown elements!');
+    }
+    
+    // 动态设置语言标识
+    const currentLangSpan = document.getElementById('current-lang');
+    if (currentLangSpan) {
+        const currentPath = window.location.pathname;
+        if (currentPath.includes('/zh/')) {
+            currentLangSpan.textContent = 'ZH';
+        } else if (currentPath.includes('/fr/')) {
+            currentLangSpan.textContent = 'FR';
+        } else {
+            currentLangSpan.textContent = 'EN';
+        }
     }
 });
 </script>

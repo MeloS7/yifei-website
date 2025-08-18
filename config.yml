@@ -43,6 +43,20 @@ languages:
     title: "Yifei Song's Website"
     params:
       description: "This website hosts Yifei Song's research papers, course materials, curriculum vitae, blog, and contact information."
+      profileMode:
+        enabled: true
+        title: Yifei Song
+        subtitle: "I am a PhD student at French National Centre for Scientific Research (CNRS) and Université de Lorraine, under the supervision of <a href=\"https://members.loria.fr/CGardent/\" target=\"_blank\" style=\"text-decoration: underline;\">Claire Gardent</a> (CNRS) and Albert Gatt (Utrecht University).<br><br>I hold a BSc in Computer Science from Sorbonne University and an MSc in Computer Science from EPFL. My research focuses on Natural Language Generation (NLG), with particular interests in reinforcement learning for large language models, multilingual NLP, controllable text generation, alignment, and evaluation."
+        imageUrl: "icon.png"
+        imageWidth: 160
+        imageHeight: 160
+        buttons:
+          - name: Papers
+            url: papers/
+          - name: Courses
+            url: courses/
+          - name: Blog
+            url: blog/
     menu:
       main:
         - name: Papers
@@ -63,21 +77,68 @@ languages:
     title: "宋轶飞的个人网站"
     params:
       description: "本网站展示宋轶飞的研究论文、课程材料、简历、博客和联系信息。"
+      profileMode:
+        enabled: true
+        title: 宋轶飞
+        subtitle: "我是法国国家科学研究中心（CNRS）和洛林大学的博士生，导师为<a href=\"https://members.loria.fr/CGardent/\" target=\"_blank\" style=\"text-decoration: underline;\">Claire Gardent</a>（CNRS）和Albert Gatt（乌得勒支大学）。<br><br>我拥有索邦大学计算机科学学士学位和洛桑联邦理工学院计算机科学硕士学位。我的研究重点是自然语言生成（NLG），特别关注大语言模型的强化学习、多语言NLP、可控文本生成、对齐和评估。"
+        imageUrl: "icon.png"
+        imageWidth: 160
+        imageHeight: 160
+        buttons:
+          - name: 论文
+            url: ../papers/
+          - name: 课程
+            url: ../courses/
+          - name: 博客
+            url: ../zh/blog/
     menu:
       main:
         - name: 论文
-          url: /zh/papers/
+          url: papers/
           weight: 2
         - name: 课程
-          url: /zh/courses/
+          url: courses/
           weight: 3
         - name: 博客
-          url: /zh/blog/
+          url: ../zh/blog/
           weight: 4
         - name: 搜索
-          url: /zh/search/
+          url: search/
           weight: 5 
-
+  fr:
+    languageName: "Français"
+    weight: 3
+    title: "Site Web de Yifei Song"
+    params:
+      description: "Ce site web présente les articles de recherche, les matériaux de cours, le curriculum vitae, le blog et les informations de contact de Yifei Song."
+      profileMode:
+        enabled: true
+        title: Yifei Song
+        subtitle: "Je suis doctorant au Centre National de la Recherche Scientifique (CNRS) et à l'Université de Lorraine, sous la supervision de <a href=\"https://members.loria.fr/CGardent/\" target=\"_blank\" style=\"text-decoration: underline;\">Claire Gardent</a> (CNRS) et Albert Gatt (Université d'Utrecht).<br><br>Je suis titulaire d'une licence en informatique de l'Université de la Sorbonne et d'un master en informatique de l'EPFL. Mes recherches portent sur la génération de langage naturel (NLG), avec un intérêt particulier pour l'apprentissage par renforcement pour les grands modèles de langage, le NLP multilingue, la génération de texte contrôlable, l'alignement et l'évaluation."
+        imageUrl: "icon.png"
+        imageWidth: 160
+        imageHeight: 160
+        buttons:
+          - name: Articles
+            url: ../papers/
+          - name: Cours
+            url: ../courses/
+          - name: Blog
+            url: ../blog/
+    menu:
+      main:
+        - name: Articles
+          url: papers/
+          weight: 2
+        - name: Cours
+          url: courses/
+          weight: 3
+        - name: Blog
+          url: blog/
+          weight: 4
+        - name: Recherche
+          url: search/
+          weight: 5
 
 params:
     description: "This website hosts Yifei Song's research papers, course materials, curriculum vitae, blog, and contact information."
@@ -113,35 +174,6 @@ params:
         threshold: 0.4
         minMatchCharLength: 0
         keys: ["title", "permalink", "summary", "content"]
-    profileMode:
-          enabled: true
-          title: Yifei Song
-          subtitle: "I am a PhD student at French National Centre for Scientific Research (CNRS) and Université de Lorraine, under the supervision of <a href=\"https://members.loria.fr/CGardent/\" target=\"_blank\" style=\"text-decoration: underline;\">Claire Gardent</a> (CNRS) and Albert Gatt (Utrecht University).<br><br>I hold a BSc in Computer Science from Sorbonne University and an MSc in Computer Science from EPFL. My research focuses on Natural Language Generation (NLG), with particular interests in reinforcement learning for large language models, multilingual NLP, controllable text generation, alignment, and evaluation."
-          imageUrl: "icon.png"
-          imageWidth: 160
-          imageHeight: 160
-          buttons:
-            - name: Papers
-              url: papers/
-            - name: Courses
-              url: courses/
-            - name: Blog
-              url: blog/
-            # - name: Papers
-            #   url: papers/
-            # - name: Data
-            #   url: data/
-            # - name: Books
-            #   url: books/
-            # - name: Courses
-            #   url: courses/
-            # - name: Tags
-            #   url: tags/
-            # - name: Archive
-            #   url: archive/
-            # - name: Blog
-            #   url: https://en.wikipedia.org/wiki/Moritz-Maria_von_Igelfeld_(character)
-
     socialIcons:
         - name: CV
           url: cv.pdf
