@@ -6,7 +6,7 @@ author: ["Yifei Song", "William Soto Martinez", "Anna Nikiforovskaya", "Evan Par
 description: "No TL;DR" 
 summary: "In this work, We investigate multilingual Knowledge Graph (KG)-to-Text generation across 9 languages, covering both high-resource (English, Chinese, French, Spanish, Russian) and low-resource languages (Breton, Irish, Maltese, Welsh). We construct silver multilingual training data and new gold out-of-domain test sets for the high-resource languages, and use these along with existing in-domain test sets to evaluate three approaches: (1) NLG+MT—a KG-to-English model followed by machine translation, (2) FTMT—fine-tuning multilingual MT models on the silver data, and (3) FewShot—LLM prompting with different strategies. We find that the best prompting strategy consistently outperforms the other methods across all nine languages, and we provide an analysis of performance differences between high- and low-resource languages as well as in- vs out-of-domain data." 
 cover:
-    image: "metric_score.png"
+    image: "papers/paper2/metric_score.png"
     alt: "BLEU scores for KG-to-Text Generation on in- (Right) and out-of-domain (Left) data."
     relative: true
 editPost:

@@ -6,7 +6,7 @@ author: ["Yifei Song","Claire Gardent"]
 description: "MuCAL is a multilingual KG–text alignment model that generates preference data to enable DPO training, improving KG-to-text generation and out-of-domain generalization." 
 summary: "We introduces MuCAL (Multilingual Contrastive Alignment Learning), a multilingual model for aligning knowledge graphs (KG) with text. MuCAL enables robust KG–text retrieval across languages and difficulty levels, and is used to automatically generate preference data by ranking outputs from multiple LLMs. With this data, we further apply Direct Preference Optimization (DPO) to directly align generation with KG semantics, avoiding reward modeling. Experiments on KG-to-English text generation show that MuCAL-based similarity signals improve DPO training and achieve better out-of-domain generalization than standard instruction tuning, demonstrating MuCAL’s effectiveness for preference learning in KG-to-text tasks." 
 cover:
-    image: "flowchart.png"
+    image: "papers/paper1/flowchart.png"
     alt: "MuCAL-powered DPO training pipeline."
     relative: true
 editPost:
