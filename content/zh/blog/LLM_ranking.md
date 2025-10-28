@@ -18,6 +18,8 @@ disableAnchoredHeadings: false
 ### Pointwise
 - 最常见的automatic metric
 - LLM-as-a-Judge: 输入单个文本，输出评分
+    - Relevance generation
+    - Query generation
 
 Pros: Token effiecient and scalable
 

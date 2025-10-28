@@ -46,7 +46,7 @@ languages:
       profileMode:
         enabled: true
         title: Yifei Song
-        subtitle: "I am a PhD student at French National Centre for Scientific Research (CNRS) and Université de Lorraine, under the supervision of <a href=\"https://members.loria.fr/CGardent/\" target=\"_blank\" style=\"text-decoration: underline;\">Claire Gardent</a> (CNRS) and Albert Gatt (Utrecht University).<br><br>I hold a BSc in Computer Science from Sorbonne University and an MSc in Computer Science from EPFL. My research focuses on Natural Language Generation (NLG), with particular interests in reinforcement learning for large language models, multilingual NLP, controllable text generation, alignment, and evaluation."
+        subtitle: "I am a PhD student at French National Centre for Scientific Research (CNRS) and Université de Lorraine, under the supervision of <a href=\"https://members.loria.fr/CGardent/\" target=\"_blank\" style=\"text-decoration: underline;\">Claire Gardent</a> (CNRS) and <a href=\"https://albertgatt.github.io/\" target=\"_blank\" style=\"text-decoration: underline;\">Albert Gatt</a> (Utrecht University).<br><br>I hold a BSc in Computer Science from Sorbonne University and an MSc in Computer Science from EPFL. My research focuses on Natural Language Generation (NLG), with particular interests in reinforcement learning for large language models, multilingual NLP, controllable text generation, alignment, and evaluation."
         imageUrl: "icon.png"
         imageWidth: 160
         imageHeight: 160
@@ -80,7 +80,7 @@ languages:
       profileMode:
         enabled: true
         title: 宋逸飞
-        subtitle: "我目前就职于法国国家科学研究中心（CNRS），同时也是洛林大学的博士生。很荣幸在<a href=\"https://members.loria.fr/CGardent/\" target=\"_blank\" style=\"text-decoration: underline;\">Claire Gardent</a>（CNRS）和Albert Gatt（乌得勒支大学）的指导下进行研究。<br><br>我分别在索邦大学（Sorbonne University）和洛桑联邦理工学院（EPFL）获得计算机科学学士和硕士学位。我的研究重点是自然语言生成（NLG），尤其是基于大语言模型的强化学习、多语言的自然语言处理、可控文本生成、多模态对齐和生成文本的评估。"
+        subtitle: "我目前就职于法国国家科学研究中心（CNRS），同时也是洛林大学的博士生。很荣幸在<a href=\"https://members.loria.fr/CGardent/\" target=\"_blank\" style=\"text-decoration: underline;\">Claire Gardent</a>（CNRS）和<a href=\"https://albertgatt.github.io/\" target=\"_blank\" style=\"text-decoration: underline;\">Albert Gatt</a>（乌得勒支大学）的指导下进行研究。<br><br>我分别在索邦大学（Sorbonne University）和洛桑联邦理工学院（EPFL）获得计算机科学学士和硕士学位。我的研究重点是自然语言生成（NLG），尤其是基于大语言模型的强化学习、多语言的自然语言处理、可控文本生成、多模态对齐和生成文本的评估。"
         imageUrl: "icon.png"
         imageWidth: 160
         imageHeight: 160
@@ -114,7 +114,7 @@ languages:
       profileMode:
         enabled: true
         title: Yifei Song
-        subtitle: "Je suis doctorant à l’Université de Lorraine et au Centre National de la Recherche Scientifique (CNRS), sous la supervision de <a href=\"https://members.loria.fr/CGardent/\" target=\"_blank\" style=\"text-decoration: underline;\">Claire Gardent</a> (CNRS) et d’Albert Gatt (Université d’Utrecht).<br><br>Je suis titulaire d’une licence en informatique de Sorbonne Université, d’un diplôme d’ingénieur en informatique et d’un master en informatique de l’EPFL. Mes recherches portent sur la génération de langage naturel (NLG), avec un intérêt particulier pour l’apprentissage par renforcement appliqué aux grands modèles de langage, le traitement automatique multilingue du langage, la génération contrôlée de texte, l’alignement multimodal ainsi que l’évaluation."
+        subtitle: "Je suis doctorant à l’Université de Lorraine et au Centre National de la Recherche Scientifique (CNRS), sous la supervision de <a href=\"https://members.loria.fr/CGardent/\" target=\"_blank\" style=\"text-decoration: underline;\">Claire Gardent</a> (CNRS) et d’<a href=\"https://albertgatt.github.io/\" target=\"_blank\" style=\"text-decoration: underline;\">Albert Gatt</a> (Université d’Utrecht).<br><br>Je suis titulaire d’une licence en informatique de Sorbonne Université, d’un diplôme d’ingénieur en informatique et d’un master en informatique de l’EPFL. Mes recherches portent sur la génération de langage naturel (NLG), avec un intérêt particulier pour l’apprentissage par renforcement appliqué aux grands modèles de langage, le traitement automatique multilingue du langage, la génération contrôlée de texte, l’alignement multimodal ainsi que l’évaluation."
         imageUrl: "icon.png"
         imageWidth: 160
         imageHeight: 160
