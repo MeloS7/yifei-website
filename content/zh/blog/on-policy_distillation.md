@@ -62,11 +62,11 @@ Forward KL会惩罚P有mass但是Q没有mass的情况，因此相当于Q需要�
 （这篇论文最后的蒸馏是根据T5做的，所以没有涉及到Zero/Few-shot这类问题）
 
 **Formula & Algorithm**
-![GKD_formula](../../pic/GKD/GKD_formular.png)
+![GKD_formula](../pic/GKD/GKD_formular.png)
 - 第一部分其实类似于Offline的Supervised KD （基于Teacher Outputs）
 - 第二部分是提出的on-policy KD，基于Student Outputs的
 
-![GKD](../../pic/GKD/GKD.png)
+![GKD](../pic/GKD/GKD.png)
 - 其实是分批的，用一个random value来控制学习模式。
 - 其实并不是说对于同一个sample同时进行两种模式的学习
 - 缓解了之前SKD train-inference discrepancy的issue。
