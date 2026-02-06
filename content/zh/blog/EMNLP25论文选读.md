@@ -15,7 +15,7 @@ disableAnchoredHeadings: false
 
 
 ### Method
-![Pic_Multi_Prompt_LLM_Gene_Div](pic/EMNLP25/multi_gene_diversity.png)
+![Pic_Multi_Prompt_LLM_Gene_Div](../pic/EMNLP25/multi_gene_diversity.png)
 作者提出混合(aggregate)不同语言prompt的答案，可以增强答案的（文化/背景）多样性。
 作者主要提出了两种prompt方法以及一种Persona增强：
 - Multi-cultural: 将Prompt中插入`"You are an [Lang]-speaking assistant.`以获得不同语言的答案（translate back回英文）。
