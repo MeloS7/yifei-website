@@ -36,7 +36,7 @@ disableAnchoredHeadings: false
 
 where $P(C)$ is the empirical distribution, $Q_\theta(C)$ is the model distribution.
 
-![KL image](../pic/GKD/KL_divergence.png) 
+![KL image](../../pic/GKD/KL_divergence.png) 
 Forward KL会惩罚P有mass但是Q没有mass的情况，因此相当于Q需要“全面模仿”P的分布；而Reverse KL只关注Q有mass的情况，因此只要对于Q分布下的峰值和P的峰值重合，这个KL就会很小，所以被视作mode-seeking。
 
 放到token prediction的视角，做logit-based KD：如果我们用Forward KL作为loss，那学生模型必须要学会teacher model的logits，哪怕teacher model对某些token只赋予了比较小的比重，也需要学习；而如果采用Reverse KL的话，那我们可能只关注top-1～N个token，在大多数情况下其实就是top1（logit最大的）token，也就是学生模型只要能够和教师模型在greedy模式下表现一致就可以。
@@ -50,7 +50,7 @@ Forward KL会惩罚P有mass但是Q没有mass的情况，因此相当于Q需要�
 - 如果要使用KLD作为loss，这种unbounded情况很容易出现，会导致训练发散（loss=NaN/inf)或者梯度爆炸。
 
 解决方案：**JSD**
-![JSD](pic/GKD/JSD.png)
+![JSD](../../pic/GKD/JSD.png)
 
 
 ### Generalized KD (GKD)
@@ -62,11 +62,11 @@ Forward KL会惩罚P有mass但是Q没有mass的情况，因此相当于Q需要�
 （这篇论文最后的蒸馏是根据T5做的，所以没有涉及到Zero/Few-shot这类问题）
 
 **Formula & Algorithm**
-![GKD_formula](pic/GKD/GKD_formular.png)
+![GKD_formula](../../pic/GKD/GKD_formular.png)
 - 第一部分其实类似于Offline的Supervised KD （基于Teacher Outputs）
 - 第二部分是提出的on-policy KD，基于Student Outputs的
 
-![GKD](pic/GKD/GKD.png)
+![GKD](../../pic/GKD/GKD.png)
 - 其实是分批的，用一个random value来控制学习模式。
 - 其实并不是说对于同一个sample同时进行两种模式的学习
 - 缓解了之前SKD train-inference discrepancy的issue。
