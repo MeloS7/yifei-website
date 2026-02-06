@@ -36,7 +36,7 @@ disableAnchoredHeadings: false
 
 where $P(C)$ is the empirical distribution, $Q_\theta(C)$ is the model distribution.
 
-![KL image](pic/GKD/KL_divergence.png) 
+![KL image](../pic/GKD/KL_divergence.png) 
 Forward KL会惩罚P有mass但是Q没有mass的情况，因此相当于Q需要“全面模仿”P的分布；而Reverse KL只关注Q有mass的情况，因此只要对于Q分布下的峰值和P的峰值重合，这个KL就会很小，所以被视作mode-seeking。
 
 放到token prediction的视角，做logit-based KD：如果我们用Forward KL作为loss，那学生模型必须要学会teacher model的logits，哪怕teacher model对某些token只赋予了比较小的比重，也需要学习；而如果采用Reverse KL的话，那我们可能只关注top-1～N个token，在大多数情况下其实就是top1（logit最大的）token，也就是学生模型只要能够和教师模型在greedy模式下表现一致就可以。
