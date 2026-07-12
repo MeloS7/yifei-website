@@ -28,6 +28,9 @@
       markUnread: "Read",
       readonlyRead: "Read",
       readonlyUnread: "Unread",
+      prevPage: "Prev",
+      nextPage: "Next",
+      pageInfo: (p, total) => `Page ${p} of ${total}`,
     },
     zh: {
       searchPlaceholder: "搜索标题 / 关键词…",
@@ -54,6 +57,9 @@
       markUnread: "已读",
       readonlyRead: "已读",
       readonlyUnread: "未读",
+      prevPage: "上一页",
+      nextPage: "下一页",
+      pageInfo: (p, total) => `第 ${p} / ${total} 页`,
     },
   };
 
@@ -63,6 +69,8 @@
 
   let PAPERS = [];
   const activeTopics = new Set();
+  const PAGE_SIZE = 10;
+  let currentPage = 1;
 
   function dayKey(iso) {
     return iso.slice(0, 10);
@@ -118,8 +126,8 @@
     topicsWrap.appendChild(makeChip("", STR[lang()].topicAll));
     allTopics.forEach((t) => topicsWrap.appendChild(makeChip(t, STR[lang()].topics[t] || t)));
 
-    document.getElementById("f-search").addEventListener("input", render);
-    [yearSel, venueSel, readSel].forEach((el) => el.addEventListener("change", render));
+    document.getElementById("f-search").addEventListener("input", onFilterChange);
+    [yearSel, venueSel, readSel].forEach((el) => el.addEventListener("change", onFilterChange));
 
     applyI18nToControls();
   }
@@ -138,9 +146,14 @@
       } else {
         activeTopics.add(topic);
       }
-      render();
+      onFilterChange();
     });
     return chip;
+  }
+
+  function onFilterChange() {
+    currentPage = 1;
+    render();
   }
 
   function applyI18nToControls() {
@@ -275,11 +288,16 @@
 
   function renderList() {
     const L = STR[lang()];
-    const items = filtered();
+    const allItems = filtered();
+    const totalPages = Math.max(1, Math.ceil(allItems.length / PAGE_SIZE));
+    currentPage = Math.min(Math.max(currentPage, 1), totalPages);
+    const start = (currentPage - 1) * PAGE_SIZE;
+    const items = allItems.slice(start, start + PAGE_SIZE);
+
     const list = document.getElementById("pr-list");
     const empty = document.getElementById("pr-empty");
     list.innerHTML = "";
-    empty.hidden = items.length > 0;
+    empty.hidden = allItems.length > 0;
 
     items.forEach((p) => {
       const card = document.createElement("article");
@@ -327,6 +345,41 @@
 
       list.appendChild(card);
     });
+
+    renderPagination(allItems.length, totalPages);
+  }
+
+  function renderPagination(totalItems, totalPages) {
+    const L = STR[lang()];
+    const wrap = document.getElementById("pr-pagination");
+    wrap.innerHTML = "";
+    if (totalItems === 0) return;
+
+    const prev = document.createElement("button");
+    prev.type = "button";
+    prev.className = "pr-page-btn";
+    prev.textContent = L.prevPage;
+    prev.disabled = currentPage <= 1;
+    prev.addEventListener("click", () => {
+      currentPage--;
+      renderList();
+    });
+
+    const info = document.createElement("span");
+    info.className = "pr-page-info";
+    info.textContent = L.pageInfo(currentPage, totalPages);
+
+    const next = document.createElement("button");
+    next.type = "button";
+    next.className = "pr-page-btn";
+    next.textContent = L.nextPage;
+    next.disabled = currentPage >= totalPages;
+    next.addEventListener("click", () => {
+      currentPage++;
+      renderList();
+    });
+
+    wrap.append(prev, info, next);
   }
 
   async function toggleRead(paper, toggleEl, labelEl) {

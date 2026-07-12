@@ -207,6 +207,37 @@
   cursor: default;
 }
 
+/* ---------- Pagination ---------- */
+.pr-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 22px;
+}
+.pr-page-btn {
+  font: inherit;
+  font-size: 13px;
+  color: var(--text);
+  background: var(--pill-bg);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 6px 16px;
+  cursor: pointer;
+}
+.pr-page-btn:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+.pr-page-btn:not(:disabled):hover {
+  border-color: var(--accent);
+}
+.pr-page-info {
+  font-size: 13px;
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
 @media (max-width: 560px) {
   .pr-card-head {
     flex-direction: column;
