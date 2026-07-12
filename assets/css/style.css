@@ -180,7 +180,16 @@ html[data-lang="zh"] .lang-toggle [data-lang-opt="zh"] {
   padding: 0;
 }
 .edu-list li {
+  display: flex;
+  gap: 14px;
   margin-bottom: 16px;
+}
+.edu-period {
+  flex: 0 0 auto;
+  width: 132px;
+  color: var(--text-muted);
+  font-size: 14px;
+  font-variant-numeric: tabular-nums;
 }
 .edu-degree {
   font-weight: 600;
@@ -265,5 +274,12 @@ html[data-lang="zh"] .lang-toggle [data-lang-opt="zh"] {
   }
   .site-header {
     margin-bottom: 40px;
+  }
+  .edu-list li {
+    flex-direction: column;
+    gap: 2px;
+  }
+  .edu-period {
+    width: auto;
   }
 }
