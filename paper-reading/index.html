@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Paper Reading — Yifei Song</title>
+<meta name="description" content="Daily-collected papers on summarization, multilingual NLP, and reinforcement learning.">
+<link rel="icon" href="../favicon.ico">
+<link rel="stylesheet" href="../assets/css/style.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="wrap pr-wrap">
+
+  <header class="site-header">
+    <nav class="site-nav">
+      <a href="../index.html#about"><span data-i18n="en">← Yifei Song</span><span data-i18n="zh">← 宋逸飞</span></a>
+    </nav>
+    <button id="lang-toggle" class="lang-toggle" type="button" aria-label="Switch language">
+      <span class="lang-opt" data-lang-opt="en">EN</span>
+      <span class="lang-sep">/</span>
+      <span class="lang-opt" data-lang-opt="zh">中文</span>
+    </button>
+  </header>
+
+  <main>
+    <section class="pr-intro">
+      <h1><span data-i18n="en">Paper Reading</span><span data-i18n="zh">论文阅读</span></h1>
+      <p class="tagline">
+        <span data-i18n="en">10 papers on summarization, multilingual NLP, and reinforcement learning, collected automatically every morning.</span>
+        <span data-i18n="zh">每天早晨自动收集的 10 篇论文，围绕摘要生成、多语言 NLP 与强化学习三个主题。</span>
+      </p>
+    </section>
+
+    <!-- Activity heatmap -->
+    <section class="block">
+      <h2><span data-i18n="en">Reading Activity</span><span data-i18n="zh">阅读活跃度</span></h2>
+      <div id="heatmap" class="heatmap" aria-hidden="false"></div>
+      <p id="heatmap-caption" class="pr-caption"></p>
+    </section>
+
+    <!-- Stats -->
+    <section class="block">
+      <div id="pr-stats" class="pr-stats"></div>
+    </section>
+
+    <!-- Filters -->
+    <section class="block">
+      <div class="pr-filters">
+        <input id="f-search" type="search" class="pr-search" />
+        <select id="f-year" class="pr-select"></select>
+        <select id="f-venue" class="pr-select"></select>
+        <select id="f-read" class="pr-select"></select>
+        <div id="f-topics" class="pr-topics"></div>
+      </div>
+    </section>
+
+    <!-- Paper list -->
+    <section class="block">
+      <div id="pr-list" class="pr-list"></div>
+      <p id="pr-empty" class="pr-caption" hidden>
+        <span data-i18n="en">No papers match these filters.</span>
+        <span data-i18n="zh">没有符合筛选条件的论文。</span>
+      </p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <span data-i18n="en">© 2026 Yifei Song</span>
+    <span data-i18n="zh">© 2026 宋逸飞</span>
+  </footer>
+
+</div>
+
+<script src="../assets/js/main.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

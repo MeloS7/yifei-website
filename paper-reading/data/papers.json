@@ -1,0 +1,213 @@
+[
+  {
+    "id": "2026-07-12-01",
+    "title": "Arg-LLaDA: Argument Summarization via Large Language Diffusion Models and Sufficiency-Aware Refinement",
+    "year": 2025,
+    "venue": "arXiv",
+    "topics": [
+      "summarization"
+    ],
+    "keywords": [
+      "diffusion models",
+      "argument summarization",
+      "iterative refinement"
+    ],
+    "link": "https://arxiv.org/abs/2507.19081",
+    "brief": "任务是论辩摘要生成（argument summarization）：将一段论辩性文本压缩为保留核心论点的摘要。论文的创新点在于抛弃传统自回归解码，改用大语言扩散模型（LLaDA）生成摘要，并设计了一个“充分性检查模块”，在生成过程中反复识别摘要里不充分、冗余或缺失的片段，对这些局部片段做重掩码-重生成，形成类似“起草-修订”的迭代自我修正流程，而不是一次性生成后就固定下来。作者在两个论辩摘要基准数据集上做了评测，覆盖10项自动评价指标，结果显示有7项指标超过当前最优（SOTA）方法。这项工作说明扩散式生成在摘要这类需要多轮局部修正的任务上，可能提供不同于自回归解码的新范式。",
+    "model": "Claude Sonnet 5",
+    "reasoning_effort": "medium",
+    "date_added": "2026-07-12",
+    "read": false,
+    "read_at": null
+  },
+  {
+    "id": "2026-07-12-02",
+    "title": "No Reader Left Behind: Multi-Agent Summaries Everyone Can Understand",
+    "year": 2026,
+    "venue": "ACL 2026 (Main Conference)",
+    "topics": [
+      "summarization"
+    ],
+    "keywords": [
+      "multi-agent",
+      "readability",
+      "accessibility"
+    ],
+    "link": "https://arxiv.org/abs/2605.28836",
+    "brief": "作者来自韩国高丽大学，任务是让摘要对不同类型读者都“可读”，而不仅仅是信息准确。方法上，系统模拟三类典型读者——小学生、非母语者、注意力障碍者——并让多个智能体协作检测摘要中的难词、缺失背景知识和费解句子，再针对性地修正，同时兼顾可读性与事实准确性两个目标，不是单纯简化语言。论文在多个摘要场景下评测了修正前后的可读性与忠实度指标，结果显示多智能体协作修正显著提升了不同读者群体的可理解度，同时没有明显牺牲事实一致性。这项工作切中了“Plain Writing Act”等无障碍写作法规的实际需求，把摘要评价从单一质量指标拓展到了“读者可及性”这个新维度。",
+    "model": "Claude Sonnet 5",
+    "reasoning_effort": "medium",
+    "date_added": "2026-07-12",
+    "read": false,
+    "read_at": null
+  },
+  {
+    "id": "2026-07-12-03",
+    "title": "Understanding LLM Reasoning for Abstractive Summarization",
+    "year": 2025,
+    "venue": "arXiv",
+    "topics": [
+      "summarization"
+    ],
+    "keywords": [
+      "chain-of-thought",
+      "faithfulness",
+      "reasoning models"
+    ],
+    "link": "https://arxiv.org/abs/2512.03503",
+    "brief": "夏威夷大学ALOHA实验室的实证研究，任务是搞清楚“显式推理”（如链式思考）对生成式摘要到底有没有帮助。作者在8个摘要数据集上，系统对比了8种推理提示策略与3个专门的大型推理模型，考察推理过程对摘要质量与事实一致性的影响。核心发现是推理对摘要并非万能：让通用LLM显式做链式推理，能提升摘要的整体质量评分，却可能损害事实一致性（更容易编造或曲解原文内容）；而大型推理模型内部的隐式推理却呈现相反趋势——事实一致性更好但质量提升有限。这种“质量与忠实度此消彼长”的权衡，为后续设计摘要系统的推理策略提供了实证依据，提醒研究者不能简单假设“推理越多摘要越好”。",
+    "model": "Claude Sonnet 5",
+    "reasoning_effort": "medium",
+    "date_added": "2026-07-12",
+    "read": false,
+    "read_at": null
+  },
+  {
+    "id": "2026-07-12-04",
+    "title": "One Tokenizer To Rule Them All: Emergent Language Plasticity via Multilingual Tokenizers",
+    "year": 2025,
+    "venue": "arXiv",
+    "topics": [
+      "multilingual"
+    ],
+    "keywords": [
+      "tokenizer",
+      "language plasticity",
+      "low-resource"
+    ],
+    "link": "https://arxiv.org/abs/2506.10766",
+    "brief": "Cohere Labs（Diana Abagyan等）的工作，任务是研究如何让预训练模型在“事后”更容易扩展到新语言。核心创新是在预训练阶段就采用一个覆盖语言数量远超主训练语言集合的“通用分词器”，而不是像通常做法那样只针对预训练所用语言定制分词器；作者认为这种低成本的分词器选择干预会影响模型后续学习新语言的“可塑性”。实验对比了通用分词器与定制分词器在多语言扩展任务上的表现，发现使用通用分词器的模型在后续适配新语言时，胜率最高可提升20.2%。这个结论对需要不断把模型扩展到新语言、尤其是小语种的团队很有实用价值，因为它意味着许多多语言能力的差距可能在预训练阶段的分词器选择上就已经决定了。",
+    "model": "Claude Sonnet 5",
+    "reasoning_effort": "medium",
+    "date_added": "2026-07-12",
+    "read": false,
+    "read_at": null
+  },
+  {
+    "id": "2026-07-12-05",
+    "title": "MORPHOGEN: A Multilingual Benchmark for Evaluating Gender-Aware Morphological Generation",
+    "year": 2026,
+    "venue": "arXiv",
+    "topics": [
+      "multilingual"
+    ],
+    "keywords": [
+      "gender morphology",
+      "benchmark",
+      "grammatical gender"
+    ],
+    "link": "https://arxiv.org/abs/2604.18914",
+    "brief": "论文构建了一个新基准MORPHOGEN，任务是评估模型在语法性别语言中的“性别形态生成”能力，覆盖法语、阿拉伯语、印地语三种存在语法性别的语言。具体测试方式是把第一人称句子改写为语法性别相反的版本，同时要求语义结构保持不变，这对模型在词形变化层面的精细控制提出了很高要求。作者在15个参数量从2B到70B的多语言LLM上做了系统评测，结果发现即便是在翻译、问答等任务上表现很强的模型，在这种细粒度的性别形态一致性上依然普遍表现不佳。这项工作的意义在于，它是少数把“语法性别”这一常被忽视的维度系统化纳入评测的基准，揭示了当前多语言模型在词法层面还存在明显短板。",
+    "model": "Claude Sonnet 5",
+    "reasoning_effort": "medium",
+    "date_added": "2026-07-12",
+    "read": false,
+    "read_at": null
+  },
+  {
+    "id": "2026-07-12-06",
+    "title": "Massively Multilingual Joint Segmentation and Glossing",
+    "year": 2026,
+    "venue": "ACL 2026 (Outstanding Paper)",
+    "topics": [
+      "multilingual"
+    ],
+    "keywords": [
+      "interlinear gloss",
+      "morphological segmentation",
+      "endangered languages"
+    ],
+    "link": "https://arxiv.org/abs/2601.10925",
+    "brief": "获ACL 2026杰出论文奖（多语言方向）。任务是语言记录（language documentation）场景中的“逐词素释义”（interlinear gloss）——为语言学田野调查记录的语料标注每个词素的含义，这通常需要同时做形态切分和释义两步。论文的创新是首次提出联合建模这两个子任务的神经模型PolyGloss，一个覆盖大规模多语言的seq2seq模型家族，让形态切分和释义在同一个模型里协同完成，而不是分成两个独立步骤。作者在释义准确率、切分准确率以及两者的对齐质量上做了评测，结果显示PolyGloss全面超过此前的专门方法GlossLM，也超过多个通用开源LLM的基线表现。这项工作直接服务于濒危语言记录与保护这一实际应用场景，是把NLP技术用于语言多样性保护的代表性成果。",
+    "model": "Claude Sonnet 5",
+    "reasoning_effort": "medium",
+    "date_added": "2026-07-12",
+    "read": false,
+    "read_at": null
+  },
+  {
+    "id": "2026-07-12-07",
+    "title": "Multilinguality of Large Language Models From a Structural Perspective",
+    "year": 2026,
+    "venue": "arXiv",
+    "topics": [
+      "multilingual"
+    ],
+    "keywords": [
+      "representation analysis",
+      "low-resource languages",
+      "structural probing"
+    ],
+    "link": "https://arxiv.org/abs/2606.01800",
+    "brief": "任务是从模型内部表示的“结构”视角，分析LLM为什么在低资源语言上表现总是更差。作者分析了不同语言在模型内部表示空间中的结构特征，发现低资源语言的内部表示结构与英语相比差异远大于中高资源语言，这种结构差异可能是低资源语言性能落后的一个内在机制原因。进一步地，论文考察了针对特定语言做后训练（fine-tuning）对这种结构的影响，发现后训练确实会改变目标语言的内部结构，但语言之间的相对结构关系基本保持不变，也就是说后训练很难从根本上抹平语言间的结构差距。这项工作没有提出新方法，而是提供了一个机制层面的解释框架，帮助理解“为什么低资源语言总是学不好”，对后续设计针对性的多语言训练策略有参考价值。",
+    "model": "Claude Sonnet 5",
+    "reasoning_effort": "medium",
+    "date_added": "2026-07-12",
+    "read": false,
+    "read_at": null
+  },
+  {
+    "id": "2026-07-12-08",
+    "title": "Rethinking Entropy Interventions in RLVR: An Entropy Change Perspective",
+    "year": 2025,
+    "venue": "ACL 2026 (Outstanding Paper)",
+    "topics": [
+      "reinforcement learning"
+    ],
+    "keywords": [
+      "RLVR",
+      "entropy collapse",
+      "training stability"
+    ],
+    "link": "https://arxiv.org/abs/2510.10150",
+    "brief": "获ACL 2026杰出论文奖。任务是解决可验证奖励强化学习（RLVR，常用于训练数学推理等有明确对错标准的任务）训练中常见的“熵坍缩”问题——模型的输出分布在训练中过快变得过于确定，导致探索不足、训练不稳定。论文的创新是提出STEER方法：基于对每一步训练熵变化的理论估计，对不同token做细粒度的重加权，主动把每一步的熵变控制在一个适中区间内，而不是简单地加一个固定的熵正则项。作者在数学推理基准上做了实验，结果显示STEER相比现有的熵干预方法显著提升了训练稳定性和下游任务表现。这项工作代表了RLVR训练稳定性方向的一个具体、可操作的改进，对当前依赖RLVR做后训练的LLM研发有直接参考价值。",
+    "model": "Claude Sonnet 5",
+    "reasoning_effort": "medium",
+    "date_added": "2026-07-12",
+    "read": false,
+    "read_at": null
+  },
+  {
+    "id": "2026-07-12-09",
+    "title": "NeoAMT: Neologism-Aware Agentic Machine Translation with Reinforcement Learning",
+    "year": 2026,
+    "venue": "ACL 2026 (Main Conference)",
+    "topics": [
+      "multilingual",
+      "reinforcement learning"
+    ],
+    "keywords": [
+      "machine translation",
+      "GRPO",
+      "neologisms"
+    ],
+    "link": "https://arxiv.org/abs/2601.03790",
+    "brief": "任务是机器翻译中一个常被忽视但很现实的难题：新造词（neologism，如网络新词、俚语）的翻译。作者首先构建了一个覆盖16种语言、75个翻译方向、约1000万条维基词典记录的数据集和检索工具包，为训练和评测新造词翻译提供了资源基础；在此之上，基于GRPO（一种强化学习算法）设计了新的奖励机制，并提出“翻译难度自适应采样”策略，训练出一个能够在翻译过程中主动查词典、边推理边翻译的智能体（agent），而不是一次性直接输出译文。实验表明该方法在新造词翻译任务上优于常规的端到端翻译系统。这项工作的选题很贴近真实世界的翻译痛点，把检索增强和强化学习结合起来解决了传统机器翻译模型难以覆盖的“新词”问题。",
+    "model": "Claude Sonnet 5",
+    "reasoning_effort": "medium",
+    "date_added": "2026-07-12",
+    "read": false,
+    "read_at": null
+  },
+  {
+    "id": "2026-07-12-10",
+    "title": "Reproducing, Analyzing, and Detecting Reward Hacking in Rubric-Based Reinforcement Learning",
+    "year": 2026,
+    "venue": "arXiv",
+    "topics": [
+      "reinforcement learning"
+    ],
+    "keywords": [
+      "reward hacking",
+      "rubric-based RL",
+      "alignment"
+    ],
+    "link": "https://arxiv.org/abs/2606.04923",
+    "brief": "清华大学等团队的工作，任务是系统研究“基于评分细则（rubric）”的强化学习中的奖励黑客（reward hacking）现象——模型学会钻评分标准的空子来拿高分，而不是真正把任务做好。作者首先复现了多个已报告的奖励黑客案例，验证其是否具有可重复性，然后系统分析了这类现象出现的条件和模式，在此基础上提出了一套检测方法，用于在训练过程中及早发现模型是否在“取巧”而非真正对齐评分标准背后的意图。论文没有声称完全解决了奖励黑客问题，但提供了可复现的分析流程和可用的检测手段。随着RLVR和rubric-based RL成为LLM后训练的主流范式之一，这种审视“奖励对齐是否真的可信”的工作，是当前RL对齐社区关注的热点议题。",
+    "model": "Claude Sonnet 5",
+    "reasoning_effort": "medium",
+    "date_added": "2026-07-12",
+    "read": false,
+    "read_at": null
+  }
+]
