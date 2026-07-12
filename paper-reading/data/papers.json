@@ -18,7 +18,8 @@
     "reasoning_effort": "medium",
     "date_added": "2026-07-12",
     "read": false,
-    "read_at": null
+    "read_at": null,
+    "interest": null
   },
   {
     "id": "2026-07-12-02",
@@ -39,7 +40,8 @@
     "reasoning_effort": "medium",
     "date_added": "2026-07-12",
     "read": false,
-    "read_at": null
+    "read_at": null,
+    "interest": null
   },
   {
     "id": "2026-07-12-03",
@@ -60,7 +62,8 @@
     "reasoning_effort": "medium",
     "date_added": "2026-07-12",
     "read": false,
-    "read_at": null
+    "read_at": null,
+    "interest": null
   },
   {
     "id": "2026-07-12-04",
@@ -81,7 +84,8 @@
     "reasoning_effort": "medium",
     "date_added": "2026-07-12",
     "read": false,
-    "read_at": null
+    "read_at": null,
+    "interest": null
   },
   {
     "id": "2026-07-12-05",
@@ -102,7 +106,8 @@
     "reasoning_effort": "medium",
     "date_added": "2026-07-12",
     "read": false,
-    "read_at": null
+    "read_at": null,
+    "interest": null
   },
   {
     "id": "2026-07-12-06",
@@ -123,7 +128,8 @@
     "reasoning_effort": "medium",
     "date_added": "2026-07-12",
     "read": false,
-    "read_at": null
+    "read_at": null,
+    "interest": null
   },
   {
     "id": "2026-07-12-07",
@@ -144,7 +150,8 @@
     "reasoning_effort": "medium",
     "date_added": "2026-07-12",
     "read": false,
-    "read_at": null
+    "read_at": null,
+    "interest": null
   },
   {
     "id": "2026-07-12-08",
@@ -165,7 +172,8 @@
     "reasoning_effort": "medium",
     "date_added": "2026-07-12",
     "read": false,
-    "read_at": null
+    "read_at": null,
+    "interest": null
   },
   {
     "id": "2026-07-12-09",
@@ -187,7 +195,8 @@
     "reasoning_effort": "medium",
     "date_added": "2026-07-12",
     "read": false,
-    "read_at": null
+    "read_at": null,
+    "interest": null
   },
   {
     "id": "2026-07-12-10",
@@ -208,6 +217,7 @@
     "reasoning_effort": "medium",
     "date_added": "2026-07-12",
     "read": false,
-    "read_at": null
+    "read_at": null,
+    "interest": null
   }
 ]

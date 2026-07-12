@@ -31,6 +31,7 @@
       prevPage: "Prev",
       nextPage: "Next",
       pageInfo: (p, total) => `Page ${p} of ${total}`,
+      interestLabel: "Interest",
     },
     zh: {
       searchPlaceholder: "搜索标题 / 关键词…",
@@ -60,6 +61,7 @@
       prevPage: "上一页",
       nextPage: "下一页",
       pageInfo: (p, total) => `第 ${p} / ${total} 页`,
+      interestLabel: "有意思指数",
     },
   };
 
@@ -334,7 +336,12 @@
       } else {
         toggle.tabIndex = -1;
       }
-      card.querySelector(".pr-card-head").appendChild(toggle);
+
+      const actions = document.createElement("div");
+      actions.className = "pr-actions";
+      actions.appendChild(toggle);
+      actions.appendChild(buildInterestWidget(p));
+      card.querySelector(".pr-card-head").appendChild(actions);
 
       const briefEl = card.querySelector(".pr-brief");
       const briefToggle = card.querySelector(".pr-brief-toggle");
@@ -404,6 +411,53 @@
       console.error(e);
     } finally {
       toggleEl.disabled = false;
+    }
+  }
+
+  function buildInterestWidget(paper) {
+    const L = STR[lang()];
+    const wrap = document.createElement("div");
+    wrap.className = "pr-interest" + (EDITABLE ? "" : " readonly");
+    wrap.title = L.interestLabel;
+
+    for (let i = 1; i <= 5; i++) {
+      const star = document.createElement("button");
+      star.type = "button";
+      star.className = "pr-star" + (paper.interest && i <= paper.interest ? " filled" : "");
+      star.textContent = "★";
+      star.dataset.value = String(i);
+      if (EDITABLE) {
+        star.addEventListener("click", () => {
+          const next = paper.interest === i ? null : i;
+          setInterest(paper, next, wrap);
+        });
+      } else {
+        star.tabIndex = -1;
+      }
+      wrap.appendChild(star);
+    }
+    return wrap;
+  }
+
+  async function setInterest(paper, value, wrap) {
+    const stars = Array.from(wrap.querySelectorAll(".pr-star"));
+    stars.forEach((s) => (s.disabled = true));
+    try {
+      const res = await fetch("/api/interest", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id: paper.id, interest: value }),
+      });
+      if (!res.ok) throw new Error("request failed");
+      const updated = await res.json();
+      paper.interest = updated.interest;
+      stars.forEach((s) => {
+        s.classList.toggle("filled", paper.interest && Number(s.dataset.value) <= paper.interest);
+      });
+    } catch (e) {
+      console.error(e);
+    } finally {
+      stars.forEach((s) => (s.disabled = false));
     }
   }
 
