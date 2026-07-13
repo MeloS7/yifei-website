@@ -93,6 +93,14 @@
   async function load() {
     const res = await fetch(DATA_URL, { cache: "no-store" });
     PAPERS = await res.json();
+    // Interest ratings live in a private, local-only file (gitignored). They are
+    // merged in only on the local server; the public site never sees them.
+    if (EDITABLE) {
+      try {
+        const interest = await (await fetch("data/interest.json", { cache: "no-store" })).json();
+        PAPERS.forEach((p) => { if (interest[p.id] != null) p.interest = interest[p.id]; });
+      } catch (e) { /* no local interest file yet */ }
+    }
     initFilters();
     render();
   }
@@ -340,7 +348,7 @@
       const actions = document.createElement("div");
       actions.className = "pr-actions";
       actions.appendChild(buildStatusWidget(p));
-      actions.appendChild(buildInterestWidget(p));
+      if (EDITABLE) actions.appendChild(buildInterestWidget(p));
       const readFull = document.createElement("a");
       readFull.className = "pr-readfull";
       readFull.href = "reader.html?id=" + encodeURIComponent(p.id);

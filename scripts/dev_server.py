@@ -17,6 +17,7 @@ from urllib.parse import urlparse, parse_qs
 ROOT = Path(__file__).resolve().parent.parent
 PAPERS_PATH = ROOT / "paper-reading" / "data" / "papers.json"
 ANNOTATIONS_PATH = ROOT / "paper-reading" / "data" / "annotations.json"
+INTEREST_PATH = ROOT / "paper-reading" / "data" / "interest.json"
 PDF_DIR = ROOT / "paper-reading" / "pdfs"
 PORT = int(sys.argv[1]) if len(sys.argv) > 1 else 4173
 
@@ -119,6 +120,8 @@ class Handler(SimpleHTTPRequestHandler):
         self._save_and_respond(papers, match)
 
     def _handle_interest(self):
+        # Interest ratings are private: stored in a local-only, gitignored file so
+        # they never reach the committed papers.json or the public site.
         try:
             payload = self._read_payload()
             paper_id = payload["id"]
@@ -131,13 +134,30 @@ class Handler(SimpleHTTPRequestHandler):
             self.send_error(400, "Expected JSON body {id, interest: 1-5 or null}")
             return
 
-        papers, match = self._load_match(paper_id)
+        _, match = self._load_match(paper_id)
         if match is None:
             self.send_error(404, f"Unknown paper id {paper_id}")
             return
 
-        match["interest"] = interest
-        self._save_and_respond(papers, match)
+        store = {}
+        if INTEREST_PATH.exists():
+            try:
+                store = json.loads(INTEREST_PATH.read_text(encoding="utf-8"))
+            except json.JSONDecodeError:
+                store = {}
+        if interest is None:
+            store.pop(paper_id, None)
+        else:
+            store[paper_id] = interest
+        INTEREST_PATH.write_text(
+            json.dumps(store, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+        )
+        body = json.dumps({"id": paper_id, "interest": interest}, ensure_ascii=False).encode("utf-8")
+        self.send_response(200)
+        self.send_header("Content-Type", "application/json")
+        self.send_header("Content-Length", str(len(body)))
+        self.end_headers()
+        self.wfile.write(body)
 
     # ---------- Full-text reader: PDF proxy + annotations ----------
 
