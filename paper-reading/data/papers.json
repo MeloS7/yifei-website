@@ -219,5 +219,229 @@
     "read": false,
     "read_at": null,
     "interest": null
+  },
+  {
+    "id": "2026-07-13-01",
+    "title": "Evolutionary Guided Decoding: Iterative Value Refinement for LLMs",
+    "year": 2025,
+    "venue": "ACL 2026 (Outstanding Paper)",
+    "topics": [
+      "summarization"
+    ],
+    "keywords": [
+      "value-guided decoding",
+      "self-refinement",
+      "inference-time control"
+    ],
+    "link": "https://arxiv.org/abs/2503.02368",
+    "brief": "这篇论文关注的是“值引导解码”（value-guided decoding）技术：与需要重新训练整个模型的传统对齐方法不同，值引导解码通过训练一个额外的价值函数来在推理阶段引导语言模型的输出，成本更低，但效果高度依赖价值函数本身的准确性。作者指出现有方法存在一个核心的“分布差距”问题：价值函数往往只在基础策略（base policy）采样出的轨迹上训练，这使得它的训练信号被局限在一个狭窄且往往次优的输出空间子集里，难以准确评估那些基础策略较少触及但可能更优的生成路径。为解决这个问题，作者提出了两项互补的创新：一是“价值探索”（Value Exploration），主动扩大采样覆盖范围，为价值函数提供更全面、更鲁棒的训练信号；二是“迭代自我精化”（Iterative Self-Refinement），把训练过程设计成一个自我进化的闭环——每一轮迭代中被改进过的价值函数，被用来生成质量更高的训练数据，反过来又进一步提升下一轮价值函数的准确性，如此循环递进。作者在文本摘要、多轮对话生成和指令遵循三大任务上进行了大量实验，结果表明该框架相较此前的值引导解码方法能带来稳定的性能提升，证明了“用价值函数自身的迭代优化去弥补训练数据分布局限”这一思路的有效性。该论文由Zhenhua Liu等人完成，被选为ACL 2026的Outstanding Paper（杰出论文），归入大会“推理、强化学习与后训练”这一今年规模最大的获奖论文集群，反映出学界对如何更高效、更低成本地控制和对齐大模型输出这一问题的持续关注。",
+    "model": "Claude Sonnet 5",
+    "reasoning_effort": "medium",
+    "date_added": "2026-07-13",
+    "read": false,
+    "read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-07-13-02",
+    "title": "Rethinking Entropy Interventions in RLVR: An Entropy Change Perspective",
+    "year": 2025,
+    "venue": "ACL 2026 (Outstanding Paper)",
+    "topics": [
+      "reinforcement learning"
+    ],
+    "keywords": [
+      "RLVR",
+      "entropy collapse",
+      "token reweighting"
+    ],
+    "link": "https://arxiv.org/abs/2510.10150",
+    "brief": "这篇论文处理的是当前用可验证奖励做强化学习（Reinforcement Learning with Verifiable Rewards, RLVR）训练大模型推理能力时一个广受关注的顽疾——“熵坍缩”（entropy collapse）：训练过程中策略的输出熵会迅速下降，模型逐渐停止探索多样化的解题路径，转而收敛到少数几种套路，导致模型在训练集之外的泛化能力和推理多样性受损。以往工作虽然提出了不少熵干预方法，但作者指出这些方法大多只是间接地控制熵，缺乏对“每一步梯度更新究竟如何改变熵”这一机制的精确刻画。为此，作者从理论上推导出每次更新时token级熵变化的一个紧凑近似表达式，揭示出影响熵变化的四个关键因素，并借此对现有各种熵干预策略给出了一个统一的解释视角，说明它们各自在这四个因素上产生了怎样的隐式作用。基于这一理论分析，作者提出了STEER方法：一种基于理论估计的熵变化对不同token做细粒度、token级别重新加权的熵调制机制，能够将每一步的熵变化控制在一个适中的区间内，既不过度收敛也不过度发散。在六个数学推理基准上的大量实验显示，STEER能有效缓解熵坍缩、稳定训练过程中的熵动态，相比经典RLVR基线和此前的熵干预基线全面胜出，平均性能比第二名方法高出3.4分。该工作被评为ACL 2026 Outstanding Paper，是本届大会RLVR相关获奖论文集群中的代表作之一。",
+    "model": "Claude Sonnet 5",
+    "reasoning_effort": "medium",
+    "date_added": "2026-07-13",
+    "read": false,
+    "read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-07-13-03",
+    "title": "One Tokenizer To Rule Them All: Emergent Language Plasticity via Multilingual Tokenizers",
+    "year": 2025,
+    "venue": "arXiv",
+    "topics": [
+      "multilingual"
+    ],
+    "keywords": [
+      "tokenizer",
+      "language plasticity",
+      "cross-lingual transfer"
+    ],
+    "link": "https://arxiv.org/abs/2506.10766",
+    "brief": "这篇论文研究的问题是如何让大语言模型在预训练完成之后，更容易、更高质量地扩展到新语言，也就是所谓的“语言可塑性”（language plasticity）。作者指出，当前主流做法是在预训练阶段只为少数几种主力语言构建分词器（tokenizer），这虽然节省了词表容量，却给后续想要适配新语言的后训练阶段挖了坑——分词器覆盖不到的语言，字符会被切得支离破碎，模型即使后续做微调也很难高效学好这门语言。这篇工作的创新点在于把干预时机提前到预训练最初期、成本相对低廉的分词器设计环节：作者提出并训练了一个覆盖语言数量远多于实际预训练所用语言的“通用分词器”（universal tokenizer），让模型在预训练阶段就“见过”更多语言的文字切分方式，为将来的语言扩展预留结构化的空间，而不是等到后训练阶段再硬啃。作者在63种类型学和文字系统都高度多样的语言上做了系统实验，结果显示，使用通用分词器的模型在语言适配任务上的胜率比使用针对特定语系定制分词器的模型最高高出20.2个百分点；更值得注意的是，即便是分词器和预训练阶段完全没有见过的全新语言，通用分词器模型依然能带来最高5%的胜率提升，说明这种“提前布局”的分词器设计确实能在后期产生跨语言的正向迁移效果。这篇论文的作者包括Diana Abagyan、Alejandro R. Salamanca等人，是当前多语言大模型预训练领域中一项聚焦“如何用低成本设计换取长期语言扩展红利”的代表性工作。",
+    "model": "Claude Sonnet 5",
+    "reasoning_effort": "medium",
+    "date_added": "2026-07-13",
+    "read": false,
+    "read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-07-13-04",
+    "title": "Understanding LLM Behavior in Multi-Target Cross-Lingual Summarization",
+    "year": 2026,
+    "venue": "arXiv",
+    "topics": [
+      "summarization",
+      "multilingual"
+    ],
+    "keywords": [
+      "cross-lingual summarization",
+      "activation steering",
+      "layer-wise analysis"
+    ],
+    "link": "https://arxiv.org/abs/2606.01252",
+    "brief": "这篇论文关注的任务是“多目标跨语言摘要”（Multi-Target Cross-Lingual Summarization, MTXLS）：给定一篇源语言文档，模型需要同时生成多种目标语言的摘要，这对于内容消费日益多语言化的真实场景很有实际意义，但此前研究相对较少。作者首先构建了一个新基准MEA（multi-target cross-lingual element-aware），覆盖多达24种目标语言，用于系统评测模型在这一任务上的表现。他们对比了端到端直接生成和“先翻译后摘要”等流水线式方法在多种大模型上的表现，发现MTXLS的整体质量仍明显落后于纯英文单语摘要，说明多语言目标摘要依然是一个尚未被充分解决的难题。这篇论文真正的创新点在于不满足于停留在“跑分对比”层面，而是提出了一套逐层分析框架，深入探查大模型内部到底是如何完成“翻译”和“摘要”这两个子过程的。他们发现一个反直觉的结果：翻译行为和摘要行为并不是像人们通常假设的那样在模型内部被分解为界限清晰的先后阶段，而是在网络较深的层里联合、纠缠地涌现出来。受此发现启发，作者进一步提出了一种推理时的“激活引导”（activation steering）方法：直接利用模型做纯英文摘要时产生的隐藏表示，去引导多目标跨语言摘要的生成过程，无需额外训练。实验表明，这种方法能在多个目标语言上稳定提升摘要质量。这项工作把“这个任务多语言模型学得不好”的表面观察，往前推进到了“为什么学不好、内部机制是什么”的层面，为后续针对性改进提供了机制层面的线索。",
+    "model": "Claude Sonnet 5",
+    "reasoning_effort": "medium",
+    "date_added": "2026-07-13",
+    "read": false,
+    "read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-07-13-05",
+    "title": "GeoRA: Geometry-Aware Low-Rank Adaptation for RLVR",
+    "year": 2026,
+    "venue": "ACL 2026 (Outstanding Paper)",
+    "topics": [
+      "reinforcement learning"
+    ],
+    "keywords": [
+      "LoRA",
+      "RLVR",
+      "spectral collapse"
+    ],
+    "link": "https://arxiv.org/abs/2601.09361",
+    "brief": "这篇论文处理的是一个当前用RLVR（可验证奖励强化学习）训练大模型推理能力时容易被忽视的工程细节问题：如何在RLVR训练中做参数高效微调。像PiSSA、MiLoRA这类低秩适配（LoRA类）方法原本是为监督微调（SFT）设计的，作者发现如果把它们直接套用到RLVR这种优化动态完全不同的训练范式上，会出现“谱坍缩”（spectral collapse）和优化不稳定等问题，明显拖累最终的模型表现——这是因为RLVR的梯度更新在权重空间中呈现出与SFT截然不同的各向异性（anisotropic）结构，而现有低秩适配方法的初始化方式并未考虑这种结构差异。为此，作者提出了GeoRA（Geometry-Aware Low-Rank Adaptation）：核心思路是先利用奇异值分解（SVD）从权重更新中提取出RLVR训练真正会用到的主方向，构建一个几何约束子空间，只在这个与RLVR实际优化路径对齐的子空间内做低秩适配，同时冻结其余残差方向，从而使适配器的更新方式与RLVR本身的优化动态相匹配，避免了盲目套用SFT时代设计留下的适配器结构。在Qwen和Llama系列模型、多个主流数学推理任务上的实验显示，GeoRA相比现有主流低秩基线方法在稳定性和最终性能上都取得了一致的提升。这篇论文被评为ACL 2026 Outstanding Paper，反映出学界在RLVR逐渐成为大模型后训练标准范式之后，开始更细致地反思和重新设计那些原本为SFT时代量身定制的训练工具链。",
+    "model": "Claude Sonnet 5",
+    "reasoning_effort": "medium",
+    "date_added": "2026-07-13",
+    "read": false,
+    "read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-07-13-06",
+    "title": "Massively Multilingual Joint Segmentation and Glossing",
+    "year": 2026,
+    "venue": "ACL 2026 (Outstanding Paper)",
+    "topics": [
+      "multilingual"
+    ],
+    "keywords": [
+      "interlinear glossing",
+      "language documentation",
+      "low-resource languages"
+    ],
+    "link": "https://arxiv.org/abs/2601.10925",
+    "brief": "这篇论文的任务背景是语言文档学（language documentation）领域的一个实际痛点：为了记录和保存濒危语言，语言学家需要给语料标注“行间注释文本”（interlinear glossed text, IGT），也就是逐词标出每个词素对应的语法和语义标签，这项工作极为耗时，因此用神经网络自动生成词素注释（glossing）一直是加速语言文档记录的一个热门方向。作者指出，尽管像GlossLM这样的模型已经在现有的自动注释评测基准上取得了不错的分数，但和语言学家一起做的用户研究发现，这类模型在真实使用场景中仍存在关键障碍：它们通常只把注释整体分配到“整个词”上，而不预测词内部具体的词素边界，导致标注结果缺乏可解释性，语言学家难以信任和采纳这些自动生成的结果。为此，作者开展了首个联合预测“词素边界切分”与“词素级注释”的神经模型研究，让模型同时输出结构化、可验证的切分和注释结果，而不是一个黑箱式的整体标签。在数据层面，他们扩充并改进了GlossLM语料库，新增9.1万条样本，总量达到34.1万条，并提升了标准化和格式一致性，确保词素切分与注释标签能够对齐。基于这一改进语料库，作者预训练了PolyGloss——一个面向联合切分与注释任务的多语言序列到序列模型家族，在注释任务上超过GlossLM，在切分、注释和对齐等多项任务上也全面优于多个开源大模型基线，并且可以通过低秩适配快速迁移到新的语料库上。这项工作被评为ACL 2026 Outstanding Paper，是为数不多真正切中语言学家实际需求、对濒危语言文档记录有直接助益的自动化工作。",
+    "model": "Claude Sonnet 5",
+    "reasoning_effort": "medium",
+    "date_added": "2026-07-13",
+    "read": false,
+    "read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-07-13-07",
+    "title": "Multilingual Sentiment Aware Text Summarization: A Reinforcement Learning Approach for Consistency Maintenance",
+    "year": 2026,
+    "venue": "arXiv",
+    "topics": [
+      "summarization",
+      "multilingual",
+      "reinforcement learning"
+    ],
+    "keywords": [
+      "RLHF",
+      "sentiment drift",
+      "KL regularization"
+    ],
+    "link": "https://arxiv.org/abs/2606.08940",
+    "brief": "这篇论文关注一个此前被忽视的问题：用RLHF（基于人类反馈的强化学习）对摘要模型做对齐训练后，虽然摘要的流畅度和整体质量普遍提升，但模型在情感层面到底发生了什么变化，此前研究一直缺乏系统考察。作者提出了“情感漂移”（sentiment drift）这一现象概念，指的是经过RLHF对齐训练后的摘要模型系统性地把输出摘要的情感色彩拉向中性，即便原文带有明显的正面或负面情感倾向，摘要也会不成比例地被“磨平”，这在新闻、评论等对情感信息敏感的摘要场景中可能是个实质性的信息损失问题。为验证这一现象是否具有普遍性，作者在多个数据集、多种模型架构、覆盖八种语言的设置下做了大规模实验，系统分析对齐目标（尤其是KL正则化）对情感保真度的影响。结果显示情感漂移是一个跨语言、跨模型架构普遍存在的稳定现象，并且KL正则化强度越大，情感漂移越明显，说明“对齐稳定性”和“情感信息保真度”之间存在此前未被充分讨论的权衡关系，KL正则化项被证实是导致情感被压制的主要驱动因素。基于这一诊断，作者提出了一种情感感知的KL正则化改进方案：有选择性地降低对那些真正承载情感色彩的token的约束强度，而不是对所有token一视同仁地施加正则化。实证结果显示这一改进能够在不损害摘要整体质量的前提下有效缓解情感漂移问题，为多语言摘要系统的对齐训练提供了一个兼顾流畅度和情感忠实度的新思路。",
+    "model": "Claude Sonnet 5",
+    "reasoning_effort": "medium",
+    "date_added": "2026-07-13",
+    "read": false,
+    "read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-07-13-08",
+    "title": "CSRP: Chain-of-Thought Reasoning for Chinese Text Correction via Reinforcement Learning with Efficiency-Aware Rewards",
+    "year": 2026,
+    "venue": "ACL 2026 (Main Conference)",
+    "topics": [
+      "reinforcement learning"
+    ],
+    "keywords": [
+      "grammatical error correction",
+      "GRPO",
+      "over-correction"
+    ],
+    "link": "https://arxiv.org/abs/2606.00020",
+    "brief": "这篇论文的任务是中文语法错误纠正（Chinese Grammatical Error Correction, CGEC），聚焦解决当前基于大模型的CGEC系统中两个具体痛点：一是通用大模型缺乏针对中文语法这类细微区分（比如某些微妙的搭配和语序错误）的专门语言学先验知识；二是主流的监督微调（SFT）训练目标是最大似然估计（MLE），这种目标本质上鼓励模型“多改总比少改安全”，但CGEC任务实际上更看重精确率（precision），MLE训练容易导致模型出现系统性的“过度纠正”（over-correction）倾向，把本来正确的表达也误判并强行修改。为解决这两个问题，作者设计了CSRP三阶段训练框架：第一阶段“持续预训练”（CPT），在590万条经过平衡处理的样本上继续预训练模型，让其内化中文语法纠错所需的领域知识；第二阶段“思维链监督微调”，让模型在纠错的同时显式输出错误推理过程，提升纠错决策的可解释性和诊断透明度；第三阶段用组相对策略优化（Group Relative Policy Optimization, GRPO）做强化学习，并设计了一个新颖的“效率感知奖励”（Efficiency-Aware Reward），显式地对不必要的编辑操作施加惩罚，从机制上抑制过度纠正的倾向。在权威的NACGEC基准上，CSRP取得了50.99的F0.5值和57.17的精确率，大幅超过此前的最优结果，同时有效缓解了MLE训练模型普遍存在的过度纠正偏差。该论文由华东师范大学的田伟、周宇豪、Man Lan完成，已被ACL 2026主会录用。",
+    "model": "Claude Sonnet 5",
+    "reasoning_effort": "medium",
+    "date_added": "2026-07-13",
+    "read": false,
+    "read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-07-13-09",
+    "title": "NeoAMT: Neologism-Aware Agentic Machine Translation with Reinforcement Learning",
+    "year": 2026,
+    "venue": "ACL 2026 (Main Conference)",
+    "topics": [
+      "multilingual",
+      "reinforcement learning"
+    ],
+    "keywords": [
+      "neologism",
+      "agentic translation",
+      "machine translation"
+    ],
+    "link": "https://arxiv.org/abs/2601.03790",
+    "brief": "这篇论文关注的任务是“新词感知机器翻译”（Neologism-Aware Machine Translation）：当源语言句子中出现新造词、网络流行语等词典里查不到、模型预训练时也大概率没充分见过的“新词”（neologism）时，传统机器翻译系统很容易翻译失准或者干脆漏译，而这类新词恰恰在真实世界的文本（尤其是社交媒体、新闻）中层出不穷。为系统研究这一问题，作者构建了一个专门的新词感知翻译数据集，覆盖16种语言、总共75个翻译方向，数据来源于对英文Wiktionary约1000万条词条的整理和加工；同时基于同一批Wiktionary数据构建了一个包含约300万条清洗后记录的检索语料库，作为翻译时可供查询新词释义的外部知识库。方法上的核心创新是NeoAMT——一个具备主动检索能力的智能体式（agentic）翻译框架：翻译模型不再是被动地把句子一次性翻译完，而是可以在遇到疑似新词时主动调用基于Wiktionary的检索工具去查询词义，再把查到的信息融入翻译决策，这个过程通过强化学习训练完成，作者设计了新颖的奖励机制，并提出一种基于“翻译难度”动态调整训练样本采样策略的自适应轨迹生成方法，让模型把更多训练资源集中在真正困难、包含新词的样本上。实验表明该框架在新词感知翻译准确率上取得了明显提升。这篇论文已被ACL 2026主会录用（长文），是“智能体式翻译＋工具调用＋强化学习”这一多语言机器翻译新范式的一个代表性尝试。",
+    "model": "Claude Sonnet 5",
+    "reasoning_effort": "medium",
+    "date_added": "2026-07-13",
+    "read": false,
+    "read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-07-13-10",
+    "title": "Systematicity between Forms and Meanings across Languages Supports Efficient Communication",
+    "year": 2026,
+    "venue": "ACL 2026 (Outstanding Paper)",
+    "topics": [
+      "multilingual"
+    ],
+    "keywords": [
+      "efficient communication",
+      "linguistic typology",
+      "systematicity"
+    ],
+    "link": "https://arxiv.org/abs/2601.17181",
+    "brief": "这篇论文属于计算语言学中偏理论、偏认知的一支，探讨的问题是：为什么不同语言在语法形式和语义之间会形成某些跨语言反复出现的规律性映射模式？此前“高效交流”（efficient communication）理论已经能够较好地解释单个词的形式和意义如何权衡简洁性与准确性，但这一理论此前一直没能很好地解释词形内部更细粒度的系统性规律，比如动词和代词在表达人称、数等语法范畴时，词形变化本身呈现出的结构化规律。作者选取了一批类型学上高度多样的语言，聚焦动词和代词的语法范式（paradigm），系统考察这些语言中的形式在多大程度上受到两种相互竞争的交流压力所塑造：一是“简洁性”压力，即尽量减少需要区分的语法范畴数量以降低学习和记忆成本；二是“准确性”压力，即确保听者依然能够从有限的形式变化中准确还原说话者想表达的语法意义。这篇论文的方法论创新在于提出了一种全新的、基于“形式到意义映射的可学习性”（learnability）来度量复杂度的指标，这一指标能够捕捉语言形式中更细粒度的规律性结构，从而第一次把“高效交流”理论和语言学中“系统性”（systematicity）这一经典概念真正联系了起来，为两条此前分属不同研究传统的理论线索搭建了桥梁。作者是Doreen Osmelak、Yang Xu、Michael Hahn和Kate McCurdy，分别来自萨尔大学和多伦多大学，这篇论文被评为ACL 2026 Outstanding Paper，也是本届大会中少数纯粹的经典计算语言学理论工作获得最高奖项认可的例子，说明ACL作为“计算语言学”会议，在LLM浪潮之下依然为语言学本体研究保留了重要位置。",
+    "model": "Claude Sonnet 5",
+    "reasoning_effort": "medium",
+    "date_added": "2026-07-13",
+    "read": false,
+    "read_at": null,
+    "interest": null
   }
 ]
