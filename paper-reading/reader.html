@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reader — Paper Reading</title>
+<link rel="icon" href="../favicon.ico">
+<link rel="stylesheet" href="../assets/css/style.css">
+<link rel="stylesheet" href="reader.css?v=3">
+</head>
+<body class="reader-body">
+
+<header class="reader-bar">
+  <a class="reader-back" href="index.html">← <span data-i18n="en">Back</span><span data-i18n="zh">返回</span></a>
+  <div class="reader-title" id="reader-title"></div>
+  <div class="reader-tools">
+    <div class="reader-palette" id="reader-palette" title="Highlight color">
+      <button type="button" class="sw" data-color="yellow" style="--sw:#f2c744"></button>
+      <button type="button" class="sw" data-color="green" style="--sw:#7bc47f"></button>
+      <button type="button" class="sw" data-color="blue" style="--sw:#5aa9e6"></button>
+      <button type="button" class="sw" data-color="pink" style="--sw:#e6799f"></button>
+    </div>
+    <div class="reader-zoom">
+      <button type="button" id="zoom-out" aria-label="Zoom out">−</button>
+      <span id="zoom-level">100%</span>
+      <button type="button" id="zoom-in" aria-label="Zoom in">+</button>
+    </div>
+    <button type="button" id="notes-btn" class="reader-notesbtn">
+      <span data-i18n="en">Notes</span><span data-i18n="zh">批注</span>
+      <span class="n" id="notes-count">0</span>
+    </button>
+  </div>
+</header>
+
+<div class="reader-main">
+  <div id="viewer" class="reader-viewer"></div>
+  <aside id="notes-panel" class="reader-notes" hidden>
+    <div class="reader-notes-head">
+      <span data-i18n="en">Highlights &amp; notes</span><span data-i18n="zh">高亮与批注</span>
+    </div>
+    <div id="notes-list" class="reader-notes-list"></div>
+    <p id="notes-empty" class="reader-notes-empty">
+      <span data-i18n="en">No highlights yet. Select text in the paper to highlight it.</span>
+      <span data-i18n="zh">还没有高亮。在论文里选中文字即可高亮。</span>
+    </p>
+  </aside>
+</div>
+
+<div id="reader-status" class="reader-status"></div>
+
+<!-- Floating selection toolbar -->
+<div id="sel-toolbar" class="sel-toolbar" hidden>
+  <button type="button" class="sw" data-color="yellow" style="--sw:#f2c744"></button>
+  <button type="button" class="sw" data-color="green" style="--sw:#7bc47f"></button>
+  <button type="button" class="sw" data-color="blue" style="--sw:#5aa9e6"></button>
+  <button type="button" class="sw" data-color="pink" style="--sw:#e6799f"></button>
+</div>
+
+<script src="vendor/pdfjs/pdf.min.js"></script>
+<script src="../assets/js/main.js"></script>
+<script src="reader.js?v=4"></script>
+</body>
+</html>

@@ -2,3 +2,7 @@
 public/
 resources/
 .hugo_build.lock
+
+# Paper Reading — locally cached PDFs (never pushed; fetched from arXiv on demand).
+# annotations.json IS committed so highlights/notes show on the public site.
+paper-reading/pdfs/
