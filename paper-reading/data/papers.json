@@ -486,21 +486,21 @@
   },
   {
     "id": "2026-07-15-01",
-    "title": "Evolutionary Guided Decoding: Iterative Value Refinement for LLMs",
+    "title": "FaithLens: Detecting and Explaining Faithfulness Hallucination",
     "year": 2026,
-    "venue": "ACL 2026 (Best Paper)",
+    "venue": "arXiv",
     "topics": [
-      "reinforcement learning",
-      "summarization"
+      "summarization",
+      "reinforcement learning"
     ],
     "keywords": [
-      "guided decoding",
-      "value function",
-      "alignment",
-      "RLHF"
+      "hallucination detection",
+      "faithfulness",
+      "RAG",
+      "reinforcement learning"
     ],
-    "link": "https://arxiv.org/abs/2503.02368",
-    "brief": "这篇论文关注的任务是inference-time的guided decoding：如何在不重新训练语言模型参数的前提下，仅通过一个value function在解码阶段引导输出，从而实现低成本的模型对齐（alignment）。作者指出，现有value-guided解码方法的效果高度依赖value function的准确性，而这个准确性长期受限于一个\"分布差距\"问题——现有方法几乎都只在base policy自身采样出的轨迹上训练静态的value function，导致训练信号被局限在一个狭窄且次优的输出空间视角里，一旦解码过程探索到训练分布之外的区域，value function的判断就会失真。为解决这一问题，作者提出了Iterative Value Refinement，一个进化式（evolutionary）迭代框架：其一是Value Exploration模块，主动探索更广泛、更鲁棒的轨迹空间以提供更全面的训练信号；其二是Iterative Self-Refinement模块，利用上一轮迭代中改进后的value function去指导生成下一轮更高质量的训练数据，如此循环打磨，使value function和生成质量相互促进、共同进化。作者在text summarization、multi-turn dialogue、instruction following三类任务上做了大量实验，结果表明该框架能有效提升guided decoding在模型对齐上的表现，明显优于此前依赖静态value function的方法。论文作者包括Zhenhua Liu、Lijun Li、Ruizhe Chen、Yuxian Jiang、Tong Zhu、Zhaochen Su、Wenliang Chen、Jing Shao，来自上海人工智能实验室、苏州大学、浙江大学、复旦大学等机构，这篇论文被评为ACL 2026 Best Paper，是本届大会推理时对齐（inference-time alignment）方向的代表性工作之一。",
+    "link": "https://arxiv.org/abs/2512.20182",
+    "brief": "这篇论文关注的任务是检测LLM输出中的\"忠实度幻觉\"（faithfulness hallucination），即模型生成内容与输入信息（如检索到的上下文或待摘要的原文）不一致的情况，这一问题在检索增强生成（RAG）和摘要生成两大实际场景中都极为常见，直接关系到生成系统的可信度。作者指出，识别这类幻觉对RAG和summarization等应用至关重要，但以往方法要么依赖成本高昂的大模型直接打分、要么只给出不可解释的判断结果，缺少能同时兼顾\"检测准确\"和\"可解释性\"的轻量方案。为此，作者提出了FaithLens，一个参数量仅8B、成本效率高的忠实度幻觉检测模型，其创新之处在于能够联合输出二元预测（是否存在忠实度幻觉）与相应的自然语言解释，从而提升检测结果的可信度和可用性。在训练方法上，作者先用先进的大模型合成带解释的训练数据，并设计了一套完整的数据过滤策略，从标签正确性、解释质量、数据多样性三个维度筛选高质量样本，用这批精心构建的数据对模型做\"冷启动\"式微调；随后进一步引入基于规则的强化学习（rule-based reinforcement learning）进行优化，奖励信号同时覆盖预测正确性和解释质量两个维度，使模型在两个目标上协同提升。在12个多样化的评测任务上的实验结果显示，仅8B参数规模的FaithLens在忠实度幻觉检测任务上超越了包括GPT-5.2和o3在内的更大规模先进模型，是\"小模型+精心设计的冷启动数据+规则化RL\"这一组合在幻觉检测领域的一次有说服力的实践。论文于2025年12月发布在arXiv（编号2512.20182），代码已在GitHub开源（S1s-Z/FaithLens）。",
     "model": "Claude Sonnet 5",
     "reasoning_effort": "medium",
     "date_added": "2026-07-15",
@@ -512,20 +512,20 @@
   },
   {
     "id": "2026-07-15-02",
-    "title": "Arg-LLaDA: Argument Summarization via Large Language Diffusion Models and Sufficiency-Aware Refinement",
+    "title": "Ask, Don't Judge: Binary Questions for Interpretable LLM Evaluation and Self-Improvement",
     "year": 2026,
-    "venue": "ACL 2026 (Main Conference)",
+    "venue": "arXiv",
     "topics": [
       "summarization"
     ],
     "keywords": [
-      "argument summarization",
-      "diffusion model",
-      "LLaDA",
-      "iterative refinement"
+      "LLM-as-judge",
+      "evaluation",
+      "factual consistency",
+      "interpretability"
     ],
-    "link": "https://arxiv.org/abs/2507.19081",
-    "brief": "这篇论文做的任务是argument summarization（论辩摘要），目标是从复杂的多视角辩论文本中提炼出简洁而结构化的摘要，帮助读者快速把握各方论点。作者指出，此前该领域的研究大多聚焦于论辩要素的识别与聚类，而摘要生成这一步长期被相对忽视，现有方法通常依赖单遍（single-pass）自回归生成，一旦生成内容出现事实错误、冗余或遗漏，就很难在后续做结构性修正。为此，作者提出了Arg-LLaDA，一个基于large language diffusion model（LLaDA）而非传统自回归架构的新框架，其核心创新在于把摘要生成变成一个可以反复迭代打磨的过程：通过一个灵活的masking controller控制哪些片段需要被重新掩盖（remask）和再生成，再配合一个sufficiency-checking module判断当前摘要中哪些片段\"证据不足\"（unsupported）、冗余或不完整，并针对性地驱动这些片段的重新生成，整个过程可以多轮迭代，从而逐步提升摘要的忠实度、简洁性和连贯性。这种\"扩散式反复精修\"的思路与以往一次性输出的生成范式形成了明显对比，是将diffusion模型引入长文本摘要任务的一次尝试。在两个argument summarization基准数据集上的实验显示，Arg-LLaDA在10项自动评测指标中的7项上超越了此前的SOTA baseline方法，验证了该框架在提升摘要质量上的有效性。论文作者Hao Li等人来自University of Manchester和Imperial College London，该工作已被ACL 2026主会录用。",
+    "link": "https://arxiv.org/abs/2606.27226",
+    "brief": "这篇论文关注的任务是LLM生成内容的自动评测方法本身，属于评测方法论（meta-evaluation）研究，与摘要生成评测密切相关。作者指出，评估LLM输出目前仍是NLP领域的一大瓶颈：人工评估成本高、速度慢；传统的词面匹配指标（lexical metrics）在开放式生成任务上与人类判断的相关性很差；而流行的\"LLM-as-judge\"整体式打分方式虽然省事，却往往只给出一个不透明的总分，出了问题也难以定位和调试，可解释性不足。为解决这一问题，作者提出了BINEVAL框架，其核心创新是把笼统的评测标准拆解为一系列原子化的\"二元问题\"（binary questions）：给定一个任务prompt，先用一个meta-prompt自动生成针对该任务的细粒度评测问题，再让LLM针对每个问题独立给出是/否式的回答，从而得到逐问题、透明可追溯的反馈，并将这些细粒度判断聚合成经过校准的多维度总分，兼顾了评测的可解释性与量化能力。作者在SummEval、Topical-Chat、QAGS三个评测基准上做了实验，其中SummEval和QAGS都是摘要生成和事实一致性评测领域的经典基准，结果显示BINEVAL的表现与UniEval、G-Eval等强baseline相当甚至更优，尤其在QAGS这类事实一致性基准上表现格外突出。更有意思的是，作者进一步展示了BINEVAL产生的逐问题反馈还可以反过来用于迭代式prompt优化：在自我更新（self-update）和跨模型更新（cross-model update）两种设置下，都能有效改进摘要评测prompt本身以及IFBench上的生成prompt，说明这一评测框架不仅能\"打分\"，还能作为改进生成系统的反馈信号来源。这篇论文于2026年6月发布在arXiv（编号2606.27226）。",
     "model": "Claude Sonnet 5",
     "reasoning_effort": "medium",
     "date_added": "2026-07-15",
