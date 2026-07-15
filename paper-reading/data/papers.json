@@ -276,56 +276,6 @@
     "paper_id": "arxiv:2503.02368"
   },
   {
-    "id": "2026-07-13-02",
-    "title": "Rethinking Entropy Interventions in RLVR: An Entropy Change Perspective",
-    "year": 2025,
-    "venue": "ACL 2026 (Outstanding Paper)",
-    "topics": [
-      "reinforcement learning"
-    ],
-    "keywords": [
-      "RLVR",
-      "entropy collapse",
-      "token reweighting"
-    ],
-    "link": "https://arxiv.org/abs/2510.10150",
-    "brief": "这篇论文处理的是当前用可验证奖励做强化学习（Reinforcement Learning with Verifiable Rewards, RLVR）训练大模型推理能力时一个广受关注的顽疾——“熵坍缩”（entropy collapse）：训练过程中策略的输出熵会迅速下降，模型逐渐停止探索多样化的解题路径，转而收敛到少数几种套路，导致模型在训练集之外的泛化能力和推理多样性受损。以往工作虽然提出了不少熵干预方法，但作者指出这些方法大多只是间接地控制熵，缺乏对“每一步梯度更新究竟如何改变熵”这一机制的精确刻画。为此，作者从理论上推导出每次更新时token级熵变化的一个紧凑近似表达式，揭示出影响熵变化的四个关键因素，并借此对现有各种熵干预策略给出了一个统一的解释视角，说明它们各自在这四个因素上产生了怎样的隐式作用。基于这一理论分析，作者提出了STEER方法：一种基于理论估计的熵变化对不同token做细粒度、token级别重新加权的熵调制机制，能够将每一步的熵变化控制在一个适中的区间内，既不过度收敛也不过度发散。在六个数学推理基准上的大量实验显示，STEER能有效缓解熵坍缩、稳定训练过程中的熵动态，相比经典RLVR基线和此前的熵干预基线全面胜出，平均性能比第二名方法高出3.4分。该工作被评为ACL 2026 Outstanding Paper，是本届大会RLVR相关获奖论文集群中的代表作之一。",
-    "model": "Claude Sonnet 5",
-    "reasoning_effort": "medium",
-    "date_added": "2026-07-13",
-    "read": false,
-    "read_at": null,
-    "interest": null,
-    "deep_read": false,
-    "deep_read_at": null,
-    "paper_id": "arxiv:2510.10150"
-  },
-  {
-    "id": "2026-07-13-03",
-    "title": "One Tokenizer To Rule Them All: Emergent Language Plasticity via Multilingual Tokenizers",
-    "year": 2025,
-    "venue": "arXiv",
-    "topics": [
-      "multilingual"
-    ],
-    "keywords": [
-      "tokenizer",
-      "language plasticity",
-      "cross-lingual transfer"
-    ],
-    "link": "https://arxiv.org/abs/2506.10766",
-    "brief": "这篇论文研究的问题是如何让大语言模型在预训练完成之后，更容易、更高质量地扩展到新语言，也就是所谓的“语言可塑性”（language plasticity）。作者指出，当前主流做法是在预训练阶段只为少数几种主力语言构建分词器（tokenizer），这虽然节省了词表容量，却给后续想要适配新语言的后训练阶段挖了坑——分词器覆盖不到的语言，字符会被切得支离破碎，模型即使后续做微调也很难高效学好这门语言。这篇工作的创新点在于把干预时机提前到预训练最初期、成本相对低廉的分词器设计环节：作者提出并训练了一个覆盖语言数量远多于实际预训练所用语言的“通用分词器”（universal tokenizer），让模型在预训练阶段就“见过”更多语言的文字切分方式，为将来的语言扩展预留结构化的空间，而不是等到后训练阶段再硬啃。作者在63种类型学和文字系统都高度多样的语言上做了系统实验，结果显示，使用通用分词器的模型在语言适配任务上的胜率比使用针对特定语系定制分词器的模型最高高出20.2个百分点；更值得注意的是，即便是分词器和预训练阶段完全没有见过的全新语言，通用分词器模型依然能带来最高5%的胜率提升，说明这种“提前布局”的分词器设计确实能在后期产生跨语言的正向迁移效果。这篇论文的作者包括Diana Abagyan、Alejandro R. Salamanca等人，是当前多语言大模型预训练领域中一项聚焦“如何用低成本设计换取长期语言扩展红利”的代表性工作。",
-    "model": "Claude Sonnet 5",
-    "reasoning_effort": "medium",
-    "date_added": "2026-07-13",
-    "read": false,
-    "read_at": null,
-    "interest": null,
-    "deep_read": false,
-    "deep_read_at": null,
-    "paper_id": "arxiv:2506.10766"
-  },
-  {
     "id": "2026-07-13-04",
     "title": "Understanding LLM Behavior in Multi-Target Cross-Lingual Summarization",
     "year": 2026,
@@ -375,31 +325,6 @@
     "deep_read": false,
     "deep_read_at": null,
     "paper_id": "arxiv:2601.09361"
-  },
-  {
-    "id": "2026-07-13-06",
-    "title": "Massively Multilingual Joint Segmentation and Glossing",
-    "year": 2026,
-    "venue": "ACL 2026 (Outstanding Paper)",
-    "topics": [
-      "multilingual"
-    ],
-    "keywords": [
-      "interlinear glossing",
-      "language documentation",
-      "low-resource languages"
-    ],
-    "link": "https://arxiv.org/abs/2601.10925",
-    "brief": "这篇论文的任务背景是语言文档学（language documentation）领域的一个实际痛点：为了记录和保存濒危语言，语言学家需要给语料标注“行间注释文本”（interlinear glossed text, IGT），也就是逐词标出每个词素对应的语法和语义标签，这项工作极为耗时，因此用神经网络自动生成词素注释（glossing）一直是加速语言文档记录的一个热门方向。作者指出，尽管像GlossLM这样的模型已经在现有的自动注释评测基准上取得了不错的分数，但和语言学家一起做的用户研究发现，这类模型在真实使用场景中仍存在关键障碍：它们通常只把注释整体分配到“整个词”上，而不预测词内部具体的词素边界，导致标注结果缺乏可解释性，语言学家难以信任和采纳这些自动生成的结果。为此，作者开展了首个联合预测“词素边界切分”与“词素级注释”的神经模型研究，让模型同时输出结构化、可验证的切分和注释结果，而不是一个黑箱式的整体标签。在数据层面，他们扩充并改进了GlossLM语料库，新增9.1万条样本，总量达到34.1万条，并提升了标准化和格式一致性，确保词素切分与注释标签能够对齐。基于这一改进语料库，作者预训练了PolyGloss——一个面向联合切分与注释任务的多语言序列到序列模型家族，在注释任务上超过GlossLM，在切分、注释和对齐等多项任务上也全面优于多个开源大模型基线，并且可以通过低秩适配快速迁移到新的语料库上。这项工作被评为ACL 2026 Outstanding Paper，是为数不多真正切中语言学家实际需求、对濒危语言文档记录有直接助益的自动化工作。",
-    "model": "Claude Sonnet 5",
-    "reasoning_effort": "medium",
-    "date_added": "2026-07-13",
-    "read": false,
-    "read_at": null,
-    "interest": null,
-    "deep_read": false,
-    "deep_read_at": null,
-    "paper_id": "arxiv:2601.10925"
   },
   {
     "id": "2026-07-13-07",
@@ -452,32 +377,6 @@
     "deep_read": false,
     "deep_read_at": null,
     "paper_id": "arxiv:2606.00020"
-  },
-  {
-    "id": "2026-07-13-09",
-    "title": "NeoAMT: Neologism-Aware Agentic Machine Translation with Reinforcement Learning",
-    "year": 2026,
-    "venue": "ACL 2026 (Main Conference)",
-    "topics": [
-      "multilingual",
-      "reinforcement learning"
-    ],
-    "keywords": [
-      "neologism",
-      "agentic translation",
-      "machine translation"
-    ],
-    "link": "https://arxiv.org/abs/2601.03790",
-    "brief": "这篇论文关注的任务是“新词感知机器翻译”（Neologism-Aware Machine Translation）：当源语言句子中出现新造词、网络流行语等词典里查不到、模型预训练时也大概率没充分见过的“新词”（neologism）时，传统机器翻译系统很容易翻译失准或者干脆漏译，而这类新词恰恰在真实世界的文本（尤其是社交媒体、新闻）中层出不穷。为系统研究这一问题，作者构建了一个专门的新词感知翻译数据集，覆盖16种语言、总共75个翻译方向，数据来源于对英文Wiktionary约1000万条词条的整理和加工；同时基于同一批Wiktionary数据构建了一个包含约300万条清洗后记录的检索语料库，作为翻译时可供查询新词释义的外部知识库。方法上的核心创新是NeoAMT——一个具备主动检索能力的智能体式（agentic）翻译框架：翻译模型不再是被动地把句子一次性翻译完，而是可以在遇到疑似新词时主动调用基于Wiktionary的检索工具去查询词义，再把查到的信息融入翻译决策，这个过程通过强化学习训练完成，作者设计了新颖的奖励机制，并提出一种基于“翻译难度”动态调整训练样本采样策略的自适应轨迹生成方法，让模型把更多训练资源集中在真正困难、包含新词的样本上。实验表明该框架在新词感知翻译准确率上取得了明显提升。这篇论文已被ACL 2026主会录用（长文），是“智能体式翻译＋工具调用＋强化学习”这一多语言机器翻译新范式的一个代表性尝试。",
-    "model": "Claude Sonnet 5",
-    "reasoning_effort": "medium",
-    "date_added": "2026-07-13",
-    "read": false,
-    "read_at": null,
-    "interest": null,
-    "deep_read": false,
-    "deep_read_at": null,
-    "paper_id": "arxiv:2601.03790"
   },
   {
     "id": "2026-07-13-10",
