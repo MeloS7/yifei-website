@@ -483,5 +483,258 @@
     "interest": null,
     "deep_read": false,
     "deep_read_at": null
+  },
+  {
+    "id": "2026-07-15-01",
+    "title": "Evolutionary Guided Decoding: Iterative Value Refinement for LLMs",
+    "year": 2026,
+    "venue": "ACL 2026 (Best Paper)",
+    "topics": [
+      "reinforcement learning",
+      "summarization"
+    ],
+    "keywords": [
+      "guided decoding",
+      "value function",
+      "alignment",
+      "RLHF"
+    ],
+    "link": "https://arxiv.org/abs/2503.02368",
+    "brief": "这篇论文关注的任务是inference-time的guided decoding：如何在不重新训练语言模型参数的前提下，仅通过一个value function在解码阶段引导输出，从而实现低成本的模型对齐（alignment）。作者指出，现有value-guided解码方法的效果高度依赖value function的准确性，而这个准确性长期受限于一个\"分布差距\"问题——现有方法几乎都只在base policy自身采样出的轨迹上训练静态的value function，导致训练信号被局限在一个狭窄且次优的输出空间视角里，一旦解码过程探索到训练分布之外的区域，value function的判断就会失真。为解决这一问题，作者提出了Iterative Value Refinement，一个进化式（evolutionary）迭代框架：其一是Value Exploration模块，主动探索更广泛、更鲁棒的轨迹空间以提供更全面的训练信号；其二是Iterative Self-Refinement模块，利用上一轮迭代中改进后的value function去指导生成下一轮更高质量的训练数据，如此循环打磨，使value function和生成质量相互促进、共同进化。作者在text summarization、multi-turn dialogue、instruction following三类任务上做了大量实验，结果表明该框架能有效提升guided decoding在模型对齐上的表现，明显优于此前依赖静态value function的方法。论文作者包括Zhenhua Liu、Lijun Li、Ruizhe Chen、Yuxian Jiang、Tong Zhu、Zhaochen Su、Wenliang Chen、Jing Shao，来自上海人工智能实验室、苏州大学、浙江大学、复旦大学等机构，这篇论文被评为ACL 2026 Best Paper，是本届大会推理时对齐（inference-time alignment）方向的代表性工作之一。",
+    "model": "Claude Sonnet 5",
+    "reasoning_effort": "medium",
+    "date_added": "2026-07-15",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-07-15-02",
+    "title": "Arg-LLaDA: Argument Summarization via Large Language Diffusion Models and Sufficiency-Aware Refinement",
+    "year": 2026,
+    "venue": "ACL 2026 (Main Conference)",
+    "topics": [
+      "summarization"
+    ],
+    "keywords": [
+      "argument summarization",
+      "diffusion model",
+      "LLaDA",
+      "iterative refinement"
+    ],
+    "link": "https://arxiv.org/abs/2507.19081",
+    "brief": "这篇论文做的任务是argument summarization（论辩摘要），目标是从复杂的多视角辩论文本中提炼出简洁而结构化的摘要，帮助读者快速把握各方论点。作者指出，此前该领域的研究大多聚焦于论辩要素的识别与聚类，而摘要生成这一步长期被相对忽视，现有方法通常依赖单遍（single-pass）自回归生成，一旦生成内容出现事实错误、冗余或遗漏，就很难在后续做结构性修正。为此，作者提出了Arg-LLaDA，一个基于large language diffusion model（LLaDA）而非传统自回归架构的新框架，其核心创新在于把摘要生成变成一个可以反复迭代打磨的过程：通过一个灵活的masking controller控制哪些片段需要被重新掩盖（remask）和再生成，再配合一个sufficiency-checking module判断当前摘要中哪些片段\"证据不足\"（unsupported）、冗余或不完整，并针对性地驱动这些片段的重新生成，整个过程可以多轮迭代，从而逐步提升摘要的忠实度、简洁性和连贯性。这种\"扩散式反复精修\"的思路与以往一次性输出的生成范式形成了明显对比，是将diffusion模型引入长文本摘要任务的一次尝试。在两个argument summarization基准数据集上的实验显示，Arg-LLaDA在10项自动评测指标中的7项上超越了此前的SOTA baseline方法，验证了该框架在提升摘要质量上的有效性。论文作者Hao Li等人来自University of Manchester和Imperial College London，该工作已被ACL 2026主会录用。",
+    "model": "Claude Sonnet 5",
+    "reasoning_effort": "medium",
+    "date_added": "2026-07-15",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-07-15-03",
+    "title": "A Survey of Reinforcement Learning for Large Language Models under Data Scarcity: Challenges and Solutions",
+    "year": 2026,
+    "venue": "ACL 2026 (Main Conference)",
+    "topics": [
+      "reinforcement learning"
+    ],
+    "keywords": [
+      "survey",
+      "data efficiency",
+      "RLVR",
+      "post-training"
+    ],
+    "link": "https://aclanthology.org/2026.acl-long.1045/",
+    "brief": "这是一篇综述性论文，聚焦的问题是：强化学习（RL）已经成为提升LLM推理能力的重要后训练（post-training）范式，但在实际应用中，RL训练常常面临严重的数据稀缺问题，包括高质量外部监督信号的稀缺，以及模型自身生成经验（model-generated experience）体量有限这两方面制约，因此如何设计\"数据高效\"（data-efficient）的强化学习方法成为一个关键研究方向。作者并未提出新的实验方法或构建新数据集，而是首次对\"数据稀缺场景下面向LLM的强化学习\"这一细分领域做了系统性梳理，提出了一个自底向上的三层分类框架：数据中心视角（data-centric perspective，关注如何更高效地利用或扩充监督数据与生成经验）、训练中心视角（training-centric perspective，关注训练算法本身如何在数据有限时更稳健高效）、以及框架中心视角（framework-centric perspective，关注整体训练pipeline和系统设计层面的优化）。在此框架下，作者对现有代表性方法逐一归类总结，并分析了各类方法各自的优势与局限，试图为理解这一新兴领域的\"设计空间\"提供一个清晰的概念地图，指导后续研究者更有针对性地开展工作。由于是综述，论文没有给出具体的实验数字或性能对比，其价值主要体现在对当前RLVR（reinforcement learning with verifiable rewards）相关研究脉络的系统整理和未来方向的展望上。这篇论文由Zhiyin Yu、Xiao Luo等20位作者合著，已被ACL 2026主会录用为长文，是了解当前\"数据高效RL for LLM\"这一研究热点全貌的一份实用路线图。",
+    "model": "Claude Sonnet 5",
+    "reasoning_effort": "medium",
+    "date_added": "2026-07-15",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-07-15-04",
+    "title": "Faithfulness-Aware Uncertainty Quantification for Fact-Checking the Output of Retrieval-Augmented Generation",
+    "year": 2026,
+    "venue": "ACL 2026 (Findings)",
+    "topics": [
+      "summarization"
+    ],
+    "keywords": [
+      "fact-checking",
+      "uncertainty quantification",
+      "RAG",
+      "faithfulness"
+    ],
+    "link": "https://arxiv.org/abs/2505.21072",
+    "brief": "这篇论文处理的任务是对检索增强生成（RAG）系统输出内容做fact-checking，即自动判断RAG模型生成的回答中是否包含事实性错误，这一问题与摘要生成中的忠实度（faithfulness）评估高度相关，都属于\"生成内容是否可信\"这一大类问题。作者指出，以往的不确定性量化（uncertainty quantification, UQ）方法通常不区分回答是否忠实于检索到的上下文，一律套用同一套UQ流程来估计事实性，但这忽略了一个关键点：当生成内容忠实于检索证据时和不忠实时，导致事实错误的原因机制是不同的，因此适用的不确定性估计方式也应有所区别。为此，作者提出了FRANQ（Faithfulness-aware Retrieval Augmented UNcertainty Quantification）方法，核心创新是把fact-checking流程拆成两步：先判断生成回答对检索上下文的忠实度，再根据判断结果的不同（忠实/不忠实）分别选用不同的UQ技术来估计该回答的事实性置信度，实现了\"忠实度判断\"与\"不确定性估计\"两个模块的解耦联动。为了评估FRANQ与其他竞争方法，作者还构建了一个新的长文本问答（long-form QA）数据集，同时对factuality和faithfulness两个维度做了标注，标注过程结合了自动化打标与人工校验难例。在多个数据集、多种任务和多个LLM上的大量实验表明，FRANQ在检测RAG生成内容的事实性错误方面比现有UQ方法更准确，是这篇被ACL 2026 Findings录用的论文的核心贡献。作者团队包括Ekaterina Fadeeva、Preslav Nakov、Mrinmaya Sachan等来自多所高校与研究机构的研究者。",
+    "model": "Claude Sonnet 5",
+    "reasoning_effort": "medium",
+    "date_added": "2026-07-15",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-07-15-05",
+    "title": "A Data-Efficient Path to Multilingual LLMs: Language Expansion via Post-training PARAMΔ Integration into Upcycled MoE",
+    "year": 2026,
+    "venue": "ACL 2026 (Main Conference)",
+    "topics": [
+      "multilingual"
+    ],
+    "keywords": [
+      "multilingual LLM",
+      "mixture-of-experts",
+      "language expansion",
+      "model merging"
+    ],
+    "link": "https://arxiv.org/abs/2605.18083",
+    "brief": "这篇论文关注的任务是如何以更低的数据和算力成本，为已有的LLM扩展新语言能力，即language expansion问题。传统做法依赖大规模continued pre-training（CPT）加上数据密集型的alignment微调，成本高昂；近期出现的data-free模型融合方法试图绕开alignment阶段，直接把经过多语言CPT增强的模型与原始instruct模型的参数进行融合，但作者指出这类方法存在一个核心权衡困境：为了保留模型原有能力而抑制参数冲突，往往会稀释新语言的习得效果；反之若强调新语言学习，又会损害原有能力，两者难以兼得。为解决这一矛盾，作者提出了DeltaMoE方法，其创新点在于两步走：第一步将一个稠密（dense）模型upcycle（升级改造）成Mixture-of-Experts（MoE）架构，把不同的语言能力分配给不同的专家（expert）模块，从而在参数层面为新语言留出独立的容量空间，减少与原有能力的直接冲突；第二步则是把一个经过MoE扩展后得到的参数增量（记作Δ_post）直接\"嫁接\"到已经过CPT增强的基础模型上，从而将对齐能力（alignment ability）转移过去，完全绕开了昂贵复杂的对齐训练阶段。实验结果表明，即便与拥有相近FLOPs或参数量的baseline相比，DeltaMoE依然展现出明显优势：既能有效提升新扩展语言上的表现，又能很好地保留模型原有的能力，并且这一方法在不同基础模型和不同post-training delta组合下都具有良好的适用性。该工作由南京大学、阿里巴巴集团、浙江大学的研究者合作完成，已被ACL 2026主会录用。",
+    "model": "Claude Sonnet 5",
+    "reasoning_effort": "medium",
+    "date_added": "2026-07-15",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-07-15-06",
+    "title": "Language-Coupled Reinforcement Learning for Multilingual Retrieval-Augmented Generation",
+    "year": 2026,
+    "venue": "arXiv",
+    "topics": [
+      "multilingual",
+      "reinforcement learning"
+    ],
+    "keywords": [
+      "multilingual RAG",
+      "GRPO",
+      "knowledge conflict",
+      "reinforcement learning"
+    ],
+    "link": "https://arxiv.org/abs/2601.14896",
+    "brief": "这篇论文处理的任务是多语言检索增强生成（Multilingual Retrieval-Augmented Generation, MRAG），即要求模型能够从多语言知识库中有效获取并整合对回答有益的外部信息。作者观察到，现有研究大多采用一种\"一刀切\"的处理流程：把不同语言但语义等价的query统一按单轮检索加后续优化的方式处理，这种策略在多语言场景下往往并不理想，因为模型在与搜索引擎交互的过程中，容易在不同语言之间出现\"知识偏见\"（knowledge bias，即某些语言的证据被系统性地过度或不足采信）和\"知识冲突\"（knowledge conflict，即不同语言检索到的证据相互矛盾时模型难以取舍）两类问题。为缓解这些问题，作者提出了LcRL（Language-coupled Reinforcement Learning）框架，其方法创新在于把一种language-coupled版本的Group Relative Policy Optimization（GRPO）机制同时融入policy模型和reward模型的训练中：具体而言，在rollout（轨迹采样）阶段采用language-coupled group sampling策略，让同一语义query的不同语言版本被联合采样和比较，从而降低知识偏见；同时在reward模型中引入一个anti-consistency惩罚项，专门用来抑制并纠正跨语言证据之间的知识冲突。实验结果显示，LcRL在训练数据受限、以及检索语料覆盖大量语言这两类具有实际应用价值的困难场景下，都取得了具有竞争力的表现，证明了该RL框架在多语言检索增强生成任务上的适应性和鲁棒性。这篇论文于2026年1月提交，是多语言与强化学习两个主题交叉的一篇代表性工作，尚未标注具体录用信息，目前以arXiv预印本形式发布。",
+    "model": "Claude Sonnet 5",
+    "reasoning_effort": "medium",
+    "date_added": "2026-07-15",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-07-15-07",
+    "title": "TAPO: Translation Augmented Policy Optimization for Multilingual Mathematical Reasoning",
+    "year": 2026,
+    "venue": "arXiv",
+    "topics": [
+      "multilingual",
+      "reinforcement learning"
+    ],
+    "keywords": [
+      "multilingual math reasoning",
+      "GRPO",
+      "translation reward",
+      "policy optimization"
+    ],
+    "link": "https://arxiv.org/abs/2603.25419",
+    "brief": "这篇论文关注的任务是多语言数学推理：尽管LLM在英语数学推理任务上已表现出色，但在非英语语言的同类任务上仍存在明显的性能差距，作者认为这种差距很大程度上源于模型在非英语语言上的\"语言理解\"能力不足，而不只是推理能力本身的问题。为解决这一问题，作者提出了TAPO（Translation Augmented Policy Optimization），一个基于GRPO（Group Relative Policy Optimization）构建的强化学习框架，其核心创新是设计了一种显式的对齐策略：让模型以英语作为\"支点语言\"（pivot language），遵循\"先理解、后推理\"（understand-then-reason）的两阶段范式来完成非英语数学题的求解。为了让这一范式在RL训练中真正生效而不互相干扰，作者进一步提出了一种step-level（步骤级）的相对优势（relative advantage）机制，将\"理解\"和\"推理\"两个子过程在优化信号上解耦开来，从而使翻译质量相关的奖励信号可以被自然地整合进整体优化目标，而不会与推理能力的优化目标产生冲突。实验结果表明，TAPO在多语言数学推理和翻译任务上都全面超越了对比的baseline方法，并且这种改进具有良好的可迁移性：不仅兼容多种不同的基础模型，还能较好地泛化到训练阶段未见过的语言以及领域外（out-of-domain）任务上，说明该框架学到的是一种较为通用的\"理解-推理\"协同能力，而非针对特定语言的过拟合技巧。这篇论文于2026年3月发布，第一作者为Xu Huang，是多语言推理和强化学习结合的又一次有意思的尝试，值得关注其后续在ACL相关workshop或会议上的进展。",
+    "model": "Claude Sonnet 5",
+    "reasoning_effort": "medium",
+    "date_added": "2026-07-15",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-07-15-08",
+    "title": "Summarization is Not Dead Yet",
+    "year": 2026,
+    "venue": "arXiv",
+    "topics": [
+      "summarization"
+    ],
+    "keywords": [
+      "summarization evaluation",
+      "LLM-as-judge",
+      "faithfulness",
+      "human evaluation"
+    ],
+    "link": "https://arxiv.org/abs/2606.08000",
+    "brief": "这篇论文做的并不是提出新的摘要生成方法，而是一篇针对当前摘要研究领域一个流行论断的元评测（meta-evaluation）反思型工作：近年来不少研究声称LLM生成的摘要在质量上已经能够比肩甚至超越人工撰写的参考摘要，这一说法一度让人怀疑\"摘要生成\"是否已经不再是一个值得继续研究的开放问题，论文标题正是对早前一篇题为\"Summarization is (Almost) Dead\"的工作的直接回应。为了重新检验这一论断，作者设计了一套多轨（multi-track）评测方案，覆盖五个风格各异的摘要数据集和五个当前的SOTA LLM，评测手段综合了四个方面：受控的人工评估（controlled human assessment）、经过偏差缓解处理的LLM-as-Judge评测协议、基于外部知识源的事实性核查（factuality verification），以及语料级别的语言学分析。这种多维度、多角度的组合评测方法本身也是该论文的一个方法论贡献，比以往单纯依赖某一种评测手段（比如只用LLM打分或只做简单的人工偏好比较）更为全面和审慎。实验结果显示，人工撰写的参考摘要在信息量（informativeness）和忠实度（faithfulness）两个维度上依然保持明显优势，而LLM生成摘要被评审者偏好的原因，主要集中在表层的连贯性和流畅性上，属于\"锦上添花\"而非\"实质更优\"；进一步的事实性核查还发现，涉及推理或多信息综合的复杂论断上，人工摘要依然更可靠；语言学分析还揭示出不同LLM生成的摘要之间存在明显的\"风格同质化\"现象，即各家模型的摘要风格趋于相似。作者认为，当前LLM确实把摘要生成的\"下限\"（floor）大幅拉高了，但距离人类摘要的\"上限\"（ceiling）仍有差距。论文由Dongqi Liu、Chenxi Whitehouse、Zheng Zhao等人于2026年6月提交，是对\"摘要已死\"这一说法的一次有力纠偏。",
+    "model": "Claude Sonnet 5",
+    "reasoning_effort": "medium",
+    "date_added": "2026-07-15",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-07-15-09",
+    "title": "HeaPA: Difficulty-Aware Heap Sampling and On-Policy Query Augmentation for LLM Reinforcement Learning",
+    "year": 2026,
+    "venue": "arXiv",
+    "topics": [
+      "reinforcement learning"
+    ],
+    "keywords": [
+      "RLVR",
+      "sampling efficiency",
+      "curriculum",
+      "rollout"
+    ],
+    "link": "https://arxiv.org/abs/2601.22448",
+    "brief": "这篇论文关注的任务是RLVR（reinforcement learning with verifiable rewards）训练中的采样效率问题：当rollout（轨迹采样与生成）的计算成本主导了整体训练开销时，训练效率在很大程度上取决于\"该在什么时候、对哪些prompt做采样\"这一策略。作者观察到，在实际训练中prompt池往往是静态的，或者只与模型当前的学习进度存在很弱的关联，这就导致均匀采样策略很难跟上模型能力边界（capability frontier）随训练不断变化的节奏，大量rollout计算被浪费在那些模型早已学会、或者依然完全无法解决的prompt上，真正处于\"学习前沿\"、最有训练价值的prompt反而没有得到充分采样。为此，作者提出了HeaPA（Heap Sampling and On-Policy Query Augmentation）方法，创新点主要体现在三个相互配合的机制上：一是维护一个有界（bounded）且随训练动态演化的prompt池；二是采用基于堆（heap）数据结构的边界采样（boundary sampling）策略，持续追踪并聚焦模型当前的能力前沿，而不是简单地偏向极端难度的题目；三是通过轻量级的异步验证（asynchronous validation）机制做on-policy的query augmentation来扩充题库，并借助拓扑感知（topology-aware）的池统计重估和受控重插入机制，稳定处理彼此高度相关的query，避免采样出现偏差累积。作者在两个训练语料、两种训练方案（recipe）、七个benchmark上做了系统实验，结果显示HeaPA在相近算力预算下能更快达到目标性能，并在多项benchmark上一致提升准确率；进一步的分析发现，堆式边界采样确实能把采样概率质量集中在能力边界附近，而非无差别地偏向极端难度题目；经过验证的on-policy augmented query比原始种子query能提供更高质量的reward和advantage训练信号；并且这种收益随着模型规模增大而愈发明显。论文于2026年1月发布，代码已在GitHub开源（horizon-rl/HeaPA），是RLVR训练效率优化方向上一个值得关注的工程与算法结合的工作。",
+    "model": "Claude Sonnet 5",
+    "reasoning_effort": "medium",
+    "date_added": "2026-07-15",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-07-15-10",
+    "title": "Rethinking the Multilingual Reasoning Gap with Layer Swap",
+    "year": 2026,
+    "venue": "arXiv",
+    "topics": [
+      "multilingual"
+    ],
+    "keywords": [
+      "multilingual reasoning",
+      "chain-of-thought",
+      "layer analysis",
+      "model merging"
+    ],
+    "link": "https://arxiv.org/abs/2605.26735",
+    "brief": "这篇论文探讨的问题是\"多语言推理差距\"（native reasoning gap）：近期的推理型LLM在被要求用非英语语言完成思维链（chain-of-thought, CoT）推理时，即便输入本身就是非英语，模型也往往倾向于用英语进行内部推理过程；此前的研究普遍发现，如果强行要求模型全程用输入语言进行\"原生推理\"（native reasoning），性能会相较于\"英语支点式推理\"（English-pivoted reasoning，即先用英语推理、再把结论翻译成目标语言作答）出现大幅下降。但作者指出，此前得出这一结论的研究大多依赖推理时干预（inference-time intervention）或数量有限的原生语言训练数据，方法论上存在局限，因此有必要在更大规模、监督条件更加可比的设定下重新审视这一比较。为此，作者构建了覆盖六种语言（英语、法语、德语、西班牙语、中文、斯瓦希里语）的长链多语言推理数据集，并在Qwen3-8B-Base基础模型上分别微调出native推理和English-pivoted推理两类\"专才\"模型，在数学、科学、常识和代码等多个任务维度上做评测比较，结果发现native reasoning gap在五种非英语语言上平均只有1.9%到3.5%，远小于此前文献中报告的差距，说明此前的差距很大程度上被方法论局限所放大。更进一步，作者对不同专才模型做了权重空间分析，发现native推理专才模型在Transformer的中间层上的微调更新彼此高度对齐，而在外层（靠近输入输出）则出现明显分化，这一发现指向一个\"语言无关的推理核心\"被\"语言特定的外层\"所包裹的结构假说。基于这一发现，作者提出了Layer Swap方法：直接把English-pivoted专才模型中更强的中间推理层，移植替换进各个native推理专才模型中，实验表明这一简单操作能在保留目标语言CoT输出的前提下，进一步消除原生推理与英语支点推理之间的大部分剩余差距。论文于2026年5月发布，为理解多语言推理能力的内部机制提供了新的实证证据和一个轻量级的改进方案。",
+    "model": "Claude Sonnet 5",
+    "reasoning_effort": "medium",
+    "date_added": "2026-07-15",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
   }
 ]
