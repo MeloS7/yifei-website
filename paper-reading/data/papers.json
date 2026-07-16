@@ -926,5 +926,262 @@
     "deep_read_at": "2026-07-15T08:47:10+00:00",
     "interest": null,
     "paper_id": "arxiv:2604.25665"
+  },
+  {
+    "id": "2026-07-16-01",
+    "paper_id": "arxiv:2604.20199",
+    "title": "All Languages Matter: Understanding and Mitigating Language Bias in Multilingual RAG",
+    "year": 2026,
+    "venue": "arXiv",
+    "topics": [
+      "multilingual"
+    ],
+    "keywords": [
+      "multilingual RAG",
+      "reranking bias",
+      "cross-lingual supervision"
+    ],
+    "link": "https://arxiv.org/abs/2604.20199",
+    "brief": "这篇论文关注多语言检索增强生成（multilingual RAG）系统中一个此前被忽视的问题：重排序（reranking）阶段的语言偏见。作者通过系统分析发现，当前的 mRAG 系统在对候选证据文档排序时，会系统性地偏向英语和用户查询所使用的母语，即便回答问题真正需要的证据分散在多种语言之中——这种“答案关键”（answer-critical）的跨语言文档常常被排序模型不合理地压低排名，从而直接限制了下游生成质量。论文的方法创新点是 LAURA：它不再像以往工作那样依据词汇重叠或语言是否匹配来定义“正样本”文档，而是直接依据文档对最终答案质量的贡献来筛选训练监督信号，从根源上摆脱对语言表层特征的依赖。具体实现上，LAURA 采用两阶段数据构建流程生成语言无关（language-agnostic）的监督信号，再据此对 listwise 重排序模型进行微调，使排序偏好与答案正确性对齐，而不是与语言身份对齐。实验结果显示，这种训练方式能有效缓解对高资源语言的过度偏好，让排序结果更均衡地覆盖多语言证据，进而提升下游问答的整体准确率。论文于2026年4月发布在arXiv，目前未查到具体的顶会录用信息，暂以arXiv预印本身份收录，但其提出的“用答案贡献度而非语言匹配来定义监督信号”的思路对多语言RAG系统设计具有较强的参考价值。",
+    "model": "claude-sonnet-5",
+    "reasoning_effort": "medium",
+    "date_added": "2026-07-16",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-07-16-02",
+    "paper_id": "arxiv:2606.07069",
+    "title": "mmPISA-bench: Do LLMs Reason Equally Well Across 43 Languages?",
+    "year": 2026,
+    "venue": "ACL 2026 (Workshop: MeLLM)",
+    "topics": [
+      "multilingual"
+    ],
+    "keywords": [
+      "multilingual reasoning benchmark",
+      "PISA",
+      "human translation",
+      "machine translation robustness"
+    ],
+    "link": "https://arxiv.org/abs/2606.07069",
+    "brief": "这篇论文构建了一个基于 OECD 国际学生评估项目（PISA）真实试题的多语言推理基准 mmPISA-bench，用于检验大语言模型是否能在几乎所有主要语言上保持同等水平的推理能力。与很多“临时拼凑”的多语言基准不同，这里的题目来自 PISA 官方提供的、经过专业翻译团队校验的人工翻译版本，覆盖43种语言，同时作者额外构建了机器翻译版本作对照，最终形成25道题×43种语言、共2150条数据点的紧凑但高质量的测试集。这种“官方人工翻译+机器翻译对照”的设计是论文的主要创新点，它使得研究者第一次能够干净地把“语言本身导致的推理能力差异”和“翻译质量导致的噪声”区分开来，而不是像以往基准那样把两者混在一起。实验评测了包括 Claude 和 GPT 系列在内的多个主流商业大模型：在开启高强度推理（high effort）的设置下，Claude 的准确率在88%到100%之间波动，GPT 系列则在90.4%到100%之间，波动区间相对更窄，说明 GPT 在跨语言一致性上略优，但 Claude 的平均准确率更高；在不显式启用推理链的情况下，两者准确率均有明显下降但排序基本保持。更值得注意的结论是：机器翻译版本的题目并没有显著拉低模型准确率，这与直觉相悖，说明当前顶尖大模型对翻译噪声已经具备较强的鲁棒性，真正影响其表现的更多是语言本身的资源丰富程度和结构特性。该论文已被 ACL 2026 同期举办的多语言主题workshop（MeLLM 2026, Multilinguality in the Era of Large Language Models）接收。",
+    "model": "claude-sonnet-5",
+    "reasoning_effort": "medium",
+    "date_added": "2026-07-16",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-07-16-03",
+    "paper_id": "arxiv:2604.04720",
+    "title": "What Makes Good Multilingual Reasoning? Disentangling Reasoning Traces with Measurable Features",
+    "year": 2026,
+    "venue": "arXiv",
+    "topics": [
+      "multilingual",
+      "reinforcement learning"
+    ],
+    "keywords": [
+      "multilingual reasoning",
+      "reward design",
+      "chain-of-thought analysis"
+    ],
+    "link": "https://arxiv.org/abs/2604.04720",
+    "brief": "这篇论文试图回答一个对多语言推理模型训练非常关键、但此前缺乏系统研究的问题：究竟是什么因素让一条推理链（reasoning trace）在某种语言下“更好”，这些因素是否可以跨语言迁移，尤其是当前很多方法默认“越像英语的推理过程就越好”这一假设是否站得住脚。作者定义了一整套可测量的推理特征，分为多语言对齐（multilingual alignment）、推理步骤（reasoning step）和推理流程（reasoning flow）三大类，并使用逻辑回归定量刻画每个特征与最终答案准确率之间的关联强度。实验覆盖两个数学推理基准、四个大型推理模型（LRM）和十种语言，发现大多数特征确实与准确率正相关，但关联的强度在不同语言间差异极大，个别特征甚至会在某些语言中出现方向反转——也就是说在英语中有益的推理模式,搬到另一种语言下反而可能是有害的。这一发现直接挑战了当前主流的“以英语推理轨迹的语义相似度作为奖励信号”的强化学习训练范式：论文指出，虽然这种做法有一定竞争力，但远非普遍最优，诸如直接效用、间接效用和结果整合等替代性奖励信号在更难的基准上往往表现更强。论文的核心意义在于为多语言强化学习训练中的奖励设计提供了实证依据，主张应该采用能够灵活决定“何时保留原语言、何时翻译、优先采信哪类信号”的自适应奖励机制，而不是简单地把英语中心的奖励设计直接套用到所有语言上。",
+    "model": "claude-sonnet-5",
+    "reasoning_effort": "medium",
+    "date_added": "2026-07-16",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-07-16-04",
+    "paper_id": "arxiv:2506.16502",
+    "title": "RELIC: Enhancing Reward Model Generalization for Low-Resource Indic Languages with Few-Shot Examples",
+    "year": 2025,
+    "venue": "EMNLP 2025 (Findings)",
+    "topics": [
+      "multilingual",
+      "reinforcement learning"
+    ],
+    "keywords": [
+      "reward model",
+      "low-resource languages",
+      "in-context learning",
+      "RLHF"
+    ],
+    "link": "https://arxiv.org/abs/2506.16502",
+    "brief": "这篇论文关注一个RLHF流程中非常实际的痛点：面向低资源印度语言（Indic languages）的奖励模型（reward model）往往因为训练数据稀缺而泛化能力很差，直接影响后续基于该奖励模型进行强化学习对齐的效果。论文提出 RELIC，一个基于上下文学习（in-context learning）的奖励建模框架，其核心创新是训练一个专门的检索器（retriever），使用成对排序目标（pairwise ranking objective）从高资源的辅助语言中挑选最能凸显“更优回复”与“较差回复”之间区别的示例，再将这些精心挑选的跨语言示例作为少样本提示提供给奖励模型，而不是像以往方法那样随意选取示例或者依赖同语言内的稀缺数据。实验在三个偏好数据集——PKU-SafeRLHF、WebGPT 和 HH-RLHF——上进行，使用当前主流的开源奖励模型进行系统评测，结果显示 RELIC 在低资源印度语言上显著提升了奖励模型的判别准确率，并且稳定超过现有的示例选择方法。一个亮点数字是：在极低资源语言 Bodo 上，使用 LLaMA-3.2-3B 作为基础奖励模型时，RELIC 相比零样本提示提升了12.81%的准确率，相比此前最优的示例选择方法也提升了10.13%。这项工作把“检索合适的跨语言上下文示例”这一思路系统化、可训练化，为在几乎没有本语言标注数据的场景下构建可用的奖励模型提供了一条务实的路径,论文已被 EMNLP 2025 Findings 收录。",
+    "model": "claude-sonnet-5",
+    "reasoning_effort": "medium",
+    "date_added": "2026-07-16",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-07-16-05",
+    "paper_id": "arxiv:2604.21070",
+    "title": "DWTSumm: Discrete Wavelet Transform for Document Summarization",
+    "year": 2026,
+    "venue": "arXiv",
+    "topics": [
+      "summarization"
+    ],
+    "keywords": [
+      "long document summarization",
+      "wavelet transform",
+      "hallucination reduction"
+    ],
+    "link": "https://arxiv.org/abs/2604.21070",
+    "brief": "这篇论文处理的是长文档摘要生成中的经典难题：面对法律、医疗等专业领域中动辄上万字的长文档,LLM会受制于上下文长度限制,并且容易在压缩过程中丢失关键细节或产生幻觉。区别于主流的“分块递归调用LLM进行摘要”的思路,论文提出了一个颇为新颖的信号处理式方法DWTSumm:把文本表示(句子级或词级的embedding序列)当作一种“语义信号”,套用离散小波变换(Discrete Wavelet Transform, DWT)对其进行多分辨率分解,拆分成刻画整体结构的“近似分量”(全局语义)和刻画局部细节的“细节分量”(领域相关的关键信息),这两部分共同构成一种紧凑的层次化语义表示,既可以直接作为摘要输出,也可以用来引导LLM生成最终摘要。这种做法的关键优势在于完全不需要递归调用LLM进行多轮压缩,计算开销更低,同时天然具备一定的“语义去噪”效果,减少幻觉、增强对原文关键信息的忠实度。实验在法律和临床两个专业领域的长文档上进行,对比GPT-4o基线,结果显示DWTSumm能将序列长度压缩50%到75%,多个embedding模型上语义保真度(Fidelity)最高可达97%;在自动指标上,相比GPT-4o基线取得了超过2%的BERTScore提升、超过4%的语义保真度提升,在法律任务上事实一致性也有改善,METEOR指标提升幅度较大。论文作者包括长期从事文本摘要与NLP公平性研究的Mona Diab(乔治华盛顿大学),论文于2026年4月发布在arXiv,目前暂未查到具体顶会录用信息。",
+    "model": "claude-sonnet-5",
+    "reasoning_effort": "medium",
+    "date_added": "2026-07-16",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-07-16-06",
+    "paper_id": "aclanthology:2026.findings-eacl.46",
+    "title": "Harmful Factuality: LLMs Correcting What They Shouldn't",
+    "year": 2026,
+    "venue": "EACL 2026 (Findings)",
+    "topics": [
+      "summarization"
+    ],
+    "keywords": [
+      "faithfulness hallucination",
+      "factuality",
+      "entity perturbation"
+    ],
+    "link": "https://aclanthology.org/2026.findings-eacl.46/",
+    "brief": "这篇论文提出并系统化了一种此前被忽视的LLM失败模式:“有害事实性幻觉”(Harmful Factuality Hallucination, HFH)。以往关于幻觉的研究大多聚焦于模型“编造虚假信息”这一方向,但这篇论文关注的是相反的、更隐蔽的情形——当输入文本本身包含某个错误或不寻常的实体时(比如一个被故意替换的人名、地名或数字),模型出于“追求事实正确”的训练目标,会主动把这个实体“纠正”成它认为更合理、更符合世界常识的版本,结果生成的文本虽然本身是事实正确的,却背离了原文的真实内容——这在摘要、复述(rephrasing)、问答等需要忠实反映原文的任务中是相当危险的,因为它意味着模型在未经用户同意的情况下悄悄篡改了信息来源。论文的核心贡献是构建了一个可复现的框架来诱发和量化HFH现象:通过对实体进行“软扰动”(基于embedding空间的替换)和“硬扰动”(基于指令的显式替换)两种方式,并配合有策略的实体选择方法,在摘要、复述和问答三类任务上对多个主流LLM进行系统评测。结果发现HFH是一种相当普遍的行为,而且模型规模越大,这种“自作主张纠正原文”的倾向反而越严重,这与“更大模型更可靠”的直觉相悖。论文进一步识别出导致HFH的三种潜在机制,并验证了一个简单的指令提示(明确告知模型“忠实转述,不要纠正”)就能将HFH发生率降低约50%,为实践中缓解这一问题提供了低成本方案。这篇论文已被 EACL 2026 Findings 收录,作者来自北德克萨斯大学等机构。",
+    "model": "claude-sonnet-5",
+    "reasoning_effort": "medium",
+    "date_added": "2026-07-16",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-07-16-07",
+    "paper_id": "arxiv:2503.04697",
+    "title": "L1: Controlling How Long A Reasoning Model Thinks With Reinforcement Learning",
+    "year": 2025,
+    "venue": "COLM 2025",
+    "topics": [
+      "reinforcement learning"
+    ],
+    "keywords": [
+      "reasoning length control",
+      "test-time compute",
+      "policy optimization"
+    ],
+    "link": "https://arxiv.org/abs/2503.04697",
+    "brief": "这篇论文出自CMU的Pranjal Aggarwal和Sean Welleck,针对推理模型(reasoning model)一个长期存在但少有人系统解决的问题:模型生成的思维链(chain-of-thought)长度是不可控的,用户没有办法精确指定“我想用多少计算预算换取多少推理质量”,这使得在实际部署中很难按需分配测试时计算资源(test-time compute)。论文提出的方法Length Controlled Policy Optimization(LCPO)是一种简洁的强化学习训练方式,同时优化两个目标:一是最终答案的正确性,二是生成的推理序列是否严格满足提示中指定的长度约束。用这种方式训练出的模型L1,可以在推理时通过在prompt中给定不同的长度限制,平滑地在“简短高效但略欠准确”和“冗长但更准确”两种推理风格之间插值,相当于把推理长度变成了一个用户可调的旋钮。实验结果显示,L1能够在广泛的任务上实现token预算与准确率之间的精细权衡,并且在长度可控性这一维度上超过了此前的SOTA方法S1。这篇论文虽然最早于2025年3月发布在arXiv,但正式发表于COLM 2025(第二届语言建模会议,2025年10月于加拿大蒙特利尔举行),此后被广泛引用和讨论,已经成为“可控推理长度”这一研究方向的代表性工作之一,也为后续大量关于“高效推理”“思维链压缩”的RL方法提供了直接的方法论基础和对比基线。",
+    "model": "claude-sonnet-5",
+    "reasoning_effort": "medium",
+    "date_added": "2026-07-16",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-07-16-08",
+    "paper_id": "arxiv:2602.05897",
+    "title": "Stop Rewarding Hallucinated Steps: Faithfulness-Aware Step-Level Reinforcement Learning for Small Reasoning Models",
+    "year": 2026,
+    "venue": "arXiv",
+    "topics": [
+      "reinforcement learning"
+    ],
+    "keywords": [
+      "faithfulness",
+      "small reasoning models",
+      "process reward model",
+      "step-level RL"
+    ],
+    "link": "https://arxiv.org/abs/2602.05897",
+    "brief": "这篇论文聚焦小型推理模型(Small Reasoning Models, SRMs)在资源受限场景下做思维链推理时容易出现的“中间步骤不忠实”问题——即便模型最终给出的答案是正确的,推理过程中的某些中间步骤也可能包含编造或与已有信息矛盾的内容,这种“步骤级幻觉”很难被基于最终结果的评价方式捕捉到。论文首先指出现有基于在线强化学习的缓解方法存在结构性缺陷:它们大多依赖结果导向的奖励(outcome-based reward)或者对整条思维链做粗粒度评价,这意味着只要最终答案对了,即便中间步骤存在幻觉,模型依然会获得正向奖励,反而在训练过程中强化了这种不忠实的推理习惯。为解决这一问题,作者提出FaithRL(Faithfulness-Aware Step-Level Reinforcement Learning),引入步骤级别的监督信号:一方面借助一个过程奖励模型(process reward model)对每一个推理步骤显式地给出忠实性奖励,另一方面设计了一种隐式的截断重采样(truncated resampling)策略,从忠实的推理前缀出发重新生成后续内容,以此构造出对比性的训练信号,让模型能够清楚地区分“忠实的延续”和“不忠实的延续”之间的差异。实验在多个小型推理模型和开放式问答(Open-Book QA)基准上进行,结果显示FaithRL能够一致地降低推理链中间步骤以及最终答案中的幻觉现象,推理过程的整体忠实度得到明显提升。这篇论文于2026年2月发布在arXiv,目前尚未查到具体顶会录用信息,但其提出的步骤级忠实性奖励思路,对当前强化学习训练推理模型中普遍存在的“重结果、轻过程”倾向具有针对性的启发意义。",
+    "model": "claude-sonnet-5",
+    "reasoning_effort": "medium",
+    "date_added": "2026-07-16",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-07-16-09",
+    "paper_id": "arxiv:2504.09696",
+    "title": "GRPO-LEAD: A Difficulty-Aware Reinforcement Learning Approach for Concise Mathematical Reasoning in Language Models",
+    "year": 2025,
+    "venue": "EMNLP 2025 (Main Conference)",
+    "topics": [
+      "reinforcement learning"
+    ],
+    "keywords": [
+      "GRPO",
+      "mathematical reasoning",
+      "length regularization",
+      "difficulty-aware advantage"
+    ],
+    "link": "https://arxiv.org/abs/2504.09696",
+    "brief": "这篇论文针对当前主流的GRPO(Group Relative Policy Optimization)强化学习算法在训练数学推理模型时暴露出的两个典型问题进行改进:一是模型倾向于生成冗长的推理过程,即便答案正确,推理链条也常常包含大量重复或无效的中间步骤,浪费计算资源;二是GRPO对不同难度题目的处理“一视同仁”,导致模型在真正困难的题目上难以获得有效的学习信号,泛化能力受限。论文提出GRPO-LEAD,通过三个方面对标准GRPO进行系统性增强:第一,引入长度正则化奖励(length-regularized reward),在保持答案准确率的前提下鼓励模型生成更简洁的推理过程;第二,为错误答案设计显式惩罚项,提高模型输出的精确度,减少“蒙对答案”的侥幸情况;第三,提出难度感知的优势重加权(difficulty-aware advantage reweighting)机制,让模型在训练过程中对高难度题目给予更合理的权重分配,从而增强模型在挑战性问题上的泛化能力。实验结果显示,GRPO-LEAD相比标准GRPO及其他基线方法,在推理准确率、推理简洁性和整体训练效率三个维度上都取得了显著提升,论文同时开源了训练所用的生成数据集和模型代码。这篇论文虽然最早于2025年4月发布在arXiv,但正式发表于EMNLP 2025主会,是“GRPO变体”这一目前非常活跃的研究子方向中被较多引用和对比的代表性工作之一,其提出的长度正则化与难度感知优势重加权思路已被后续多篇工作借鉴或作为基线对比。",
+    "model": "claude-sonnet-5",
+    "reasoning_effort": "medium",
+    "date_added": "2026-07-16",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-07-16-10",
+    "paper_id": "aclanthology:2026.acl-long.243",
+    "title": "A Theoretically Grounded Approach to Summarizing Conversation Dynamics for Forecasting the Derailment of Online Conversations",
+    "year": 2026,
+    "venue": "ACL 2026 (Main Conference)",
+    "topics": [
+      "summarization"
+    ],
+    "keywords": [
+      "conversation summarization",
+      "derailment forecasting",
+      "pragmatics",
+      "toxicity prediction"
+    ],
+    "link": "https://aclanthology.org/2026.acl-long.243/",
+    "brief": "这篇ACL 2026主会长文论文提出了一个相当有意思的应用场景:能否通过“对一段在线对话的动态过程做摘要”这件事,来提前预判这段对话是否会滑向有毒/失控的方向,从而让版主和用户可以在伤害真正发生之前就采取干预措施。这属于“对话脱轨预测”(conversation derailment prediction)这一新兴的毒性检测范式,和传统的“事后检测已经产生的毒性言论”不同,它要求系统在对话刚开始、甚至毒性言论尚未出现时就做出预判,这就需要模型对对话的语用动态(pragmatic dynamics)有深刻理解。作者指出,以往工作大多依赖植根于语言学和社会学理论的手工特征来捕捉对话动态,但这些特征本质上是探索性的、零散的,很可能只覆盖了塑造对话走向的语用手段中的一小部分。为此,论文提出了一套更系统的方法:首先构建了一个用于系统性标注对话语用信息的框架,然后基于该框架设计摘要生成方法,动态地捕捉对话轨迹的演变过程——也就是说,这里的“摘要”不是对内容做压缩,而是对“对话正在如何发展”这一动态过程做结构化概括,再用这样的摘要去支撑脱轨预测任务。实验结果显示,该方法在自建数据集上相比简单基线取得约10%的性能提升,相比一个较强的基线也有6.47%的提升,在一个已有的摘要对话动态基准数据集上也取得了小幅提升。这项工作的意义在于把摘要生成技术和语用学理论、社会计算中的毒性预测问题结合了起来,展示了摘要不仅可以用来“压缩信息”,还可以用来“提炼过程性动态”以服务于下游预测任务,是一个跳出常规摘要评测框架的新颖应用方向。论文作者为Yingxue Fu和Anaïs Ollagnier。",
+    "model": "claude-sonnet-5",
+    "reasoning_effort": "medium",
+    "date_added": "2026-07-16",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
   }
 ]
