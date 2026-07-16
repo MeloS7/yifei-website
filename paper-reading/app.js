@@ -86,8 +86,21 @@
   const PAGE_SIZE = 10;
   let currentPage = 1;
 
+  // Calendar keys are always in the reader's local timezone. read_at is stored in
+  // UTC, so slicing the raw ISO string would put a late-evening read on the wrong
+  // day for any timezone ahead of UTC.
+  function localKey(d) {
+    return (
+      d.getFullYear() +
+      "-" +
+      String(d.getMonth() + 1).padStart(2, "0") +
+      "-" +
+      String(d.getDate()).padStart(2, "0")
+    );
+  }
+
   function dayKey(iso) {
-    return iso.slice(0, 10);
+    return localKey(new Date(iso));
   }
 
   async function load() {
@@ -247,9 +260,10 @@
     );
     let n = 0;
     const d = new Date();
+    d.setHours(0, 0, 0, 0);
     // eslint-disable-next-line no-constant-condition
     while (true) {
-      const key = d.toISOString().slice(0, 10);
+      const key = localKey(d);
       if (readDates.has(key)) {
         n++;
         d.setDate(d.getDate() - 1);
@@ -275,9 +289,12 @@
     const WEEKS = 26;
     const today = new Date();
     today.setHours(0, 0, 0, 0);
+    // Anchor the grid on the week containing today and walk back WEEKS-1 weeks, so
+    // the final column is always the current week. (Subtracting WEEKS*7 days first
+    // and *then* snapping to a week boundary shifted the whole grid into the past.)
     const start = new Date(today);
-    start.setDate(start.getDate() - (WEEKS * 7 - 1));
     start.setDate(start.getDate() - start.getDay());
+    start.setDate(start.getDate() - (WEEKS - 1) * 7);
 
     let totalRecent = 0;
     const recentCutoff = new Date(today);
@@ -286,7 +303,7 @@
     for (let i = 0; i < WEEKS * 7; i++) {
       const d = new Date(start);
       d.setDate(start.getDate() + i);
-      const key = d.toISOString().slice(0, 10);
+      const key = localKey(d);
       const cell = document.createElement("div");
       cell.className = "cell";
       if (d > today) {
