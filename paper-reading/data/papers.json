@@ -1183,5 +1183,348 @@
     "deep_read": false,
     "deep_read_at": null,
     "interest": null
+  },
+  {
+    "id": "2026-07-16-11",
+    "paper_id": "aclanthology:P19-1330",
+    "title": "HighRES: Highlight-based Reference-less Evaluation of Summarization",
+    "year": 2019,
+    "venue": "ACL 2019 (Main Conference)",
+    "topics": [
+      "summarization"
+    ],
+    "keywords": [
+      "human evaluation",
+      "reference bias",
+      "salience annotation",
+      "crowdsourcing"
+    ],
+    "link": "https://aclanthology.org/P19-1330/",
+    "brief": "针对摘要人工评估的两难——对着单一参考摘要评会有 reference bias，对着原文直接评则标注者一致性极低——本文提出 HighRES：先让众包工人在原文里高亮出重要内容（每人限 30 词、每篇 10 人，聚合成热力图），再让另一批评审对着这张热力图给系统摘要打 precision/recall（1-100 绝对评分）。关键优势在于高亮只依赖原文、不依赖被评摘要，因此标注一次即可复用于任意多个系统，明显优于每评一个新系统都要专家重标的 Pyramid。论文还主张 Clarity 必须与 Fluency 分开评（给出了流畅度 92.8 但清晰度仅 44.3 的实例），并提出按高亮次数加权 n-gram 的 HROUGE。在 XSum 上评估 PTGEN 与 TCONVS2S（50 篇、MTurk）：高亮版把两系统差距放大到 6.48/5.54，而对着参考摘要评时差距仅 2.51/-1.79——recall 排序甚至直接翻转，这是 reference bias 相当干净的实证。局限也很明显：高亮的 Fleiss Kappa 仅 0.19（作者归因于 salience 本身主观），HROUGE 因偏爱复制而得出与人工评估相反的结论，且全文无显著性检验。",
+    "model": "claude-opus-4-8",
+    "reasoning_effort": "standard",
+    "date_added": "2026-07-16",
+    "read": true,
+    "read_at": "2026-07-16T13:17:45+00:00",
+    "deep_read": true,
+    "deep_read_at": "2026-07-16T13:17:45+00:00",
+    "interest": null
+  },
+  {
+    "id": "2026-07-16-12",
+    "paper_id": "aclanthology:2020.eval4nlp-1.8",
+    "title": "Artemis: A Novel Annotation Methodology for Indicative Single Document Summarization",
+    "year": 2020,
+    "venue": "Eval4NLP 2020 (EMNLP Workshop)",
+    "topics": [
+      "summarization"
+    ],
+    "keywords": [
+      "annotation methodology",
+      "indicative summarization",
+      "multi-domain",
+      "extractive summarization"
+    ],
+    "link": "https://aclanthology.org/2020.eval4nlp-1.8/",
+    "brief": "现有摘要数据集几乎全是新闻（因为新闻有天然可爬的摘要），但文档管理系统（OneDrive/SharePoint）和搜索预览需要处理任意领域的长文档；而能给出丰富标注的方法又都太贵——Relative Utility 要求给每句打效用分且需与所有其他句比较，Pyramid 需专家做 SCU 标注且每个新系统都要重标。本文提出 Artemis：让标注者自底向上分治标注——先总结每个段落，再仅从已选中的句子里总结章节，再总结全文，最后压到 3 句短摘要。这样标注者永远不必一次面对全部句子（示例中做文档级摘要只需看 6 句而非 12 句），从而以低成本拿到逐句的分级重要性（可赋 1-4 分近似 Relative Utility 的效用分）。在 532 篇网络爬取的 Word 文档（平均 1322 词/77 句）上，标注一篇仅需 4.17 分钟，Krippendorff alpha 为 0.46。实验显示 Lead-3 仅得 ROUGE-1 44.94，远低于 Seq2SeqRNN 的 63.89 和 Oracle 的 73.28，说明开放域文档的前置偏好远弱于新闻。最大的隐忧是分治的结构性缺陷：段落级被淘汰的句子无法在全局层面被救回，而论文只报告了幸存者的过滤率，从未检验早期误杀。",
+    "model": "claude-opus-4-8",
+    "reasoning_effort": "standard",
+    "date_added": "2026-07-16",
+    "read": true,
+    "read_at": "2026-07-16T13:17:45+00:00",
+    "deep_read": true,
+    "deep_read_at": "2026-07-16T13:17:45+00:00",
+    "interest": null
+  },
+  {
+    "id": "2026-07-16-13",
+    "paper_id": "aclanthology:2023.acl-long.228",
+    "title": "Revisiting the Gold Standard: Grounding Summarization Evaluation with Robust Human Evaluation",
+    "year": 2023,
+    "venue": "ACL 2023 (Main Conference)",
+    "topics": [
+      "summarization"
+    ],
+    "keywords": [
+      "human evaluation",
+      "ACU protocol",
+      "statistical power",
+      "meta-evaluation",
+      "LLM evaluation"
+    ],
+    "link": "https://aclanthology.org/2023.acl-long.228/",
+    "brief": "人工评估被当作黄金标准，但一致性低、样本量不足使其未必可靠。本文提出原子内容单元（ACU）协议：从参考摘要中抽出原子事实（只需做一次即可复用），再让众包工人只做「这条事实在不在系统摘要里」的二元判断，把 Krippendorff alpha 从 SummEval 的 0.49、RealSumm 的 0.66 提到 0.7571；并据此构建 RoSE benchmark（三数据集、22k 摘要级标注、约 150 小时内部标注）。最重量级的发现来自协议对比：让人对着原文评摘要（Ref-free）与让人完全不看原文纯凭喜好打分（Prior）的系统级相关高达 0.926，且两者与摘要长度的相关分别为 0.875/0.833——说明所谓基于原文的人工评估很大程度上根本没在用原文，而是在测标注者偏爱长摘要的先验。标注者个体分析更锋利：自己的 Ref-free 分与自己的 Prior 分相关 0.404，却与他人的 Ref-free 分只相关 0.188。这直接冲击了 GPT-3 摘要超越人类参考一类结论——GPT-3 在 Ref-free 下最高、在 ACU 下却最低。功效分析还显示典型的 50-100 样本量只在 ROUGE 差距大于 5 时才够；而 55 篇近期论文中做功效分析的是 0 篇。此外 GPTScore/G-Eval 等 LLM 指标在 RoSE 上打不过 ROUGE。未解的张力是：参考摘要既是 ACU 的满分答案，又是人类评分最低的对象。",
+    "model": "claude-opus-4-8",
+    "reasoning_effort": "standard",
+    "date_added": "2026-07-16",
+    "read": true,
+    "read_at": "2026-07-16T13:17:45+00:00",
+    "deep_read": true,
+    "deep_read_at": "2026-07-16T13:17:45+00:00",
+    "interest": null
+  },
+  {
+    "id": "2026-07-17-01",
+    "paper_id": "aclanthology:2026.acl-long.1416",
+    "title": "CURE-Med: Curriculum-Informed Reinforcement Learning for Multilingual Medical Reasoning",
+    "year": 2026,
+    "venue": "ACL 2026 (Main Conference)",
+    "topics": [
+      "multilingual",
+      "reinforcement learning"
+    ],
+    "keywords": [
+      "medical reasoning",
+      "low-resource languages",
+      "GRPO",
+      "curriculum learning"
+    ],
+    "link": "https://aclanthology.org/2026.acl-long.1416/",
+    "brief": "这篇论文瞄准的是一个此前被忽视的任务：多语言医学推理（multilingual medical reasoning）。作者指出，LLM在单语数学和常识推理上表现不错，但一旦切换到非英语的医疗问答场景，尤其是资源稀缺语言，正确率和语言一致性都会明显下降，这直接限制了模型在多语言医疗场景中的落地。为此，作者构建了新基准CureMed-Bench，覆盖十三种语言，其中包括阿姆哈拉语（Amharic）、约鲁巴语（Yoruba）、斯瓦希里语（Swahili）等此前很少被评测的低资源语言，题目均为需要推理过程且答案可验证的开放式问答。方法上的创新是CURE-Med框架：先用代码切换感知（code-switching-aware）的监督微调让模型学会在保持语言身份的同时进行跨语言知识迁移，再叠加Group Relative Policy Optimization（GRPO）强化学习阶段，用课程学习的方式循序渐进地提升题目难度，联合优化逻辑正确性和语言稳定性两个目标。实验结果颇为亮眼：在7B模型规模下，语言一致性达到85.21%，逻辑正确率54.35%；扩展到32B规模后两项指标分别提升到94.96%和70.04%，且方法在多个基线对比中都保持稳定优势，显示出良好的可扩展性。论文作者来自弗吉尼亚大学、印度理工学院帕特纳分校、印度理工学院坎普尔分校以及MBZUAI，被ACL 2026主会录用。这项工作把强化学习和课程学习结合起来专门解决多语言场景下推理能力和语言稳定性难以兼顾的矛盾，为医疗这种高风险领域的多语言LLM部署提供了少见的系统性基准和训练方案。",
+    "model": "claude-sonnet-5",
+    "reasoning_effort": "medium",
+    "date_added": "2026-07-17",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-07-17-02",
+    "paper_id": "aclanthology:2025.findings-emnlp.662",
+    "title": "Topic-Guided Reinforcement Learning with LLMs for Enhancing Multi-Document Summarization",
+    "year": 2025,
+    "venue": "EMNLP 2025 (Findings)",
+    "topics": [
+      "summarization",
+      "reinforcement learning"
+    ],
+    "keywords": [
+      "multi-document summarization",
+      "topic reward",
+      "GRPO",
+      "content selection"
+    ],
+    "link": "https://aclanthology.org/2025.findings-emnlp.662/",
+    "brief": "这篇论文处理的核心任务是多文档摘要（Multi-Document Summarization, MDS），即从多篇相关但独立撰写的文档中提炼出一份连贯且信息丰富的摘要。作者指出，LLM在单文档摘要上已经表现优异，但在MDS任务里仍然容易出现内容选择不当、跨文档信息整合不充分、主题漂移等问题，这是因为多篇源文档之间的主题重叠和差异比单文档场景复杂得多。为了解决这个问题，作者提出了一种主题引导的强化学习方法：核心创新是在Group Relative Policy Optimization（GRPO）框架中设计了一个新的主题奖励（topic reward），通过显式提示模型关注主题标签，并度量生成摘要与源文档在主题层面的对齐程度，从而引导模型在生成阶段就有意识地覆盖多文档共享的核心话题，而不是简单拼接或平均处理各文档信息。实验在Multi-News和Multi-XScience两个经典多文档摘要数据集上进行，结果显示该方法相较于强基线在信息覆盖度、主题相关性等指标上都有稳定提升，验证了显式主题信号对提升摘要信息量的有效性。论文作者Chuyuan Li、Austin Xu、Shafiq Joty、Giuseppe Carenini分别来自不列颠哥伦比亚大学（UBC）和Salesforce AI Research，被EMNLP 2025 Findings录用（页码12395–12412）。这篇工作没有依赖更大模型或更多训练数据，而是通过一个轻量但目标明确的奖励设计，把主题一致性这个此前多被隐式处理的信号显式纳入强化学习目标，为MDS这个应用价值很高的方向提供了新思路。",
+    "model": "claude-sonnet-5",
+    "reasoning_effort": "medium",
+    "date_added": "2026-07-17",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-07-17-03",
+    "paper_id": "aclanthology:2026.acl-long.112",
+    "title": "Mixture-of-Minds: Multi-Agent Reinforcement Learning for Table Understanding",
+    "year": 2026,
+    "venue": "ACL 2026 (Main Conference)",
+    "topics": [
+      "reinforcement learning"
+    ],
+    "keywords": [
+      "table reasoning",
+      "multi-agent",
+      "Monte Carlo Tree Search",
+      "self-improvement"
+    ],
+    "link": "https://aclanthology.org/2026.acl-long.112/",
+    "brief": "这篇论文关注的任务是表格理解与推理（table understanding and reasoning），即让LLM能够准确回答基于结构化表格数据的问题，这是一个在企业数据分析、报表问答等场景中极具实用价值但一直没被很好解决的方向。作者观察到现有方法存在互补的缺陷：基于微调的方法擅长语言层面的推理，但容易出现算术错误和幻觉；基于工具调用（代码执行）的方法能精确操作表格，却依赖僵化的schema、缺乏语义理解能力。为了融合两者的优点，作者提出了Mixture-of-Minds多智能体框架，把表格推理拆解为三个专门化角色——规划（planning）、编码（coding）、作答（answering），让每个智能体只专注自己擅长的子任务，同时靠代码执行保证表格操作的精确性。更关键的方法创新在于训练阶段：作者设计了一套自我提升（self-improvement）训练框架，用蒙特卡洛树搜索（MCTS）rollout生成伪金标准轨迹（pseudo-gold trajectories），再用强化学习（RL）对多智能体系统进行联合优化，而不是简单地对单个模型做监督微调。实验方面，Mixture-of-Minds在TableBench基准上取得62.13%的成绩，超过了OpenAI o4-mini-high模型，充分证明结构化多智能体流程与强化学习结合在复杂表格推理任务上的潜力。论文作者团队来自Meta AI，被ACL 2026主会录用。这项工作代表了当前多智能体+强化学习这一热门范式在表格这一结构化数据场景下的具体落地，也是ACL 2026上讨论度较高的一篇RL相关论文。",
+    "model": "claude-sonnet-5",
+    "reasoning_effort": "medium",
+    "date_added": "2026-07-17",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-07-17-04",
+    "paper_id": "aclanthology:2026.acl-long.103",
+    "title": "ChatR1: Reinforcement Learning for Conversational Reasoning and Retrieval Augmented Question Answering",
+    "year": 2026,
+    "venue": "ACL 2026 (Main Conference)",
+    "topics": [
+      "reinforcement learning"
+    ],
+    "keywords": [
+      "conversational QA",
+      "retrieval-augmented generation",
+      "intent-aware reward",
+      "multi-turn dialogue"
+    ],
+    "link": "https://aclanthology.org/2026.acl-long.103/",
+    "brief": "这篇论文的任务是对话式问答与检索增强生成的结合，即Conversational Question Answering (CQA)，具体要解决多轮对话中用户意图随对话推进不断演变、话语常常存在指代和省略等欠明确表达的问题，这要求模型具备上下文理解、查询改写以及检索与生成之间动态协调的综合能力。作者指出，传统的改写-检索-生成（rewrite-retrieve-generate）静态流水线难以应对这种动态性，因为它把每一轮对话当作独立子任务处理，缺乏跨轮次的探索和适应能力。方法上的核心创新是ChatR1框架：它把搜索和推理交织在多轮对话之中，通过强化学习让模型学习探索性、自适应的对话行为，而不是遵循固定流程；为了解决RL训练中奖励稀疏且延迟的经典难题，作者进一步提出了意图感知奖励（intent-aware reward），在每一轮对话结束时就给出细粒度反馈，让检索和推理的每一步都能与用户不断演变的目标对齐，而不必等到整段对话结束才获得反馈信号。实验在五个对话式问答数据集上展开，ChatR1在F1、BERTScore以及LLM-as-judge等多种评价指标下，全面超过了零样本、监督微调以及此前的强化学习基线模型。论文作者Simon Lupart、Mohammad Aliannejadi、Evangelos Kanoulas均来自阿姆斯特丹大学IRLab，被ACL 2026主会录用。这项工作把强化学习的训练信号设计问题和对话式检索增强生成的实际痛点（意图漂移、奖励稀疏）结合得比较紧密，是对话搜索方向一篇值得关注的强化学习应用工作。",
+    "model": "claude-sonnet-5",
+    "reasoning_effort": "medium",
+    "date_added": "2026-07-17",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-07-17-05",
+    "paper_id": "arxiv:2504.05108",
+    "title": "Algorithm Discovery With LLMs: Evolutionary Search Meets Reinforcement Learning",
+    "year": 2025,
+    "venue": "COLM 2025",
+    "topics": [
+      "reinforcement learning"
+    ],
+    "keywords": [
+      "algorithm discovery",
+      "evolutionary search",
+      "combinatorial optimization",
+      "LLM fine-tuning"
+    ],
+    "link": "https://arxiv.org/abs/2504.05108",
+    "brief": "这篇论文处理的任务是用LLM自动发现算法（algorithm discovery），具体目标是让LLM生成的候选算法在组合优化问题上不断进化改进，最终逼近甚至超过人工设计的启发式算法。这类工作此前主要依赖进化搜索（evolutionary search）范式：把LLM当作变异算子，反复生成、评估、筛选候选程序，但作者指出这种做法把LLM当成静态生成器，没有利用进化过程中产生的丰富信号去更新模型本身，造成了探索效率的浪费。为此，作者提出EvoTune框架，核心创新是把强化学习（RL）微调嵌入进化搜索的循环之中：不仅用进化搜索来探索候选算法空间，还持续用搜索中积累的反馈信号对作为搜索算子的LLM策略进行RL微调，让模型本身随着搜索过程不断进步，形成搜索策略和生成模型相互促进的闭环。实验在三个经典组合优化任务——装箱问题（bin packing）、旅行商问题（TSP）和平板包装问题（flatpack problem）上进行，结果表明将RL与进化搜索结合能够显著提升算法发现效率，优于单纯依赖进化搜索或单纯依赖RL微调的方法。论文作者Anja Surina、Amin Mansouri等来自洛桑联邦理工学院（EPFL），部分作者（Emmanuel Abbe）同时任职于Apple，被COLM 2025录用。这篇工作为LLM辅助科学与算法发现这一新兴方向提供了一个把进化计算和强化学习结合起来的通用框架，思路上和当前RL在推理任务中的应用有共通之处，值得关注LLM自动化研究能力边界的读者留意。",
+    "model": "claude-sonnet-5",
+    "reasoning_effort": "medium",
+    "date_added": "2026-07-17",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-07-17-06",
+    "paper_id": "arxiv:2504.00657",
+    "title": "News is More than a Collection of Facts: Moral Frame Preserving News Summarization",
+    "year": 2025,
+    "venue": "COLM 2025",
+    "topics": [
+      "summarization"
+    ],
+    "keywords": [
+      "moral framing",
+      "news summarization",
+      "framing bias",
+      "human evaluation"
+    ],
+    "link": "https://arxiv.org/abs/2504.00657",
+    "brief": "这篇论文关注的任务是新闻摘要中的道德框架保留（moral frame preserving news summarization），出发点是新闻记者在写作时往往会有意识地选择带有道德色彩的措辞（moral-laden language）而非中性表达，这种道德框架（moral framing）隐含着记者对事件的价值判断，但现有自动摘要系统往往在压缩信息的过程中把这些措辞抹平成中性词汇，导致摘要丢失了原文本想传达的立场和态度。这是该方向的首次系统性研究：作者首先论证了道德框架保留在摘要中的重要性和普遍缺失现状，然后提出了一种利用记者用词意图的方法——核心直觉是记者特意使用或引用的道德色彩词汇应当被摘要系统识别并优先保留，而不是被简化替换。数据方面，作者基于新闻语料构建了带有道德色彩词汇标注的评测数据，并设计了自动评测、众包评测和专家评测三重验证体系来衡量摘要对道德框架的保留程度。实验结果显示，该方法在提升道德框架保留度的同时，没有牺牲摘要本身的整体质量（如流畅度、信息量），在自动指标和人工评测中都得到验证。论文作者Enrico Liscio、Michela Lorandi、Pradeep K. Murukannaiah分别来自代尔夫特理工大学（TU Delft）智能系统系和都柏林城市大学ADAPT研究中心，被COLM 2025录用。这篇论文把框架（framing）这一传播学、语言学交叉概念第一次系统引入摘要评价和生成中，提醒我们摘要不只是事实压缩，也承载着立场和价值判断，是一个视角新颖、讨论度较高的交叉学科工作。",
+    "model": "claude-sonnet-5",
+    "reasoning_effort": "medium",
+    "date_added": "2026-07-17",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-07-17-07",
+    "paper_id": "arxiv:2504.12972",
+    "title": "Estimating Optimal Context Length for Hybrid Retrieval-augmented Multi-document Summarization",
+    "year": 2025,
+    "venue": "COLM 2025",
+    "topics": [
+      "summarization"
+    ],
+    "keywords": [
+      "retrieval-augmented generation",
+      "long-context",
+      "multi-document summarization",
+      "context length"
+    ],
+    "link": "https://arxiv.org/abs/2504.12972",
+    "brief": "这篇论文的任务是多文档摘要（multi-document summarization），具体聚焦于一个此前被忽视的实际问题：当源文档数量很多、总长度远超模型上下文窗口时，应该如何在检索增强（RAG）和长上下文（long-context）两种范式之间做取舍。作者指出，尽管近年来长上下文模型号称能处理数十万token的输入，但已有研究表明它们在真正达到宣称的窗口长度时效果会明显打折扣，单纯依赖塞入所有文档并不是最优策略。方法上的核心创新是提出了一种混合方法：先用检索系统从大量源文档中筛选出与摘要目标最相关的一部分内容，再把筛选后的内容放入摘要模型的长上下文窗口中生成摘要，并且专门设计了一套方法来估计对于给定的检索器、摘要模型和数据集组合而言，最优检索长度应该设为多少，而不是凭经验随意设定。在实验方法上，作者用一组LLM面板（panel of LLMs）在数据集的随机采样子集上生成银标准（silver）参考摘要，并以此为基准来标定最优上下文长度的估计方法，这是一个比较巧妙的、绕开了没有金标准长文档摘要这一数据稀缺难题的评测设计。论文作者Adithya Pratapa和Teruko Mitamura来自卡内基梅隆大学语言技术研究所（CMU LTI），被COLM 2025录用，并公开了代码。这项工作补上了长上下文摘要文献中一个此前较少被系统研究的检索长度到底该设多长的问题，对实际部署RAG摘要系统的工程人员有直接参考价值。",
+    "model": "claude-sonnet-5",
+    "reasoning_effort": "medium",
+    "date_added": "2026-07-17",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-07-17-08",
+    "paper_id": "arxiv:2607.13315",
+    "title": "Meta-Learning Preferences for Multilingual LLM Alignment",
+    "year": 2026,
+    "venue": "arXiv",
+    "topics": [
+      "multilingual",
+      "reinforcement learning"
+    ],
+    "keywords": [
+      "meta-learning",
+      "RLHF",
+      "DPO",
+      "low-resource alignment"
+    ],
+    "link": "https://arxiv.org/abs/2607.13315",
+    "brief": "这篇论文处理的任务是多语言LLM对齐（multilingual LLM alignment），具体针对人类偏好数据在不同语言间分布严重不均的现实问题——高资源语言（如英语）有海量偏好标注数据可用于RLHF/DPO训练，而绝大多数语言几乎没有可用的偏好数据，导致这些语言上的对齐质量远逊于英语。作者提出的方法创新是把元学习（meta-learning）引入到基于人类反馈的强化学习（RLHF）和直接偏好优化（DPO）的框架中：通过在多种语言的偏好数据上进行元训练，模型学到的不是针对某一种语言的参数，而是一个可迁移的初始化（transferable initialization），使得面对一个全新的目标语言时，只需要极少量该语言的偏好样本就能快速适配，达到不错的对齐效果。论文的另一个亮点是理论贡献：作者分别为元奖励建模（meta-reward modeling）和元策略优化（meta-policy optimization）两种设定提供了理论保证，这在偏好对齐类工作中并不常见，让方法不只是经验性的。实验方面，在极端低资源设定下（目标语言仅有100条偏好样本），该方法相较基线方法取得最高28%的胜率提升，并且在多个目标语言和不同模型规模下都保持一致优势，即便元训练语言和目标语言在语言学距离上差异较大也依然有效。论文作者Jiaying Lin、Seongho Son、Nam Phuong Tran、Long Tran-Thanh、Ilija Bogunovic、Debmalya Mandal分别来自华威大学（University of Warwick）和伦敦大学学院（UCL），论文于2026年7月14日提交到arXiv，目前是预印本，尚未查到具体会议录用信息。这项工作直接回应了当前多语言LLM对齐领域最现实的数据稀缺瓶颈，方法轻量且有理论支撑，是近期讨论度较高的一篇预印本。",
+    "model": "claude-sonnet-5",
+    "reasoning_effort": "medium",
+    "date_added": "2026-07-17",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-07-17-09",
+    "paper_id": "aclanthology:2026.acl-long.2029",
+    "title": "LANG: Reinforcement Learning for Multilingual Reasoning with Language-Adaptive Hint Guidance",
+    "year": 2026,
+    "venue": "ACL 2026 (Main Conference)",
+    "topics": [
+      "multilingual",
+      "reinforcement learning"
+    ],
+    "keywords": [
+      "multilingual reasoning",
+      "language drift",
+      "hint guidance",
+      "mathematical reasoning"
+    ],
+    "link": "https://aclanthology.org/2026.acl-long.2029/",
+    "brief": "这篇论文关注的任务是多语言推理（multilingual reasoning），尤其是多步数学推理在非英语语言场景下的表现。作者指出该方向存在一个此前被反复观察到但没有很好解决的根本性权衡：如果强制模型的推理过程与输入语言保持一致，往往会明显损害推理质量；而如果放任模型自由推理，模型又倾向于语言漂移（language drift），即不自觉地切换回英语进行内部推理，即使用户的输入和期望输出都是其他语言。为了打破这个权衡，作者提出LANG框架，核心创新有两点：一是引入语言条件提示（language-conditioned hints）来引导模型在非英语推理任务中的探索方向，避免模型因为缺乏该语言的高质量推理范式而退化到英语；二是设计了两个配套机制防止模型对这些提示产生依赖——渐进式衰减调度（progressive decay schedule）逐步撤回提示的辅助作用，以及语言自适应开关（language-adaptive switch）根据不同语言的难度动态调整学习周期，让资源较少、更难的语言获得更长的适应窗口。实验在多个高难度的多语言数学推理基准上进行，结果显示LANG在显著提升推理表现的同时，没有以牺牲语言一致性为代价，同时兼顾了推理对不对和说的是不是目标语言这两个此前互相矛盾的目标。论文作者Yuchun Fan、Bei Li等来自东北大学自然语言处理实验室、美团公司和小牛翻译（NiuTrans）研究团队，被ACL 2026主会录用。这篇论文精准地刻画并解决了多语言推理强化学习中一个具体而反复出现的痛点，是近期多语言与RL交叉方向中方法设计比较精巧的一篇工作。",
+    "model": "claude-sonnet-5",
+    "reasoning_effort": "medium",
+    "date_added": "2026-07-17",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-07-17-10",
+    "paper_id": "arxiv:2607.06008",
+    "title": "PolyWorkBench: Benchmarking Multilingual Long-Horizon LLM Agents",
+    "year": 2026,
+    "venue": "arXiv",
+    "topics": [
+      "multilingual"
+    ],
+    "keywords": [
+      "LLM agents",
+      "long-horizon tasks",
+      "benchmark",
+      "workplace workflows"
+    ],
+    "link": "https://arxiv.org/abs/2607.06008",
+    "brief": "这篇论文的任务是构建一个新基准来评测LLM智能体（agent）在多语言、长时程（long-horizon）工作场景下的表现，填补了此前智能体评测基本默认单语言执行全过程这一不现实假设的空白。作者指出，现有的长时程智能体基准大多假设任务从头到尾只涉及一种语言，但真实的知识工作场景（比如需要处理多语言合同、多地区法规、跨语言客户沟通的场景）往往要求智能体在同一个任务流程里处理多种语言的异构输入，这对推理、工具调用、状态维护都提出了远超单语场景的挑战。为此，作者构建了PolyWorkBench基准，涵盖商务、知识工作、法律分析、本地化（localization）、制造业五个领域下的67个任务，每个任务都要求智能体处理异构的多语言输入、进行多步迭代推理、调用外部工具，并最终产出结构化的输出结果，力图贴近真实企业工作流的复杂度。方法上，这篇论文的贡献更多是评测体系本身的设计，而不是提出新的训练方法：通过系统性地对比同一智能体在多语言与单语言设置下的表现差异，作者试图量化多语言这一因素本身给长时程智能体任务带来的额外难度。实验结果显示，当前最先进的LLM智能体在多语言工作流设置下相较单语言场景出现了显著的性能下降，作者的分析进一步指出，多语言带来的干扰在推理和执行步骤之间会产生复合叠加效应（compounding effects），单步的语言处理误差会在长链条任务中被逐步放大。论文作者Hongliang Li、Yijin Liu、Zhiwei Zhang等来自北京交通大学与微信AI（腾讯），于2026年7月发布在arXiv，尚为预印本。这篇论文提醒社区，多语言能力和长时程智能体能力这两个各自都很热门的评测维度叠加在一起时会暴露出单独评测时看不到的新问题，是一篇视角新颖、方法扎实的基准类工作。",
+    "model": "claude-sonnet-5",
+    "reasoning_effort": "medium",
+    "date_added": "2026-07-17",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
   }
 ]
