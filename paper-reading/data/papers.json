@@ -1526,5 +1526,31 @@
     "deep_read": false,
     "deep_read_at": null,
     "interest": null
+  },
+  {
+    "id": "2026-07-16-14",
+    "paper_id": "aclanthology:2023.tacl-1.46",
+    "title": "MACSum: Controllable Summarization with Mixed Attributes",
+    "year": 2023,
+    "venue": "TACL 2023",
+    "topics": [
+      "summarization"
+    ],
+    "keywords": [
+      "controllable summarization",
+      "mixed attributes",
+      "prompt tuning",
+      "human-annotated dataset"
+    ],
+    "link": "https://aclanthology.org/2023.tacl-1.46/",
+    "brief": "可控摘要想让用户定制摘要（要短的、要抽取式的、只讲某话题的），但一直缺少真正的人工标注数据——现有工作只能把通用数据集改造成伪可控数据，这有三个硬伤：摘要并非在属性指导下写出、每个原文只能配一个目标摘要、而 Extractiveness/Specificity 这类属性根本没有直观的改造方法。本文构建 MACSum：让 4 位母语标注者针对同一篇原文的多组不同属性组合分别手写摘要，覆盖 Length/Extractiveness/Specificity/Topic/Speaker 五个属性、新闻（CNNDM）与会议对话（QMSum）两个域，共 8333 条摘要/1353 篇原文，是首个同时具备人工标注、同源多输出、混合属性控制的数据集。作者另提出 CER（控制误差率）与 CC（控制相关性）两个指标，以及 hard prompt(HP)、soft prefix(SP) 两个基线。结果显示最简单的 HP 几乎全面最优，SP 在对话域的长度控制 CC 甚至为负（方向反了）；但控制远未解决——最好的 HP 在 Extractiveness 上 CER 仍高达 0.802（即偏离黄金值 80%）。属性依赖性分析（改一个属性会显著影响其他属性）和三个失败模式（Topic Defocus、长度与具体度相互矛盾、全抽取导致不可读）是全文最有价值的部分。主要隐忧：Specificity 的度量权重是拍脑袋定的且把长度算了进去，而论文自己却声称二者不同；此外黄金摘要本身也只有约 80% 真正满足其控制要求。",
+    "model": "claude-opus-4-8",
+    "reasoning_effort": "standard",
+    "date_added": "2026-07-16",
+    "read": true,
+    "read_at": "2026-07-17T07:32:50+00:00",
+    "deep_read": true,
+    "deep_read_at": "2026-07-17T07:32:50+00:00",
+    "interest": null
   }
 ]
