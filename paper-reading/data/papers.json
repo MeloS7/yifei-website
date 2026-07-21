@@ -1814,5 +1814,135 @@
     "deep_read": false,
     "deep_read_at": null,
     "interest": null
+  },
+  {
+    "id": "2026-07-21-01",
+    "paper_id": "arxiv:2503.18892",
+    "title": "SimpleRL-Zoo: Investigating and Taming Zero Reinforcement Learning for Open Base Models in the Wild",
+    "year": 2025,
+    "venue": "COLM 2025",
+    "topics": [
+      "reinforcement learning"
+    ],
+    "keywords": [
+      "zero RL training",
+      "base models",
+      "aha moment",
+      "RLVR"
+    ],
+    "link": "https://arxiv.org/abs/2503.18892",
+    "brief": "这篇论文复现并系统研究\"zero RL\"训练范式——即完全跳过监督微调（SFT），直接在预训练的基座模型上用规则奖励的强化学习（RL）训练出具备长链式思考（long CoT）推理能力的模型，探究该范式在不同基座模型上的普适性。任务本身不依赖新数据集，而是在数学推理相关的标准训练与测试数据（如 GSM8K、MATH 等）上，构建了一个覆盖 10 个不同家族、不同规模基座模型的系统性实验床，包括 LLaMA3-8B、Mistral-7B/24B、DeepSeek-Math-7B、Qwen2.5-Math-7B 以及全系列 Qwen2.5（0.5B 到 32B）。此前 zero RL 复现工作几乎只在 Qwen2.5 系列上验证，容易得出片面结论，因为 Qwen2.5 基座本身已具备较强的指令遵循和自我反思能力；本文的创新之处在于首次把 zero RL 训练扩展到跨家族的 10 个基座模型，通过调整格式奖励（format reward）和控制训练查询难度等关键设计策略，系统比较不同基座在 RL 训练动态上的差异，并首次在非 Qwen 家族的小模型中观察到\"aha moment\"（模型自发学会验证、反思自己解题过程的顿悟时刻）。实验结果显示，在绝大多数设置下推理准确率和响应长度都有显著提升，但作者特别指出响应长度增加不必然等价于验证等认知行为的出现，说明外在指标（长度）与内在能力（反思）可能脱钩。论文已被 COLM 2025 收录，作者团队来自香港科技大学（Junxian He 组）等机构，代码、模型与分析工具已全部开源，自发布以来在 RL 训练社区内讨论热度很高，已成为 zero RL 复现研究领域的重要参考基准。",
+    "model": "claude-sonnet-5",
+    "reasoning_effort": "medium",
+    "date_added": "2026-07-21",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-07-21-02",
+    "paper_id": "aclanthology:2025.findings-emnlp.40",
+    "title": "R2A-TLS: Reflective Retrieval-Augmented Timeline Summarization with Causal-Semantic Integration",
+    "year": 2025,
+    "venue": "EMNLP 2025 (Findings)",
+    "topics": [
+      "summarization"
+    ],
+    "keywords": [
+      "timeline summarization",
+      "retrieval-augmented",
+      "reflective reasoning",
+      "causal-semantic"
+    ],
+    "link": "https://aclanthology.org/2025.findings-emnlp.40/",
+    "brief": "这篇论文研究开放域时间线摘要生成（open-domain Timeline Summarization, TLS）任务——从大规模、随时间演化的新闻文本流中抽取并组织出一条按时间点排列、覆盖关键事件的摘要时间线，难点在于信息过载、数据稀疏，以及事件描述碎片化导致的叙事不连贯。论文没有构建全新数据集，而是在开放域 TLS 的常见新闻时间线基准上做评测，重点考察检索增强流程在真实、噪声较大的开放域场景下的鲁棒性。方法上的创新有两层：第一，把 TLS 重新表述为\"时间点补全\"与\"事件元素补全\"两个子问题，而不是简单的抽取排序；第二，设计了\"初始检索—反思—深度检索\"三阶段闭环流程，通过双重过滤机制在每轮迭代中过滤噪声，并利用因果链分析和基于 FrameNet 的事件要素校验来主动定位当前时间线草稿中的信息空白，再把这些空白重新表述为有针对性的查询、触发下一轮深度检索来补全，形成类似\"起草—反思—修订\"的自我修正机制，区别于以往缺乏有效相关性评估、噪声容易随迭代累积的检索增强摘要方法。实验在多个开放域 TLS 场景下一致显示该方法优于已有基线，尤其在减少噪声累积、提升时间线连贯性方面效果明显。论文被 EMNLP 2025 Findings 收录，作者团队来自国防科技大学计算机学院、军事科学院信息研究中心以及华北理工大学，是近期检索增强摘要方向里将\"反思\"机制与\"因果—语义\"结构结合得较为完整的一篇工作。",
+    "model": "claude-sonnet-5",
+    "reasoning_effort": "medium",
+    "date_added": "2026-07-21",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-07-21-03",
+    "paper_id": "aclanthology:2026.findings-eacl.35",
+    "title": "Multilingual Retrieval-Augmented Generation for Knowledge-Intensive Question Answering Task",
+    "year": 2026,
+    "venue": "EACL 2026 (Findings)",
+    "topics": [
+      "multilingual"
+    ],
+    "keywords": [
+      "cross-lingual RAG",
+      "multilingual QA",
+      "knowledge-intensive tasks",
+      "low-resource languages"
+    ],
+    "link": "https://aclanthology.org/2026.findings-eacl.35/",
+    "brief": "这篇论文研究检索增强生成（RAG）在多语言开放域问答场景下的有效性——RAG 在英语等单语场景下已是标配技术，但在跨语言/多语言知识密集型任务中的行为此前很少被系统研究。论文在知识密集型多语言问答基准上系统评测了多种 RAG 策略，同时覆盖高资源和低资源语言，而非提出全新数据集。方法上的创新点在于：作者首先系统比较了两种朴素多语言 RAG 方案各自的缺陷——问题翻译式的 tRAG（先把问题翻译成英语再检索）覆盖率有限，而直接跨语言检索的 MultiRAG 虽然效率更高，却因为不同语言检索结果之间的表述差异而引入不一致性；在此基础上提出 CrossRAG（Crosslingual RAG），核心思路是在生成回答之前，先把检索到的多语言文档统一翻译到同一目标语言（如英语），再让模型在语言一致的上下文中生成答案，从而从源头上避免了跨语言检索结果拼接导致的语义割裂问题。实验结果表明，CrossRAG 在知识密集型任务上显著优于 tRAG 和 MultiRAG 两种方案，且这一提升对高资源和低资源语言都成立，说明\"先统一语言再生成\"是比\"先翻译问题\"或\"直接多语言检索\"更稳健的多语言 RAG 范式，为多语言 RAG 系统设计提供了一个简单却有效的新默认方案。论文被 Findings of the Association for Computational Linguistics: EACL 2026 收录，作者 Leonardo Ranaldi、Barry Haddow、Alexandra Birch 均来自爱丁堡大学（University of Edinburgh）。",
+    "model": "claude-sonnet-5",
+    "reasoning_effort": "medium",
+    "date_added": "2026-07-21",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-07-21-04",
+    "paper_id": "arxiv:2607.14777",
+    "title": "SEED: Self-Evolving On-Policy Distillation for Agentic Reinforcement Learning",
+    "year": 2026,
+    "venue": "arXiv",
+    "topics": [
+      "reinforcement learning"
+    ],
+    "keywords": [
+      "agentic RL",
+      "hindsight skills",
+      "on-policy distillation",
+      "long-horizon tasks"
+    ],
+    "link": "https://arxiv.org/abs/2607.14777",
+    "brief": "这篇论文聚焦面向智能体的强化学习（agentic RL）——训练大语言模型作为能进行多轮交互、工具调用并接收环境反馈的长程任务智能体。核心问题是 outcome-based RL 只在整条轨迹结束后给出稀疏奖励，难以为中间的每一步决策提供有效指导，造成\"回合级别结果\"与\"token 级别策略学习\"之间的监督缺口。论文没有提出全新公开数据集，而是在文本类和视觉类两大类智能体任务上做实验验证，涵盖多种需要多轮交互与工具使用的场景。方法上的创新是提出 SEED（SElf-Evolving On-Policy Distillation）框架：先微调策略模型，使其能够分析自己刚完成的轨迹，提炼出可复用的自然语言\"事后经验\"（hindsight skills，比如可复用的工作流程、关键观察点或应避免的失败模式）；在 RL 训练过程中，当前策略既负责采集轨迹，也同时充当\"分析师\"从这些轨迹中提炼事后技能，使策略更新和技能提炼同步演化；随后 SEED 把带技能提示和不带技能提示两种情形下动作被采样概率的差异，转化为一个稠密的、token 级别的在策略蒸馏（on-policy distillation）信号，与 outcome-based RL 联合优化，让这种辅助监督始终跟随当前策略的轨迹分布，不会因策略更新而\"过期\"。实验在文本类和视觉类智能体任务上均显示，SEED 能稳定提升性能和样本效率，在未见过的场景中也表现出较强的泛化能力，代码已开源（github.com/jinyangwu/SEED）。目前论文仍是 arXiv 预印本（2026年7月16日提交），尚无具体会议归属信息，属于当前 agentic RL 方向较新的一篇工作。",
+    "model": "claude-sonnet-5",
+    "reasoning_effort": "medium",
+    "date_added": "2026-07-21",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-07-21-05",
+    "paper_id": "arxiv:2605.27715",
+    "title": "Beyond Input Understanding: Diagnosing Multilingual Mathematical Reasoning with Directed Acyclic Trace Graphs",
+    "year": 2026,
+    "venue": "arXiv",
+    "topics": [
+      "multilingual"
+    ],
+    "keywords": [
+      "multilingual reasoning",
+      "diagnostic framework",
+      "trace graph",
+      "low-resource languages"
+    ],
+    "link": "https://arxiv.org/abs/2605.27715",
+    "brief": "这篇论文诊断大型推理模型（LRM）在多语言数学推理中的失败模式。以往研究多关注模型能否\"读懂\"非英语题目，本文关注一个更深的问题：即便题目本身是英文的，如果强制模型用某种非英语语言进行推理（reasoning language），准确率也会明显下降，这说明语言本身会影响推理执行过程，而不仅仅是输入理解环节。论文基于 Qwen3 系列模型，在覆盖 12 种语言的数学推理场景下开展实验，并非发布新的问答数据集，而是提出一套诊断性的分析框架和配套评测流程。方法上的核心创新是 DATG（Directed Acyclic Trace Graph）框架——把推理轨迹映射到一组与具体语言无关的\"数学锚点\"（mathematical anchors）及其依赖关系上，构建语言无关的参考 DAG，再将目标语言下的实际推理轨迹与参考 DAG 对齐，从三个维度量化评估：是否覆盖了必要的数学节点、是否遵守了节点间的依赖顺序、是否出现了有害的数学操作；在此诊断基础上，进一步提出 Loop-Retry 和 Formula-Retry 两种简单的测试时干预手段，针对性地纠正 DATG 识别出的具体失败模式，而不是笼统地重新采样整条轨迹。实验发现非英语推理普遍存在锚点覆盖率下降、依赖关系保真度变弱的问题，在低资源语言上尤为严重；而 Loop-Retry 和 Formula-Retry 两种测试时策略能够稳定提升低资源语言下的目标语言推理表现。论文于 2026 年 5 月 26 日提交至 arXiv，尚未查到具体会议归属，是近期多语言推理诊断方向讨论度较高的一篇工作。",
+    "model": "claude-sonnet-5",
+    "reasoning_effort": "medium",
+    "date_added": "2026-07-21",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
   }
 ]
