@@ -1600,10 +1600,10 @@
     "model": "claude-sonnet-5",
     "reasoning_effort": "medium",
     "date_added": "2026-07-20",
-    "read": false,
-    "read_at": null,
-    "deep_read": false,
-    "deep_read_at": null,
+    "read": true,
+    "read_at": "2026-07-21T07:17:46+00:00",
+    "deep_read": true,
+    "deep_read_at": "2026-07-21T07:17:46+00:00",
     "interest": null
   },
   {
@@ -1835,10 +1835,10 @@
     "model": "claude-sonnet-5",
     "reasoning_effort": "medium",
     "date_added": "2026-07-21",
-    "read": false,
-    "read_at": null,
-    "deep_read": false,
-    "deep_read_at": null,
+    "read": true,
+    "read_at": "2026-07-21T07:17:50+00:00",
+    "deep_read": true,
+    "deep_read_at": "2026-07-21T07:17:50+00:00",
     "interest": null
   },
   {
@@ -1939,6 +1939,165 @@
     "model": "claude-sonnet-5",
     "reasoning_effort": "medium",
     "date_added": "2026-07-21",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-07-16-15",
+    "paper_id": "aclanthology:D19-5409",
+    "title": "SAMSum Corpus: A Human-annotated Dialogue Dataset for Abstractive Summarization",
+    "year": 2019,
+    "venue": "EMNLP 2019 Workshop (New Frontiers in Summarization)",
+    "topics": [
+      "summarization"
+    ],
+    "keywords": [
+      "dialogue summarization",
+      "human-annotated dataset",
+      "ROUGE limitations",
+      "abstractive summarization"
+    ],
+    "link": "https://aclanthology.org/D19-5409/",
+    "brief": "摘要研究长期集中在新闻等单说话人文本，因为现成的大规模高质量语料很多；而真正的即时通讯式聊天摘要数据集在 2019 年之前几乎不存在——作者调研了 IRC、短信、电影对白、评论区等一大圈现成资源，发现全都跑偏（太技术化、太长、缺上下文或太口语化）。于是本文让语言学家凭空编写一批模仿日常聊天风格的虚构对话（而非收集真实聊天记录），再让语言专家各写一条参考摘要，构成 16369 段对话的 SAMSum 语料。为回应编写数据是否可信的质疑，作者设计了一个对照验证：编写的对话中 94% 被判定为像真实 Messenger 聊天，而套用同样标准去检验此前调研的现成数据集只有 28% 达标。用多个当年主流模型（Pointer Generator、Transformer、Fast Abs RL、LightConv/DynamicConv）训练后发现一个核心反常现象：模型生成的对话摘要ROUGE 分数全面高于新闻摘要（R-1 43.53 vs 39.76），但两位语言专家的人工评分却明显更差（-0.503 vs 0.18，评分区间 [-1,1]），且 ROUGE 与人工评分的相关性对话（0.32）明显弱于新闻（0.47）。论文给出一个直观反例：一个方向性错误的摘要（声称双方不喜欢红玫瑰，实际是要买红玫瑰）ROUGE 三项全部高于正确摘要。错误分析指出对话摘要特有的困难：人名与动作对不上、主宾颠倒、多轮讨论后的结论在narrowing过程中丢失。局限：每段对话仅一条参考摘要，且编写而非收集对话可能带来'过度整洁'的系统性偏差，这两点论文均未讨论。",
+    "model": "claude-opus-4-8",
+    "reasoning_effort": "standard",
+    "date_added": "2026-07-16",
+    "read": true,
+    "read_at": "2026-07-21T15:41:24+00:00",
+    "deep_read": true,
+    "deep_read_at": "2026-07-21T15:41:24+00:00",
+    "interest": null
+  },
+  {
+    "id": "2026-07-22-01",
+    "paper_id": "aclanthology:2025.findings-emnlp.519",
+    "title": "Demystifying Multilingual Reasoning in Process Reward Modeling",
+    "year": 2025,
+    "venue": "EMNLP 2025 (Findings)",
+    "topics": [
+      "multilingual",
+      "reinforcement learning"
+    ],
+    "keywords": [
+      "process reward model",
+      "PRM",
+      "multi-step reasoning",
+      "RLVR"
+    ],
+    "link": "https://aclanthology.org/2025.findings-emnlp.519/",
+    "brief": "这篇论文关注的任务是将过程奖励模型(Process Reward Model, PRM)从以往几乎只支持英语的局限中扩展到多语言场景。PRM是近年来强化学习训练大语言模型多步推理能力的关键组件之一,它在推理过程的每一步给出细粒度反馈信号,而不是像结果奖励模型那样只在最后给一个整体分数。但此前几乎所有PRM的研究和训练数据都以英语为主,作者认为这严重限制了RL方法在非英语场景下的可用性。为此,作者构建了一个覆盖七种语言的PRM训练数据集,做法是将现有的英语步骤级标注数据翻译并适配到其他语言,然后在此基础上训练多语言PRM。在评测环节,作者选用两个被广泛使用的多步推理基准,把评测范围扩展到十一种语言,系统比较单语PRM与多语言PRM的表现差异。实验结果显示,多语言PRM不仅能够提升平均推理准确率,还能显著减少模型在推理早期阶段就出现的错误,说明细粒度的过程反馈在跨语言场景下依然有效,甚至能弥补模型对非英语输入原生推理能力较弱的问题。论文进一步做了消融分析,发现多语言PRM的效果对训练语言数量和英语数据占比都比较敏感——语言覆盖面越广、且保留一定比例的英语数据,效果通常更好;同时,增加候选回复数量和可训练参数规模也能带来稳定收益。作者Weixuan Wang、Minghao Wu、Barry Haddow和Alexandra Birch,后两位来自爱丁堡大学,是多语言机器翻译和NLP领域的资深研究者。这篇论文发表于EMNLP 2025 Findings,虽非主会长文,但探讨的问题——如何让RLVR/PRM这类训练范式真正惠及非英语用户——正是当下多语言LLM研究的核心痛点之一,也为后续将强化学习训练扩展到更广泛语言覆盖提供了一个可复现的基线和分析框架。",
+    "model": "claude-sonnet-5",
+    "reasoning_effort": "medium",
+    "date_added": "2026-07-22",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-07-22-02",
+    "paper_id": "arxiv:2606.15974",
+    "title": "A Large-Scale Multi-Dimensional Empirical Study of LLMs for Conversation Summarization",
+    "year": 2026,
+    "venue": "arXiv",
+    "topics": [
+      "summarization"
+    ],
+    "keywords": [
+      "dialogue summarization",
+      "benchmark",
+      "fact-checking",
+      "reasoning LLM evaluation"
+    ],
+    "link": "https://arxiv.org/abs/2606.15974",
+    "brief": "这篇论文的任务是对大语言模型在对话摘要(conversation/dialogue summarization)上的表现进行大规模、多维度的实证评测。作者指出,现有对话摘要评测基准普遍存在场景单一、输入长度受限、样本量偏小的问题,而且往往缺少对前沿推理模型(reasoning LLM)和轻量级小模型的覆盖,评测维度也不够细粒度。为解决这些问题,作者构建了名为OmniCSEval的新基准,收录来自13个高质量对话摘要语料库(包括SAMSum、DialogSum、MediaSum、QMSum等)的1800段对话,覆盖日常生活、媒体访谈、剧本、客服、医疗、会议六大真实场景,上下文长度从128到32k tokens不等,规模和场景丰富度远超此前的DialSummEval、TofuEval、SummEdits等基准。方法上的核心创新是一套双向原子事实核查框架:一方面用关键事实匹配(forward key fact matching)衡量摘要的完整性和简洁性,另一方面用摘要事实验证(backward summary fact verification)评估摘要的忠实度;为保证标注质量,作者设计了人机协作的关键事实提取流程和多LLM共识过滤机制来分解和核验摘要中的事实点,同时特意将评测所用的LLM和被评测的LLM区分开,以减少自评偏差。基于这套框架,作者评测了28个主流LLM(按推理能力和参数规模分为大推理、小推理、大指令、小指令模型四类),生成并打分超过5万条摘要。实证结果显示:不同场景下模型面临的短板并不相同,例如在会议和剧本场景中完整性与简洁性问题突出,而在日常生活场景中忠实度(幻觉)问题更明显;显式推理能力能显著提升完整性和简洁性,但同时也会增加幻觉风险;模型参数规模仍然是决定跨场景稳定性的关键因素,推理能力只能部分弥补规模上的不足。作者来自北京航空航天大学CCSE实验室、中科院自动化所模式识别国家重点实验室(MAIS)以及Fanyu AI Laboratory,论文于2026年6月挂上arXiv,目前是预印本,尚未查到具体会议归属,但其评测框架和发现对理解当下摘要类LLM应用的选型很有参考价值。",
+    "model": "claude-sonnet-5",
+    "reasoning_effort": "medium",
+    "date_added": "2026-07-22",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-07-22-03",
+    "paper_id": "arxiv:2509.19631",
+    "title": "Advancing Speech Summarization in Multi-modal LLMs with Reinforcement Learning",
+    "year": 2025,
+    "venue": "arXiv",
+    "topics": [
+      "summarization",
+      "reinforcement learning",
+      "multilingual"
+    ],
+    "keywords": [
+      "speech summarization",
+      "multi-modal LLM",
+      "cross-lingual generalization",
+      "multi-stage RL"
+    ],
+    "link": "https://arxiv.org/abs/2509.19631",
+    "brief": "这篇论文聚焦的任务是语音摘要(speech summarization),即直接从语音信号生成文本摘要,而不需要先做语音转录再对文本做摘要这种两阶段流程。作者指出,随着多模态大语言模型(Multi-modal LLM, MLLM)的发展,端到端从语音生成摘要已经成为可能,这类方法还天然支持风格可控和零样本泛化,但目前开源MLLM在语音摘要任务上的表现依然明显落后于最先进的纯文本LLM,限制了其实际部署价值。为缩小这一差距,作者提出了一套多阶段强化学习训练框架,专门用来提升MLLM的语音摘要能力——具体做法是通过分阶段的RL训练逐步优化模型在语音理解和摘要生成两个子能力上的表现,而不是像以往工作那样只依赖监督微调。实验部分,作者在多个语音摘要基准上将训练后的模型与强基线以及更大规模的MLLM进行对比,结果显示该方法带来了显著提升,不仅明显优于同等规模的强基线,甚至超过了参数量远大于自己的MLLM,同时大幅缩小了与最先进纯文本LLM之间的性能差距。一个格外值得关注的结果是跨语言泛化能力:尽管RL训练数据几乎全部是英语,但模型在多语言的Floras语音基准上依然保持了接近GPT-4o-Audio的表现,说明强化学习阶段学到的摘要能力和语音理解能力具有较强的跨语言迁移性,而不是单纯记住了英语场景下的模式。这个发现对多语言语音应用场景(比如跨语言会议纪要、多语言新闻语音摘要)有直接的参考价值,也说明RL微调相比纯SFT在跨语言泛化上可能存在优势,值得后续工作进一步深挖机制。论文目前是2025年9月发布的arXiv预印本,尚未查到具体会议录用信息,但其方法和跨语言泛化的实验结果在语音摘要、强化学习与多语言这三个方向的交叉点上都比较有意思,属于近期讨论度较高的一篇工作。",
+    "model": "claude-sonnet-5",
+    "reasoning_effort": "medium",
+    "date_added": "2026-07-22",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-07-22-04",
+    "paper_id": "aclanthology:2026.findings-acl.2067",
+    "title": "Recovered in Translation: Efficient Pipeline for Automated Translation of Benchmarks and Datasets",
+    "year": 2026,
+    "venue": "ACL 2026 (Findings)",
+    "topics": [
+      "multilingual"
+    ],
+    "keywords": [
+      "benchmark translation",
+      "test-time compute scaling",
+      "low-resource languages",
+      "evaluation reliability"
+    ],
+    "link": "https://aclanthology.org/2026.findings-acl.2067/",
+    "brief": "这篇论文的任务是构建一套自动化的高质量基准/数据集翻译流程,目的是解决多语言大语言模型评测中长期存在的一个基础性问题:现有的翻译版基准和数据集质量参差不齐,普遍存在语义漂移(semantic drift)和上下文丢失的问题,导致下游评测结果失真、误导研究者对模型多语言能力的判断。为验证方法有效性,作者将主流英语基准和数据集翻译成八种东欧和南欧语言,包括乌克兰语、保加利亚语、斯洛伐克语、罗马尼亚语、立陶宛语、爱沙尼亚语、土耳其语和希腊语,这些语言大多资源相对有限,此前翻译版基准的质量问题尤其突出。方法上的核心创新在于把测试时计算扩展(test-time compute scaling)的思路引入翻译流程:一方面复用Universal Self-Improvement(USI)这种让模型在推理阶段自我修正、迭代提升输出质量的策略,另一方面提出了作者自己设计的多轮排序方法T-RANK,通过多轮候选翻译生成和排序筛选出更贴近原文任务结构和语言细节的译文,而不是像传统流水线那样一次翻译就定稿。这套框架的目标是让翻译后的基准尽可能保留原始任务结构和语言学细节,避免因翻译损耗而扭曲评测任务本身的难度和考察点。实验中,作者分别用基于参考译文的自动指标和LLM-as-a-judge两种评测方式,对比了自己翻译的基准和现有资源的翻译质量,结果显示新方法在两种评测口径下都明显超过了此前的翻译资源,能带来更准确可靠的下游模型评测结果。作者最后开源了整套翻译框架以及改进后的多语言基准,方便社区在这些资源相对匮乏的语言上做更可信的多语言评测和研究。作者Hanna Yukhymenko、Anton Alexandrov、Martin Vechev来自苏黎世联邦理工学院(ETH Zurich),Vechev实验室长期在LLM可靠性、安全性和评测方法学方向有稳定产出。这篇论文被ACL 2026 Findings录用,解决的是一个看似基础设施性、实则制约整个多语言评测领域可信度的问题,属于比较扎实、有实用价值的工作。",
+    "model": "claude-sonnet-5",
+    "reasoning_effort": "medium",
+    "date_added": "2026-07-22",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-07-22-05",
+    "paper_id": "arxiv:2512.21625",
+    "title": "Rethinking Sample Polarity in Reinforcement Learning with Verifiable Rewards",
+    "year": 2025,
+    "venue": "ACL 2026 (Main Conference)",
+    "topics": [
+      "reinforcement learning"
+    ],
+    "keywords": [
+      "RLVR",
+      "advantage shaping",
+      "sample polarity",
+      "policy optimization"
+    ],
+    "link": "https://arxiv.org/abs/2512.21625",
+    "brief": "这篇论文研究的问题是强化学习可验证奖励(Reinforcement Learning with Verifiable Rewards, RLVR)训练中一个此前被相对忽视的细节:在训练大型推理模型(Large Reasoning Model, LRM)时,策略更新依赖模型自己采样生成的正例(reward为正,即回答正确)和负例(reward为负,即回答错误)两类轨迹,这两类样本对应不同的\"极性\"(sample polarity),但以往的RLVR方法大多把它们同等对待,没有系统研究过两者在训练动态上到底扮演了什么不同的角色。作者对此做了系统性的实证分析,发现了一个直观但此前缺乏证据支撑的现象:正样本的作用更多是强化模型已经掌握的正确推理模式,让这些模式在后续生成中被更稳固地复现;而负样本的作用则更多是鼓励模型探索新的、尚未尝试过的推理路径,起到类似\"纠错倒逼探索\"的效果。基于这个发现,作者进一步在样本级和token级两个粒度上分别研究了调整正负样本优势值(advantage)大小对RLVR训练效果的影响,发现单纯在样本级别做统一调整并不够精细,真正影响训练效果的往往是序列内部少数关键token的优势信号是否被合理放大或抑制。由此,作者提出了一种名为A3PO(Adaptive and Asymmetric token-level Advantage shaping method for Policy Optimization)的策略优化方法,其核心创新点是根据样本极性(正/负)对不同token采取自适应且非对称的优势值调整策略,更精确地把优势信号分配到真正对推理路径有决定性影响的关键token上,而不是对整条轨迹做粗粒度的统一缩放。实验部分,作者在五个具有代表性的推理基准上验证了A3PO的效果,结果表明相比标准的RLVR训练方法及其他优势塑造变体,A3PO能带来更稳定和更明显的推理性能提升,证明了区分样本极性、聚焦关键token这一思路的有效性。这篇论文由中国人民大学高瓴人工智能学院、蚂蚁集团等机构的研究者(Xinyu Tang、Yuliang Zhan、Zhixun Li、Wayne Xin Zhao等)合作完成,已被ACL 2026主会录用,是近期RLVR训练机制分析类工作中比较扎实、对从业者调参有直接参考价值的一篇。",
+    "model": "claude-sonnet-5",
+    "reasoning_effort": "medium",
+    "date_added": "2026-07-22",
     "read": false,
     "read_at": null,
     "deep_read": false,
