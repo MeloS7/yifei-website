@@ -2103,5 +2103,138 @@
     "deep_read": false,
     "deep_read_at": null,
     "interest": null
+  },
+  {
+    "id": "2026-07-23-01",
+    "paper_id": "arxiv:2606.06586",
+    "title": "Improving Cross-Lingual Factual Recall via Consistency-Driven Reinforcement Learning",
+    "year": 2026,
+    "venue": "arXiv",
+    "topics": [
+      "multilingual",
+      "reinforcement learning"
+    ],
+    "keywords": [
+      "cross-lingual consistency",
+      "GRPO",
+      "factual recall",
+      "PolyFact"
+    ],
+    "link": "https://arxiv.org/abs/2606.06586",
+    "brief": "这篇论文关注大语言模型的跨语言事实召回问题——目前主流LLM大多以英语为中心训练，导致它们在用英语之外的语言表达同一世界知识时经常出现不一致甚至错误的回答，即所谓的\"跨语言事实不一致\"问题。为系统研究这一问题，作者构建了新数据集PolyFact，包含基于Wikidata的10万条事实性问答，覆盖12种类型学上差异较大的语言，形成平行的多语言事实问答基准，可以直接比较同一模型在不同语言下对同一事实的回答是否一致。方法上的核心创新在于系统性地对比了三种提升跨语言一致性的路径：轻量级持续预训练（CPT）、监督微调（SFT）以及基于GRPO（Group Relative Policy Optimization）的强化学习，并针对跨语言一致性设计了对应的奖励信号，让模型在RL过程中显式地被鼓励在多语言之间给出一致答案，而不只是单语言正确率。实验基于Qwen-2.5-7B和OLMo-2-1124-7B两个基座模型展开。结果显示，GRPO强化学习在跨语言一致性和对未见语言的泛化能力上都持续优于SFT，而单纯的平行数据CPT带来的增益非常有限，说明强化学习在跨语言知识对齐上具有SFT难以替代的优势。更有意思的是论文的机制分析部分：作者深入模型内部结构发现，GRPO训练会重组模型的多语言路由方式，具体表现为降低MLP层和注意力头中的语言特化程度，转而促成更多跨语言共享的表示——这为\"为什么RL比SFT更能改善跨语言一致性\"提供了一个可解释的机制层面的答案。作者已公开代码、模型权重和PolyFact数据集，便于后续复现和扩展研究。论文由University College London的Centre for Artificial Intelligence团队完成。",
+    "model": "claude-sonnet-5",
+    "reasoning_effort": "standard",
+    "date_added": "2026-07-23",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-07-23-02",
+    "paper_id": "arxiv:2602.03352",
+    "title": "PEGRL: Improving Machine Translation by Post-Editing Guided Reinforcement Learning",
+    "year": 2026,
+    "venue": "ACL 2026 (Findings)",
+    "topics": [
+      "multilingual",
+      "reinforcement learning"
+    ],
+    "keywords": [
+      "machine translation",
+      "post-editing",
+      "reinforcement learning",
+      "variance reduction"
+    ],
+    "link": "https://arxiv.org/abs/2602.03352",
+    "brief": "这篇论文的任务是用强化学习提升大语言模型的机器翻译质量，但切入点是翻译任务中RL训练本身的不稳定性问题：面向翻译的RL常常面临蒙特卡洛回报估计噪声大、轨迹空间巨大等困难，导致优化过程更倾向于全局粗粒度调整而忽视局部细节质量，训练不稳定且样本效率低。为解决这一问题，作者提出PEGRL，一个两阶段强化学习框架，创新点在于引入\"译后编辑\"（post-editing）作为辅助任务来稳定训练：模型先对源句采样生成若干候选翻译，再基于这些候选翻译构造译后编辑任务的输入，让模型学习修正自己生成的翻译；由于译后编辑任务的梯度方差更低，这部分低方差梯度可以在训练中与主翻译任务的梯度共同传播，从而强化局部质量优化，同时保留了RL探索全局翻译空间的能力。作者还专门设计了一个任务权重机制，用于放大译后编辑梯度的影响力，得到一个略有偏差但样本效率更高的梯度估计器，在偏差和方差之间做了精细权衡。实验在英语-芬兰语、英语-土耳其语，以及英汉双向翻译等多个语言对上进行，结果显示PEGRL相较多个强化学习基线方法都取得了持续稳定的提升；尤其值得关注的是，在英语-土耳其语方向上，PEGRL的COMETKiwi评分已经能够与DeepSeek-V3.2等先进的LLM翻译系统相媲美，说明这一相对轻量的RL训练技巧改进能够缩小与超大规模模型的差距。该工作已被ACL 2026 Findings录用，作者来自南京大学NLP组（NJUNLP），并在GitHub公开了官方实现代码（NJUNLP/peg-rl），便于社区复现和在其他语言对上验证方法的通用性。",
+    "model": "claude-sonnet-5",
+    "reasoning_effort": "standard",
+    "date_added": "2026-07-23",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-07-23-03",
+    "paper_id": "arxiv:2507.13579",
+    "title": "Learning to summarize user information for personalized reinforcement learning from human feedback",
+    "year": 2025,
+    "venue": "arXiv",
+    "topics": [
+      "summarization",
+      "reinforcement learning"
+    ],
+    "keywords": [
+      "personalized RLHF",
+      "user summarization",
+      "reward modeling",
+      "co-adaptation"
+    ],
+    "link": "https://arxiv.org/abs/2507.13579",
+    "brief": "这篇论文关注RLHF（基于人类反馈的强化学习）中一个长期被忽视的问题：标准RLHF流程通常用单一奖励模型建模整个用户群体的偏好，隐含假设\"所有人的偏好都一样\"，但现实中不同用户对同一回答的偏好可能截然不同，这限制了模型个性化对齐的能力。作者提出的框架PLUS（Preference Learning Using Summarization）巧妙地把\"摘要生成\"和\"个性化强化学习\"结合了起来：核心创新是训练一个专门的用户摘要模型，用强化学习的方式学习为每个用户生成一段文本摘要，浓缩这个用户的偏好、性格特征以及历史对话信息；这段摘要随后作为条件输入喂给奖励模型，让奖励模型能够针对不同用户做出个性化的偏好预测，而不再是对所有用户一视同仁。更值得关注的方法设计是，用户摘要模型和奖励模型并非分开训练，而是构成一个在线协同适应（co-adaptation）的训练循环——摘要模型根据奖励模型的反馈调整摘要内容的信息取舍，奖励模型也根据摘要质量不断校准，两者相互促进收敛。实验结果显示，PLUS生成的摘要能够覆盖用户偏好的多个维度，使奖励模型准确率提升11%到77%（因具体设定不同而有较大区间），并且相比此前最好的个性化奖励建模技术在RLHF场景下整体提升达到25%，是相当显著的改进幅度。这篇论文由斯坦福大学的Hyunji Nam牵头，联合华盛顿大学、微软亚洲研究院与DoorDash的研究者共同完成，2025年7月发布于arXiv，同时被微软研究院官网收录为其发表成果，说明工作本身在工业界也受到一定关注，摘要生成与用户建模、个性化对齐结合的思路也为RLHF个性化方向提供了一个新颖的技术路径。",
+    "model": "claude-sonnet-5",
+    "reasoning_effort": "standard",
+    "date_added": "2026-07-23",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-07-23-04",
+    "paper_id": "aclanthology:2025.naacl-long.494",
+    "title": "Coverage-based Fairness in Multi-document Summarization",
+    "year": 2025,
+    "venue": "NAACL 2025 (Main Conference)",
+    "topics": [
+      "summarization"
+    ],
+    "keywords": [
+      "fairness",
+      "multi-document summarization",
+      "social attributes",
+      "Equal Coverage"
+    ],
+    "link": "https://aclanthology.org/2025.naacl-long.494/",
+    "brief": "这篇论文研究多文档摘要（Multi-document Summarization, MDS）中的公平性问题——当输入的多篇文档来自具有不同社会属性（例如不同政治立场、不同评分倾向的评论者）的信息源时，摘要系统是否能公平地反映各方观点，而不是系统性地偏向某一类信息源。这是一个此前研究相对较少但现实意义很强的问题，因为摘要系统一旦存在系统性偏向，会在新闻聚合、评论摘要等场景中放大信息不对称。方法上的核心创新是提出了两个新的公平性度量：摘要级别的Equal Coverage，衡量摘要对不同社会属性文档的覆盖是否均衡，并且专门考虑了输入文档内部的信息冗余（避免因为某一属性文档内容本身重复度高而被误判为\"覆盖充分\"）；以及语料库级别的Coverage Parity，用来衡量系统在整个测试集上是否存在系统性的不公平倾向。这弥补了以往工作仅使用\"比例代表性\"（Proportional Representation）这一指标的局限——该指标既没有考虑文档内部冗余，也无法捕捉语料库层面的整体不公平。实验覆盖了亚马逊评论（情感倾向）、MITweet和Article Bias（政治立场/支持反对倾向）等多个领域数据集，评测对象既包括COOP、PEGASUS、PRIMERA等传统摘要系统，也包括GPT系列、Llama2、Claude3、Mixtral、Gemma2等一系列LLM。结果显示，在整体得分上Gemma2-27b是最公平的模型，在7-9B规模的小模型中Gemma2-9b表现最公平，且同一模型家族内部通常是参数量越大公平性越好；但更值得警惕的结论是，几乎所有被评测的LLM在摘要中都存在对某些社会属性的过度代表现象，说明当前主流摘要系统在公平性上普遍存在系统性缺陷，为后续摘要模型的公平性对齐工作提出了明确的改进方向。作者为Haoyuan Li、Yusen Zhang、Rui Zhang、Snigdha Chaturvedi，论文发表于NAACL 2025主会长文。",
+    "model": "claude-sonnet-5",
+    "reasoning_effort": "standard",
+    "date_added": "2026-07-23",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-07-23-05",
+    "paper_id": "arxiv:2510.04140",
+    "title": "Selective Expert Guidance for Effective and Diverse Exploration in Reinforcement Learning of LLMs",
+    "year": 2025,
+    "venue": "arXiv",
+    "topics": [
+      "reinforcement learning"
+    ],
+    "keywords": [
+      "RLVR",
+      "exploration diversity",
+      "entropy collapse",
+      "token-level guidance"
+    ],
+    "link": "https://arxiv.org/abs/2510.04140",
+    "brief": "这篇论文聚焦于RLVR（Reinforcement Learning with Verifiable Rewards，可验证奖励强化学习）在提升大语言模型推理能力时面临的一个核心矛盾：RLVR的效果高度依赖基座模型自身的探索能力，既需要探索的\"有效性\"（能找到正确解），也需要探索的\"多样性\"（不过早收敛到单一解题路径），但已有的改进方法大多通过模仿专家轨迹来提升有效性，代价是牺牲了多样性，导致策略熵快速坍缩、探索空间过早收窄到一个很窄的解法子集。论文的方法创新点在于提出MENTOR（Mixed-policy Expert Navigation for Token-level Optimization of Reasoning）框架，其关键洞察是专家指导其实只需要在\"关键决策点\"上介入即可，而不必模仿专家的完整推理轨迹——也就是说，在大部分token生成位置让模型自由探索，只在少数对最终结果影响较大的分叉点上引入专家轨迹作为引导。这种token级别、选择性的专家引导方式使模型既能在关键节点获得有效性上的提升，又能在其余大部分探索空间保留策略的多样性，从而延缓策略熵坍缩的速度，让探索在整个训练过程中更持久。实验在六个具有挑战性的数学推理基准以及若干分布外（out-of-domain）任务上进行，结果显示MENTOR相较基线方法取得了持续稳定的提升，且这一增益在不同的模型家族之间保持稳定，说明方法的通用性较好。进一步的分析证实了论文的核心假设：MENTOR确实能够缓解RLVR训练中的熵坍缩问题，最终收敛的策略熵水平略高于纯on-policy RL基线，对应的解题路径支持集也更宽，即模型的能力边界被进一步拓展。这篇论文2025年10月发布于arXiv并同步提交OpenReview，是当前RLVR训练稳定性与探索效率方向上一个值得关注的新工作。",
+    "model": "claude-sonnet-5",
+    "reasoning_effort": "standard",
+    "date_added": "2026-07-23",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
   }
 ]
