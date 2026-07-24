@@ -2236,5 +2236,130 @@
     "deep_read": false,
     "deep_read_at": null,
     "interest": null
+  },
+  {
+    "id": "2026-07-24-01",
+    "paper_id": "arxiv:2601.00263",
+    "title": "Parallel Universes, Parallel Languages: A Comprehensive Study on LLM-based Multilingual Counterfactual Example Generation",
+    "year": 2026,
+    "venue": "ACL 2026 (Main Conference)",
+    "topics": [
+      "multilingual"
+    ],
+    "keywords": [
+      "counterfactual generation",
+      "cross-lingual",
+      "data augmentation"
+    ],
+    "link": "https://arxiv.org/abs/2601.00263",
+    "brief": "反事实样本（counterfactual）指对输入做最小编辑使模型预测发生改变的样本，是解释模型行为的常用手段。LLM在生成英文反事实样本方面已表现出色,并展现出较强的多语言能力,但它们生成多语言反事实样本的有效性此前一直缺乏系统研究。这篇论文由TU Berlin、LMU Munich等机构的Qianli Wang、Van Bach Nguyen、Yihong Liu、Hinrich Schütze、Vera Schmitt等人合作完成，被ACL 2026主会录用。作者围绕六种语言做了一次全面的实证研究：一方面自动评测直接用目标语言生成的反事实样本，另一方面评测先在英文上生成再翻译到目标语言的反事实样本，两条路径的质量此前从未被系统对比过。结果发现，翻译得到的反事实样本虽然有效性（validity，即是否真的改变了模型预测）更高，但需要的编辑量明显更多，整体质量仍不及原始英文版本。作者进一步发现，高资源欧洲语言之间的编辑模式高度相似，说明跨语言扰动可能遵循某些共通的策略性原则；同时归纳出四类在各语言中反复出现的典型错误。最后，作者验证了多语言反事实数据增强（CDA）比跨语言CDA能带来更大的下游模型性能提升，尤其是在低资源语言上收益更明显，但生成质量的不完美也限制了增益的上限。这项工作没有提出新方法，而是给多语言可解释性和反事实数据增强这一交叉方向提供了一份扎实的诊断性实证研究。",
+    "model": "Claude Sonnet 5",
+    "reasoning_effort": "medium",
+    "date_added": "2026-07-24",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-07-24-02",
+    "paper_id": "arxiv:2509.24613",
+    "title": "HiKE: Hierarchical Evaluation Framework for Korean-English Code-Switching Speech Recognition",
+    "year": 2025,
+    "venue": "EACL 2026 (Findings)",
+    "topics": [
+      "multilingual"
+    ],
+    "keywords": [
+      "code-switching",
+      "speech recognition benchmark",
+      "low-resource evaluation"
+    ],
+    "link": "https://arxiv.org/abs/2509.24613",
+    "brief": "尽管多语言自动语音识别（ASR）近年进步显著，语码转换（code-switching, CS，即同一句话中混用多种语言）现象却长期是一个被严重忽视的难题，尤其是缺少高质量、非合成的真实评测数据。这篇论文由Gio Paik、Chanwoo Kim等作者完成（团队关联ThetaOne AI），提出了HiKE：首个全球可公开访问的、基于真实（非合成）语料的韩英语码转换评测基准，被EACL 2026 Findings录用。数据集包含1121条高质量自然语码转换语料，覆盖软件工程、语言教育等8个话题，总时长约2.2小时。其方法上的创新在于两点：一是提供了精细的外来词（loanword）标注，二是设计了一套分层的语码转换级别标注方案，同时在词、短语、句子三个粒度上标记语码转换的发生位置，从而能够系统评估模型在不同粒度语码转换现象上的处理能力，而不是只给一个笼统的整体错误率。作者在多个主流多语言ASR模型上做了评测，并进一步做了微调实验。结果显示，大多数现成的多语言ASR模型在语码转换场景下的初始表现都明显不足，但通过用合成的语码转换数据做微调，这一能力可以被有效激发和提升。这项工作为长期缺乏严肃评测工具的韩英语码转换语音识别领域提供了一个可复用的基准和诊断框架，代码和数据已在GitHub开源。",
+    "model": "Claude Sonnet 5",
+    "reasoning_effort": "medium",
+    "date_added": "2026-07-24",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-07-24-03",
+    "paper_id": "aclanthology:2026.acl-long.1358",
+    "title": "CLARity: Reasoning Consistency Alone Can Teach Reinforced Experts",
+    "year": 2026,
+    "venue": "ACL 2026 (Main Conference)",
+    "topics": [
+      "reinforcement learning"
+    ],
+    "keywords": [
+      "RL for reasoning",
+      "reasoning consistency",
+      "process supervision"
+    ],
+    "link": "https://aclanthology.org/2026.acl-long.1358/",
+    "brief": "在标注数据稀缺的专业领域训练\"专家LLM\"往往只能依赖选择题（MCQ）形式的监督信号，而这篇由Jiuheng Lin、Cong Jiang、Zirui Wu、Jiarui Sun、Yansong Feng合作完成、被ACL 2026主会录用的论文指出了一个此前被低估的风险：在MCQ上做标准的结果导向强化学习（outcome-based RL）虽然能提升选择题的准确率，却经常悄悄破坏模型的推理过程本身，导致模型给出的推理依据（rationale）与最终答案相互矛盾、内部不一致——也就是\"蒙对了但说不出对在哪\"。此前解决这一问题的方案，比如训练大规模过程奖励模型（Process Reward Models, PRM）来监督推理链的每一步，往往成本极其高昂，普通团队难以承受。为此，作者提出了CLARity框架，其核心创新是只用一个体量很小的通用LLM就能实现对推理一致性的监督：具体包括一个\"一致性感知\"的奖励机制、一套\"先精炼后监控\"（refine-then-monitor）的两阶段训练流程，以及一种动态数据重构策略以更充分利用有限的标注数据。实验结果显示，相比标准的结果导向RL，CLARity能将回答的一致性提升16.5%，最终任务准确率提升7.5%；人工评估进一步证实模型在事实正确性和推理连贯性上都有实质性提升，输出结果更值得信赖。这项工作说明，用小模型做\"过程监督\"这件事，未必需要昂贵的大规模PRM，一个设计得当的轻量级一致性奖励机制同样可行。",
+    "model": "Claude Sonnet 5",
+    "reasoning_effort": "medium",
+    "date_added": "2026-07-24",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-07-24-04",
+    "paper_id": "aclanthology:2026.acl-long.74",
+    "title": "Harnessing Negative Signals: Reinforcement Distillation from Teacher Data for LLM Reasoning",
+    "year": 2026,
+    "venue": "ACL 2026 (Main Conference)",
+    "topics": [
+      "reinforcement learning"
+    ],
+    "keywords": [
+      "reasoning distillation",
+      "REINFORCE",
+      "negative traces"
+    ],
+    "link": "https://aclanthology.org/2026.acl-long.74/",
+    "brief": "模型蒸馏（distillation）领域近年的一个共识是，来自强大推理模型的输出数据能有效训练更小的学生模型，但业界的标准做法通常会直接丢弃教师模型生成的错误推理轨迹（negative traces），只保留答对的正确轨迹用于监督微调——这篇由Shuyao Xu、Cheng Peng、Jiangxuan Long、Weidi Xu、Wei Chu、Yuan Qi合作完成、被ACL 2026主会录用的论文认为，这些被丢弃的\"错误答案\"其实包含着有价值但一直未被充分利用的信息。论文要回答的核心问题是：如何在离线（offline）场景下同时有效利用正确和错误的蒸馏推理轨迹，来最大化学生模型的推理性能。作者设计了一套两阶段训练流程：第一阶段先在正确轨迹上做常规的监督微调（SFT），第二阶段则同时使用正确和错误轨迹做进一步精炼，这一阶段采用的是作者提出的一个简洁的REINFORCE式训练目标，命名为REDI（Reinforcement Distillation）。实验表明，REDI这一目标在利用负样本轨迹这件事上，效果显著优于DPO、SimPO等已确立的偏好优化方法。最引人注目的结果是：作者训练的Qwen-REDI-1.5B模型仅使用开源Open-R1数据集中的13.1万条训练轨迹，就在MATH-500基准上取得了83.1%的成绩，其表现与使用80万条闭源数据训练的DeepSeek-R1-Distill-Qwen-1.5B相当，充分展示了利用此前被丢弃的负样本数据所带来的显著数据效率优势。",
+    "model": "Claude Sonnet 5",
+    "reasoning_effort": "medium",
+    "date_added": "2026-07-24",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-07-24-05",
+    "paper_id": "arxiv:2607.17524",
+    "title": "Token-Level Off-Policy Learning for Faithful Generation Under Distribution Shift",
+    "year": 2026,
+    "venue": "arXiv",
+    "topics": [
+      "summarization"
+    ],
+    "keywords": [
+      "off-policy learning",
+      "faithfulness",
+      "OOD generalization"
+    ],
+    "link": "https://arxiv.org/abs/2607.17524",
+    "brief": "这篇论文由南加州大学（USC）的Zitong Huang、Gustavo Lucas Carvalho、Deqing Fu、Robin Jia于2026年7月20日发布在arXiv，关注的任务是\"忠实生成\"（faithful generation）在分布偏移（distribution shift）场景下的后训练问题，主战场是文档摘要，并进一步验证了在机器翻译上的可迁移性。作者观察到，现有的后训练方法要么在序列级别整体打分（容易忽略局部错误的具体位置），要么直接训练模型去模仿某些off-policy（非当前策略自身生成）的目标序列，而这种直接模仿容易带来副作用，让模型学到不必要的分布偏移。为此，作者提出了TOPL（Token-Level Off-Policy Labeling），核心创新在于把后训练重新表述为一个token级别的\"正确性预测\"任务：不再要求模型直接生成某个off-policy的目标token序列，而是训练模型去判别一段回答中每个token是\"好\"还是\"坏\"，通过这种判别式监督信号，自然地引导模型在生成时倾向于产出更多\"好\"token，从而绕开了直接模仿式训练带来的陷阱。作者在11个文档摘要数据集上做了域外泛化（OOD generalization）实验，对比了多种序列级和token级基线方法，结果显示TOPL取得了明显更强的跨数据集泛化能力；进一步的实验表明，TOPL学到的能力可以有效迁移到机器翻译任务上，说明其收益并非局限于摘要这一单一任务。消融实验证实，token级别的学习信号是效果的关键来源，替换成序列级别的类似设计并不能带来同等收益。作者还发现一个有意思的可解释性副产物：TOPL训练出的LoRA适配器本质上起到了线性分类头和\"steering vector\"（引导向量）的作用，为理解这类后训练方法的内部工作机制提供了新的视角。",
+    "model": "Claude Sonnet 5",
+    "reasoning_effort": "medium",
+    "date_added": "2026-07-24",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
   }
 ]
