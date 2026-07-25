@@ -2361,5 +2361,136 @@
     "deep_read": false,
     "deep_read_at": null,
     "interest": null
+  },
+  {
+    "id": "2026-07-25-01",
+    "paper_id": "arxiv:2603.16309",
+    "title": "Omnilingual MT: Machine Translation for 1,600 Languages",
+    "year": 2026,
+    "venue": "arXiv",
+    "topics": [
+      "multilingual"
+    ],
+    "keywords": [
+      "machine translation",
+      "low-resource languages",
+      "language coverage",
+      "endangered languages"
+    ],
+    "link": "https://arxiv.org/abs/2603.16309",
+    "brief": "这篇论文由 Meta AI 发布，是目前已知支持语言数量最多的机器翻译系统——覆盖超过1,600种语言，其中包含大量此前几乎没有被主流机器翻译系统覆盖过的濒危语言和边缘化语言。论文要解决的核心问题是机器翻译领域长期存在的\"生成瓶颈\"：很多模型可以在一定程度上\"理解\"上千种语言的输入，但真正能可靠\"生成\"目标语言译文的语言数量却远远少于能理解的语言数量，这种理解与生成能力的不对称在低资源语言上尤为突出。为此，作者采用了一套综合性的数据策略，将大规模公开多语言语料与新构建的数据资源相结合，包括人工精心整理的 MeDLEY 平行语料、合成回译数据，以及大规模语料挖掘，专门用来填补长尾语言的数据空白。方法上，论文提出了两个互补的模型变体：OMT-LLaMA 是基于 LLaMA3 构建的decoder-only模型，并引入检索增强式翻译机制；OMT-NLLB 则是encoder-decoder架构，使用了新的 OmniSONAR 跨语言句子嵌入。为配套评测，作者还构建了新的评测数据集 BOUQuET，以及翻译质量评测工具 BLASER 3 和毒性内容检测工具 OmniTOX。实验结果相当亮眼：参数量仅1B到8B的模型，在翻译质量上就能达到甚至超过70B参数规模大模型基线的水平，体现出针对多语言翻译任务做专门化设计所带来的显著效率优势；同时该系统能够\"充分理解\"400多种语言，相比此前系统大约200种语言的覆盖水平提升了一倍。这篇论文发布后在Hacker News、Slator等平台引发了广泛讨论，被认为是低资源语言机器翻译领域近期最具代表性的成果之一。",
+    "model": "claude-sonnet-5",
+    "reasoning_effort": "medium",
+    "date_added": "2026-07-25",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-07-25-02",
+    "paper_id": "arxiv:2604.18639",
+    "title": "Easy Samples Are All You Need: Self-Evolving LLMs via Data-Efficient Reinforcement Learning",
+    "year": 2026,
+    "venue": "arXiv",
+    "topics": [
+      "reinforcement learning"
+    ],
+    "keywords": [
+      "data-efficient RL",
+      "self-evolving LLM",
+      "curriculum learning",
+      "pseudo-labeling"
+    ],
+    "link": "https://arxiv.org/abs/2604.18639",
+    "brief": "这篇论文关注的问题是：在强化学习后训练场景下，如果只有极少量高质量的标注数据，模型能否依然实现有效的自我演化，持续提升数学和科学推理能力，而不需要依赖大规模、成本高昂的标注数据集。作者提出了 EasyRL 框架，其核心创新在于模拟人类的认知习得曲线——人在学习新知识时往往先从简单案例入手建立可靠的基础理解，再逐步挑战更难的问题。具体来说，EasyRL 首先从少量\"简单\"的已标注数据中做可靠的知识迁移，为模型建立起初步但扎实的能力基础；随后采用一种渐进式的\"分而治之\"策略，让模型逐步处理越来越困难的未标注数据。在处理未标注数据时，方法进一步区分了两类情形：对于模型预测不确定性较低的样本，采用基于一致性的选择策略直接筛选可信的伪标签；对于不确定性中等的样本，则采用基于反思的解决策略，让模型通过自我反思来生成更可靠的训练信号，而对于难度过高、不确定性过大的样本则暂不强行利用，避免引入噪声。这种分层处理不确定性的思路使得训练过程既能充分利用有限的标注资源，又能安全地扩展到大量未标注数据。实验在多个数学和科学推理基准上进行，结果显示 EasyRL 仅使用10%的简单标注数据，就能一致地超过当前最优（SOTA）基线方法的表现，展示出很强的数据效率优势。这项工作为数据稀缺场景下的LLM强化学习后训练提供了一条实用且计算成本更低的路径。作者团队来自北京大学、上海人工智能实验室、南开大学以及University of Wisconsin–Madison。",
+    "model": "claude-sonnet-5",
+    "reasoning_effort": "medium",
+    "date_added": "2026-07-25",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-07-25-03",
+    "paper_id": "arxiv:2605.28910",
+    "title": "Hallucination Detection-Guided Preference Optimization for Clinical Summarization",
+    "year": 2026,
+    "venue": "arXiv",
+    "topics": [
+      "summarization",
+      "reinforcement learning"
+    ],
+    "keywords": [
+      "clinical summarization",
+      "hallucination detection",
+      "preference optimization",
+      "self-refinement"
+    ],
+    "link": "https://arxiv.org/abs/2605.28910",
+    "brief": "这篇论文聚焦临床文本摘要中的幻觉问题：大语言模型在总结真实世界的病历、临床笔记时，容易生成缺乏依据甚至与原文相悖的内容，这在医疗这种对可靠性要求极高的场景下是一个直接影响可用性和安全性的实质性障碍。作者提出了两阶段的解决方案。第一阶段是 HDSR（Hallucination Detection-guided Self-Refinement），这是一种推理时（inference-time）方法：利用一个专门的幻觉检测器，在生成摘要后主动识别其中存在幻觉风险的部分，并据此引导模型做迭代式的针对性修订，而不是对整个摘要推倒重来。第二阶段进一步提出了 HDSR-PL（HDSR for Preference Learning），其创新之处在于把 HDSR 在推理时产生的检测-修正轨迹转化为偏好对（preference pairs），也就是把\"修正前的幻觉版本\"和\"修正后更忠实的版本\"配对，用类似DPO的偏好优化方式对模型做微调训练，从而把推理时的自我修正能力真正\"内化\"进模型参数里，而不只是停留在推理阶段的临时补救。实验基于MIMIC-IV-Note v2.2这一真实世界临床笔记数据集，在Llama和Gemma系列模型上进行。结果显示，HDSR能让Llama-3.1-8B-Instruct的幻觉率降低24%，而经过偏好学习内化后的HDSR-PL则能进一步将幻觉率降低48%，在Gemma模型上也观察到类似的显著改善。更重要的是，经过人类专家评估和LLM-Jury评测验证，这些方法在大幅降低幻觉的同时，并没有明显牺牲摘要的流畅度、连贯性和整体相关性，说明\"忠实度\"和\"可读性\"这两个摘要质量维度在这套方法下实现了较好的兼顾。",
+    "model": "claude-sonnet-5",
+    "reasoning_effort": "medium",
+    "date_added": "2026-07-25",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-07-25-04",
+    "paper_id": "arxiv:2509.20900",
+    "title": "Learning to Summarize by Learning to Quiz: Adversarial Agentic Collaboration for Long Document Summarization",
+    "year": 2025,
+    "venue": "arXiv",
+    "topics": [
+      "summarization"
+    ],
+    "keywords": [
+      "multi-agent",
+      "long document summarization",
+      "adversarial collaboration",
+      "quiz-based evaluation"
+    ],
+    "link": "https://arxiv.org/abs/2509.20900",
+    "brief": "这篇论文关注长文档摘要生成这一长期存在挑战的任务：长文档往往信息密度高、结构复杂，传统摘要方法容易遗漏关键信息或者产出笼统空洞、缺乏细节支撑的摘要，而现有的自动评测指标（如ROUGE）又很难真正捕捉\"摘要是否包含了理解原文所需的关键信息\"这一深层次质量维度。为解决这一问题，作者提出了SummQ，一个新颖的对抗式多智能体协作框架，其核心思路是把\"生成摘要\"和\"出题考核\"这两个看似不同的任务结合起来，让它们相互监督、共同进化。具体而言，框架中包含摘要生成者和摘要评审者两个角色，负责协作生成并打磨摘要；同时还有测验生成者和测验评审者两个角色，专门基于原文构建一系列理解性测验问题，作为持续的质量检验标准。框架中还引入了一个\"考生\"（examinee）智能体，它只能看到生成的摘要（看不到原文），需要尝试回答测验生成者提出的问题；如果考生无法从摘要中找到答案，就说明这份摘要遗漏了关键信息，这一反馈会被用来指导摘要做进一步的迭代修订。这种\"用测验倒逼摘要质量\"的对抗协作机制，为摘要生成提供了一种比传统ROUGE等词面匹配指标更贴近\"信息完整性\"本质的隐式监督信号。实验结果显示，SummQ在ROUGE、BERTScore等自动指标上，以及在LLM-as-a-judge和人工评估中，均全面超过了现有的最先进（SOTA）长文档摘要方法，证明了这种\"以考促学\"的多智能体协作思路在长文档摘要任务上的有效性。作者团队来自爱丁堡大学（Weixuan Wang, Minghao Wu, Barry Haddow, Alexandra Birch）。",
+    "model": "claude-sonnet-5",
+    "reasoning_effort": "medium",
+    "date_added": "2026-07-25",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-07-25-05",
+    "paper_id": "arxiv:2607.19824",
+    "title": "Rewarding Better Thinking for LLM Preference Alignment",
+    "year": 2026,
+    "venue": "arXiv",
+    "topics": [
+      "reinforcement learning"
+    ],
+    "keywords": [
+      "preference alignment",
+      "process reward",
+      "credit assignment",
+      "DAPO"
+    ],
+    "link": "https://arxiv.org/abs/2607.19824",
+    "brief": "这篇论文关注的是基于强化学习的偏好对齐（RL-based preference alignment）训练中一个常被忽视的奖励设计缺陷：目前主流的代理奖励（proxy reward）大多是\"结果层面\"的，即只对模型生成的最终回答整体打分，而对回答背后的推理轨迹本身几乎没有提供任何直接的指导信号。作者指出，这种粗粒度的结果级奖励会导致一个具体问题——当多个不同的候选回答最终得分很接近甚至相同时，模型很难判断到底是哪一步、哪一段推理过程真正体现了\"更符合偏好\"的思考方式，也就是信用分配（credit assignment）变得非常粗糙，训练信号中蕴含的、偏好对之间在轨迹层面的差异被大量浪费掉了。为解决这一问题，作者提出了Thinking Checklist Reward（TCR），一种过程导向（process-oriented）的新型奖励机制。其核心做法是把每一对偏好数据（chosen/rejected pair）转化为一份针对该样本量身定制的\"思维检查清单\"，清单中列出了偏好判断背后隐含的具体考量点，然后用这份清单去逐项检查模型实际生成的推理轨迹是否覆盖、满足了这些考量点，从而把原本隐藏在最终得分背后的偏好依据显式化。此外，作者还引入了一种基于指数移动平均（EMA）的残差计算方法，专门用来分离出那部分无法被结果奖励单独预测、真正由\"思考质量\"贡献的\"思维盈余\"信号，避免奖励信号与结果奖励高度冗余。实验在三个不同模型家族的五个大语言模型上进行，结果显示将TCR加入DAPO训练流程后，在多个对齐评测基准上都能一致地超过原始DAPO以及DPO基线的表现，消融实验也验证了EMA残差建模和样本特定检查清单监督两个组件各自的必要性。这篇论文提交时间非常新（2026年7月22日），是当前偏好对齐研究中从\"结果导向\"转向\"过程导向\"这一趋势的最新代表作之一。",
+    "model": "claude-sonnet-5",
+    "reasoning_effort": "medium",
+    "date_added": "2026-07-25",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
   }
 ]
