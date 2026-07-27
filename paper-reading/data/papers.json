@@ -2492,5 +2492,135 @@
     "deep_read": false,
     "deep_read_at": null,
     "interest": null
+  },
+  {
+    "id": "2026-07-27-01",
+    "paper_id": "aclanthology:2026.acl-long.2130",
+    "title": "Privacy-R1: Privacy-Aware Multi-LLM Agent Collaboration via Reinforcement Learning",
+    "year": 2025,
+    "venue": "ACL 2026 (Main Conference)",
+    "topics": [
+      "reinforcement learning"
+    ],
+    "keywords": [
+      "privacy",
+      "multi-agent",
+      "PII routing",
+      "RL"
+    ],
+    "link": "https://aclanthology.org/2026.acl-long.2130/",
+    "brief": "这篇论文来自剑桥大学团队（Zheng Hui、Yijiang River Dong、Sanhanat Sivapiromrat、Ehsan Shareghi、Nigel Collier），已被ACL 2026主会录用，任务是解决用户向LLM提交查询时面临的隐私—性能两难：把完整prompt发给强大的云端专有模型能获得最好效果但会泄露敏感信息，而完全依赖本地小模型虽然保护隐私却往往性能明显下降。以往方法多用静态pipeline，先用LLM对prompt做重写脱敏，但这种做法常常破坏语言连贯性，而且不分青红皂白地删除所有疑似隐私信息，结果把任务真正需要的关键内容也一并删掉。这篇论文的创新点在于把这个问题重新表述为一个序列决策问题（Privacy-Conscious Delegation），并提出强化学习框架Privacy-R1：训练一个路由agent，对输入文本按chunk动态决策——哪些片段留在本地小模型处理、哪些片段可以安全地发送到远端强模型，从而学出一个在隐私泄露和任务表现之间做最优权衡的策略。该框架能隐式地区分\"可替换的个人身份信息（PII）\"（本地屏蔽处理）和\"任务关键PII\"（策略性地送到远端以保证效果），而不是像以往方法那样一刀切。为了在更贴近真实场景、PII密度更高的场景下验证方法有效性，作者还构建了一个新的医疗领域数据集。实验结果显示，Privacy-R1在隐私—效用权衡的帕累托前沿上取得了新的最优表现，明显优于静态重写基线，证明了在敏感场景下部署LLM时，学习得到的自适应路由策略比固定规则更必要、也更有效。",
+    "model": "claude-sonnet-5",
+    "reasoning_effort": "standard",
+    "date_added": "2026-07-27",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-07-27-02",
+    "paper_id": "aclanthology:2026.acl-long.506",
+    "title": "Reinforcement Learning on Pre-Training Data",
+    "year": 2025,
+    "venue": "ACL 2026 (Main Conference)",
+    "topics": [
+      "reinforcement learning"
+    ],
+    "keywords": [
+      "pre-training",
+      "next-segment reasoning",
+      "reward design",
+      "continual learning"
+    ],
+    "link": "https://aclanthology.org/2026.acl-long.506/",
+    "brief": "这篇论文（Li等人）已被ACL 2026主会录用，论文正文见arXiv 2509.19249，任务是弥合预训练（next-token prediction）和后训练强化学习（RL）这两条主流LLM能力提升路径之间的缺口。作者指出，纯预训练擅长从海量通用数据里学习广泛的知识和技能，但存在数据利用效率低、在持续学习场景下容易发生灾难性遗忘的问题；而RL后训练虽然能有效激励模型的推理能力并带来较强的泛化性，却严重依赖人工标注的偏好或验证数据，可用规模非常有限。论文提出的方法RLPT（Reinforcement Learning on Pre-Training data）试图把两者的优点结合起来：核心创新是不再依赖人工标注的奖励信号，而是直接从通用文本数据本身构造一个\"next-segment reasoning\"目标——把一段文本的前缀作为条件，让策略模型预测后续文本片段，并根据预测的准确程度直接给出奖励信号。这样一来，几乎任意规模的通用语料都可以被转化为RL训练所需的奖励来源，不再受限于稀缺的人工标注数据，同时训练目标本身鼓励模型对文本的因果结构、逻辑关系做更深层的推理式建模，而不只是表层的下一词预测。论文在多个基准上验证了RLPT相较于传统NTP预训练和常规RL后训练基线的优势，尤其是在数据效率和持续学习稳定性方面表现更好，被认为是把RL训练信号来源从\"稀缺标注\"扩展到\"海量通用文本\"的一次有意思的尝试，论文发表在ACL 2026会议论文集第11046–11057页。",
+    "model": "claude-sonnet-5",
+    "reasoning_effort": "standard",
+    "date_added": "2026-07-27",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-07-27-03",
+    "paper_id": "arxiv:2606.13171",
+    "title": "NTS-CoT: Mitigating Hallucinations in LLM-based News Timeline Summarization with Chain-of-Thought Reasoning",
+    "year": 2026,
+    "venue": "arXiv",
+    "topics": [
+      "summarization"
+    ],
+    "keywords": [
+      "timeline summarization",
+      "hallucination",
+      "chain-of-thought",
+      "faithfulness"
+    ],
+    "link": "https://arxiv.org/abs/2606.13171",
+    "brief": "这篇论文作者为Feng Lyu、Huiqin Yan、Sijing Duan、Hao Wu、Shuang Gu、Xue Qiao、Weixu Zhang、Haolun Wu，分别来自中南大学、清华大学、南京大学、苏州航天信息研究院和McGill大学，于2026年6月提交至arXiv。任务是新闻事件时间线摘要（Timeline Summarization, TLS）——即从大量随时间推移持续更新的新闻报道中，抽取并组织出一条按日期排列、能反映事件发展脉络的摘要序列，帮助读者快速追踪一个持续演进事件（如某项政策、某场冲突）的来龙去脉。作者指出，尽管基于LLM的TLS方法已经比传统抽取式方法效果更好，但幻觉问题——即生成内容偏离原始新闻报道事实——在TLS任务里一直未被充分研究，而这个问题对时间线类摘要尤其致命，因为任何一步的信息错误或遗漏都会累积影响到对整个事件发展脉络的理解。论文的方法创新点在于先做了细致的错误分析，把TLS中的幻觉归纳为两种主要类型：一是新闻摘要阶段生成的内容与原文不忠实（unfaithful content），二是在按日期组织的事件摘要阶段出现信息遗漏（information omission），这一分类本身就是对该问题此前研究不足的一次系统梳理。基于此，作者提出NTS-CoT框架，利用链式思维（Chain-of-Thought）推理分别针对性地缓解这两类幻觉——让模型在摘要生成过程中显式地对信息来源和已提取的事件点进行逐步核对与推理，而不是一次性直接生成摘要文本。实验在三个TLS基准数据集上进行，结果显示NTS-CoT相比多个SOTA基线方法在整体摘要质量指标上有提升，同时在幻觉率相关的评测指标上有效降低了不忠实内容和信息遗漏的发生比例，验证了针对性设计的CoT推理流程对提升时间线摘要忠实度的作用。",
+    "model": "claude-sonnet-5",
+    "reasoning_effort": "standard",
+    "date_added": "2026-07-27",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-07-27-04",
+    "paper_id": "arxiv:2606.08092",
+    "title": "When Languages Disagree: Self-Evolving Multilingual LLM Judges",
+    "year": 2026,
+    "venue": "arXiv",
+    "topics": [
+      "multilingual"
+    ],
+    "keywords": [
+      "LLM-as-judge",
+      "cross-lingual consistency",
+      "self-refinement",
+      "evaluation"
+    ],
+    "link": "https://arxiv.org/abs/2606.08092",
+    "brief": "这篇论文于2026年6月提交至arXiv，任务是研究多语言场景下的LLM-as-a-judge评测方法，即用大模型作为裁判来评价其他模型输出质量，这一范式已被广泛使用，但存在跨语言不一致的问题——同一个待评样本被翻译成不同语言后交给裁判模型评判，结果往往不一样。以往工作通常把这种跨语言分歧当作需要消除的\"噪声\"，采用投票或简单聚合等方式来降低方差。这篇论文的创新之处在于提出了相反的视角：跨语言的不一致其实可能蕴含互补的评测信号，而不只是噪声。作者先做了一个oracle分析，发现如果对同一样本在多种语言下采样裁判结果、再取理论上的最优组合，其性能上界要显著高于单一语言裁判的表现，说明不同语言的判断确实可能捕捉到彼此遗漏的信息，具有互补性。基于这一发现，作者提出SEMJ（Self-Evolving Multilingual Judge）框架：先为每个输入样本构造多语言变体，分别收集裁判模型在各语言下的独立判断及其理由（rationale），再把彼此不一致的判断结果反馈回去，让裁判模型对这些分歧进行自我反思（self-reflection）和重新评估，通过这种迭代式的自我进化来收敛出更可靠的最终判断。在多个评测基准上的实验显示，SEMJ在准确率和跨语言一致性两个指标上都稳定优于简单投票和普通自我反思基线，进一步的分析也表明，正是这种语言间的不一致触发了有效的重新评估过程，从而带来了判断质量的提升，为多语言评测体系的设计提供了新思路。",
+    "model": "claude-sonnet-5",
+    "reasoning_effort": "standard",
+    "date_added": "2026-07-27",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-07-27-05",
+    "paper_id": "aclanthology:2026.acl-long.127",
+    "title": "EMCEE: Improving Multilingual Capability of LLMs via Bridging Knowledge and Reasoning with Extracted Synthetic Multilingual Context",
+    "year": 2025,
+    "venue": "ACL 2026 (Main Conference)",
+    "topics": [
+      "multilingual"
+    ],
+    "keywords": [
+      "synthetic context",
+      "knowledge grounding",
+      "reasoning",
+      "low-resource languages"
+    ],
+    "link": "https://aclanthology.org/2026.acl-long.127/",
+    "brief": "这篇论文作者为Hamin Koo和Jaehyung Kim，已被ACL 2026主会录用（论文集第2800–2822页），论文正文对应arXiv 2503.05846，任务是提升LLM在非英语语言上的表现。作者指出，尽管LLM在各类任务上已取得很大进展，但由于训练数据高度以英语为中心，模型在非英语查询上的性能会明显下降；而现有的多语言提示方法大多聚焦于把查询重新表述为英语，或者单纯增强模型的通用推理能力，却常常忽视了很多查询本身需要的语言特定、文化特定的背景知识（grounding），单纯翻译成英语或强化推理并不能补上这部分缺失的知识。这篇论文的方法创新点在于EMCEE（Extracting synthetic Multilingial Context and merging）框架：不依赖外部知识库，而是显式地从LLM自身内部\"挖掘\"出与查询相关的知识——先让模型生成合成的多语言上下文（syntheticcontext），把原本隐式编码在模型参数里、与目标语言/文化相关的潜在知识以文本形式显式化出来，然后通过一个基于判断（judgment-based selection）的机制，动态地把这部分上下文知识与模型面向推理生成的输出进行融合，在需要背景知识和需要推理能力之间做取舍，而不是简单地把两者拼接。这种\"先提取隐式知识、再有选择地融合\"的思路，区别于以往\"要么翻译成英语、要么单纯堆推理\"的两极化做法。实验在多语言基准上验证了EMCEE相较于现有多语言提示方法的提升，尤其是在那些依赖语言/文化特定背景知识的查询类型上改进更明显，显示出\"知识提取+推理融合\"这一思路对改善LLM多语言能力的有效性。",
+    "model": "claude-sonnet-5",
+    "reasoning_effort": "standard",
+    "date_added": "2026-07-27",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
   }
 ]
