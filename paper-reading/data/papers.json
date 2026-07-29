@@ -2622,5 +2622,131 @@
     "deep_read": false,
     "deep_read_at": null,
     "interest": null
+  },
+  {
+    "id": "2026-07-29-01",
+    "paper_id": "arxiv:2607.00485",
+    "title": "Efficient Multilingual Reasoning Transfer via Progressive Code-Switching",
+    "year": 2026,
+    "venue": "arXiv",
+    "topics": [
+      "multilingual"
+    ],
+    "keywords": [
+      "code-switching",
+      "reasoning transfer",
+      "low-cost RL"
+    ],
+    "link": "https://arxiv.org/abs/2607.00485",
+    "brief": "大型推理模型（LRM）在英语上推理能力很强，但要求它们用其他语言推理时性能会明显下降。以往的迁移方法通常依赖从更强模型蒸馏出的目标语言推理轨迹，或者依赖外部裁判模型做在线监督，这两种方式成本高、难以规模化。这篇论文提出了PCS（Progressive Code-Switching）框架：先构造“code-switched推理轨迹”，即把原始英语推理轨迹中的一部分推理步骤替换成目标语言表达，形成英语与目标语言交替出现的多步推理过程；再用强化学习配合一个“步骤级语言一致性课程”（step-level language consistency curriculum），训练过程中逐步提高目标语言在推理轨迹中所占的比例，直至模型能够完全用目标语言进行推理。整个流程只需要轻量级翻译，不需要任何更强的模型来做蒸馏或裁判，因而成本效率高、易于扩展到更多语言。作者在多个基准和五种类型学上差异较大的语言上做了实验，结果显示PCS大幅缩小了目标语言推理与英语推理之间的性能差距，推理过程的语言一致性明显提升，同时保持了具有竞争力的准确率。该工作已在OpenReview提交（题为“Enhancing Multilingual Reasoning Alignment through Progressive Code-Switching”），看起来正在投递ICLR 2026等会议评审中。这项工作的价值在于提供了一条不依赖昂贵蒸馏或裁判模型、纯粹通过课程式强化学习实现多语言推理迁移的低成本路径。",
+    "model": "claude-sonnet-5",
+    "reasoning_effort": "low",
+    "date_added": "2026-07-29",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-07-29-02",
+    "paper_id": "arxiv:2606.15080",
+    "title": "AdaMame: A Training Recipe for Adaptive Multilingual Reasoning",
+    "year": 2026,
+    "venue": "arXiv",
+    "topics": [
+      "multilingual",
+      "reinforcement learning"
+    ],
+    "keywords": [
+      "language collapse",
+      "GRPO",
+      "two-stage training"
+    ],
+    "link": "https://arxiv.org/abs/2606.15080",
+    "brief": "这篇论文关注大型推理模型的“语言坍缩”（language collapse）现象：用户用某种非英语语言提问，模型的推理过程却习惯性地退回英语（甚至中途在两种语言间来回切换），即便最终答案的语言是正确的，推理过程本身的语言一致性也常常很差。此前基于强化学习的修复方法通常做法是在准确率目标之外简单叠加一个二元的“语言保真度”奖励，但这样做往往会带来明显的代价权衡：准确率下降、推理轨迹中途出现语码混杂、以及token使用量过度膨胀。作者提出了AdaMame，一个两阶段训练方案：第一阶段是监督微调（SFT），在五种语言中自然产生的推理轨迹上训练，为模型建立起基础的多语言推理能力；第二阶段是强化学习阶段，作者提出了AdaMame-GRPO——对Group Relative Policy Optimization（GRPO）的一种改造，引入一个随训练进程逐渐增长的“查询条件对齐因子”（query-conditioned alignment factor），引导模型在训练初期先广泛探索多种可能的推理语言，随着训练推进再逐渐收敛到用查询语言本身进行推理，从而在不明显牺牲准确率的前提下解决语言一致性问题。该工作已在GitHub开源代码（dayeonki/adamame）。这项工作把“语言坍缩”这一常被简单二元奖励粗暴处理的问题，转化为一个渐进式、可调度的训练课程问题，为多语言推理对齐提供了更精细的解决思路。",
+    "model": "claude-sonnet-5",
+    "reasoning_effort": "low",
+    "date_added": "2026-07-29",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-07-29-03",
+    "paper_id": "arxiv:2511.10507",
+    "title": "AdvancedIF: Rubric-Based Benchmarking and Reinforcement Learning for Advancing LLM Instruction Following",
+    "year": 2025,
+    "venue": "arXiv",
+    "topics": [
+      "reinforcement learning"
+    ],
+    "keywords": [
+      "rubric-based RL",
+      "instruction following",
+      "reward shaping"
+    ],
+    "link": "https://arxiv.org/abs/2511.10507",
+    "brief": "这是Meta Superintelligence Labs的一项工作，聚焦LLM遵循复杂指令（advanced instruction following）的能力，尤其是多轮对话中的指令、系统级提示指令等此前评测覆盖不足、但在实际部署中极其重要的场景。作者的贡献分为两部分：一是构建了AdvancedIF基准，包含超过1600条精心设计的提示以及专家撰写的评分细则（rubric），用于系统评估模型对复杂、多轮、系统级指令的遵循能力；二是提出了RIFL（Rubric-based Instruction-Following Learning）训练流程，其创新点在于把“生成评分细则”、“训练一个经过微调的rubric验证器”、以及“基于rubric的reward shaping”三个环节整合成一套完整的后训练pipeline，使得强化学习能够在没有明确对错标准（不像数学、代码那样可直接验证）的指令遵循任务上，依然获得可靠、细粒度的奖励信号。这种做法本质上是把rubric-based RL（近期在对齐社区逐渐兴起的一种范式，用结构化评分标准代替单一标量奖励）系统化地应用到指令遵循这一具体能力上。实验结果显示，RIFL显著提升了模型的指令遵循能力，在AdvancedIF基准上取得了6.7%的绝对提升，同时在多个公开基准上也取得了有竞争力的结果。这篇论文虽然发布于2025年11月（早于本次检索窗口通常关注的顶会时间线），但由于其方法框架和数据集持续被后续工作引用和讨论，且出自工业界头部实验室，在当前“rubric-based RL”这一热点方向上仍具有较高的参考价值和讨论度。",
+    "model": "claude-sonnet-5",
+    "reasoning_effort": "low",
+    "date_added": "2026-07-29",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-07-29-04",
+    "paper_id": "arxiv:2601.04424",
+    "title": "Gavel: Agent Meets Checklist for Evaluating LLMs on Long-Context Legal Summarization",
+    "year": 2026,
+    "venue": "arXiv",
+    "topics": [
+      "summarization"
+    ],
+    "keywords": [
+      "legal summarization",
+      "long-context evaluation",
+      "agent-based evaluation"
+    ],
+    "link": "https://arxiv.org/abs/2601.04424",
+    "brief": "这篇论文由佐治亚理工学院的Yao Dou和Wei Xu完成，聚焦一个现实意义很强、但此前研究相对较少的场景：超长上下文（现有LLM已能支持高达100万token的上下文窗口）下的法律案件摘要评测。真实的法律案件文书往往由多份文件组成，总长度经常超过10万token，如何评价LLM在这种极端长文本、多文档场景下生成的摘要质量，此前一直缺乏系统性的评测工具。作者构建了Gavel评测框架，包含两个互补的组件：Gavel-Ref是一个基于参考摘要的评测框架，从checklist覆盖度、残余事实（residual-fact，即摘要遗漏了哪些原文中存在但未被提及的关键事实）、以及写作风格三个维度做评估；Gavel-Agent则是一个无需参考摘要、直接从原始文档出发评估摘要事实覆盖度的智能体式（agent-based）评估工具，弥补了很多实际场景下缺乏高质量参考摘要的问题。作者用Gavel系统评测了12个前沿LLM在长上下文法律案件摘要任务上的表现，发现了两个值得关注的结论：一是当前模型更容易犯“遗漏关键信息”的错误，而不是凭空“编造”（幻觉）内容，这与摘要研究中通常更关注幻觉问题的传统侧重点有所不同；二是模型在简单、常见的checklist条目（比如案件的立案日期）上普遍表现良好，但在罕见、复杂的条目（比如具体的和解条款细节）上则明显吃力。这项工作把摘要评测的关注点从“是否忠实”进一步拓展到了“是否完整覆盖了长文档中分散、罕见但重要的信息点”，为超长上下文摘要评测提供了一套更贴近实际法律场景需求的诊断工具。",
+    "model": "claude-sonnet-5",
+    "reasoning_effort": "low",
+    "date_added": "2026-07-29",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-07-29-05",
+    "paper_id": "arxiv:2512.15687",
+    "title": "Can LLMs Guide Their Own Exploration? Gradient-Guided Reinforcement Learning for LLM Reasoning",
+    "year": 2025,
+    "venue": "arXiv",
+    "topics": [
+      "reinforcement learning"
+    ],
+    "keywords": [
+      "exploration",
+      "gradient geometry",
+      "RLVR"
+    ],
+    "link": "https://arxiv.org/abs/2512.15687",
+    "brief": "这篇论文由Zhenwen Liang、Sidi Lu、Wenhao Yu、Kishan Panaganti、Yujun Zhou、Haitao Mi、Dong Yu完成（后两位作者长期任职于Tencent AI Lab），关注的是可验证奖励强化学习（RLVR）训练LLM推理能力时一个根本性但常被忽视的问题：如何设计真正有效的“探索”（exploration）机制。作者指出，当前主流的探索手段——比如熵奖励（entropy bonus）、外部语义比较器（用来判断采样出的多条轨迹在语义上是否足够多样）——本质上都只鼓励采样轨迹在“表面”上呈现多样性，却完全无法保证这些轨迹在真正决定优化方向的“参数更新几何”（update geometry）层面上有实质性差异，也就是说模型可能看起来探索了很多种不同的解题方式，但这些解法在梯度更新的意义上其实高度相似，探索的价值大打折扣。为解决这一问题，作者提出了G2RL（Gradient-Guided Reinforcement Learning）：核心思路是让探索机制不再依赖外部启发式规则，而是由模型自身的一阶更新几何直接驱动——具体做法是为每条生成的response构造一个基于模型最后一层敏感度（final-layer sensitivity）的序列级特征，这个特征几乎可以零额外成本地从一次标准前向传播中获得，然后在同一组采样出的多条轨迹之间比较这些特征，从而衡量每条轨迹如果被选中用于更新，将会如何重塑当前的policy。这种“用模型自己的更新几何指导探索方向”的思路，为RLVR训练中长期存在的“探索多样性表面化”问题提供了一个计算成本低、原理上更贴近优化本质的新解法，是当前RLVR探索机制设计这一热点方向上一篇值得关注的工作。",
+    "model": "claude-sonnet-5",
+    "reasoning_effort": "low",
+    "date_added": "2026-07-29",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
   }
 ]
