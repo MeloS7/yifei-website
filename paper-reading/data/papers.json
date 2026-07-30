@@ -2748,5 +2748,86 @@
     "deep_read": false,
     "deep_read_at": null,
     "interest": null
+  },
+  {
+    "id": "2026-07-30-01",
+    "paper_id": "arxiv:2504.13837",
+    "title": "Does Reinforcement Learning Really Incentivize Reasoning Capacity in LLMs Beyond the Base Model?",
+    "year": 2025,
+    "venue": "NeurIPS 2025 (Oral, Best Paper Award)",
+    "topics": [
+      "reinforcement learning",
+      "reasoning"
+    ],
+    "keywords": [
+      "RLVR",
+      "pass@k",
+      "reasoning boundary",
+      "distillation"
+    ],
+    "link": "https://arxiv.org/abs/2504.13837",
+    "brief": "这篇论文对当前被广泛接受的一个假设——RLVR（可验证奖励强化学习）能让大语言模型习得全新的推理能力——发起了一次系统性的实证再审视，是 NeurIPS 2025 的最佳论文之一，讨论度极高。以往对 RLVR 效果的评估几乎都只看 pass@1，而这篇论文的核心创新在于改用 pass@k 并把 k 取到很大的值，从而观察模型的“能力边界”而不只是“采样效率”。他们在数学（GSM8K、MATH、AIME 等）和编程等推理基准上系统比较了 RLVR 训练后模型与其基础模型的表现。结果相当反直觉：在 k 较小（如 k=1）时，RLVR 模型确实明显优于基础模型；但当 k 增大后，基础模型的 pass@k 反而反超 RLVR 模型。进一步分析发现，RLVR 模型能生成的正确推理路径其实早已包含在基础模型的采样分布之中，RLVR 训练实质上只是把输出分布“推向”更容易拿到奖励的路径，从而提高了采样效率，但同时也压缩了推理能力的边界，使得模型的探索空间比基础模型更窄。作为对照，论文还指出蒸馏（distillation）能够真正为模型引入新的知识和能力，这与 RLVR 有本质区别。这一发现直接挑战了“RL 能让模型学会新推理模式”的主流叙事，对整个 RLVR 训练范式的价值和局限提出了非常扎实的实证证据，也是近期学界围绕“强化学习到底在训练什么”这一争论的核心引用文献之一。",
+    "model": "claude-sonnet-5",
+    "reasoning_effort": "standard",
+    "date_added": "2026-07-30",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-07-30-02",
+    "paper_id": "arxiv:2604.18493",
+    "title": "Too Correct to Learn: Reinforcement Learning on Saturated Reasoning Data",
+    "year": 2026,
+    "venue": "arXiv",
+    "topics": [
+      "reinforcement learning",
+      "math",
+      "reasoning"
+    ],
+    "keywords": [
+      "reward saturation",
+      "GRPO",
+      "exploration",
+      "policy degeneration"
+    ],
+    "link": "https://arxiv.org/abs/2604.18493",
+    "brief": "这篇论文关注一个随着模型能力增强而愈发突出的 RLVR 训练痛点：当强基础模型在 MATH 等标准数学推理基准上已经“饱和”（即对同一道题的多次采样都能得到正确且高度同质化的解法）时，组内奖励方差会趋近于零，GRPO 一类基于相对优势的强化学习算法会因为缺乏正确/错误的对比信号而丧失有效的学习梯度——论文将这一现象命名为“too correct to learn”（因为太正确而学不到东西），是对 RLVR 在数据饱和场景下失效机制的一次很有意思的诊断性研究。方法上的创新点是提出了 Constrained Uniform Top-K Sampling（CUTS），一种无需额外参数的解码策略，通过在受约束的高置信候选集合中做均匀采样来强制保持结构化的探索性，从而拉平局部优化地形、恢复组内优势的方差；并进一步将其整合进 Mixed-CUTS 训练框架，把探索性 rollout 与利用性 rollout 结合起来协同训练，放大组内优势信号的区分度。实验在 Qwen3 系列模型上进行，结果显示 CUTS/Mixed-CUTS 能有效防止模型在饱和数据上出现策略退化（policy degeneration），并显著提升了分布外（out-of-domain）泛化能力，说明在饱和阶段维持探索多样性对推理能力的进一步提升至关重要。这篇论文虽然目前只是 arXiv 预印本，但切中了当前数学推理 RL 训练里一个非常实际且尚未被充分讨论的瓶颈问题，思路新颖，值得关注。",
+    "model": "claude-sonnet-5",
+    "reasoning_effort": "standard",
+    "date_added": "2026-07-30",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-07-30-03",
+    "paper_id": "arxiv:2607.10316",
+    "title": "SVD-RAG: Efficient Tree-Organized Retrieval-Augmented Generation via Singular Value Decomposition",
+    "year": 2026,
+    "venue": "arXiv",
+    "topics": [
+      "summarization"
+    ],
+    "keywords": [
+      "hierarchical RAG",
+      "extractive summarization",
+      "SVD",
+      "RAPTOR"
+    ],
+    "link": "https://arxiv.org/abs/2607.10316",
+    "brief": "这篇论文聚焦于树状层级化 RAG（如 RAPTOR 一类方法）中的一个效率瓶颈：这类方法为了构建多层摘要索引，通常需要在每个内部节点反复调用 LLM 做抽象式摘要，构建成本很高且难以扩展到大规模语料。论文的核心创新是把经典的 SVD（奇异值分解）技术引入抽取式摘要环节，用于替代昂贵的 LLM 摘要调用：与传统 LSA（潜在语义分析）作用于稀疏 TF-IDF 矩阵不同，SVD-RAG 直接对现代嵌入模型产生的稠密句子向量矩阵做 SVD 分解，通过句子在主成分方向上的“能量贡献”来挑选最具信息量的句子，从而以抽取式而非生成式的方式完成树节点摘要，这是据作者所知首次将 SVD 应用于稠密嵌入矩阵上的抽取式摘要任务。实验采用与 RAPTOR 的直接头对头对照，在检索质量上 SVD-RAG 与 RAPTOR 几乎持平（MRR 0.867 对比 0.875，差距在1%以内），但树索引构建速度提升了约 317 倍，且相比基于 LLM 的摘要方案在索引构建阶段的 token 消耗减少了约 85%，效率提升非常显著。这篇论文的意义在于证明了在层级化 RAG 场景下，摘要环节不一定需要依赖昂贵的生成式 LLM 调用，一个轻量级、可解释的线性代数方法就能在几乎不损失效果的前提下大幅降低系统的构建成本，对需要在大规模语料上部署树状 RAG 系统的实际场景有较强的参考价值。",
+    "model": "claude-sonnet-5",
+    "reasoning_effort": "standard",
+    "date_added": "2026-07-30",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
   }
 ]
