@@ -2829,5 +2829,83 @@
     "deep_read": false,
     "deep_read_at": null,
     "interest": null
+  },
+  {
+    "id": "2026-08-06-01",
+    "paper_id": "arxiv:2604.15839",
+    "title": "Discover and Prove: An Open-source Agentic Framework for Hard Mode Automated Theorem Proving in Lean 4",
+    "year": 2026,
+    "venue": "ACL 2026 (Main Conference)",
+    "topics": [
+      "math"
+    ],
+    "keywords": [
+      "automated theorem proving",
+      "Lean 4",
+      "agentic framework",
+      "Hard Mode ATP"
+    ],
+    "link": "https://arxiv.org/abs/2604.15839",
+    "brief": "这篇论文关注自动定理证明（Automated Theorem Proving, ATP）任务，具体聚焦一个此前评测体系中被系统性回避的难点：现有的绝大多数 ATP 基准（如标准版 MiniF2F、FIMO）都属于所谓的\"Easy Mode\"——待证明的最终答案已经直接嵌在形式化陈述本身里，模型只需要\"证明一个已知结论成立\"，而不需要自己先想出结论是什么。作者指出，这种设定其实回避了数学证明中最核心也最难的一步：独立发现答案。为此，他们提出了\"Hard Mode\"这一更贴近真实数学研究场景的新设定，要求系统在完全不知道答案的情况下，先自主推导出结论，再将其形式化并完成证明，并据此发布了两个专家重新标注的困难版基准 MiniF2F-Hard 和 FIMO-Hard。方法上的核心创新是一个名为 DAP（Discover And Prove）的开源智能体框架，由两个模块协同组成：Discovery 模块让开源大语言模型基于自然语言推理和显式自我反思，通过自验证流程反复生成和修正候选答案；一旦答案被确认，Proving 模块会把 Hard Mode 陈述改写为等价的 Easy Mode 陈述，再调用现有的传统 ATP 证明器完成形式化证明，巧妙地把\"发现\"和\"证明\"这两个能力需求不同的子任务解耦开来分别处理。实验结果颇具说服力：在 CombiBench 上，DAP 把可解决的问题数从此前的 7 题提升到 10 题；在 PutnamBench 的 Hard Mode 设定下，DAP 是第一个能够形式化证明 36 道 Putnam 竞赛题目的系统，刷新了该任务此前的最优结果。论文作者包括 Chengwu Liu、Yichun Yin、Ye Yuan、Jiaxuan Xie、Botao Li、Siqi Li、Jianhao Shen、Yan Xu、Lifeng Shang、Ming Zhang，已被 ACL 2026 主会录用为长文。这项工作的价值不仅在于刷新了几个具体基准的分数，更在于它重新定义了\"什么才是有意义的自动定理证明评测\"，把整个领域的关注点从\"能不能证明一个已给定的结论\"往前推进到了\"能不能像真正的数学家一样自己发现值得证明的结论\"。",
+    "model": "claude-sonnet-5",
+    "reasoning_effort": "standard",
+    "date_added": "2026-08-06",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-08-06-02",
+    "paper_id": "arxiv:2601.22027",
+    "title": "CAR-bench: Evaluating the Consistency and Limit-Awareness of LLM Agents under Real-World Uncertainty",
+    "year": 2026,
+    "venue": "ACL 2026 (Best Paper Award)",
+    "topics": [
+      "reasoning"
+    ],
+    "keywords": [
+      "agent benchmark",
+      "tool use",
+      "consistency evaluation",
+      "limit-awareness"
+    ],
+    "link": "https://arxiv.org/abs/2601.22027",
+    "brief": "这篇论文获得了 ACL 2026 的 Best Paper Award，处理的核心问题是当前智能体（agent）评测中一个被长期低估的维度：模型是不是\"知道自己不知道\"、\"知道自己做不到\"。作者构建了一个车载智能助手场景下的多轮、工具使用型智能体基准 CAR-bench，其中包含一个由大语言模型模拟的用户、19 条领域策略规则、以及 58 个相互关联的工具，覆盖导航、日程管理、充电、车辆控制等真实车载场景中的典型功能，共设计了 254 个公开任务。这篇论文最有意思的方法论创新在于任务类型的设计：除了常规的\"完成任务\"评测外，作者专门设计了\"幻觉任务\"（Hallucination tasks），用来测试当工具或信息本身缺失时，智能体能否意识到自己的能力边界、诚实地承认做不到，而不是硬着头皮编造信息去满足用户；以及\"消歧任务\"（Disambiguation tasks），要求智能体在面对用户请求中的歧义时，主动通过澄清提问或内部信息收集来解决不确定性，而不是在信息不充分的情况下贸然行动。此外，作者还提出用 pass@3（三次尝试中至少成功一次）和 pass^3（三次尝试都成功，即真正的一致性）两个指标对比，专门用来揭示模型\"偶尔能做对\"和\"稳定能做对\"之间的巨大鸿沟。实验结果相当发人深省：即便是最前沿的推理模型，在消歧任务上的一致通过率（pass^3）也不到 50%，最好的一致性分数也只有 0.42，普遍存在\"过早行动\"的问题；在幻觉任务中，模型频繁违反既定的领域策略，或者干脆编造信息来敷衍用户请求，而不是诚实地承认自己做不到。论文作者 Johannes Kirmayr、Lukas Stappen、Elisabeth André 来自 BMW Research 的产学合作团队，这一背景也让 CAR-bench 的任务设计格外贴近真实工业场景的复杂性和不确定性。这项工作提醒整个智能体研究社区：随着 LLM agent 逐渐走向真实世界的落地应用，\"能不能完成任务\"已经不是唯一重要的问题，\"知道自己什么时候完成不了\"同样关键，甚至可能是决定用户信任度和实际可用性的更核心因素。",
+    "model": "claude-sonnet-5",
+    "reasoning_effort": "standard",
+    "date_added": "2026-08-06",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-08-06-03",
+    "paper_id": "arxiv:2601.00364",
+    "title": "The Role of Mixed-Language Documents for Multilingual Large Language Model Pretraining",
+    "year": 2026,
+    "venue": "ACL 2026 (Main Conference)",
+    "topics": [
+      "multilingual"
+    ],
+    "keywords": [
+      "code-switching",
+      "pretraining ablation",
+      "cross-lingual transfer",
+      "corpus composition"
+    ],
+    "link": "https://arxiv.org/abs/2601.00364",
+    "brief": "这篇论文探讨的问题是多语言 NLP 领域一个长期被\"想当然\"却从未被严格验证过的假设：多语言大语言模型即便主要用单语语料训练，却往往能展现出令人惊讶的跨语言迁移能力，业内普遍相信这要归功于预训练语料中天然掺杂的双语或混合语言文档，但这种\"双语数据到底具体贡献了什么、贡献了多少\"此前一直缺乏系统的因果验证，大多停留在相关性观察层面。为了把这个问题讲清楚，作者采取了一种干净利落的受控实验设计：从零开始预训练模型，对比标准网络语料（保留其中天然存在的混合语言文档）和一个刻意构造的\"纯单语版本\"语料（把所有多语言文档统统剔除），在完全可控的条件下观察两者训练出的模型行为差异，这种从零训练加受控消融的方法论比事后在已有模型上做相关性分析要严谨得多，也是这篇论文方法上的核心创新点。作者进一步把语料中的双语文档细分为三类并统计了各自占比：平行语料（parallel，占双语数据的14%，即两种语言表达同一内容的对照文本）、语码转换文本（code-switching，占比高达72%，即同一段文本中自然夹杂多种语言，这是三类中占比最大也最贴近真实网络文本的形式）、以及其他杂项混合语言文档（miscellaneous，占14%）。核心实验结果相当反直觉且颇具冲击力：这些混合语言文档在整个预训练语料中占比极低，仅有 2%，然而一旦把它们从语料中完全剔除，模型在翻译任务上的 BLEU 分数暴跌 56%，是一个极其显著的性能崩塌；但与此形成鲜明对比的是，跨语言问答和通用推理任务的表现却几乎不受影响，两种语料训练出的模型在这些任务上的训练曲线基本重合。这说明双语数据对模型能力的贡献并非\"雨露均沾\"地惠及所有跨语言任务，而是高度集中且专门作用于翻译这一类任务上，为理解多语言预训练语料构成与下游能力之间的因果关系提供了迄今为止最干净的实证证据。论文作者包括 Jiandong Shao、Raphael Tang、Crystina Zhang、Karin Sevegnani、Pontus Stenetorp、Jianfei Yang、Yao Lu，已被 ACL 2026 主会录用，对于任何需要设计或筛选多语言预训练语料配比的团队而言，这篇论文提供了一个可操作、可复现的诊断范式。",
+    "model": "claude-sonnet-5",
+    "reasoning_effort": "standard",
+    "date_added": "2026-08-06",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
   }
 ]
