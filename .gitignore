@@ -1,7 +1,15 @@
-# Hugo build artifacts
+# Hugo build artifacts (old_version/, kept for archival reference only)
 public/
 resources/
 .hugo_build.lock
+
+# Jekyll (academicpages) build artifacts
+_site/
+.jekyll-cache/
+.jekyll-metadata
+.sass-cache/
+vendor/bundle/
+.bundle/
 
 # Paper Reading — locally cached PDFs (never pushed; fetched from arXiv on demand).
 # annotations.json IS committed so highlights/notes show on the public site.
@@ -10,3 +18,4 @@ paper-reading/pdfs/
 # Interest ratings (1-5 "有意思指数") are private — local-only, never pushed,
 # so the public site never appears to rate/judge other people's papers.
 paper-reading/data/interest.json
+.DS_Store
