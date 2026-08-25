@@ -98,6 +98,7 @@ redirect_from:
     </div>
     <div class="yf-pub-links">
       <a href="https://arxiv.org/abs/2608.23390" target="_blank" rel="noopener"><span data-i18n="en">Paper</span><span data-i18n="zh">论文</span></a>
+      <a href="https://github.com/MeloS7/cross_lingual_biography_enrichment" target="_blank" rel="noopener"><span data-i18n="en">Code</span><span data-i18n="zh">代码</span></a>
     </div>
   </li>
   <li>
@@ -117,6 +118,7 @@ redirect_from:
     </div>
     <div class="yf-pub-links">
       <a href="https://arxiv.org/abs/2608.23391" target="_blank" rel="noopener"><span data-i18n="en">Paper</span><span data-i18n="zh">论文</span></a>
+      <a href="https://github.com/MeloS7/Cross-Domain-D2T-DDKD" target="_blank" rel="noopener"><span data-i18n="en">Code</span><span data-i18n="zh">代码</span></a>
     </div>
   </li>
   <li>
