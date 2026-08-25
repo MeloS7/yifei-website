@@ -90,11 +90,14 @@ redirect_from:
 
 <ul class="yf-pub-list">
   <li>
-    <div class="yf-pub-title">Cross-lingual Biography Enrichment via Claim Extraction and Alignment</div>
+    <div class="yf-pub-title"><a href="https://arxiv.org/abs/2608.23390" target="_blank" rel="noopener">Cross-lingual Biography Enrichment via Claim Extraction and Alignment</a></div>
     <div class="yf-pub-authors"><strong>Yifei Song</strong>, Ziyang Chen, Emil Sayilov, Claire Gardent</div>
     <div class="yf-pub-venue">
       <span data-i18n="en">EMNLP 2026 (Main Conference) &middot; to appear</span>
       <span data-i18n="zh">EMNLP 2026（主会）&middot; 待发表</span>
+    </div>
+    <div class="yf-pub-links">
+      <a href="https://arxiv.org/abs/2608.23390" target="_blank" rel="noopener"><span data-i18n="en">Paper</span><span data-i18n="zh">论文</span></a>
     </div>
   </li>
   <li>
@@ -106,11 +109,14 @@ redirect_from:
     </div>
   </li>
   <li>
-    <div class="yf-pub-title">Cross-Domain, Multi-Task Data-to-Text Generation without In-Domain Training Data</div>
+    <div class="yf-pub-title"><a href="https://arxiv.org/abs/2608.23391" target="_blank" rel="noopener">Cross-Domain, Multi-Task Data-to-Text Generation without In-Domain Training Data</a></div>
     <div class="yf-pub-authors"><strong>Yifei Song</strong>, Kun Zhang, Claire Gardent</div>
     <div class="yf-pub-venue">
       <span data-i18n="en">EMNLP 2026 (Findings) &middot; to appear</span>
       <span data-i18n="zh">EMNLP 2026（Findings）&middot; 待发表</span>
+    </div>
+    <div class="yf-pub-links">
+      <a href="https://arxiv.org/abs/2608.23391" target="_blank" rel="noopener"><span data-i18n="en">Paper</span><span data-i18n="zh">论文</span></a>
     </div>
   </li>
   <li>
