@@ -2907,5 +2907,83 @@
     "deep_read": false,
     "deep_read_at": null,
     "interest": null
+  },
+  {
+    "id": "2026-08-30-01",
+    "paper_id": "arxiv:2605.09063",
+    "title": "Soohak: A Mathematician-Curated Benchmark for Evaluating Research-level Math Capabilities of LLMs",
+    "year": 2026,
+    "venue": "arXiv",
+    "topics": [
+      "math"
+    ],
+    "keywords": [
+      "research-level math",
+      "benchmark",
+      "mathematician-curated",
+      "refusal subset"
+    ],
+    "link": "https://arxiv.org/abs/2605.09063",
+    "brief": "本文关注评估大模型在“研究级数学”（research-level math）上的推理能力，区别于以往侧重奥数风格题目的基准。作者构建了全新的 Soohak 基准，包含 439 道从零编写的研究级数学题目，由 68 名贡献者（含 38 名教职人员、25 名博士生/博士后、5 名硕士生/本科生 IMO 奖牌得主）共同创作，分为常规题目子集与更难的 Challenge 子集。其创新点在于强调“研究级”而非仅奥数难度，题目需要多步骤推理来逼近真实数学研究前沿；同时引入“拒绝子集”（refusal subset），专门考察模型能否识别病态或无解问题并选择拒绝作答，而不是给出看似自信实则毫无依据的答案——这是以往数学基准很少测试的能力。为防止数据污染，完整数据集要到2026年底才公开发布，期间模型评测结果仅按需提供。实验结果显示：在 Challenge 子集上，前沿闭源模型如 Gemini-3-Pro、GPT-5、Claude-Opus-4.5 的准确率分别只有 30.4%、26.4%、10.4%；开源模型如 Qwen3-235B、GPT-OSS-120B、Kimi-2.5 全部低于 15%。在拒绝子集上，没有一个模型的表现超过 50%，说明即便是最强模型，面对研究级数学问题时既缺乏深层推理能力，也缺乏对自身能力边界的准确判断。作者团队包括 Guijin Son、Seungone Kim 等。目前该工作为 arXiv 预印本，尚未见顶会录用信息，但因其“数学家纯手工出题防污染 + 拒绝子集”的设计在社区讨论度较高。",
+    "model": "claude-sonnet-5",
+    "reasoning_effort": "standard",
+    "date_added": "2026-08-30",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-08-30-02",
+    "paper_id": "aclanthology:2025.emnlp-main.43",
+    "title": "TracSum: A New Benchmark for Aspect-Based Summarization with Sentence-Level Traceability in Medical Domain",
+    "year": 2025,
+    "venue": "EMNLP 2025 (Main Conference)",
+    "topics": [
+      "summarization"
+    ],
+    "keywords": [
+      "aspect-based summarization",
+      "medical domain",
+      "traceability",
+      "citation"
+    ],
+    "link": "https://aclanthology.org/2025.emnlp-main.43/",
+    "brief": "本文关注面向医学领域的可溯源（traceable）、按方面（aspect-based）文本摘要任务，目标是让大模型生成摘要的同时给出可回溯到原文的证据引用，缓解医学摘要中长期存在的事实准确性担忧。作者新构建了 TracSum 基准：对 500 篇医学摘要按七个关键医学方面进行人工标注，得到 3.5K 条“摘要-引用”配对数据。其创新点在于：不同于传统摘要任务只关注生成内容本身，TracSum 要求生成的摘要在句子级别对应到原文的具体句子，用户可以直接追溯依据；作者据此提出一套细粒度评估框架，用四个指标分别衡量生成内容的完整性（completeness）和一致性（consistency）；同时提出了一个名为 Track-Then-Sum 的基线摘要流水线——先做句子级证据追踪，再基于追踪结果生成摘要，而不是先生成摘要再回溯证据。实验在该基线方法与多个大模型上进行对比，并辅以人工评估验证自动评估指标的可靠性。核心发现是：显式地先做句子级追踪、再生成摘要，能够提升生成内容的准确性；而在追踪结果基础上进一步引入完整上下文，则能进一步提升摘要的完整性。该工作已被 EMNLP 2025 主会录用（编号 2025.emnlp-main.43），作者团队（Bohao Chu、Meijie Li 等）来自德国相关高校及附属医院（含皮肤科医学背景合作者），体现出该任务对真实临床场景的关注。",
+    "model": "claude-sonnet-5",
+    "reasoning_effort": "standard",
+    "date_added": "2026-08-30",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-08-30-03",
+    "paper_id": "arxiv:2604.01499",
+    "title": "Matching Accuracy, Different Geometry: Evolution Strategies vs GRPO in LLM Post-Training",
+    "year": 2026,
+    "venue": "arXiv",
+    "topics": [
+      "reinforcement learning"
+    ],
+    "keywords": [
+      "evolution strategies",
+      "GRPO",
+      "post-training",
+      "loss landscape geometry"
+    ],
+    "link": "https://arxiv.org/abs/2604.01499",
+    "brief": "本文比较两类大模型后训练优化范式——无梯度的进化策略（Evolution Strategies, ES）与主流的梯度式强化学习方法 GRPO（Group Relative Policy Optimization）——在提升模型任务能力时是否得到“相似但本质不同”的解。作者在四项任务上，分别在单任务和顺序持续学习两种设置下训练模型并对比 ES 与 GRPO。创新点在于：以往工作大多只比较两种方法的最终任务准确率，这篇论文进一步深入到参数空间的几何结构，提出一套统一的 ES 解析理论，试图解释 ES 为何能在最终任务表现上追平甚至超过 GRPO，却在参数更新方式上完全不同；论文还发现一个反直觉现象——尽管 ES 和 GRPO 找到的更新方向几乎正交，但两者的解在损失地形上竟然线性连通，中间没有损失壁垒（loss barrier）。实验结果显示：ES 在单任务设置下的准确率与 GRPO 相当甚至更优，在控制迭代预算后，顺序持续学习设置下也保持竞争力；但 ES 对参数的改动幅度远大于 GRPO，会带来更广泛的“离任务”（off-task）KL 漂移，而 GRPO 的更新则更小、更局部化——这意味着尽管两者任务表现相近，ES 更可能牺牲模型在其他任务上的能力（遗忘风险更高），对如何权衡训练效率与知识保留有重要参考价值。作者为 William Hoy、Binxu Wang、Xu Pan，代码已开源，目前尚未见顶会录用信息，但因其对 RL vs 进化算法这一新兴争论给出理论解释，在机器学习社区受到关注。",
+    "model": "claude-sonnet-5",
+    "reasoning_effort": "standard",
+    "date_added": "2026-08-30",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
   }
 ]
