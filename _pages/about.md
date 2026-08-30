@@ -22,12 +22,17 @@ redirect_from:
 
 <ul class="yf-news-list">
   <li>
-    <span class="yf-news-date">2026</span>
+    <span class="yf-news-date">2026.08</span>
     <span data-i18n="en">🎉 Three papers accepted at <strong>EMNLP 2026</strong> — two to the Main conference, one to Findings.</span>
     <span data-i18n="zh">🎉 三篇论文被 <strong>EMNLP 2026</strong> 录用——两篇主会，一篇 Findings。</span>
   </li>
   <li>
-    <span class="yf-news-date">2025</span>
+    <span class="yf-news-date">2026.08</span>
+    <span data-i18n="en">🎓 Attended the <a href="https://malt-summer-school-2026.eventmaker.io/" target="_blank" rel="noopener">LLMs4EU Summer School</a>.</span>
+    <span data-i18n="zh">🎓 参加了 <a href="https://malt-summer-school-2026.eventmaker.io/" target="_blank" rel="noopener">LLMs4EU 暑期学校</a>。</span>
+  </li>
+  <li>
+    <span class="yf-news-date">2025.08</span>
     <span data-i18n="en">🎉 Two papers accepted at <strong>EMNLP 2025</strong> — one to the Main conference, one to Findings.</span>
     <span data-i18n="zh">🎉 两篇论文被 <strong>EMNLP 2025</strong> 录用——一篇主会，一篇 Findings。</span>
   </li>
