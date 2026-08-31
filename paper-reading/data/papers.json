@@ -2985,5 +2985,85 @@
     "deep_read": false,
     "deep_read_at": null,
     "interest": null
+  },
+  {
+    "id": "2026-08-31-01",
+    "paper_id": "arxiv:2503.05846",
+    "title": "EMCEE: Improving Multilingual Capability of LLMs via Bridging Knowledge and Reasoning with Extracted Synthetic Multilingual Context",
+    "year": 2026,
+    "venue": "ACL 2026 (Main Conference)",
+    "topics": [
+      "multilingual"
+    ],
+    "keywords": [
+      "multilingual LLM",
+      "synthetic context",
+      "low-resource languages",
+      "knowledge activation"
+    ],
+    "link": "https://arxiv.org/abs/2503.05846",
+    "brief": "这篇论文关注的问题是大语言模型在非英语语言上的能力显著弱于英语这一长期存在的现象，其根源在于预训练语料本身高度以英语为中心，导致模型内部虽然可能隐含了某种语言的知识，却难以在推理时被有效激活和利用。任务被定义为提升LLM的多语言能力，具体聚焦于知识密集型和推理密集型的多语言问答与理解任务。方法上，作者提出了EMCEE（Extracting synthetic Multilingual Context and mErging），核心创新分为两步：第一步是“抽取”，让模型针对目标语言的输入先生成一段合成的、隐式编码在参数中的语言特定背景知识（synthetic context），把原本沉睡在模型参数里、难以直接触达的语言知识显式化为一段可读文本；第二步是“融合”，通过一个基于判断的选择机制（judgment-based selection），动态地将这段抽取出的上下文知识与模型面向推理生成的输出进行合并，而不是简单拼接，从而在知识准确性和推理连贯性之间做出更合理的权衡。这种做法区别于以往依赖翻译、跨语言对齐训练或额外多语言语料继续预训练的思路，是一种推理阶段（inference-time）的轻量级干预方法，不需要额外的大规模多语言训练。实验方面，作者在覆盖多种语言和多种任务类型的四个多语言基准上做了系统评测，结果显示EMCEE相比此前方法平均取得16.4%的相对提升，在低资源语言上提升更为显著，达到31.7%，说明这种“先激活隐藏知识、再有选择地融合”的策略对资源匮乏语言尤其有效，为多语言LLM能力提升提供了一条不依赖大规模额外数据的新路径。论文作者来自延世大学，被ACL 2026主会接收为Long Paper。",
+    "model": "Claude Sonnet 5",
+    "reasoning_effort": "standard",
+    "date_added": "2026-08-31",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-08-31-02",
+    "paper_id": "arxiv:2606.12594",
+    "title": "Pythagoras-Prover: Advancing Efficient Formal Proving via Augmented Lean Formalisation",
+    "year": 2026,
+    "venue": "arXiv",
+    "topics": [
+      "math"
+    ],
+    "keywords": [
+      "Lean 4",
+      "theorem proving",
+      "formal proof",
+      "diffusion model",
+      "data augmentation"
+    ],
+    "link": "https://arxiv.org/abs/2606.12594",
+    "brief": "这篇论文处理的任务是Lean 4形式化定理证明，即让模型自动生成能够被Lean证明助手严格验证通过的形式化证明。当前该领域的一个突出痛点是：像DeepSeek-Prover-V2这类效果领先的模型往往依赖数百亿参数规模和巨大的训练/推理算力，而形式化证明数据本身又因为需要人工验证而异常稀缺，进一步推高了监督微调和采样的成本，普通研究者难以复现或落地。为此，作者提出了Pythagoras-Prover系列模型，试图在有限算力预算下做到高效的形式化证明，同时探索了自回归和扩散两种生成范式（4B/32B自回归模型，以及一个4B规模的扩散式证明器概念验证，后者通过在推理时反复迭代打磨来逐步精化Lean证明，这在形式化证明领域是较新颖的尝试）。方法上的另一个核心创新是“增强Lean形式化”（Augmented Lean Formalisation, ALF）：对每条已验证的证明实例，通过简化、泛化、引理提出、证明步骤分解、改写表述这五种变异方式生成结构化的形式化变体，并且只用轻量级的合理性检查而非逐条重新调用Lean验证器，从而把语料扩充的速度和验证器吞吐量解耦，使种子语料规模扩大约2.5倍。训练时还采用了按难度分层（简单/中等/困难）的课程式监督微调，并配合动态证明推理过滤机制将每条训练样本控制在8k token的上下文预算内。实验结果颇为亮眼：仅4B参数的Pythagoras-Prover-4B在MiniF2F-Test基准上以pass@32指标达到86.1%，超过了参数量是其167倍的DeepSeek-Prover-V2-671B（82.4%），这一“以小博大”的效率对比是这篇论文最具讨论度的亮点，展示了数据增强和课程学习相较单纯堆参数规模的另一种可能性。目前暂未查到明确顶会录用信息，但在Lean定理证明社区讨论度较高，已开源模型权重和代码。",
+    "model": "Claude Sonnet 5",
+    "reasoning_effort": "standard",
+    "date_added": "2026-08-31",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-08-31-03",
+    "paper_id": "arxiv:2602.15173",
+    "title": "Mind the (DH) Gap! A Contrast in Risky Choices Between Reasoning and Conversational LLMs",
+    "year": 2026,
+    "venue": "ACL 2026 (Outstanding Paper)",
+    "topics": [
+      "reasoning"
+    ],
+    "keywords": [
+      "risky choice",
+      "decision theory",
+      "reasoning models",
+      "description-experience gap",
+      "LLM behavior"
+    ],
+    "link": "https://arxiv.org/abs/2602.15173",
+    "brief": "这篇论文关注的是一个介于认知科学和LLM评测之间的问题：当大语言模型面对包含风险的选择（risky choice，例如在不同概率和收益的赌局之间做决策）时，它们的决策行为究竟更接近经典决策理论所假设的“理性预期效用最大化者”，还是更接近人类真实决策中常见的、会被框架效应和呈现顺序左右的非理性行为模式。任务被设计为一套系统的行为实验，作者在“前景呈现方式”（prospect representation：显式列出概率收益的描述型呈现 vs. 需要通过反复试验积累经验才能感知概率分布的经验型呈现）和“决策理由”（是否要求模型输出解释）两个维度上构造了对照实验矩阵，并纳入了20个来自不同厂商的前沿及开源LLM，同时配套开展了人类被试实验作为参照基准（matched human subjects experiment），这是该研究方法上的一个重要创新点——不是单纯评测模型，而是把模型行为和真实人类行为放在同一套实验范式下直接对比。核心发现是：这20个模型可以清晰地分成两类，一类是“推理模型”（reasoning models，即经过强化学习/长链式思考训练、擅长数学等任务的模型），它们的选择行为高度接近理性预期效用最大化，几乎不受前景呈现顺序、框架措辞、是否要求解释等无关因素影响；另一类是“对话模型”（conversational models），其决策行为明显更不理性、更容易被框架和呈现顺序左右，虽然在这个意义上“更像人类”，但也表现出被称为“描述-经验鸿沟”（description-experience gap, DH Gap）的现象被进一步放大。论文进一步指出，是否经过针对数学推理能力的专门训练，可能是区分这两类模型风险决策行为差异的关键因素之一。作者来自华盛顿大学圣路易斯分校，该论文被列入ACL 2026 Outstanding Paper名单。这一发现对于将LLM应用于金融、医疗等高风险决策辅助场景具有直接参考价值。",
+    "model": "Claude Sonnet 5",
+    "reasoning_effort": "standard",
+    "date_added": "2026-08-31",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
   }
 ]
