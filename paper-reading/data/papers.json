@@ -3065,5 +3065,84 @@
     "deep_read": false,
     "deep_read_at": null,
     "interest": null
+  },
+  {
+    "id": "2026-09-01-01",
+    "paper_id": "arxiv:2512.20822",
+    "title": "MediEval: A Unified Medical Benchmark for Patient-Contextual and Knowledge-Grounded Reasoning in LLMs",
+    "year": 2025,
+    "venue": "ACL 2026 (Outstanding Paper)",
+    "topics": [
+      "reasoning"
+    ],
+    "keywords": [
+      "medical reasoning",
+      "hallucination",
+      "knowledge grounding",
+      "benchmark"
+    ],
+    "link": "https://arxiv.org/abs/2512.20822",
+    "brief": "这篇论文关注的任务是评测大语言模型在真实医疗场景下的“病历上下文推理”与“医学知识依据推理”能力，具体来说是检验模型在给定具体病人病历的前提下，能否既保持医学知识层面的事实正确，又能与该病人的具体临床情境保持逻辑一致，这是此前评测工作长期忽略的交叉维度——以往的基准要么孤立地测试模型的医学知识对错，要么只考察病人层面的推理表现却不去验证结论本身是否正确，二者从未被同时纳入统一框架考察。为此，作者构建了一个新的评测基准：将来自 MIMIC-IV 的真实患者电子病历数据，链接到基于 UMLS 等生物医学词表构建的统一医学知识库，并围绕真实病人情境批量生成大量事实性与反事实（counterfactual）医学陈述。方法上的核心创新是提出了一个“四象限”评测框架，把“知识层面是否正确”和“是否与患者具体病历上下文一致”两个维度交叉展开，从而系统性地暴露出以往单一维度评测看不见的两类失败模式：一类是“幻觉支持”（hallucinated support，即模型给出的支持依据本身站不住脚但结论恰好蒙对）；另一类是更隐蔽也更危险的“真值反转”（truth inversion，模型把病历中原本正确的信息颠倒过来）。在覆盖商业闭源模型、开源模型以及专门的医学垂直LLM的大规模实验中，这两类失败模式普遍存在，说明当前医疗LLM的可靠性评估存在系统性盲区，这项工作因此获得了ACL 2026的Outstanding Paper奖项认可。作者为 Zhan Qu 和 Michael Färber，隶属 TU Dresden。",
+    "model": "claude-sonnet-5",
+    "reasoning_effort": "low",
+    "date_added": "2026-09-01",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-09-01-02",
+    "paper_id": "arxiv:2506.21621",
+    "title": "The Open Proof Corpus: A Large-Scale Study of LLM-Generated Mathematical Proofs",
+    "year": 2025,
+    "venue": "ICLR 2026 (Poster)",
+    "topics": [
+      "math"
+    ],
+    "keywords": [
+      "theorem proving",
+      "proof evaluation",
+      "benchmark dataset",
+      "best-of-n"
+    ],
+    "link": "https://arxiv.org/abs/2506.21621",
+    "brief": "这篇论文瞄准的问题是自动数学证明生成领域长期缺乏大规模、高质量、经过人工评审的证明数据集，这一缺口既限制了训练更强证明模型的能力，也让研究者难以严谨地分析当前LLM证明能力的真实水平和局限所在。为此，作者构建并发布了Open Proof Corpus（OPC）：一个包含超过5000条由当前最先进LLM生成、并经过人工逐条评估正确性的数学证明数据集，其突出特点是首次大规模纳入了来自USAMO、IMO等顶级数学竞赛题目的、被判定为正确的LLM生成证明解答，这类高难度竞赛证明此前极少被系统性收录进公开数据集。基于OPC，作者系统探讨了三个此前缺乏实证数据支撑的关键问题：其一，自然语言证明与形式化（formal）证明之间存在多大的性能差距；其二，“最终数值答案正确”与“完整证明过程严谨有效”之间存在多大程度的脱节——换句话说，模型经常能蒙对答案但证明步骤本身有漏洞；其三，best-of-n（多次采样后择优）这类推理时策略对最终证明质量的实际提升效果如何。为了展示数据集的实用价值，作者还用OPC对一个8B参数规模的小模型做了微调，专门训练它判断“一段证明是否正确”，结果显示这个经过微调的小模型在证明正确性判别任务上的表现，已经能够与当时最强的闭源模型Gemini-2.5-Pro相当，凸显出高质量人工标注数据对训练“证明评审员”模型的价值。作者团队来自ETH Zurich（Jasper Dekoninck、Martin Vechev团队等，共16位作者），该工作已被ICLR 2026接收为Poster。",
+    "model": "claude-sonnet-5",
+    "reasoning_effort": "low",
+    "date_added": "2026-09-01",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-09-01-03",
+    "paper_id": "arxiv:2606.01464",
+    "title": "Cross-lingual Self-Consistency for Multilingual Reasoning with Language Models",
+    "year": 2026,
+    "venue": "arXiv",
+    "topics": [
+      "multilingual",
+      "reinforcement learning"
+    ],
+    "keywords": [
+      "cross-lingual consistency",
+      "unsupervised RL",
+      "MGSM",
+      "low-resource languages"
+    ],
+    "link": "https://arxiv.org/abs/2606.01464",
+    "brief": "这篇论文关注的核心问题是，尽管当前大语言模型号称支持多语言，但其真正意义上的高级推理能力（多步数学推理、逻辑推理等）实际上高度集中在英语等少数高资源语言上，一旦切换到中低资源语言，推理表现会明显掉档，而以往解决这一问题的方法大多依赖平行语料或人工标注的跨语言正确答案，这类监督信号本身就十分稀缺，导致方法的可扩展性和对未见语言的泛化能力都很有限。这篇论文的创新点在于提出了一种完全无监督的强化学习方法，其核心思想是“跨语言自洽性”（cross-lingual self-consistency）：给定同一道题目在不同语言下的等价表述，理论上一个真正具备推理能力的模型应该在所有语言版本上都得出相同的最终答案；作者据此把“不同语言版本答案是否一致”这个可以自动、无需人工标注就能计算的信号，直接转化为强化学习的奖励函数，用来训练模型在跨语言场景下保持推理结果的一致性，从而完全绕开了对平行语料和人工标注答案的依赖。实验在MGSM（多语言小学数学应用题基准）覆盖的10种语言上进行，结果显示该方法带来了平均高达21.7%的性能提升；更值得关注的是，在训练阶段完全未见过的MGSM语言上，模型依然取得了平均18.2%的提升，显示出较强的跨语言泛化能力；在另外3个分布外（out-of-distribution）基准上也观察到最高6.2%的额外增益。这一结果表明，跨语言自洽性作为一种廉价、可自动计算的自监督信号，是缩小多语言推理能力差距的一条有效路径，尤其为缺乏标注资源的低资源语言场景提供了新思路。作者机构信息暂未查得明确来源，论文为2026年5月提交的arXiv预印本，暂未查到明确顶会录用信息。",
+    "model": "claude-sonnet-5",
+    "reasoning_effort": "low",
+    "date_added": "2026-09-01",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
   }
 ]
