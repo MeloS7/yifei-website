@@ -3223,5 +3223,85 @@
     "deep_read": false,
     "deep_read_at": null,
     "interest": null
+  },
+  {
+    "id": "2026-09-03-01",
+    "paper_id": "arxiv:2606.22317",
+    "title": "Curriculum Reinforcement Learning Can Incentivize Reasoning Capacity in LLMs Beyond the Base Model",
+    "year": 2026,
+    "venue": "arXiv",
+    "topics": [
+      "reinforcement learning",
+      "reasoning"
+    ],
+    "keywords": [
+      "RLVR",
+      "curriculum learning",
+      "pass@k",
+      "reasoning boundary"
+    ],
+    "link": "https://arxiv.org/abs/2606.22317",
+    "brief": "这篇论文关注的核心问题是：当前主流的可验证奖励强化学习（RLVR）方法虽然能显著提升大语言模型在数学、代码等任务上的 pass@1 准确率，但越来越多研究（包括此前 NeurIPS 相关工作“Does RL Really Incentivize Reasoning Capacity”）指出，RLVR 很可能只是在重新分配基座模型已经具备的正确轨迹的采样概率，而并未真正扩展模型的推理能力边界——即高k值下的 pass@k 几乎没有提升。针对这一局限，作者提出了一种“边界感知”的课程强化学习框架：每一轮课程分三步进行，首先通过大样本量的 pass@k 采样估计模型当前的推理能力边界；然后针对处于边界附近或超出边界的题目，提供少量结构化的教师推理轨迹作为引导；最后通过RL巩固阶段，将新引入的推理模式固化为模型的稳定行为。该方法在 Qwen、Llama、DeepSeek 等多个基座模型家族上进行了验证，结果显示 pass@256 平均提升达9.8个百分点，相较标准的 Vanilla RLVR 训练额外提升10.3个百分点，表明该课程学习范式确实能够将模型推向超出原始基座能力边界的新推理模式，而不只是重新加权已有能力。论文提交于2026年6月，作者包括 Pengxiang Cai、Tianchen Fang 等，目前以 arXiv 预印本形式发布。这项工作直接回应了近期学界关于“RL到底有没有教会模型新东西”的争论，提供了较有说服力的正面证据，值得关注 RLVR 训练动态和推理能力边界问题的读者细读。",
+    "model": "claude-sonnet-5",
+    "reasoning_effort": "low",
+    "date_added": "2026-09-03",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-09-03-02",
+    "paper_id": "arxiv:2601.20614",
+    "title": "Harder Is Better: Boosting Mathematical Reasoning via Difficulty-Aware GRPO and Multi-Aspect Question Reformulation",
+    "year": 2026,
+    "venue": "ICLR 2026",
+    "topics": [
+      "math",
+      "reinforcement learning"
+    ],
+    "keywords": [
+      "GRPO",
+      "difficulty-aware RL",
+      "question reformulation",
+      "RLVR"
+    ],
+    "link": "https://arxiv.org/abs/2601.20614",
+    "brief": "这篇被 ICLR 2026 正式接收的论文聚焦于用可验证奖励强化学习（RLVR）提升大模型数学推理能力这一任务，但作者发现现有方法在算法和数据两个层面都系统性地“轻视”了较难的题目，尽管这些题目恰恰是模型能力最薄弱、最需要被针对性训练的部分。在算法层面，作者指出被广泛使用的 GRPO（Group Relative Policy Optimization）存在一个隐性的不平衡问题：对于较难的问题，策略更新的幅度反而更小，导致模型在难题上进步缓慢；在数据层面，现有的问题增强方法大多只是改写题目表述以增加多样性，并没有系统性地提高题目本身的内在难度。针对这两个问题，作者提出了 MathForge 框架，包含两个组件：一是难度感知的组策略优化算法（DGPO），通过难度平衡的组优势估计（DGAE）先纠正 GRPO 的隐性不平衡，再通过难度感知的问题级加权（DQW）进一步向难题倾斜；二是多方面问题重构策略（MQR），用于系统性地构造更高难度的训练题目而非简单改写。实验在多个数学推理基准上验证了该方法的有效性，相较标准 GRPO 及其他数据增强基线均取得明显提升，代码已在 GitHub 开源（AMAP-ML/MathForge）。这篇论文的价值在于把“该在哪些题目上花更多训练资源”这一直觉，转化成了算法和数据两条线索上可操作、可解释的具体机制，是 RLVR 用于数学推理领域中一篇思路清晰、验证扎实的工作。",
+    "model": "claude-sonnet-5",
+    "reasoning_effort": "low",
+    "date_added": "2026-09-03",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-09-03-03",
+    "paper_id": "arxiv:2601.18886",
+    "title": "XProvence: Zero-Cost Multilingual Context Pruning for Retrieval-Augmented Generation",
+    "year": 2026,
+    "venue": "ECIR 2026",
+    "topics": [
+      "multilingual"
+    ],
+    "keywords": [
+      "RAG",
+      "context pruning",
+      "reranking",
+      "cross-lingual transfer"
+    ],
+    "link": "https://arxiv.org/abs/2601.18886",
+    "brief": "这篇被 ECIR 2026 接收的论文关注检索增强生成（RAG）系统中一个实用但常被忽视的问题：上下文剪枝（context pruning），即如何在把检索到的文档交给生成模型之前，去除其中不相关或冗余的内容，从而降低推理时的计算成本和延迟。论文基于此前的 Provence 框架——该框架首次把零成本的上下文剪枝直接整合进重排序（re-ranking）模型内部，避免了额外增加一个独立剪枝模型的开销——但 Provence 本身仅支持英语。这篇工作的核心创新在于把这一思路系统性地扩展到多语言场景：作者在16种语言上训练了 XProvence 模型，并利用有效的跨语言迁移，使其能够支持100多种语言的上下文剪枝，而不需要为每种语言单独收集大规模标注数据。作者在四个多语言问答基准上进行了评测，结果显示 XProvence 能够在几乎不损失最终问答性能的前提下大幅剪除 RAG 上下文中的无关内容，且效果优于多个强基线方法。论文作者来自 KAUST（阿卜杜拉国王科技大学）和 Naver Labs Europe，后者正是原始 Provence 框架的提出团队，说明这是该系列工作的直接延续和多语言扩展。对于关注多语言 RAG 系统效率、部署成本与跨语言泛化能力的读者来说，这篇论文提供了一个轻量、实用且已经在真实工业场景验证过的解决方案。",
+    "model": "claude-sonnet-5",
+    "reasoning_effort": "low",
+    "date_added": "2026-09-03",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
   }
 ]
