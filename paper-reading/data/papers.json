@@ -3303,5 +3303,83 @@
     "deep_read": false,
     "deep_read_at": null,
     "interest": null
+  },
+  {
+    "id": "2026-09-04-01",
+    "paper_id": "arxiv:2606.23989",
+    "title": "Faithful by Construction: Claim-Anchored Attribution for Multi-Document Summarization",
+    "year": 2026,
+    "venue": "arXiv",
+    "topics": [
+      "summarization"
+    ],
+    "keywords": [
+      "multi-document summarization",
+      "faithfulness",
+      "attribution",
+      "claim extraction"
+    ],
+    "link": "https://arxiv.org/abs/2606.23989",
+    "brief": "这篇论文关注多文档摘要生成任务中长期存在的两个痛点：摘要内容的事实忠实性（faithfulness）和逐句可追溯的引用归因（attribution）。以往方法大多是“先生成摘要、再事后检测或修补幻觉”的两阶段范式，容易在生成阶段就引入无法追溯来源的错误陈述。该工作提出了名为 CAMS（Claim-Anchored Multi-document Summarization）的框架，思路是把“忠实”和“可归因”直接内置到生成流程的结构里，而不是事后补救。具体做法分四步：首先从多篇源文档中抽取带有token级溯源信息的原子性事实声明（atomic claims）；然后对跨文档中语义等价的声明做聚类，并主动标记不同文档间相互矛盾的声明；接着基于支持证据强度和内容显著性挑选出一个子集声明；最后将挑选出的声明约束性地改写、拼接成最终摘要，确保摘要里的每一句话都能锚定到一条经过支持性验证的声明上。这种“由结构保证忠实”的设计区别于以往依赖事后事实核查或强化学习奖励信号来间接提升忠实度的方法。实验结果显示，CAMS 在摘要质量指标上与强的端到端基线和span级归因基线基本持平，但在忠实性和引用精确度上有实质性提升，多源归因准确率提升幅度约达三分之二，说明结构化约束比单纯依赖后处理更有效。论文暂未查到具体顶会录用信息，来源标注为 arXiv。",
+    "model": "claude-sonnet-5",
+    "reasoning_effort": "standard",
+    "date_added": "2026-09-04",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-09-04-02",
+    "paper_id": "arxiv:2605.24486",
+    "title": "AgentFugue: Agent Scaling for Long-Horizon Tasks through Collective Reasoning",
+    "year": 2026,
+    "venue": "arXiv",
+    "topics": [
+      "reasoning"
+    ],
+    "keywords": [
+      "multi-agent",
+      "long-horizon tasks",
+      "collective reasoning",
+      "reinforcement learning"
+    ],
+    "link": "https://arxiv.org/abs/2605.24486",
+    "brief": "这篇论文研究的问题是：在长时程（long-horizon）智能体任务中，如果让多个“对等”的智能体（peer agents）并行探索同一个任务，能否在不依赖显式角色分工或人工设计工作流编排的前提下，让“多智能体”本身成为一种额外的能力来源，而不只是简单地堆算力、多采样几条轨迹取最优解。作者提出的 AgentFugue 框架核心是一个共享的“推理枢纽”（reasoning hub）：当多个智能体并行探索同一任务时，枢纽会实时记录每个智能体已经确认的结论、尝试过的策略、以及已经被排除的路径，并让每个智能体能够按需选择性地读取其他智能体积累下来的、对当前搜索有用的中间推理片段。这种设计把原本彼此独立、互不通信的多条探索轨迹连接成一个可复用中间推理的“生态系统”，而不需要一个中心化的规划器来统一调度，是一种比传统多智能体角色分工范式更轻量、更去中心化的协作方式。该推理枢纽被实现为一个可插拔的通信层，训练上结合了监督微调（SFT）和端到端强化学习。论文在多个具有挑战性的长时程任务设定上做了评测，结果显示 AgentFugue 相较强基线有明显提升，作者认为这说明“横向扩展对等智能体数量”本身可以成为一种独立于“增加单智能体算力”的能力增长来源。论文包含 NeurIPS 格式的 checklist，但暂未查到明确的录用确认，来源标注为 arXiv。",
+    "model": "claude-sonnet-5",
+    "reasoning_effort": "standard",
+    "date_added": "2026-09-04",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-09-04-03",
+    "paper_id": "arxiv:2602.24173",
+    "title": "LemmaBench: A Live, Research-Level Benchmark to Evaluate LLM Capabilities in Mathematics",
+    "year": 2026,
+    "venue": "arXiv",
+    "topics": [
+      "math"
+    ],
+    "keywords": [
+      "theorem proving",
+      "research-level mathematics",
+      "live benchmark",
+      "contamination-resistant"
+    ],
+    "link": "https://arxiv.org/abs/2602.24173",
+    "brief": "这篇论文针对的是数学基准测试领域一个日益突出的问题：现有的数学评测基准（如各类高中/竞赛题库）大多是静态的，容易被训练数据污染（contamination），而且题目难度停留在竞赛数学层面，无法反映LLM在真正的“研究级”数学问题上的能力，也就是研究者日常工作中会遇到的、来自真实数学论文的引理（lemma）级别的证明任务。作者构建了 LemmaBench，一个可持续更新的“活基准”（live benchmark），其数据集不是一次性人工编写的题库，而是通过一套自动化流水线从 arXiv 上新发表的数学论文中抽取引理，并将其改写为自包含的陈述——即把证明该引理所需的全部前提假设和定义都显式展开，使其不依赖原论文上下文也能被独立理解和求解。这种自动化、可持续更新的构建方式是该工作区别于以往静态数学基准（如 Omni-MATH、MathOdyssey等）的核心创新点：随着新论文不断发表，基准可以定期滚动更新，旧版本可以被公开用于训练而不影响未来评测的公正性，从根本上缓解了数据污染问题。评测方式上，模型生成的证明先由LLM充当裁判打分，再抽取一部分由人类数学专家复核，以此校准LLM裁判的可信度。实验结果显示，当前最先进的LLM在这类研究级定理证明任务上的 pass@1 准确率只有大约10%到15%（因模型而异），远低于其在竞赛数学基准上的表现，说明LLM距离真正达到人类数学研究者水平仍有很大差距。作者为 Antoine Peyronnet、Fabian Gloeckle、Amaury Hayat。论文暂未查到具体顶会录用信息，来源标注为 arXiv。",
+    "model": "claude-sonnet-5",
+    "reasoning_effort": "standard",
+    "date_added": "2026-09-04",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
   }
 ]
