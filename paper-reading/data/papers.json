@@ -3381,5 +3381,85 @@
     "deep_read": false,
     "deep_read_at": null,
     "interest": null
+  },
+  {
+    "id": "2026-09-05-01",
+    "paper_id": "aclanthology:2026.acl-long.1542",
+    "title": "Anchoring the Cache: Mitigating Contextual Hallucination in KV-Compressed Long-Context Summarization",
+    "year": 2026,
+    "venue": "ACL 2026 (Main Conference)",
+    "topics": [
+      "summarization"
+    ],
+    "keywords": [
+      "KV cache compression",
+      "hallucination",
+      "long-context",
+      "efficient inference"
+    ],
+    "link": "https://aclanthology.org/2026.acl-long.1542/",
+    "brief": "这篇论文研究的任务是长文本摘要（long-context summarization），但切入角度很特别：它关心的不是摘要质量本身，而是为了提升推理效率而广泛使用的KV（Key-Value）缓存压缩技术，会给摘要生成带来什么副作用。KV缓存压缩通过丢弃或近似部分缓存来降低长上下文推理的显存和计算开销，是当前部署长文本LLM应用时的常见做法，但此前几乎没有研究系统考察过它对模型幻觉（hallucination）的影响。作者首次对这一问题做了系统性实证研究，构建了在多个模型和数据集上对比不同压缩强度下幻觉水平变化的实验设置，发现结论相当惊人：激进的KV缓存压缩会让幻觉分数最高上升3.36倍，也就是说，为了效率而做的压缩，可能会显著损害摘要内容对源文档的忠实度，这是一个此前被大规模部署实践忽视的风险点。基于这一诊断性发现，作者进一步提出了名为HalluKV的方法作为解决方案：这是一种在解码阶段生效的策略，其核心思路是有选择性地移除那些负责从源上下文中检索关键信息的“检索头”（retrieval heads）所生成的KV对，从而让模型的注意力被重新“锚定”（anchoring）到保留下来的源文档信息上，而不是让压缩过程无差别地损伤这些对忠实度至关重要的注意力路径。这种“知道哪些KV对更重要、有针对性地保护或调整”的思路，是与以往粗粒度、不区分功能的KV压缩方法的关键区别。实验结果显示，HalluKV在保持计算效率优势的同时，能在多个模型和数据集上显著降低幻觉，在Llama-3-8B-Instruct上最高实现5.48个百分点的平均降幅，说明效率与忠实度并非只能二选一。论文作者包括Yu Fu、Chen Luo、Josef Valvoda、Xin Zhang、Xuejing Lei、Xiao Pan、Hui Liu和Yue Dong，被ACL 2026主会录用，为工业界在部署长文本摘要系统时如何权衡推理效率与生成可信度提供了具体、可落地的技术方案。",
+    "model": "claude-sonnet-5",
+    "reasoning_effort": "standard",
+    "date_added": "2026-09-05",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-09-05-02",
+    "paper_id": "arxiv:2605.15224",
+    "title": "ICRL: Learning to Internalize Self-Critique with Reinforcement Learning",
+    "year": 2026,
+    "venue": "arXiv",
+    "topics": [
+      "reinforcement learning",
+      "reasoning",
+      "math"
+    ],
+    "keywords": [
+      "self-critique",
+      "reinforcement learning",
+      "agentic reasoning",
+      "mathematical reasoning"
+    ],
+    "link": "https://arxiv.org/abs/2605.15224",
+    "brief": "这篇论文瞄准的问题很现实：基于LLM的agent在有外部“批评”（critique）指导时往往能纠正错误，但一旦把critique拿掉，模型在同样的问题上又会犯同样的错误，说明它并没有把critique带来的改进真正内化为自身能力；同时，如果critique模块本身是冻结不变的，它的反馈质量也无法随时间迭代提升。为解决这两个问题，作者提出ICRL（Internalize Self-Critique with Reinforcement Learning）框架，从共享的同一个backbone出发，联合训练一个solver（求解器）和一个critic（批评者），目标是把“有critique辅助时的成功”转化为“无需critique也能达成的能力”。方法上的核心创新有三点：其一，critic的奖励信号不是直接标注质量，而是基于它给出的反馈能为solver带来多大的后续表现提升，从而激励critic给出真正“可执行”的反馈而非空泛评论；其二，针对“有critique条件”和“无critique条件”下模型行为分布不一致的问题，引入了一个分布校准的重加权比率（distribution-calibration re-weighting ratio），有选择性地只迁移那些与solver自身提示分布相兼容的改进；其三，提出按角色区分的组优势估计（role-wise group advantage estimation），稳定solver和critic两个角色的联合优化过程，避免训练震荡。实验以Qwen3-4B和Qwen3-8B为backbone，在涵盖agentic任务和数学推理任务的多个基准上评测，结果显示ICRL相较GRPO基线在agentic任务上平均提升6.4分，在数学推理任务上平均提升7.0分；更值得关注的是，训练出的8B规模critic在反馈质量上可以媲美32B规模的critic，但所消耗的token数量大幅减少，说明“内化式自我批评”是一条比单纯堆参数量更高效的路线。论文作者包括Jianbo Lin、Xiaomin Yu、Hui Xiong等人，代码已开源（github.com/brick-pid/ICRL),目前以arXiv预印本形式发布，尚未查到明确的顶会录用信息。",
+    "model": "claude-sonnet-5",
+    "reasoning_effort": "standard",
+    "date_added": "2026-09-05",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-09-05-03",
+    "paper_id": "arxiv:2605.16675",
+    "title": "LinAlg-Bench: A Forensic Benchmark Revealing Structural Failure Modes in LLM Mathematical Reasoning",
+    "year": 2026,
+    "venue": "arXiv",
+    "topics": [
+      "math"
+    ],
+    "keywords": [
+      "benchmark",
+      "linear algebra",
+      "failure analysis",
+      "mathematical reasoning"
+    ],
+    "link": "https://arxiv.org/abs/2605.16675",
+    "brief": "与大多数只报告“正确率”的数学推理基准不同，LinAlg-Bench想做的是一个“法医式”（forensic）诊断基准，专门刻画LLM在线性代数计算中失败的具体结构模式，而不只是给出一个笼统的准确率数字。作者构建了一个包含660道经过SymPy符号计算验证的线性代数题目的新数据集，题目按矩阵规模（3×3、4×4、5×5）和运算类型（行列式、特征值、秩、零度、矩阵乘法、矩阵幂、矩阵-向量乘、转置等共9种任务类型）系统组织成一个严格的“维度梯度”，在10个前沿大模型上进行评测，累计收集了6600条模型输出。方法上的关键创新是设计了一个三阶段自动化取证分析流水线（以Gemini-3.1-Pro同时充当判定者和元审核者），把其中1156个失败样本逐一归类到十种主要错误标签及更细粒度的子类型中，比如符号追踪错误、算术漂移、奇偶性错误等执行层面的问题，与更高层的方法性、策略性错误区分开来。这种细粒度的错误分类方法本身就是一种方法论贡献，使得研究者第一次能够定量地回答“模型在什么规模、什么算法类型上、以什么样的方式失败”，而不是停留在“模型在某个基准上得了多少分”的表层比较。实验最有意思的发现是存在一个清晰的“行为阈值”：当矩阵规模低于4×4时，模型的失败主要来自较为初级的执行层错误；而当规模达到或超过4×4之后，失败模式发生系统性转变，说明LLM在数学计算上的能力边界并非随维度线性衰减，而是存在结构性的跳变点。这一发现对理解当前LLM数学推理的能力边界、以及后续针对性地设计训练数据或强化学习奖励信号都具有启发意义。该工作目前以arXiv预印本形式发布，数据集也已在Hugging Face上公开（LinAlgBench/linalg-bench）。",
+    "model": "claude-sonnet-5",
+    "reasoning_effort": "standard",
+    "date_added": "2026-09-05",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
   }
 ]
