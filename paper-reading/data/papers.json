@@ -3461,5 +3461,84 @@
     "deep_read": false,
     "deep_read_at": null,
     "interest": null
+  },
+  {
+    "id": "2026-09-06-01",
+    "paper_id": "arxiv:2609.02379",
+    "title": "MultiGhostBench: A Multilingual Benchmark for Long-Form LLM-Generated Text Attribution under Distribution Shifts",
+    "year": 2026,
+    "venue": "arXiv",
+    "topics": [
+      "multilingual"
+    ],
+    "keywords": [
+      "authorship attribution",
+      "multilingual benchmark",
+      "distribution shift",
+      "long-form generation"
+    ],
+    "link": "https://arxiv.org/abs/2609.02379",
+    "brief": "这篇论文关注的任务是LLM生成文本的作者归属（authorship attribution）问题，即判断一段长文本究竟出自哪个大语言模型之手，这是LLM生成内容溯源、版权与滥用检测中的核心问题。以往这一方向的基准数据集大多局限于英文、受控实验设置，或使用已经过时的模型，少数涉及多语言的研究也只考虑相对较短的文本片段，难以反映真实世界中长篇小说、报告等长文本场景下的归属难度。为填补这一空白，作者构建了MultiGhostBench：包含由5个近期主流LLM生成的928本“书”，覆盖6种语言、3种文字系统，平均每本长度约5.9万词，是目前规模较大的多语言长文本归属基准之一。该基准的创新之处在于同时支持三种分布偏移场景下的评测——跨领域（domain shift）、跨作者风格（author shift）和跨语言（language shift），从而系统检验现有归属方法在真实迁移场景下是否依然可靠。实验结果显示，没有任何一种方法能在所有场景下都保持最优，几乎所有方法的性能都会在分布偏移下明显下降；基于Transformer的检测器能够在一定程度上跨语言保留与生成模型相关的风格信息，但不同语言对之间的迁移效果差异很大，而基于统计特征或“指纹”的传统检测器则更依赖具体语言，泛化能力较弱。论文作者包括Matteo Greco、Anudeex Shetty、Andrea Tagarelli、Jey Han Lau（涉及墨尔本大学等机构），数据集和代码已开源，为后续鲁棒的多语言作者归属方法研究提供了重要资源。",
+    "model": "claude-sonnet-5",
+    "reasoning_effort": "low",
+    "date_added": "2026-09-06",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-09-06-02",
+    "paper_id": "arxiv:2606.17735",
+    "title": "Shattering the Autoregressive Curse: Dynamic Epistemic Entropy Orchestrated Erasable Reinforcement Learning for LLMs",
+    "year": 2026,
+    "venue": "arXiv",
+    "topics": [
+      "reinforcement learning",
+      "math"
+    ],
+    "keywords": [
+      "RLVR",
+      "long-horizon reasoning",
+      "self-healing",
+      "mathematical reasoning"
+    ],
+    "link": "https://arxiv.org/abs/2606.17735",
+    "brief": "这篇论文聚焦强化学习（RL）训练大语言模型进行长程数学/逻辑推理时的一个核心痛点——作者称之为“自回归诅咒”：在自回归生成过程中，推理早期出现的一个微小认知偏差会沿着马尔可夫决策过程不断传播、放大，最终导致整条推理链条走向崩溃，即“一步错、步步错”。为解决这一问题，作者提出了E³RL（Dynamic Epistemic Entropy Orchestrated Erasable Reinforcement Learning），其核心创新在于完全不依赖外部奖励模型或验证器信号，而是直接利用模型自身局部自回归交叉熵作为衡量“认知不确定性”的内生指标；在此基础上引入分段（segment-level）自适应动态阈值机制和优势重分配策略，使模型能够精确定位并“切除”局部的逻辑缺陷片段，同时复用此前生成的KV缓存，从而让推理过程具备类似“自我修复”的能力，而不必从头重新生成整条推理链。实验在DeepMath-103k数据集上训练，并在AIME等主流数学推理基准上评测：结果显示E³RL显著提升了长序列推理的探索效率与样本效率，4B和8B参数规模的模型分别比此前的SOTA方法提升了5.349%和6.514%，且始终维持线性级别的显存开销，没有随序列变长而爆炸式增长。论文措辞较为大胆，将该方法定位为“自愈式AGI”系统级基础的表述本身也值得读者审慎看待，但其提出的内生认知熵信号与自愈式片段擦除机制，为解决RLVR训练中的长程推理崩溃问题提供了一个新颖且不依赖外部奖励的思路。",
+    "model": "claude-sonnet-5",
+    "reasoning_effort": "low",
+    "date_added": "2026-09-06",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-09-06-03",
+    "paper_id": "arxiv:2607.10390",
+    "title": "A Stepwise Questioning Expert-Editor Multi-Agent Framework for Long-Document Summarization",
+    "year": 2026,
+    "venue": "arXiv",
+    "topics": [
+      "summarization"
+    ],
+    "keywords": [
+      "long-document summarization",
+      "multi-agent",
+      "iterative refinement",
+      "question-driven revision"
+    ],
+    "link": "https://arxiv.org/abs/2607.10390",
+    "brief": "这篇论文处理的是长文档摘要生成任务，具体聚焦于科学论文等超长文档在超出LLM输入长度限制时，如何生成兼具连贯性与内容完整性的高质量摘要。作者指出，尽管LLM在新闻摘要等常规任务上表现不俗，但一旦文档长度超过模型上下文窗口，现有方法要么被迫做粗暴的截断或分块处理，要么在信息整合与关键信息保留上大打折扣。为此，论文提出了一个“专家-编辑”分步提问式多智能体框架：系统中设置专家（expert）与编辑（editor）两个智能体，二者并不直接生成摘要，而是通过对当前草稿的不同内容维度不断提出问题、给出具体的修改线索，引导另一个负责撰写与精炼摘要的智能体逐轮迭代式地完善摘要，这种“以问代改”的机制区别于以往一次性生成或简单打分重排的摘要流程，试图把摘要质量的把控拆解为可解释、可追溯的多轮问答过程。作者在两个具代表性的长文档科学数据集上进行了实验，并使用业内广泛采用的自动评测指标对结果进行了验证，证明该框架相比基线方法能有效提升摘要质量，尤其是在保持关键信息完整性方面表现更好。该论文作者为Lingyun Shen和Xuejia Guo，目前仅以arXiv预印本形式发布，尚未查到具体会议录用信息，但其“提问驱动修改”的多智能体设计思路，为长文档摘要生成提供了一个值得关注的新方向。",
+    "model": "claude-sonnet-5",
+    "reasoning_effort": "low",
+    "date_added": "2026-09-06",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
   }
 ]
