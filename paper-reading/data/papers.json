@@ -3540,5 +3540,83 @@
     "deep_read": false,
     "deep_read_at": null,
     "interest": null
+  },
+  {
+    "id": "2026-09-07-01",
+    "paper_id": "arxiv:2609.01056",
+    "title": "WorldBench: Culturally Grounded Benchmark for Multilingual Agents",
+    "year": 2026,
+    "venue": "arXiv",
+    "topics": [
+      "multilingual"
+    ],
+    "keywords": [
+      "agent evaluation",
+      "cultural grounding",
+      "state preservation",
+      "benchmark"
+    ],
+    "link": "https://arxiv.org/abs/2609.01056",
+    "brief": "这篇论文关注一个此前基准很少认真测试的问题——LLM 智能体在多语言、多文化真实场景下执行多步骤任务时，是否既能把任务做对、又能维持环境状态的一致性（state preservation）。作者构建了新基准 WorldBench：一个由真实、基于人物设定（persona-grounded）的日常工作流组成的多语言基准，智能体需要在一个沙盒环境中通过结构化动作完成任务。基准覆盖 7 种语言、8 种文化背景，共 1600 个任务，且每一种语言/文化设定都是由具备该语言和文化背景专业知识的人工标注员直接构建和审核的，而非从单一语言模板翻译而来，这是它区别于以往“先造英文任务再翻译”式多语言基准的核心创新点。评测上，作者在已有指标基础上提出了新指标 Constrained Task Success（CTS），综合任务完成度、最小修改程度等多个互补维度，结合确定性规则评估和 LLM-as-a-Judge 打分。实验结果显示，即便是前沿模型，CTS 也只有 49.2%，且几乎所有模型在“任务做对”和“环境状态保持”之间都存在明显差距，尤其是在长程任务和有状态保持约束的场景下表现更脆弱。这说明当前智能体在跨语言、跨文化的真实工作流场景中依然相当脆弱，离可靠部署还有距离。作者团队来自爱丁堡大学（Leonardo Ranaldi, Sherrie Shen, Jushi Kai, Alexandra Birch）。",
+    "model": "claude-sonnet-5",
+    "reasoning_effort": "low",
+    "date_added": "2026-09-07",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-09-07-02",
+    "paper_id": "arxiv:2609.01604",
+    "title": "Beyond Scores: Understanding LLM-as-a-Judge Mechanisms in Summarization Evaluation",
+    "year": 2026,
+    "venue": "EMNLP 2026 (Main Conference)",
+    "topics": [
+      "summarization"
+    ],
+    "keywords": [
+      "LLM-as-a-Judge",
+      "interpretability",
+      "causal tracing",
+      "evaluation mechanism"
+    ],
+    "link": "https://arxiv.org/abs/2609.01604",
+    "brief": "这篇论文做的是机制可解释性研究，目标是搞清楚被广泛用作打分工具和自动训练信号的 LLM-as-a-Judge 评测器，内部到底是怎样一步步算出一个摘要质量分数的，而不只是报告它打了几分。为此作者设计了一套“八种攻击”扰动分类体系，围绕可读性（Readability）和充分性（Adequacy）两个质量维度，构造出成对的“干净摘要”和“受控错误强度的损坏摘要”，并带有逐 token 的修改映射，方便做精细的因果分析。方法上的核心创新是把四种机制可解释性技术——因果追踪（causal tracing）、logit-lens 词汇投影、注意力头敲除等——系统性地应用到两个真实评测模型 Themis（基于 Llama-3-8B）和 Prometheus（基于 Mistral-7B）上。结果发现两者都实现了一个结构一致的两阶段打分流水线：15 层以下由注意力头做局部错误比较并把结果路由到末位置，15 层以上由 MLP 级联把信号整合起来写入最终评分，且决策会在残差流的某个较深层突然“固化”（Themis 在第 26 层，Prometheus 在第 25 层）。更有意思的是，作者用同规模的 base 模型做对照，发现 base 模型也有类似的路由结构和固化现象，但没有这种清晰的两阶段分离，说明指令微调并不是从零搭建了打分电路，而是在已有电路基础上做了“精修”：抑制了 15 层以下 MLP 对末位置的贡献，并把固化深度提前了两层。论文已被 EMNLP 2026 主会录用，并附带开源代码，方法论对理解和改进 LLM 评测器的可靠性有直接参考价值。",
+    "model": "claude-sonnet-5",
+    "reasoning_effort": "low",
+    "date_added": "2026-09-07",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-09-07-03",
+    "paper_id": "arxiv:2606.29278",
+    "title": "The Complexity Ceiling Benchmark: A Multi-Domain Evaluation of Sequential Reasoning Under Depth Scaling",
+    "year": 2026,
+    "venue": "Workshop on Combining Theory and Benchmarks (CTB) @ ICML 2026",
+    "topics": [
+      "reasoning"
+    ],
+    "keywords": [
+      "sequential reasoning",
+      "depth scaling",
+      "benchmark",
+      "reasoning failure analysis"
+    ],
+    "link": "https://arxiv.org/abs/2606.29278",
+    "brief": "这篇论文研究的问题是：当一个推理任务所需的顺序推理步数（深度）不断增加时，LLM 的推理能力究竟是怎样衰减的。它的巧妙之处在于把任务的语义内容完全固定住，只单独改变所需推理深度 N（取值从 5 到 50），从而把“任务难在哪”和“任务有多深”这两个因素解耦开来，得到的是一条随深度变化的衰减曲线，而不是单个准确率数字。基准设计了三类结构完全不同的任务：有具体场景的空间状态追踪（grounded spatial state-tracking）、抽象符号指针操作（abstract symbolic pointer manipulation）、以及传递性关系推理（transitive relational inference）。作者还提出了一个 trace 级别的新指标 TFBC，专门检测模型是不是靠错误的中间推理步骤“蒙对”了最终答案。在覆盖 5 个前沿及开源模型、共 6000 次试验的实验中，结果非常有意思：在前两类任务上，最强模型直到 N=50 时单步保持概率仍高于 0.92，衰减非常缓慢；但在传递性关系推理上，几乎所有模型从 N=5 开始就整体崩溃，最好的模型达到 50% 成功率对应的推理深度只有约 4.7 步，尽管它单步准确率高达 0.863。另外，全部正确答案里有 14.5% 其实是通过错误的中间推理步骤“蒙”出来的，说明表面正确率会显著高估真实的推理能力。这篇论文用一个简洁但严谨的实验设计，揭示了不同推理任务类型之间存在巨大且此前被低估的“深度天花板”差异。论文作者来自 BITS Pilani 和 KIIT Bhubaneswar（Shubh Chapra, Dhruv Kumar, Murari Mandal, Yash Sinha），已被 ICML 2026 的 Combining Theory and Benchmarks Workshop 接收。",
+    "model": "claude-sonnet-5",
+    "reasoning_effort": "low",
+    "date_added": "2026-09-07",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
   }
 ]
