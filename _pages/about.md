@@ -107,11 +107,14 @@ redirect_from:
     </div>
   </li>
   <li>
-    <div class="yf-pub-title">XQDT: eXplainable and Quantitative Data-Text Alignment Metric with Feedback Signals</div>
+    <div class="yf-pub-title"><a href="https://arxiv.org/abs/2608.29948" target="_blank" rel="noopener">XQDT: eXplainable and Quantitative Data-Text Alignment Metric with Feedback Signals</a></div>
     <div class="yf-pub-authors">Kun Zhang, <strong>Yifei Song</strong>, Claire Gardent</div>
     <div class="yf-pub-venue">
       <span data-i18n="en">EMNLP 2026 (Main Conference) &middot; to appear</span>
       <span data-i18n="zh">EMNLP 2026（主会）&middot; 待发表</span>
+    </div>
+    <div class="yf-pub-links">
+      <a href="https://arxiv.org/abs/2608.29948" target="_blank" rel="noopener"><span data-i18n="en">Paper</span><span data-i18n="zh">论文</span></a>
     </div>
   </li>
   <li>
