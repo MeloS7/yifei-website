@@ -84,6 +84,10 @@ redirect_from:
         <span data-i18n="en">advised by Claire Gardent and Albert Gatt</span>
         <span data-i18n="zh">导师：Claire Gardent、Albert Gatt</span>
       </div>
+      <div class="yf-edu-funding">
+        <span data-i18n="en">ENACT Doctoral Fellow &mdash; <a href="https://www.info.gouv.fr/grand-dossier/france-2030" target="_blank" rel="noopener">France 2030</a> National AI Cluster (<a href="https://cluster-ia-enact.ai/" target="_blank" rel="noopener">ENACT</a>)</span>
+        <span data-i18n="zh">ENACT Doctoral Fellow &mdash; <a href="https://www.info.gouv.fr/grand-dossier/france-2030" target="_blank" rel="noopener">France 2030</a> 国家人工智能集群（<a href="https://cluster-ia-enact.ai/" target="_blank" rel="noopener">ENACT</a>）</span>
+      </div>
       <div class="yf-edu-thesis">
         <span data-i18n="en">Thesis:</span><span data-i18n="zh">论文题目：</span> Exploring Reinforcement Learning for Multilingual Text Generation
       </div>
@@ -115,6 +119,7 @@ redirect_from:
     </div>
     <div class="yf-pub-links">
       <a href="https://arxiv.org/abs/2608.29948" target="_blank" rel="noopener"><span data-i18n="en">Paper</span><span data-i18n="zh">论文</span></a>
+      <a href="https://github.com/guihuzhang/xqdt" target="_blank" rel="noopener"><span data-i18n="en">Code</span><span data-i18n="zh">代码</span></a>
     </div>
   </li>
   <li>

@@ -76,6 +76,11 @@ html[data-lang="zh"] [data-i18n="zh"] { display: inline; }
   font-style: italic;
   margin-top: 4px;
 }
+.yf-edu-funding {
+  color: var(--global-text-color-light, #767676);
+  font-size: 14px;
+  margin-top: 2px;
+}
 
 .yf-pub-list {
   list-style: none;

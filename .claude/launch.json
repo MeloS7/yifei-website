@@ -6,6 +6,12 @@
       "runtimeExecutable": "python3",
       "runtimeArgs": ["scripts/dev_server.py", "4173"],
       "port": 4173
+    },
+    {
+      "name": "jekyll",
+      "runtimeExecutable": "/opt/homebrew/opt/ruby/bin/bundle",
+      "runtimeArgs": ["exec", "jekyll", "serve", "--port", "4000"],
+      "port": 4000
     }
   ]
 }
