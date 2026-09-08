@@ -3778,11 +3778,11 @@
     "model": "claude-sonnet-5",
     "reasoning_effort": "standard",
     "date_added": "2026-09-08",
-    "read": false,
-    "read_at": null,
-    "deep_read": false,
-    "deep_read_at": null,
+    "read": true,
+    "read_at": "2026-09-08T18:25:38+00:00",
+    "deep_read": true,
+    "deep_read_at": "2026-09-08T18:25:38+00:00",
     "interest": null,
-    "my_comment": null
+    "my_comment": "蛮有意思的方法：\n- 正常student draft trajectory。\n- 遇到teacher 的next token是反思词（pre-defined了一个反思词set，比如however，but）并且next student token的top-5 里没有这个反思词，用teacher来接管。\n- 更高效且OPD效果更好。\n- 我自己感觉比较俗的解释是：如果teacher都已经觉得有点不对劲，开始hesitate了，但是这时候如果学生还猛猛往下冲，应该就是G了"
   }
 ]
