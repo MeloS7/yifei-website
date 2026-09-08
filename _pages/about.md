@@ -85,8 +85,8 @@ redirect_from:
         <span data-i18n="zh">导师：Claire Gardent、Albert Gatt</span>
       </div>
       <div class="yf-edu-funding">
-        <span data-i18n="en">ENACT Doctoral Fellow &mdash; <a href="https://www.info.gouv.fr/grand-dossier/france-2030" target="_blank" rel="noopener">France 2030</a> National AI Cluster (<a href="https://cluster-ia-enact.ai/" target="_blank" rel="noopener">ENACT</a>)</span>
-        <span data-i18n="zh">ENACT Doctoral Fellow &mdash; <a href="https://www.info.gouv.fr/grand-dossier/france-2030" target="_blank" rel="noopener">France 2030</a> 国家人工智能集群（<a href="https://cluster-ia-enact.ai/" target="_blank" rel="noopener">ENACT</a>）</span>
+        <span data-i18n="en"><a href="https://cluster-ia-enact.ai/" target="_blank" rel="noopener">ENACT</a> Doctoral Fellow &mdash; <a href="https://www.info.gouv.fr/grand-dossier/france-2030" target="_blank" rel="noopener">France 2030</a> National AI Cluster Program</span>
+        <span data-i18n="zh"><a href="https://cluster-ia-enact.ai/" target="_blank" rel="noopener">ENACT</a> Doctoral Fellow &mdash; <a href="https://www.info.gouv.fr/grand-dossier/france-2030" target="_blank" rel="noopener">France 2030</a> 国家人工智能集群计划</span>
       </div>
       <div class="yf-edu-thesis">
         <span data-i18n="en">Thesis:</span><span data-i18n="zh">论文题目：</span> Exploring Reinforcement Learning for Multilingual Text Generation
