@@ -3643,7 +3643,8 @@
     "read_at": null,
     "deep_read": false,
     "deep_read_at": null,
-    "interest": null
+    "interest": null,
+    "my_comment": null
   },
   {
     "id": "2026-09-08-02",
@@ -3670,7 +3671,8 @@
     "read_at": null,
     "deep_read": false,
     "deep_read_at": null,
-    "interest": null
+    "interest": null,
+    "my_comment": "作者提出：\n- RL训练过程中(PPO, GRPO)，实际上只有极少数的tokens被重排，并且这些tokens大多数都是本来就在top-5范围的。\n- Reranked: 2.34% tokens; Shifted: 0.043% tokens\n- RL 与 base model 发生有意义分歧的 token，几乎都集中在 base model 高熵、也就是模型本身不确定的决策点上\n- 提出一个新的RL-free训练方法，首先rollout，然后对正确rollout上的高entropy token进行奖励，然后对错误rollout上的高entropy token进行惩罚。\n- 数学问题上证明有效，虽然不能beat SOTA，但是明显比base强，比其他RL efficient。"
   },
   {
     "id": "2026-09-08-03",
@@ -3696,6 +3698,91 @@
     "read_at": null,
     "deep_read": false,
     "deep_read_at": null,
-    "interest": null
+    "interest": null,
+    "my_comment": null
+  },
+  {
+    "id": "2026-09-08-04",
+    "paper_id": "arxiv:2608.11829",
+    "title": "Towards Understanding On-Policy Distillation through the Lens of Test-Time Scaling",
+    "year": 2026,
+    "venue": "arXiv",
+    "topics": [
+      "reasoning",
+      "reinforcement learning"
+    ],
+    "keywords": [
+      "on-policy distillation",
+      "test-time scaling",
+      "pass@K",
+      "reasoning capability boundary"
+    ],
+    "link": "https://arxiv.org/abs/2608.11829",
+    "brief": "On-policy distillation(OPD)是近期LLM后训练领域很流行的一种技术,常被认为能让学生模型从更强的教师模型那里\"蒸馏\"到新的推理能力,从而突破蒸馏前基座模型的能力边界。这篇论文的任务是通过test-time scaling的视角重新审视这一假设:作者系统性地改变采样预算K,分别用avg@K和pass@K两套指标评估OPD训练前后模型的表现变化。数据集方面聚焦于数学推理基准,覆盖多种OPD变体和不同规模的采样预算。核心方法论创新在于把\"能力边界是否真的被拓展\"这一问题,拆解为avg@K(采样效率)和pass@K(能力上限)两个维度分别考察,并进一步做了问题级别的可解性分析,以pass@1024作为判定某道题是否\"可解\"的标准。实验结果显示,OPD训练后的模型在各个采样预算下avg@K都持续占优,但pass@K的优势会随着K增大逐渐转移回蒸馏前的基座模型;更令人意外的是,OPD导致的\"由可解变为不可解\"的题目数量,反而多于\"由不可解变为可解\"的题目数量。基于这些发现,作者提出OPD更像是一种\"虚幻的蒸馏\"(illusory distillation):其表面收益主要来自采样效率的提升,而非真正从教师那里获得了全新的推理能力。论文作者来自上海交通大学、上海创新研究院与蚂蚁集团(Xinmu Ge、Jiangchao Yao等),2026年8月发布于arXiv,尚未确认顶会录用状态,但对当前广泛使用的OPD训练范式提出了值得警惕的质疑。",
+    "model": "claude-sonnet-5",
+    "reasoning_effort": "standard",
+    "date_added": "2026-09-08",
+    "read": true,
+    "read_at": "2026-09-08T08:32:15+00:00",
+    "deep_read": true,
+    "deep_read_at": "2026-09-08T08:32:15+00:00",
+    "interest": null,
+    "my_comment": "作者提出：\n- OPD提高了采样效率，而不是能力边界。\n- 比较On-/Off-Policy之后，发现反而是off-policy能够提升student的能力边界，on-policy在小k的情况下，pass@k学习占优。所以混合off-policy还是有意义的？\n\n一个比较有意思的比较：On-policy vs Off-policy 是否是K敏感的，是否存在一个转折点k，过了这个k之后就off-policy就开始优于OPD？如果是这样的话，那我先on-policy快速提升模型采样效率，然后后期改off-policy提升能力边界？"
+  },
+  {
+    "id": "2026-09-08-05",
+    "paper_id": "arxiv:2608.31046",
+    "title": "Does On-Policy Distillation Really Distill? From Noisy Teacher to Self-Improvement",
+    "year": 2026,
+    "venue": "arXiv",
+    "topics": [
+      "reasoning",
+      "reinforcement learning"
+    ],
+    "keywords": [
+      "on-policy distillation",
+      "teacher noise",
+      "entropy-adaptive advantage",
+      "self-improvement"
+    ],
+    "link": "https://arxiv.org/abs/2608.31046",
+    "brief": "这篇论文同样聚焦on-policy distillation(OPD),但切入点是教师监督信号本身的可靠性问题。OPD相比稀疏的outcome-level RLVR奖励,提供的是稠密的token级别监督,但由于教师模型是对学生自己生成的、对教师而言\"离策略\"(off-policy)的轨迹打分,这种监督信号是否真的可靠一直缺乏系统性验证。任务是定量分析OPD训练过程中教师监督信号的噪声水平,数据集聚焦于数学推理任务(如AIME24等竞赛级基准),模型主要基于Qwen3-1.7B等模型家族展开跨规模验证。核心发现颇具反直觉性:教师监督信号中存在大量噪声,且噪声比例随教师模型规模增大而上升,但学生策略对这种噪声完全不敏感——无论保留还是剔除噪声监督,最终收敛性能几乎相同;进一步分析发现,OPD真正的收益集中在对低对数概率(low log-probability)token的抑制上,用一个固定的负advantage就能替代教师给出的advantage,达到同等效果。这意味着OPD的核心机制其实并不需要教师参与。基于这一洞察,作者提出了On-Policy Self-Adaptation(OPSA)——一种完全不需要教师监督的方法,通过熵自适应的负advantage,对高熵位置给予更强的学习信号,抑制尾部token并让概率质量在头部token间重新均匀分布。实验结果显示,相比基座Qwen3-1.7B,OPSA在AIME24上的Avg@32提升了35.41分(相对提升263%),并在三个基准上都让Pass@32翻倍以上,同时在AIME24上以Avg@32指标超过OPD本身16.77分。论文作者来自普渡大学(Purdue University)的Yi Ding和Ruqi Zhang,2026年8月31日发布于arXiv,尚未确认顶会录用状态,与上一篇论文构成了对OPD机制理解的有趣互补视角。",
+    "model": "claude-sonnet-5",
+    "reasoning_effort": "standard",
+    "date_added": "2026-09-08",
+    "read": true,
+    "read_at": "2026-09-08T08:13:00+00:00",
+    "deep_read": true,
+    "deep_read_at": "2026-09-08T08:13:00+00:00",
+    "interest": null,
+    "my_comment": "惩罚自身推理时候每个位置的后20%的token logits能达到在OPD的类似效果，不过我感觉是在pass@k的k比较大的时候会有这类的效果，类似于能让模型的能力边界和OPD靠拢。 我猜测是否k小于一定值就没有这个效果，以及是否这样会增加推理路径的长度？"
+  },
+  {
+    "id": "2026-09-08-06",
+    "paper_id": "arxiv:2607.26057",
+    "title": "Pass the Baton: Trajectory-Relayed On-Policy Distillation",
+    "year": 2026,
+    "venue": "arXiv",
+    "topics": [
+      "reasoning",
+      "reinforcement learning"
+    ],
+    "keywords": [
+      "on-policy distillation",
+      "prefix failure",
+      "relay trajectory",
+      "math reasoning"
+    ],
+    "link": "https://arxiv.org/abs/2607.26057",
+    "brief": "这篇论文同样在OPD这条线上工作,但切入的是一个此前被忽视的失败模式——\"前缀失败\"(prefix failure):学生模型一旦在推理早期走上了错误方向,后续所有生成都会在这个偏移基础上继续展开,导致教师对这些\"跑偏\"轨迹给出的监督信号变得不可靠,还白白浪费计算资源。任务是设计一种机制,在学生\"走错路\"的时候及时纠偏,而不是任由错误轨迹一路生成到底。数据集方面,作者用Qwen3-4B-Instruct-2507作为教师、Qwen3-0.6B与1.7B-Non-Thinking作为学生,在八个数学推理基准上做了系统评测。核心创新在于两点:第一,作者发现了一个\"教师-学生续写不对称性\"现象——在同一个失败的前缀上,教师倾向于主动转向纠正,而学生却会顺着原方向继续错下去,这个不对称性可以在不需要任何人工标签的情况下,自动被识别为\"交接触发点\";第二,基于此提出Relay-OPD:在训练中检测到触发点后,让教师短暂接管生成一段\"教师续写\"(teacher leg),之后再把生成权交还给学生,让学生在这条\"接力轨迹\"上继续被优化,并且用有限的relay预算把干预集中在早期关键节点,避免过度偏离学生自身的策略分布。实验结果显示,Relay-OPD在全部八个数学推理基准上都拿到了最好或次好的成绩,相比标准OPD在1.7B学生上平均提升5.73%,比目前最强的baseline FastOPD再高出1.49%,在0.6B学生上也有稳定增益,同时训练轨迹长度还缩短了超过50%。论文作者来自浙江大学REAL Lab(Yongliang Shen团队),2026年7月28日发布于arXiv,项目主页和代码已开源(zju-real.github.io/Relay-OPD),尚未确认顶会录用状态。放在一起看,这篇和前两篇OPD相关论文形成了一条挺完整的分析-诊断-改进链条,值得当作一组来读。",
+    "model": "claude-sonnet-5",
+    "reasoning_effort": "standard",
+    "date_added": "2026-09-08",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null,
+    "my_comment": null
   }
 ]

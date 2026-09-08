@@ -270,6 +270,92 @@
   color: var(--accent-hover);
 }
 
+/* My comment (personal take, separate from the generated brief) */
+.pr-comment {
+  margin-top: 10px;
+}
+.pr-comment-text {
+  margin: 0 0 6px;
+  padding: 8px 12px;
+  border-left: 3px solid var(--accent);
+  background: var(--pill-bg);
+  border-radius: 0 6px 6px 0;
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--text);
+}
+/* my_comment is rendered from Markdown, so give the resulting elements
+   sane spacing instead of relying on white-space: pre-wrap. */
+.pr-comment-text > *:first-child { margin-top: 0; }
+.pr-comment-text > *:last-child { margin-bottom: 0; }
+.pr-comment-text p { margin: 0 0 8px; }
+.pr-comment-text ul,
+.pr-comment-text ol { margin: 0 0 8px; padding-left: 1.3em; }
+.pr-comment-text li { margin: 2px 0; }
+.pr-comment-text h1,
+.pr-comment-text h2,
+.pr-comment-text h3 { margin: 0 0 6px; font-size: 1em; font-weight: 700; }
+.pr-comment-text code {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 1px 4px;
+  font-size: 0.92em;
+}
+.pr-comment-text pre {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 8px 10px;
+  overflow-x: auto;
+  margin: 0 0 8px;
+}
+.pr-comment-text pre code { background: none; border: none; padding: 0; }
+.pr-comment-text blockquote {
+  margin: 0 0 8px;
+  padding-left: 10px;
+  border-left: 2px solid var(--border);
+  color: var(--text-muted);
+}
+.pr-comment-text a { color: var(--accent); }
+.pr-comment-editbtn {
+  font-size: 12px;
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--accent);
+  cursor: pointer;
+  font-family: inherit;
+}
+.pr-comment-input {
+  width: 100%;
+  min-height: 70px;
+  font: inherit;
+  font-size: 13.5px;
+  color: var(--text);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  padding: 8px 10px;
+  resize: vertical;
+  box-sizing: border-box;
+}
+.pr-comment-row {
+  margin-top: 6px;
+  display: flex;
+  justify-content: flex-end;
+}
+.pr-comment-savebtn {
+  font: inherit;
+  font-size: 12px;
+  color: #fff;
+  background: var(--accent);
+  border: none;
+  border-radius: 999px;
+  padding: 5px 14px;
+  cursor: pointer;
+}
+
 /* ---------- Pagination ---------- */
 .pr-pagination {
   display: flex;

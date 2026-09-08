@@ -58,6 +58,8 @@ class Handler(SimpleHTTPRequestHandler):
             self._handle_read()
         elif self.path == "/api/interest":
             self._handle_interest()
+        elif self.path == "/api/comment":
+            self._handle_comment()
         elif self.path == "/api/annotations":
             self._handle_save_annotations()
         else:
@@ -158,6 +160,28 @@ class Handler(SimpleHTTPRequestHandler):
         self.send_header("Content-Length", str(len(body)))
         self.end_headers()
         self.wfile.write(body)
+
+    def _handle_comment(self):
+        # my_comment is a free-text personal take, stored directly in papers.json
+        # (public, committed) alongside read/deep_read — unlike the private
+        # interest score, it's meant to be pushed and shown on the public site.
+        try:
+            payload = self._read_payload()
+            paper_id = payload["id"]
+            comment = payload.get("my_comment")
+            if comment is not None:
+                comment = str(comment).strip() or None
+        except (KeyError, ValueError, json.JSONDecodeError):
+            self.send_error(400, "Expected JSON body {id, my_comment: string or null}")
+            return
+
+        papers, match = self._load_match(paper_id)
+        if match is None:
+            self.send_error(404, f"Unknown paper id {paper_id}")
+            return
+
+        match["my_comment"] = comment
+        self._save_and_respond(papers, match)
 
     # ---------- Full-text reader: PDF proxy + annotations ----------
 

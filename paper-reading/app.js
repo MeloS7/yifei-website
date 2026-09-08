@@ -38,6 +38,10 @@
       pageInfo: (p, total) => `Page ${p} of ${total}`,
       interestLabel: "Interest",
       readFull: "Read full text →",
+      myCommentLabel: "My take",
+      myCommentPlaceholder: "Write your own take on this paper… (Markdown supported)",
+      myCommentSave: "Save",
+      myCommentEdit: "Edit",
     },
     zh: {
       searchPlaceholder: "搜索标题 / 关键词…",
@@ -74,6 +78,10 @@
       pageInfo: (p, total) => `第 ${p} / ${total} 页`,
       interestLabel: "有意思指数",
       readFull: "阅读原文 →",
+      myCommentLabel: "我的评语",
+      myCommentPlaceholder: "写点自己的想法…（支持 Markdown 语法）",
+      myCommentSave: "保存",
+      myCommentEdit: "编辑",
     },
   };
 
@@ -360,6 +368,7 @@
         <p class="pr-brief">${escapeHtml(p.brief)}</p>
         <button type="button" class="pr-brief-toggle">${L.expand}</button>
         <div class="pr-model-tag">${L.generatedBy(p.model, p.reasoning_effort)}</div>
+        <div class="pr-comment-wrap"></div>
       `;
 
       const actions = document.createElement("div");
@@ -379,6 +388,8 @@
         const expanded = briefEl.classList.toggle("expanded");
         briefToggle.textContent = expanded ? L.collapse : L.expand;
       });
+
+      card.querySelector(".pr-comment-wrap").appendChild(buildCommentBlock(p));
 
       list.appendChild(card);
     });
@@ -535,6 +546,76 @@
       console.error(e);
     } finally {
       stars.forEach((s) => (s.disabled = false));
+    }
+  }
+
+  // My comment: a free-text personal take on the paper, separate from the
+  // generated brief. Public and committed to papers.json (like read/deep_read),
+  // so it shows up on the deployed site too — unlike the private interest score.
+  function buildCommentBlock(paper) {
+    const L = STR[lang()];
+    const wrap = document.createElement("div");
+    wrap.className = "pr-comment";
+
+    function renderView() {
+      wrap.innerHTML = "";
+      if (paper.my_comment) {
+        const q = document.createElement("blockquote");
+        q.className = "pr-comment-text";
+        // my_comment is stored as raw Markdown; render then sanitize before
+        // inserting, since this string is committed to the public papers.json.
+        if (window.marked && window.DOMPurify) {
+          q.innerHTML = window.DOMPurify.sanitize(window.marked.parse(paper.my_comment));
+        } else {
+          q.textContent = paper.my_comment;
+        }
+        wrap.appendChild(q);
+      }
+      if (!EDITABLE) return;
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "pr-comment-editbtn";
+      btn.textContent = paper.my_comment ? L.myCommentEdit : L.myCommentLabel;
+      btn.addEventListener("click", renderEdit);
+      wrap.appendChild(btn);
+    }
+
+    function renderEdit() {
+      wrap.innerHTML = "";
+      const ta = document.createElement("textarea");
+      ta.className = "pr-comment-input";
+      ta.placeholder = L.myCommentPlaceholder;
+      ta.value = paper.my_comment || "";
+      const row = document.createElement("div");
+      row.className = "pr-comment-row";
+      const save = document.createElement("button");
+      save.type = "button";
+      save.className = "pr-comment-savebtn";
+      save.textContent = L.myCommentSave;
+      save.addEventListener("click", () => saveComment(paper, ta.value.trim(), renderView));
+      row.appendChild(save);
+      wrap.append(ta, row);
+      ta.focus();
+    }
+
+    renderView();
+    return wrap;
+  }
+
+  async function saveComment(paper, value, done) {
+    try {
+      const res = await fetch("/api/comment", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id: paper.id, my_comment: value || null }),
+      });
+      if (!res.ok) throw new Error("request failed");
+      const updated = await res.json();
+      paper.my_comment = updated.my_comment;
+    } catch (e) {
+      console.error(e);
+    } finally {
+      done();
     }
   }
 
