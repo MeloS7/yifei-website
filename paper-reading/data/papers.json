@@ -3864,5 +3864,58 @@
     "deep_read": false,
     "deep_read_at": null,
     "interest": null
+  },
+  {
+    "id": "2026-09-09-04",
+    "paper_id": "arxiv:2604.08527",
+    "title": "Demystifying OPD: Length Inflation and Stabilization Strategies for Large Language Models",
+    "year": 2026,
+    "venue": "arXiv",
+    "topics": [
+      "reinforcement learning",
+      "math"
+    ],
+    "keywords": [
+      "on-policy distillation",
+      "training instability",
+      "length inflation",
+      "math reasoning"
+    ],
+    "link": "https://arxiv.org/abs/2604.08527",
+    "brief": "这篇论文聚焦on-policy distillation(OPD)——一种让学生模型在自己生成的rollout分布上、同时接受更强教师模型逐token监督的训练范式——在实际训练中会遇到的一种此前未被系统命名的失效模式。作者发现,随着OPD训练推进,学生自己生成的on-policy rollout会出现突然的“长度膨胀”:截断轨迹(因超出最大长度限制而被截断的样本)逐渐在训练数据中占据主导地位,这种“截断坍缩”(truncation collapse)与“重复饱和”几乎同时发生——模型开始不停重复生成相似片段直到被截断——并由此产生带偏差的梯度信号,导致训练严重不稳定,验证集表现出现断崖式下跌。作者将这一问题的根源归结为:学生自身诱导的数据采集过程与蒸馏目标函数之间存在隐性耦合,后者在客观上更偏好又长又重复的rollout,形成了一个自我强化的恶性循环。为解决这个问题,作者提出StableOPD框架,核心是两个组件的组合:一是基于参考模型的散度约束(reference-based divergence constraint),限制学生分布偏离参考分布过远;二是rollout混合蒸馏(rollout mixture distillation),缓解因重复导致的长度膨胀问题,两者共同作用进一步稳定OPD训练过程。在多个数学推理数据集上的实验表明,StableOPD能够有效防止截断坍缩、稳定训练动态,平均带来7.2%的性能提升。论文作者包括Feng Luo、Yu-Neng Chuang、Guanchu Wang、Zicheng Xu、Xiaotian Han、Tianyi Zhang、Vladimir Braverman,4月提交至arXiv。这篇论文与9月8日已收录的多篇on-policy distillation相关论文(如“Towards Understanding On-Policy Distillation”“Does On-Policy Distillation Really Distill”)共同构成了近期围绕OPD训练动态和失效模式的一个密集讨论簇。",
+    "model": "claude-sonnet-5",
+    "reasoning_effort": "standard",
+    "date_added": "2026-09-09",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-09-09-05",
+    "paper_id": "arxiv:2605.26844",
+    "title": "Not All Disagreement Is Learnable: Token Teachability in On-Policy Distillation",
+    "year": 2026,
+    "venue": "arXiv",
+    "topics": [
+      "reinforcement learning"
+    ],
+    "keywords": [
+      "on-policy distillation",
+      "token selection",
+      "teacher-student KL",
+      "training efficiency"
+    ],
+    "link": "https://arxiv.org/abs/2605.26844",
+    "brief": "这篇论文同样聚焦on-policy distillation(OPD),但切入点是训练效率:近期一批“选择性OPD”方法尝试只在高熵或高分歧(high-disagreement)的token位置上施加蒸馏损失,以降低训练开销,其假设是教师和学生分歧越大的token,越值得学习。作者对这一假设提出质疑,并追问一个更本质的问题:教师-学生之间的token级分歧,是否真的都是“可学的”(learnable)?作者设计了一个“固定上下文”诊断实验——在相同上下文下测量教师-学生KL散度经过一步更新后能被压缩多少,以此直接衡量某个token位置的“可学价值”。结果发现,原始KL分歧只是一个粗糙的代理指标:它把两种性质完全不同的分歧混为一谈——一种是“可学分歧”,即教师把修正性的概率质量分配在学生当前top-K候选词内,学生学得动;另一种是“不兼容分歧”,即教师把概率质量分配在学生当前支持集之外的位置,学生实际上学不到。作者将这种“教师分歧是否落在学生可及范围内”的性质形式化为token teachability(token可教性),并证明它比原始KL分歧更能预测固定上下文下的实际提升。基于此,作者提出Teachability-Aware OPD(TA-OPD)——一种轻量级的token位置选择方法,不依赖任何奖励模型或验证器,只在高可教性的位置上施加OPD损失。在Qwen2.5和Qwen3的多组师生模型搭配实验中,TA-OPD仅保留5%的token就往往能超过全token OPD的效果,同时优于基于熵和基于散度的既有筛选基线。论文作者包括Yuanyi Wang、Su Lu、Yanggan Gu、Pengkai Wang、Yifan Yang、Zhaoyi Yan、Congkai Xie、Jianmin Wu、Hongxia Yang,5月提交至arXiv。这篇论文把“选择性OPD该选哪些token”这个问题,从“找显著token”重新定义为“找可学的教师信号”,思路上与同期收录的多篇OPD相关论文形成互补视角。",
+    "model": "claude-sonnet-5",
+    "reasoning_effort": "standard",
+    "date_added": "2026-09-09",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
   }
 ]
