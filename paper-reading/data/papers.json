@@ -3784,5 +3784,85 @@
     "deep_read_at": "2026-09-08T18:25:38+00:00",
     "interest": null,
     "my_comment": "蛮有意思的方法：\n- 正常student draft trajectory。\n- 遇到teacher 的next token是反思词（pre-defined了一个反思词set，比如however，but）并且next student token的top-5 里没有这个反思词，用teacher来接管。\n- 更高效且OPD效果更好。\n- 我自己感觉比较俗的解释是：如果teacher都已经觉得有点不对劲，开始hesitate了，但是这时候如果学生还猛猛往下冲，应该就是G了"
+  },
+  {
+    "id": "2026-09-09-01",
+    "paper_id": "arxiv:2609.04194",
+    "title": "Legibility is Not Interpretability: Comparing Judged and Actual Importance in Chain-Of-Thought Reasoning",
+    "year": 2026,
+    "venue": "COLM 2026",
+    "topics": [
+      "reasoning"
+    ],
+    "keywords": [
+      "chain-of-thought",
+      "interpretability",
+      "process reward model",
+      "CoT faithfulness"
+    ],
+    "link": "https://arxiv.org/abs/2609.04194",
+    "brief": "这篇论文探讨了一个被大量近期工作默认成立、但从未被系统检验过的假设:chain-of-thought(CoT)推理轨迹的文本内容,是否真的携带了每一步推理在功能上有多重要的信息?这个假设是当前“用LLM当裁判去诊断错误”、“评估CoT忠实度”、“用过程奖励模型(PRM)和生成式critic做逐步监督”等一大类工作的地基。作者提出了一个可操作化的“重要性”定义:把某一步推理的重要性定义为它的advantage,即通过蒙特卡洛rollout估计的、加入这一步后期望奖励(比如得到正确最终答案的概率)相对不加入时的变化量,以此构造出一份不依赖任何LLM判断的“客观真值”。有了这份真值,作者才能反过来检验LLM裁判的判断是否准确:结果发现,足够强的LLM裁判确实能超过“按频率猜测”的朴素基线,但离理论上限(noise ceiling)还有相当距离;哪怕专门微调一个模型去做逐步critic,对“错误答案”里挑出关键步骤的能力提升明显,但对“正确答案”里挑出关键步骤,依然远达不到上限。这说明推理步骤的重要性只能从文本中被部分还原,文本的“可读性”(legibility)和它反映真实因果贡献的“可解释性”(interpretability)是两回事——论文标题正是在强调这一区分。这一发现对当前火热的PRM和CoT忠实度评估工作是个提醒:不能简单假设“模型写下的推理步骤看起来重要,它就真的重要”。论文由Kevin Du(苏黎世联邦理工,工作完成于在Cohere实习期间)、Alexander Hoyle(苏黎世联邦理工)、Laura Ruis(MIT)、Acyr Locatelli(Cohere)完成,已被COLM 2026正式接收。",
+    "model": "claude-sonnet-5",
+    "reasoning_effort": "standard",
+    "date_added": "2026-09-09",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-09-09-02",
+    "paper_id": "arxiv:2609.07247",
+    "title": "Elastic Horizon: Discovering the Effective Interaction Frontier in Agentic Reinforcement Learning",
+    "year": 2026,
+    "venue": "arXiv",
+    "topics": [
+      "reinforcement learning"
+    ],
+    "keywords": [
+      "agentic RL",
+      "interaction horizon",
+      "curriculum learning",
+      "long-horizon agents"
+    ],
+    "link": "https://arxiv.org/abs/2609.07247",
+    "brief": "这篇论文关注agentic强化学习训练中一个此前被忽视的实践细节:训练LLM agent执行长链条、多轮工具调用任务时,每个episode允许的最大环境交互次数(interaction horizon)该怎么设置。已有研究证明,用课程学习式的方法、让horizon从小到大逐步扩大,效果优于固定horizon,但这类“课程”普遍是开环的——horizon单调递增,直到一个人工设定的最大值为止,系统本身并不知道什么时候继续扩大horizon已经不再带来收益。作者提出“有效交互边界假设”(effective interaction frontier hypothesis):存在一个动态边界,超过这个边界后,继续增加交互次数带来的收益迅速递减,但训练成本却线性增长。基于此,他们设计了Elastic Horizon——一个闭环控制器,用成功轨迹长度的90分位数来实时追踪这个边界,从而动态调整训练时允许的horizon,而不是依赖人工设定的固定上限。实验在AppWorld和BFCL(Berkeley Function Calling Leaderboard)两个长程agent任务基准上进行:固定horizon的扫描实验清楚地验证了饱和平台期的存在,证实了假设成立;而Elastic Horizon无论从horizon设置过低还是过高的初始状态出发,都能自动收敛并稳定在饱和区间内,在7B和14B两种规模的模型骨干上都取得了最好的任务成功率,同时相比大固定horizon节省了可观的训练算力开销。这篇论文9月7日刚提交到arXiv,是本次收集中最新鲜的一篇,目前还是预印本,尚未查到具体录用会议信息,但其提出的问题——如何让RL训练自动感知何时该停止扩大交互预算——切中了当前agentic RL训练成本居高不下的痛点,值得关注后续录用与讨论进展。",
+    "model": "claude-sonnet-5",
+    "reasoning_effort": "standard",
+    "date_added": "2026-09-09",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-09-09-03",
+    "paper_id": "arxiv:2605.09548",
+    "title": "Crosslingual On-Policy Self-Distillation for Multilingual Reasoning",
+    "year": 2026,
+    "venue": "arXiv",
+    "topics": [
+      "multilingual",
+      "math",
+      "reasoning"
+    ],
+    "keywords": [
+      "self-distillation",
+      "low-resource languages",
+      "on-policy",
+      "crosslingual transfer"
+    ],
+    "link": "https://arxiv.org/abs/2605.09548",
+    "brief": "这篇论文瞄准一个LLM数学推理能力研究中长期存在但讨论不足的问题:模型的数学推理能力在不同语言之间极不均衡,尤其是低资源语言的推理表现远远落后于英语等高资源语言,而这种差距不能简单靠翻译问题或翻译答案来弥补。作者提出的方法COPSD(Crosslingual On-Policy Self-Distillation)让同一个模型同时扮演“学生”和“教师”两个角色:学生只看到低资源语言原始问题本身,教师则额外获得“特权信息”——该问题的英文翻译和参考解答。训练过程中,模型在学生自己生成的on-policy rollout上,最小化学生分布与教师分布之间逐token的完整分布散度,从而获得稠密的逐token监督信号,避免了纯粹依赖最终结果对错的强化学习(如GRPO)所面临的奖励稀疏、训练不稳定的问题——这是这篇论文相对以往“翻译再强化学习”或“结果驱动RL”路线的核心创新点。实验覆盖了17种低资源非洲语言,结果显示COPSD在不同规模的模型上都能一致地提升低资源语言的数学推理表现,且提升幅度显著优于GRPO这一强化学习基线。该工作出自慕尼黑大学(LMU Munich)cisnlp团队,作者包括Yihong Liu、Raoyuan Zhao、Michael A. Hedderich和Hinrich Schütze,论文于5月提交至arXiv,代码已在GitHub开源(cisnlp/COPSD)。这项工作提供了一条不依赖大规模低资源语言标注数据、仅用模型自身知识做跨语言蒸馏的可行路径,对多语言公平性和低资源NLP研究具有较强的参考价值。",
+    "model": "claude-sonnet-5",
+    "reasoning_effort": "standard",
+    "date_added": "2026-09-09",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
   }
 ]
