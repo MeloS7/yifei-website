@@ -3999,5 +3999,32 @@
     "deep_read": false,
     "deep_read_at": null,
     "interest": null
+  },
+  {
+    "id": "2026-09-10-04",
+    "paper_id": "arxiv:2609.04565",
+    "title": "Extremely Sparse Supervision Incentivizes Reasoning Ability",
+    "year": 2026,
+    "venue": "arXiv",
+    "topics": [
+      "reasoning",
+      "reinforcement learning"
+    ],
+    "keywords": [
+      "on-policy distillation",
+      "sparse token supervision",
+      "mathematical reasoning",
+      "RLVR"
+    ],
+    "link": "https://arxiv.org/abs/2609.04565",
+    "brief": "这篇论文挑战了后训练(post-training)领域一个几乎默认的假设——有效的推理能力提升必须依赖对大量token的密集监督。作者在on-policy distillation(OPD)这一天然支持逐token教师监督的设定下重新审视这一假设，任务聚焦于用教师模型信号提升学生模型的数学与代码推理能力。实验基于Qwen3系列模型家族展开，覆盖九组不同规模的教师-学生配置，并在数学推理任务上系统验证，随后进一步扩展到代码推理、Llama系列模型，以及基于PPO的可验证奖励强化学习(RLVR)场景做交叉验证。核心创新在于一个反直觉的发现：仅用每条推理轨迹中一到两个token(约占全部token的0.05%)进行稀疏监督，在大多数情况下就能匹配甚至超过对全部token做密集训练的效果，尽管训练目标中排除了绝大多数生成的token。作者进一步给出了一个类比性的解释：这种极稀疏监督可能更接近人类自然的学习过程——人不是逐字逐句纠正每一步，而是针对少数关键推理步骤做反思、更新已有理解，再继续试错，从而避免了微观层面的逐步纠错，却依然保持相当的有效性。这一结果不仅在数学推理上一致成立，还在代码推理、不同模型家族(Llama)以及强化学习范式(RLVR)下得到了验证，说明该现象具有较好的跨设置稳健性。整体而言，这篇论文提出了理解和设计更高效后训练算法的新方向：有效的推理激励未必需要token密集型的监督，关键信息可能集中在少数几个“转折点”token上。作者Zhishuai Liu、Xingzi Xu、Mehmet Saygin Seyfioglu、Pan Xu、Karim Bouyarmane，论文为2026年9月的最新arXiv预印本，尚未见具体会议录用信息。",
+    "model": "claude-sonnet-5",
+    "reasoning_effort": "low",
+    "date_added": "2026-09-10",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
   }
 ]
