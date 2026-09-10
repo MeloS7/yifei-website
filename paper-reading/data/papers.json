@@ -3917,5 +3917,85 @@
     "deep_read": false,
     "deep_read_at": null,
     "interest": null
+  },
+  {
+    "id": "2026-09-10-01",
+    "paper_id": "arxiv:2609.03511",
+    "title": "Lost in Reordering: Structural Sensitivity of Multilingual LLMs under Semantics-Preserving Perturbations",
+    "year": 2026,
+    "venue": "EMNLP 2026 (Findings)",
+    "topics": [
+      "multilingual",
+      "reasoning",
+      "math"
+    ],
+    "keywords": [
+      "structural robustness",
+      "IndicReStruct",
+      "mechanistic interpretability",
+      "Hindi/Malayalam"
+    ],
+    "link": "https://arxiv.org/abs/2609.03511",
+    "brief": "大语言模型在多语言场景下展现出较强的推理表现，但其对\"语义不变、仅句法结构变化\"输入扰动的鲁棒性此前研究较少，尤其是印地语、马拉雅拉姆语这类相对自由语序的语言。本文聚焦这一空白，设计了两类语言学意义上严谨的扰动：受约束的成分重排(constituent reordering)与主动/被动语态转换。作者基于GSM8K构建了新基准IndicReStruct，包含GSM8K-Reordered和GSM8K-Voice两个变体，在保持语义完全等价的前提下改变句法表面形式。实验横跨六个SOTA大模型及多种提示策略，结果一致显示：结构扰动会导致数学推理性能显著且系统性下降。更进一步，作者结合定性错误分析与残差流激活patching的机制可解释性实验，发现推理失败往往源于\"实体-数量对齐\"关系被打乱，且Transformer中间层对推理恢复的贡献最大。整体结论指出，当前多语言LLM高度依赖表层句法实现，缺乏对结构不同但语义等价输入的组合不变性，为多语言鲁棒性研究提供了新的诊断工具和实证证据。作者来自IIT Bombay、IIT Hyderabad等印度理工学院团队，论文已被EMNLP 2026 Findings(长文)录用。",
+    "model": "claude-sonnet-5",
+    "reasoning_effort": "low",
+    "date_added": "2026-09-10",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-09-10-02",
+    "paper_id": "arxiv:2609.00241",
+    "title": "LOOMSUM: Weaving Quantitative and Narrative Evidence for Faithful Long Text-Table Summarization",
+    "year": 2026,
+    "venue": "arXiv",
+    "topics": [
+      "summarization"
+    ],
+    "keywords": [
+      "long-document summarization",
+      "table-grounded faithfulness",
+      "training-free framework",
+      "FINDSum/USTT"
+    ],
+    "link": "https://arxiv.org/abs/2609.00241",
+    "brief": "长文档摘要任务中，信息常常同时分布在大段叙述性文本和多个表格之中，如何生成\"数值可信、分析忠实\"的摘要一直是难点：现有方法往往能生成各自独立成立的数值事实和分析性陈述，却把二者错误地关联在一起，产出\"看起来数字对、结论却对不上号\"的不忠实摘要。为此，本文提出LOOMSUM，一个无需训练的框架：先从源文档中抽取有据可查的\"原子证据\"，显式建立表格衍生事实与支撑性叙述分析之间的链接，再在生成前先规划篇章结构。作者同时提出新指标Table-Grounded Faithfulness(TGF)，从数值grounding、分析支持度、关系一致性三个维度对摘要做claim级别的细粒度评估。在FINDSum和USTT两个文本-表格摘要基准上的实验显示，LOOMSUM在保持摘要整体质量的同时显著提升了分析忠实度；人工评估表明各组件得分与人类判断正相关，其中Relation Consistency指标与人类对\"事实-分析关系是否正确\"的判断的一致性，明显优于通用事实性指标。这一发现说明，长文本-表格摘要的忠实性不仅要求每个事实本身有据可依，更要求事实之间的关系被正确保留，为财报、研究报告等数值密集型长文档摘要提供了新思路。论文作者为Meng Zhou、Wenhao You、Wei Yuan，属最新arXiv预印本，尚未确认具体会议归属。",
+    "model": "claude-sonnet-5",
+    "reasoning_effort": "low",
+    "date_added": "2026-09-10",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-09-10-03",
+    "paper_id": "arxiv:2608.09942",
+    "title": "When Chain-of-Thought Helps and When It Hurts: An Empirical Investigation of the Serial-Depth Bottleneck in LLM Reasoning",
+    "year": 2026,
+    "venue": "arXiv",
+    "topics": [
+      "reasoning"
+    ],
+    "keywords": [
+      "chain-of-thought",
+      "serial-depth bottleneck",
+      "pre-registered study",
+      "H_dp bandwidth bound"
+    ],
+    "link": "https://arxiv.org/abs/2608.09942",
+    "brief": "\"思维链(CoT)提示普遍能提升大模型推理能力\"是业界近乎默认的共识，本文对此提出系统性的实证反驳。作者借助H_dp带宽界限这一概念框架(源自Chen et al., 2024)指出：虽然该理论界限只在极端长提示下才严格成立，但它揭示了一个真实的架构瓶颈——超出Transformer单次前向传播容量的串行计算，必须被\"外化\"，而这正是CoT在做的事情。论文的核心发现是\"基准内串行深度梯度\"：不用CoT时，准确率会随每条样本的串行计算深度单调下降，而使用CoT后准确率几乎与深度无关。实验在Qwen-2.5-7B/32B、Llama-3.1-8B三个指令微调模型上，覆盖GSM8K、MATH、MMLU、ARC、HumanEval五个标准基准。结果显示：在GSM8K、MATH这类高深度P-complete任务上，CoT带来54到68个百分点的显著恢复增益；在MMLU、ARC这类浅层TC^0任务上，CoT基本是冗余的(增益仅0到4.6个百分点，且无显著负面影响)；而HumanEval这类中间深度任务上则出现随模型规模变化的过渡效应，32B模型增益23.2个百分点，8B为9.1个百分点，7B模型反而下降28.7个百分点。跨基准的深度-恢复相关性达到Spearman ρ=0.661(p=0.007)，15个基准级McNemar检验中有9个在Bonferroni校正后仍显著。该研究已在OSF预注册，结论认为CoT并非通用推理增强器，而是一种\"带宽旁路\"机制，为理解何时该用/不该用CoT提供了细粒度的实证框架。论文作者Tughanbulut Kurtulush，来自波兰Vistula University计算机工程学院，为单人研究，尚未见明确会议录用信息。",
+    "model": "claude-sonnet-5",
+    "reasoning_effort": "low",
+    "date_added": "2026-09-10",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
   }
 ]
