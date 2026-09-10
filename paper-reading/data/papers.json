@@ -3886,11 +3886,12 @@
     "model": "claude-sonnet-5",
     "reasoning_effort": "standard",
     "date_added": "2026-09-09",
-    "read": false,
-    "read_at": null,
-    "deep_read": false,
-    "deep_read_at": null,
-    "interest": null
+    "read": true,
+    "read_at": "2026-09-10T07:18:10+00:00",
+    "deep_read": true,
+    "deep_read_at": "2026-09-10T07:18:10+00:00",
+    "interest": null,
+    "my_comment": "这篇论文专门研究了OPD之后student 推理长度爆炸的问题，**发现很重要，提出的方法有点暴力**\n- OPD 中的 on-policy 状态分布和 token-level reverse-KL advantage 会相互耦合。重复片段一旦开始出现，它们既被访问得更频繁，又得到更大的 advantage，于是训练更新进一步提高模型生成重复片段的倾向。\n- 提出Stable-OPD：混合OPD和SFT的loss，类似于用SFT提供完整的trajectory信息，再最后配合一个KL regularization，避免偏离reference student model太多。\n\nGPT总结：\n论文发现，OPD 的 on-policy 训练可能出现 abrupt truncation-repetition inflation：重复片段一旦在学生 rollout 中变得足够常见，就会因为较大的 token-level reverse-KL advantage 和更高的访问频率而主导梯度更新，形成自强化循环，最终导致推理长度膨胀、rollout 截断以及验证准确率下降。Stable-OPD 一方面通过 Mixture Distillation 将 on-policy OPD 与高质量 golden trajectory 上的 SFT 结合，防止训练分布被退化 rollout 垄断；另一方面加入相对于初始 student checkpoint 的 KL regularization，限制策略漂移。两者结合后降低了 repetition/truncation inflation，并在论文的数学推理实验中提升了准确率。"
   },
   {
     "id": "2026-09-09-05",
@@ -3912,11 +3913,12 @@
     "model": "claude-sonnet-5",
     "reasoning_effort": "standard",
     "date_added": "2026-09-09",
-    "read": false,
-    "read_at": null,
-    "deep_read": false,
-    "deep_read_at": null,
-    "interest": null
+    "read": true,
+    "read_at": "2026-09-10T16:58:53+00:00",
+    "deep_read": true,
+    "deep_read_at": "2026-09-10T16:58:53+00:00",
+    "interest": null,
+    "my_comment": "这个思路和我同期想的非常接近：\n- 作者首先观察到了不是所有的token位置都值得学习，将student trajectory上的token分成了可学习分歧和不可学习分歧两类\n    - 可学习就是teacher的大部分概率质量已经在学生当前的top-K中\n    - 不可学习就是teacher的大部分概率质量在学生top-K之外 -> 需要大幅rerank next-token prediction\n- 提出TA-OPD，在蒸馏的时候把不可学习的位置给mask掉，避免大幅学习破坏原本的分布\n- 实验发现10%token监督训练 > 100% token的，高效且效果好。\n\nGPT：\n\nTA-OPD 通过 mask 掉低 teachability 的监督位置，把有限的 OPD 监督预算集中到“教师确实有修正、且学生局部上能够吸收”的 token 上。因此它提升的是监督效率，并在固定或较低监督预算下往往提升训练表现；但它不等同于直接剪掉 Transformer 的计算，也不保证所有任务和预算下都优于 full OPD。"
   },
   {
     "id": "2026-09-10-01",
