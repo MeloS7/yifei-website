@@ -4026,5 +4026,85 @@
     "deep_read": false,
     "deep_read_at": null,
     "interest": null
+  },
+  {
+    "id": "2026-09-11-01",
+    "paper_id": "arxiv:2607.05992",
+    "title": "PluraMath: Extending Mathematical Reasoning Evaluation Beyond High-Resource Languages",
+    "year": 2026,
+    "venue": "arXiv",
+    "topics": [
+      "math",
+      "multilingual"
+    ],
+    "keywords": [
+      "multilingual",
+      "mathematical reasoning",
+      "benchmark",
+      "low-resource languages"
+    ],
+    "link": "https://arxiv.org/abs/2607.05992",
+    "brief": "数学推理已成为评测和训练推理型大语言模型的核心任务，但现有基准（如PolyMath）长期偏向英语和中文等高资源语言，低资源语言的数学推理能力几乎是评测盲区。本文提出PluraMath，在PolyMath基础上将测试范围扩展到18种此前被忽视的低资源语言，覆盖6个语系，难度跨度从K-12应用题到奥数/前沿数学题，延续了PolyMath的四级难度体系。数据构建上采用“预翻译+母语者人工校验”的流水线，确保翻译质量而非简单机器翻译堆砌。作者在27个主流推理型LLM（涵盖小型、中型、大型模型及闭源模型集成）上做了系统评测，细粒度分析发现：模型在高资源语言与低资源语言之间的数学推理表现存在持续且明显的差距，且模型表现更多与其指令遵循能力相关，而非纯粹的数学能力差异。该工作由慕尼黑工业大学(TUM)NLP团队完成，数据集、数据获取流水线与评测框架已完全开源，旨在降低低资源语言社区构建多语言评测基准的门槛。目前论文以arXiv预印本形式发布，尚未见明确的顶会录用信息。",
+    "model": "claude-sonnet-5",
+    "reasoning_effort": "standard",
+    "date_added": "2026-09-11",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-09-11-02",
+    "paper_id": "arxiv:2605.08478",
+    "title": "When Independent Sampling Outperforms Agentic Reasoning",
+    "year": 2026,
+    "venue": "arXiv",
+    "topics": [
+      "reasoning"
+    ],
+    "keywords": [
+      "agentic reasoning",
+      "inference-time compute",
+      "sampling",
+      "competitive programming"
+    ],
+    "link": "https://arxiv.org/abs/2605.08478",
+    "brief": "这篇论文研究了一个很反直觉的问题：在推理时计算预算固定的情况下，“深度智能体式推理”(agentic reasoning)是否总是比简单的“独立重复采样”(k-shot sampling)更好？作者选取竞赛编程作为任务场景，在Codeforces上抽取216道覆盖Division 1-3难度的题目作为测试集，系统比较了基于agent的多步推理方法与重复独立采样方法，在相同成本(cost)和相同模型调用次数(query)约束下的准确率表现。结果发现，在多个模型和多个难度等级上，独立采样在“准确率-成本”和“准确率-查询次数”两个权衡曲线上都持续优于agentic推理，说明对于这类自包含的算法类任务，简单粗暴的多次独立探索在现实资源约束下反而比精心设计的智能体推理链更划算。论文进一步给出了固定预算下的最优采样数量分配分析，并证明了“成本最优求解器”应当以最小化对数失败概率(log failure likelihood)作为优化目标，为推理时计算资源分配提供了一个简洁的理论指导原则。这是一篇挑战当前“agentic reasoning万能论”的实证研究，作者为Yihe Dong和Boris Shigida，目前以arXiv预印本形式发布。",
+    "model": "claude-sonnet-5",
+    "reasoning_effort": "standard",
+    "date_added": "2026-09-11",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-09-11-03",
+    "paper_id": "arxiv:2609.04648",
+    "title": "ConsensusBench: Benchmark of Consensus Nodes for LLM Reasoning via Outcome Reward Densifying",
+    "year": 2026,
+    "venue": "arXiv",
+    "topics": [
+      "reinforcement learning",
+      "reasoning"
+    ],
+    "keywords": [
+      "reinforcement learning",
+      "GRPO",
+      "process reward",
+      "reasoning"
+    ],
+    "link": "https://arxiv.org/abs/2609.04648",
+    "brief": "强化学习（尤其是GRPO及其变体）已成为提升大语言模型推理能力的主流范式，但现有方法普遍只依赖最终答案的outcome-level奖励，完全忽略推理过程中间步骤对成功或失败的贡献，当任务复杂度和推理链长度增加时，这种稀疏的结果奖励信号会变得越来越不够用。为解决这一问题，作者提出了ConsensusBench，一个提供基于规则的过程级(process-level)监督信号的新数据集/基准。其核心思路是：一个正确的最终答案通常依赖于推理过程中一小撮关键的中间结论，这些结论可被视为可验证的“子结果”；作者通过对N次rollout中的正确轨迹进行过滤，并对语义等价的中间陈述做聚类，识别出这些“共识节点”(Consensus Nodes)。在此基础上，作者把基于共识节点的过程奖励整合进GRPO类算法，提出了新的强化学习信号ConsensusPR，直接缓解了长推理链上结果奖励过于稀疏的问题。该基准还引入了三个新指标：最终答案准确率(Acc)、节点覆盖率(NCR)和每节点消耗token数(TPN)，用于系统性评估过程级推理质量。在AIME 2024、AIME 2025、GSM8K、MATH-500以及作者自建的ConsensusBench上的实验显示，该方法持续优于标准GRPO类方法。论文作者来自中国科学技术大学(USTC)与iFLYTEK(科大讯飞)团队，2026年9月4日刚提交至arXiv，是本次收录中最新的一篇。",
+    "model": "claude-sonnet-5",
+    "reasoning_effort": "standard",
+    "date_added": "2026-09-11",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
   }
 ]
