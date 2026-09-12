@@ -4106,5 +4106,85 @@
     "deep_read": false,
     "deep_read_at": null,
     "interest": null
+  },
+  {
+    "id": "2026-09-12-01",
+    "paper_id": "arxiv:2609.03342",
+    "title": "Gradients Know What Outcomes Don't: Unlocking Reinforcement Learning for LLM Reasoning with Gradient-Aligned Rewards",
+    "year": 2026,
+    "venue": "arXiv",
+    "topics": [
+      "reinforcement learning",
+      "math",
+      "reasoning"
+    ],
+    "keywords": [
+      "RLVR",
+      "dense reward",
+      "gradient-aligned reward",
+      "GRPO"
+    ],
+    "link": "https://arxiv.org/abs/2609.03342",
+    "brief": "这篇论文关注的问题是当前主流的RLVR(Reinforcement Learning from Verifiable Rewards)训练范式在提升大模型链式思维(CoT)推理能力时的一个结构性缺陷：它使用的是二值结果奖励(答案对/错)，无法区分同样答对的不同推理轨迹之间的质量差异，也就无法给模型提供更细粒度的学习信号。已有的稠密奖励替代方案，要么依赖简单的表层启发式规则，要么需要额外训练昂贵的过程奖励模型(PRM)，都存在信号质量或标注成本上的短板。作者提出的核心方法是Gradient-Aligned Reward(GAR)：直接在策略模型自身的梯度空间中构造奖励——对模型输出投影层做截断反向传播，为每一条rollout提取出一个紧凑的梯度向量，再计算它与一个\"专家锚点梯度\"的余弦相似度，由此得到一个稠密的、感知推理过程的奖励信号，额外计算开销不到9%。方法上一个值得关注的创新点是，作者从理论上证明了这个余弦相似度可以被乘法分解为\"预测误差\"和\"激活模式\"两个可解释因子，从而清楚地刻画了这个对齐信号究竟衡量的是什么，而不只是一个黑箱式的启发式指标。实验在Qwen3-4B和Qwen3-8B两个模型规模上进行，结果显示GAR在竞赛级数学基准上稳定优于GRPO及其他基线方法，并且在完全不使用领域特定数据的情况下，还能零样本迁移到GPQA Diamond和MMLU-Pro等非数学推理基准上，说明其学到的奖励信号具有较好的跨任务泛化性。论文作者包括Leqi Zheng、Jinbo Su、Hang Zhang等，代码和数据已开源(GitHub: LQgdwind/GAR)，目前为2026年9月初提交的arXiv预印本，尚未查到正式会议录用信息。",
+    "model": "claude-sonnet-5",
+    "reasoning_effort": "low",
+    "date_added": "2026-09-12",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-09-12-02",
+    "paper_id": "arxiv:2609.10253",
+    "title": "DiSCo: A Distribution-First Steering and Cultural Prior Evaluation Framework for Measuring Cultural Preference Bias in LLMs",
+    "year": 2026,
+    "venue": "arXiv",
+    "topics": [
+      "multilingual"
+    ],
+    "keywords": [
+      "cultural bias",
+      "forced-choice evaluation",
+      "steerability",
+      "BLEnD"
+    ],
+    "link": "https://arxiv.org/abs/2609.10253",
+    "brief": "这篇论文关注一个在多语言、多文化LLM评测中长期被忽视的问题：大模型在面对\"文化情境化的日常选择\"(比如某个节日该吃什么、某种礼仪该怎么做)时，即便多个来自不同文化的答案都同样\"正确\"，模型也会系统性地偏向某些文化，而以往的文化评测基准大多只按单一\"标准答案\"打分，既无法刻画这种\"默认文化偏好先验\"的分布，也把模型的默认偏好和它在给定情境提示后的适应能力混为一谈。为此，作者提出了DiSCo，一个\"分布优先\"的强制选择评测框架，核心设计是用一个四级\"情境梯度\"(C0到C3，从完全不给情境信息到给出明确文化事实)来分离出两件事：模型不给任何情境时的默认文化先验，以及给定情境后模型能否被有效\"引导\"到对应文化(steerability)。作者基于BLEnD数据集构建了DiSCo-Bench(304道题，覆盖12种文化)，评测了6个不同的指令微调LLM。实验结果颇具警示性：模型的默认文化先验高度集中——英国和美国这两种文化合计吸收了约35%的默认选择，而在12种文化中它们只占2席；更关键的发现是，基于提示词的文化引导(steering)不仅没有缩小高资源文化与低资源文化之间的差距，反而进一步拉大了这种差距，而向模型显式注入文化事实对整体选择分布的改善也微乎其微。这说明当前LLM的文化偏好偏差并不能简单地依靠prompt层面的个性化来解决，需要更深层的训练干预。论文作者为Bhuvan Arora、Devesh Saraogi、Sravya Varada、Dhruv Kumar，为2026年9月9日提交的arXiv预印本。",
+    "model": "claude-sonnet-5",
+    "reasoning_effort": "low",
+    "date_added": "2026-09-12",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-09-12-03",
+    "paper_id": "arxiv:2609.11498",
+    "title": "ActMap: Single-Pass Uncertainty Quantification from Generation-Time Activation Maps",
+    "year": 2026,
+    "venue": "arXiv",
+    "topics": [
+      "reasoning"
+    ],
+    "keywords": [
+      "uncertainty quantification",
+      "hallucination detection",
+      "interpretability",
+      "activation maps"
+    ],
+    "link": "https://arxiv.org/abs/2609.11498",
+    "brief": "这篇论文处理的是大模型不确定性量化(Uncertainty Quantification, UQ)这一实际部署中很关键的问题：如何仅凭一次生成就判断某个具体答案是否值得信任，而不需要像现有方法那样反复采样多次生成、或者只依赖输出token的概率、或者把模型内部的全部计算压缩成单一的隐藏状态(信息损失较大)。作者提出的ActMap是一种\"白盒\"表示方法：把生成过程中每一层、每一个生成token的隐藏状态轨迹，压缩成一个形状固定为12×32×128的张量，其中每个通道都是某种时序统计量，这种设计能同时保留Transformer深度方向和隐藏维度方向的结构信息。这个\"激活图\"是在正常生成过程中顺带捕获的，几乎没有额外计算开销，且只占用96KiB存储，体积很小，适合作为可审计场景下长期保留的生成记录。方法上另一个亮点是用一个轻量级的Vision Transformer作为分类器，从这个激活图里读出一个\"答案正确概率\"估计，耗时仅为毫秒级的零头；作者还做了遮挡分析(occlusion analysis)，发现分类器捕捉到的关键信号主要集中在Transformer的中间层区域。实验方面，作者在短答案问答、直接作答数学题、摘要事实性这三类任务上，用三个7-8B规模的指令微调模型进行域内训练和评测，结果显示ActMap全面优于采样法、token概率法、attention法和embedding法等基线；更值得注意的是，它在AUROC指标上与ACT-ViT(一个用体积大67倍的稠密激活张量训练出的探测器)基本持平，而在12组对比中有10组的校准误差(calibration error)更低，说明它用远小得多的信息量就达到了接近的效果。这类单次生成的可信度打分可以直接用于模型的弃权、路由和选择性验证等场景，对大规模模型部署时的可扩展监督具有实用价值。论文作者Jacopo Dardini、Roberta Calegari来自博洛尼亚大学(University of Bologna)，为2026年9月10日提交的arXiv预印本。",
+    "model": "claude-sonnet-5",
+    "reasoning_effort": "low",
+    "date_added": "2026-09-12",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
   }
 ]
