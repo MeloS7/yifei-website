@@ -4264,5 +4264,31 @@
     "deep_read": false,
     "deep_read_at": null,
     "interest": null
+  },
+  {
+    "id": "2026-09-13-04",
+    "paper_id": "arxiv:2209.12714",
+    "title": "Text Summarization with Oracle Expectation",
+    "year": 2022,
+    "venue": "ICLR 2023",
+    "topics": [
+      "summarization"
+    ],
+    "keywords": [
+      "extractive summarization",
+      "oracle labeling",
+      "soft labels",
+      "zero-shot summarization"
+    ],
+    "link": "https://arxiv.org/abs/2209.12714",
+    "brief": "这篇论文关注抽取式摘要(extractive summarization)训练中一个长期被忽视的基础问题：绝大多数摘要数据集本身并不带有\"文档中哪些句子该被抽取\"的金标签，因此现有方法普遍依赖某种启发式的\"oracle标注算法\"，把参考摘要反推回文档句子级别的0/1标签，再用这些伪标签训练抽取模型。作者指出目前最常用的贪心标注法(greedy labeling)存在两个明显缺陷：一是它每次只贪心选择使ROUGE增益最大的句子，容易陷入局部最优，得到的oracle摘要并非全局最优解(suboptimal)；二是它是确定性的(deterministic)，对每篇文档只给出唯一一组硬标签，完全丢弃了\"多种句子组合都可能是合理摘要\"这一事实所包含的不确定性信息。为解决这两个问题，作者提出了一种简单却有效的软标注算法(命名为OREO)：不再给每个句子分配非0即1的硬标签，而是通过考察多个可能的oracle摘要假设，为每个句子估计一个\"期望\"层面的软标签，反映该句子在不同oracle组合中被选中的概率。论文进一步给出理论证明：如果按照作者提出的新学习目标(融合多个oracle摘要的学习信号)来训练模型，其效果等价于直接对每个文档句子估计\"oracle期望\"，从而把一个原本需要拍脑袋设计启发式规则的问题，转化为了一个有明确理论解释的期望估计问题。实验部分不修改任何模型结构，只替换标签生成方式，就在CNN/DailyMail等多个跨领域、跨语言的摘要基准上取得了全面提升，评估采用ROUGE-1/ROUGE-2均值等指标，其中用beam形式生成的标签相比传统贪心标注在不同基准上带来了0.18-0.89的ROUGE-L提升，且在监督和zero-shot两种设置下都观察到了一致的增益。作者Yumo Xu与Mirella Lapata来自爱丁堡大学，论文发表于ICLR 2023，是抽取式摘要训练目标设计方向一篇引用较广、方法简洁但理论扎实的代表性工作。",
+    "model": "claude-sonnet-5",
+    "reasoning_effort": "low",
+    "date_added": "2026-09-13",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
   }
 ]
