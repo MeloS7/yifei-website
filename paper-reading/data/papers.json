@@ -4186,5 +4186,83 @@
     "deep_read": false,
     "deep_read_at": null,
     "interest": null
+  },
+  {
+    "id": "2026-09-13-01",
+    "paper_id": "arxiv:2605.00347",
+    "title": "Odysseus: Scaling VLMs to 100+ Turn Decision-Making in Games via Reinforcement Learning",
+    "year": 2026,
+    "venue": "COLM 2026 (Main Conference)",
+    "topics": [
+      "reinforcement learning"
+    ],
+    "keywords": [
+      "long-horizon RL",
+      "vision-language models",
+      "PPO",
+      "game agents"
+    ],
+    "link": "https://arxiv.org/abs/2605.00347",
+    "brief": "这篇论文研究如何把视觉语言模型(VLM)训练到能够胜任真正长时程(100+轮交互)的视觉决策任务，选用《超级马力欧大陆》(Super Mario Land)作为测试环境——这是一个需要模型持续协调感知、推理、动作三者的视觉grounded环境。作者指出现有做法要么依赖对人类轨迹做大规模监督微调(SFT)，要么用强化学习但只在相对较短的horizon(通常20-30轮)里训练，一旦把horizon拉长到上百轮，像GRPO、Reinforce++这类无critic的RL方法就会出现明显的训练不稳定和样本效率低下的问题。Odysseus的核心创新是提出一种PPO的改造版本：给VLM策略配一个非常轻量的、按\"轮\"打分的CNN critic，而不是用另一个同样庞大的VLM去做critic，这样既避免了双份大模型带来的计算和显存开销，又通过\"正优势过滤\"(positive-advantage filtering)进一步稳定了训练过程。实验表明，这套轻量critic+PPO的组合在长horizon游戏决策任务上显著优于GRPO、Reinforce++等无critic基线的训练稳定性和样本效率，验证了\"critic不必和policy一样大\"这一设计思路的有效性。这项工作出自Princeton PLI团队，阵容强大(Danqi Chen、Karthik Narasimhan、Chi Jin均为该方向的知名研究者)，为长视野具身/游戏智能体的RL训练提供了一个计算成本更友好的新方案，也是本次COLM 2026中RL方向讨论度较高的一篇。",
+    "model": "claude-sonnet-5",
+    "reasoning_effort": "low",
+    "date_added": "2026-09-13",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-09-13-02",
+    "paper_id": "arxiv:2603.11510",
+    "title": "Tiny Aya: Bridging Scale and Multilingual Depth",
+    "year": 2026,
+    "venue": "COLM 2026 (Main Conference)",
+    "topics": [
+      "multilingual"
+    ],
+    "keywords": [
+      "low-resource languages",
+      "small language models",
+      "region-aware posttraining",
+      "Aya"
+    ],
+    "link": "https://arxiv.org/abs/2603.11510",
+    "brief": "Tiny Aya是Cohere Labs Aya系列多语言开放模型的最新工作，任务是在极其有限的参数量(3.35B)下，尽可能覆盖70多种语言(包括大量低资源语言，涵盖印度语系、东南亚语系、非洲语系、欧洲语系、中东语系)，并在这些语言间取得相对均衡的表现，而不是像很多多语言模型那样只在少数高资源语言上表现好。方法上的关键创新是\"区域感知的后训练\"(region-aware posttraining)：除了一个全球均衡版本外，作者还专门训练了针对非洲、南亚、欧洲、亚太、西亚五个区域的定制化变体，通过区域内数据配比和评测反馈针对性地补强该区域语言的表现，试图走出一条与\"单纯堆参数量\"不同的多语言scaling路径——用效率和均衡性换取实际部署可行性(小模型可在本地、低算力条件下运行)。论文详细报告了训练策略、数据构成和覆盖多语言理解、翻译质量、目标语言生成质量的评测框架。结果显示，Tiny Aya在仅3.35B参数规模下，在翻译质量、多语言理解和目标语言生成上都达到了同规模模型中的最先进水平，展示出\"小而均衡\"路线在多语言场景下的可行性。这项工作延续了Aya项目一贯的\"服务被主流大模型忽视语言\"的定位，模型权重开放(在Hugging Face上开源了base、全球均衡版及多个区域专用版本)，对多语言NLP社区和实际低资源语言应用都有较高的参考价值。",
+    "model": "claude-sonnet-5",
+    "reasoning_effort": "low",
+    "date_added": "2026-09-13",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-09-13-03",
+    "paper_id": "arxiv:2604.01754",
+    "title": "LiveMathematicianBench: A Live Benchmark for Mathematician-Level Reasoning with Proof Sketches",
+    "year": 2026,
+    "venue": "COLM 2026 (Main Conference)",
+    "topics": [
+      "math"
+    ],
+    "keywords": [
+      "contamination-free benchmark",
+      "theorem proving",
+      "distractor generation",
+      "research-level math"
+    ],
+    "link": "https://arxiv.org/abs/2604.01754",
+    "brief": "这篇论文针对当前数学推理评测中一个日益突出的问题：许多现有数学benchmark的题目已经被大规模爬取进模型的预训练语料，导致模型可能只是\"记住了答案\"而非真正具备推理能力，同时现有benchmark大多停留在竞赛数学难度，缺乏研究级(research-level)数学推理的评测。为此作者构建了LiveMathematicianBench——一个\"活的\"、持续更新的多选题benchmark，题目直接取材于模型训练数据截止日期之后新发表的arXiv数学论文中的定理，从源头上规避了数据污染问题。方法上有两个亮点：一是提出了一套包含13类逻辑类型的定理分类体系(如蕴含、等价、存在性、唯一性等)，使评测能够细粒度地区分模型在不同逻辑结构上的推理能力；二是设计了\"证明草图引导的干扰项生成\"(proof-sketch-guided distractor pipeline)，利用定理证明的高层策略构造出看似合理、实则遵循错误证明方向的干扰选项，比传统的表面相似干扰项更能考验模型是否真正理解证明逻辑；此外还引入了\"抗替换\"(substitution-resistant)机制来区分模型是\"认出了答案模式\"还是\"具备实质性推理能力\"。实验结果颇具冲击力：即便是当前最强模型Gemini-3.1-pro-preview在常规设置下也只能达到43.5%的准确率；而在更严格的抗替换评测设置下，表现最好的GPT-5.4也只有30.6%，Gemini-3.1-pro-preview的准确率甚至跌到17.6%，低于20%的随机猜测基线。这说明当前最前沿的大模型在面对真正未见过的、研究级数学推理任务时，很大程度上依赖的仍是模式匹配而非扎实的逻辑推理，为\"数学推理能力被高估\"提供了有力的实证证据，是本次COLM 2026中math方向颇具讨论价值的一篇工作。",
+    "model": "claude-sonnet-5",
+    "reasoning_effort": "low",
+    "date_added": "2026-09-13",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
   }
 ]
