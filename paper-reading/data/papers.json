@@ -4290,5 +4290,86 @@
     "deep_read": false,
     "deep_read_at": null,
     "interest": null
+  },
+  {
+    "id": "2026-09-14-01",
+    "paper_id": "arxiv:2604.13286",
+    "title": "English is Not All You Need: Systematically Exploring the Role of Multilinguality in LLM Post-Training",
+    "year": 2026,
+    "venue": "COLM 2026",
+    "topics": [
+      "multilingual"
+    ],
+    "keywords": [
+      "post-training",
+      "cross-lingual transfer",
+      "low-resource languages",
+      "SFT"
+    ],
+    "link": "https://arxiv.org/abs/2604.13286",
+    "brief": "这篇论文系统研究了多语言在LLM后训练（post-training）阶段的作用，任务聚焦于数学推理（math reasoning）与API调用（structured tool-use / function calling）两类任务。作者构建了一套高度受控的实验设计：基于Qwen-3（0.6B/1.7B/8B）和Gemma-3（1B/4B）两个模型家族，在由5种“核心语言”（英语、西班牙语、日语、孟加拉语、斯瓦希里语）加5种“扩展语言”组成的平行翻译多语言数据池上，构造22种不同语言覆盖度的数据混合方案，累计跑了220次监督微调（SFT）实验，规模在同类工作中相当罕见。为弥补API调用任务缺乏多语言数据集的空白，作者还新构建了mAPICall-Bank这一多语言API调用基准（11种语言、训练3174条/测试399条查询）。核心创新点在于把“语言覆盖度”这一变量与数据总量彻底解耦——每种语言贡献等量样本，从而干净地分离出“多语言多样性”本身的效应，而非简单的数据增多效应。实验结果颇具反直觉意味：增加训练语言数量总体上有益而非有害，低资源语言（如斯瓦希里语、孟加拉语）受益最大，高资源语言则趋于平台期而非退化；哪怕只加入一种非英语语言，也能同时提升英语本身表现和跨语言泛化能力（API调用任务提升中位数达9.27%，数学推理提升8.4%），使得“纯英语后训练”被证明是次优选择；当语言多样性足够高（6-9种语言）时，零样本跨语言迁移的效果甚至能追平甚至超过直接把目标语言纳入训练。论文作者来自UC Santa Barbara与Amazon，被COLM 2026正式录用。",
+    "model": "claude-sonnet-5",
+    "reasoning_effort": "low",
+    "date_added": "2026-09-14",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-09-14-02",
+    "paper_id": "arxiv:2603.11327",
+    "title": "Meta-Reinforcement Learning with Self-Reflection for Agentic Search",
+    "year": 2026,
+    "venue": "COLM 2026",
+    "topics": [
+      "reinforcement learning",
+      "reasoning"
+    ],
+    "keywords": [
+      "agentic search",
+      "meta-RL",
+      "self-reflection",
+      "credit assignment"
+    ],
+    "link": "https://arxiv.org/abs/2603.11327",
+    "brief": "这篇论文关注的任务是“agentic search”，即让LLM智能体通过多轮工具调用（如搜索引擎查询）来逐步收集信息、完成复杂问答或推理任务。传统做法是把每一次搜索episode当作独立的强化学习片段来优化策略，奖励信号往往很稀疏、且不同episode之间互不借鉴。这篇论文的创新点在于提出了一种“in-context元强化学习”（meta-RL）框架MR-Search：模型不再是孤立地优化单个episode，而是学会在多个episode之间“自我反思”——每完成一次搜索尝试后生成一段显式的自我反思文本，并把这段反思作为额外上下文输入到下一次尝试中，从而在测试时（test-time）就能通过跨episode的探索不断改进自己的搜索策略，而不需要重新训练参数。技术上，作者还设计了一种细粒度的多轮强化学习算法，在“轮次”（turn）级别估计密集的相对优势（advantage），使得信用分配（credit assignment）比传统的episode级奖励更精确。实验方面，作者在八个不同的benchmark上系统评测了MR-Search相对于常规RL基线的表现，结果显示相对提升幅度达到9.2%到19.3%，泛化能力也明显更强，说明“让模型学会反思并把反思经验带入下一次尝试”这一元学习式的设计对agentic search任务确实有实质性帮助。该工作已开源代码与数据（GitHub: tengxiao1/MR-Search），被COLM 2026正式录用为主会论文。",
+    "model": "claude-sonnet-5",
+    "reasoning_effort": "low",
+    "date_added": "2026-09-14",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-09-14-03",
+    "paper_id": "arxiv:2505.14970",
+    "title": "Self-Evolving Curriculum for LLM Reasoning",
+    "year": 2025,
+    "venue": "COLM 2026",
+    "topics": [
+      "reinforcement learning",
+      "reasoning",
+      "math"
+    ],
+    "keywords": [
+      "curriculum learning",
+      "multi-armed bandit",
+      "RL fine-tuning",
+      "generalization"
+    ],
+    "link": "https://arxiv.org/abs/2505.14970",
+    "brief": "这篇论文处理的核心问题是强化学习（RL）微调LLM推理能力时的“训练课程”（curriculum）设计——也就是训练问题呈现给模型的顺序。作者指出，随机课程是常见但次优的基线，人工设计的课程严重依赖启发式规则，而在线难度过滤方法计算开销又过高，三者都不理想。论文提出的方法Self-Evolving Curriculum（SEC）的创新之处在于，把课程选择问题形式化为一个非平稳的多臂老虎机（non-stationary Multi-Armed Bandit）问题：每个问题类别（例如某个难度等级或某种题型）被当作一根“臂”，模型在RL微调过程中同步学习一个课程策略，用策略梯度方法给出的绝对优势值（absolute advantage）作为“即时学习收益”的代理指标，每一步训练时课程策略都会选择最能最大化这个收益信号的问题类别来训练，并用TD(0)方法持续更新。这种做法的好处是课程本身随着模型能力的变化而动态演化，且几乎不增加额外计算开销。实验覆盖了规划（planning）、归纳推理（inductive reasoning）和数学推理三个不同的推理领域，结果显示SEC能显著提升模型的推理能力，尤其是在更难的分布外（out-of-distribution）测试问题上泛化效果更好；当同时在多个推理领域上联合微调时，SEC还能带来更好的技能均衡（不会顾此失彼）。论文作者来自Mila及ServiceNow等机构，Yoshua Bengio为共同作者之一，最初于2025年5月提交、后经多次修订，被COLM 2026正式录用。",
+    "model": "claude-sonnet-5",
+    "reasoning_effort": "low",
+    "date_added": "2026-09-14",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
   }
 ]
