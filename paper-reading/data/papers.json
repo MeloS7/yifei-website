@@ -4371,5 +4371,84 @@
     "deep_read": false,
     "deep_read_at": null,
     "interest": null
+  },
+  {
+    "id": "2026-09-15-01",
+    "paper_id": "arxiv:2604.15726",
+    "title": "LLM Reasoning Is Latent, Not the Chain of Thought",
+    "year": 2026,
+    "venue": "arXiv",
+    "topics": [
+      "reasoning"
+    ],
+    "keywords": [
+      "chain-of-thought",
+      "latent reasoning",
+      "interpretability",
+      "position paper"
+    ],
+    "link": "https://arxiv.org/abs/2604.15726",
+    "brief": "这是一篇立场性（position paper）论文，核心论点是：大语言模型（LLM）的\"推理\"研究应当被建模为latent-state（潜在状态）轨迹的形成过程，而不是简单地把表层的chain-of-thought（CoT，思维链）文本当作模型真实推理过程的忠实记录。作者指出，这个建模选择直接决定了学界关于忠实性（faithfulness）、可解释性（interpretability）、推理基准设计，以及推理时干预（inference-time intervention）等一系列研究结论的有效性。论文没有构建新数据集，而是把近期的实证研究、机制可解释性工作和综述文献重新组织进一个统一框架，并补充了\"计算量审计过的范例分析\"，把表层轨迹、潜在状态干预和匹配计算预算扩展这三个经常被混淆的因素显式解耦。方法上的创新点在于形式化了三个互相竞争的假设：H1——推理主要由latent-state轨迹驱动；H2——推理主要由显式的表层CoT驱动；H0——大部分表观推理提升其实可以用\"通用串行计算量增加\"解释，而不需归因于任何特权表征对象。这直接挑战了当前领域默认把CoT视为模型真实推理过程的通行做法。结论上，作者认为现有证据最支持H1作为默认工作假设，但并非任务无关的定论。基于此提出两条建议：领域应把latent-state动态作为研究LLM推理的默认对象；未来评测设计应显式地把表层轨迹、潜在状态和串行计算量三者拆分对照，而非混在一起讨论。作者Wenshuo Wang来自华南理工大学未来技术学院，单人作者的立场论文，2026年4月17日提交arXiv，目前未见明确的会议投稿或录用信息。",
+    "model": "claude-sonnet-5",
+    "reasoning_effort": "low",
+    "date_added": "2026-09-15",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-09-15-02",
+    "paper_id": "arxiv:2608.28447",
+    "title": "Learning to Use Tools: Reinforcement Learning for Tool-Integrated Mathematical Reasoning",
+    "year": 2026,
+    "venue": "arXiv",
+    "topics": [
+      "math",
+      "reinforcement learning"
+    ],
+    "keywords": [
+      "tool use",
+      "GRPO",
+      "DAPO",
+      "Countdown task"
+    ],
+    "link": "https://arxiv.org/abs/2608.28447",
+    "brief": "这篇论文研究如何通过让LLM学会调用计算器工具来提升数学推理能力，具体聚焦在Countdown任务上（给定一组数字和一个目标值，要求通过四则运算组合出目标值）。作者首先分析了现有模型在该任务上的推理失败模式，发现计算错误占错误回答的相当大比例——说明很多\"推理失败\"其实不是推理策略问题，而是执行层面的算术精度问题。基于此，作者构造了监督微调（SFT）数据集，教模型学会有用的工具调用格式以及如何正确解读计算器返回结果，得到一个\"工具格式化\"的基础策略。在此基础上，论文系统对比了四种主流on-policy强化学习方法——RLOO、RLOO++、GRPO和DAPO——全部只使用可自动验证的最终答案奖励进行训练，不依赖过程奖励模型或人工步骤标注。为保证评测可靠性，作者还专门构建了一个全新的、包含1024道题的held-out Countdown基准测试集，确保与训练数据没有精确重叠。实验结果显示，计算器工具集成对SFT和RL两类baseline都带来持续、稳定的提升，pass@k指标平均提升约10个百分点；四种RL方法中Tool-DAPO表现最强，将pass@1从纯Tool-SFT基线的35.8%大幅提升到66.0%。进一步分析发现，即便训练信号只有最终答案是否正确，RL训练依然会促使模型更有效地使用工具，说明工具集成主要降低算术和验证层面的错误，而RL训练本身提高了模型产生正确推理轨迹的整体概率，两者互补而非替代。作者为Minghui Xu和Zi Wang，论文目前为arXiv预印本，2026年8月28日提交，暂未查到具体顶会投稿或录用信息。",
+    "model": "claude-sonnet-5",
+    "reasoning_effort": "low",
+    "date_added": "2026-09-15",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-09-15-03",
+    "paper_id": "arxiv:2609.04409",
+    "title": "A Systematic Evaluation of Cross-Lingual Consistency Enhancement Methods in Multilingual Language Models",
+    "year": 2026,
+    "venue": "arXiv",
+    "topics": [
+      "multilingual"
+    ],
+    "keywords": [
+      "cross-lingual consistency",
+      "post-training",
+      "QA benchmark",
+      "cultural QA"
+    ],
+    "link": "https://arxiv.org/abs/2609.04409",
+    "brief": "这篇论文关注多语言大模型的一个核心痛点：模型面对语义完全等价、只是语言不同的问题时，往往给出不一致的答案，即跨语言一致性（cross-lingual consistency, CLC）不足。此前学界已提出不少提升CLC的方法，但各自使用不同的模型、任务和评测协议验证效果，导致方法之间缺乏公平统一的对比。本文把代表性CLC增强方法分为推理时干预（inference-time interventions）和训练后处理方法（post-training approaches）两大类，在三个不同模型家族、三个闭式问答基准上做统一评测，首次把这些原本各说各话的方法放进同一实验框架直接比较。更有意思的是，作者进一步追问：提升跨语言一致性会不会损害模型对\"文化依赖性问题\"（答案本应因语言/文化背景不同而不同的问题）给出恰当差异化回答的能力？为此在两个文化多样性问答基准上做了额外测试。结果显示，训练后处理类方法总体上比推理时干预更可靠，其中\"直接分布对齐\"方法在所有模型-数据集组合上都能稳定提升CLC，表现最一致；其他方法则对答案格式和语言覆盖广度更敏感。跨领域迁移能力普遍有限，除非源任务和目标任务输出格式高度相似。在\"是否损害文化差异化能力\"问题上，受控的闭式评测未发现系统性下降，但更贴近真实场景的开放式生成评测中观察到偶发准确率下降，尤其集中在非英语回答上，提示CLC增强方法部署前还需更细致的开放式评测。作者Jirui Qi、Mingyang Wang、Hinrich Schütze、Raquel Fernández、Arianna Bisazza分别来自格罗宁根大学、慕尼黑大学LMU、阿姆斯特丹大学等欧洲多语言NLP研究团队，论文2026年9月3日提交arXiv，为预印本，代码数据集承诺发表后开源，暂未见具体顶会录用信息。",
+    "model": "claude-sonnet-5",
+    "reasoning_effort": "low",
+    "date_added": "2026-09-15",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
   }
 ]
