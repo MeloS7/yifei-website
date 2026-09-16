@@ -4450,5 +4450,83 @@
     "deep_read": false,
     "deep_read_at": null,
     "interest": null
+  },
+  {
+    "id": "2026-09-16-01",
+    "paper_id": "arxiv:2609.04753",
+    "title": "Beneath the Surface of Chains-of-Thought: A Mechanistic Interpretation of Reasoning Operations in LLMs",
+    "year": 2026,
+    "venue": "EMNLP 2026 (Main Conference)",
+    "topics": [
+      "reasoning"
+    ],
+    "keywords": [
+      "mechanistic interpretability",
+      "chain-of-thought",
+      "representation geometry",
+      "probing"
+    ],
+    "link": "https://arxiv.org/abs/2609.04753",
+    "brief": "任务：这篇论文研究大语言模型在做链式推理（Chain-of-Thought）时，不同的“推理操作”——比如问题表述（problem formulation）、目标拆解（goal decomposition）、演绎（deduction）等——在模型内部隐藏表示空间中究竟是如何被组织和编码的，属于典型的机制可解释性（mechanistic interpretability）研究。数据集/基准：作者没有构建全新的下游任务数据集，而是基于Pólya问题解决框架，把已有的CoT推理链拆解标注成八种功能性推理操作，并在多个推理型LLM（包括Qwen2.5-7B和Qwen3-8B）上收集其隐藏层表示进行分析。方法创新：核心方法是训练one-vs-rest线性探针（probe）去检测这些推理操作在各层表示中是否可分离，同时用注意力掩码（attention-masking）干预实验，验证某个推理片段起始处的表示是否依赖于之前的推理上下文，从而排除词汇和位置混杂因素的干扰，直接刻画“推理语言表达”与“内部几何结构”之间的对应关系。实验结果：作者发现这八种推理操作在模型中间层的可分性最强，且同样的表面词汇在不同推理操作语境下会被表示成不同的向量；在Qwen3-8B上，探针的AUROC达到0.927–0.998，AUPRC达到0.648–0.988，说明模型确实维持着一种连贯、可分离的“推理操作几何结构”。机构与收录：作者来自NAVER AI Lab与KAIST（Alice Oh教授团队合作），论文已被EMNLP 2026主会（Main Conference）接收，共43页、14幅图、19个表格，分析体量和深度都相当扎实。",
+    "model": "claude-sonnet-5",
+    "reasoning_effort": "low",
+    "date_added": "2026-09-16",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-09-16-02",
+    "paper_id": "arxiv:2609.00062",
+    "title": "RePro: Proof-Verified Benchmark Rewriting for Reliable Evaluation of LLM Mathematical Problem Solving",
+    "year": 2026,
+    "venue": "EMNLP 2026 (Main Conference)",
+    "topics": [
+      "math"
+    ],
+    "keywords": [
+      "data contamination",
+      "benchmark rewriting",
+      "Lean theorem proving",
+      "GSM8K/MATH"
+    ],
+    "link": "https://arxiv.org/abs/2609.00062",
+    "brief": "任务：这篇论文关注大语言模型数学推理评测中一个老大难问题——数据污染（data contamination），即许多经典数学基准（如GSM8K、MATH）的题目和答案很可能已经被模型在预训练阶段“背过”，导致评测结果虚高、不可靠。已有的“改写式评测”（rewriting-based evaluation）方法试图通过对原题做变形来规避背题，但这些改写往往缺乏保证——改写后的题目可能变得不成立、无解，或者重新生成的答案本身就是错的。数据集：作者基于GSM8K和MATH两个最常用的数学应用题/竞赛题基准，对其题目进行系统性改写和答案重生成的实验验证。方法创新：论文提出RePro（Proof-Verified Benchmark Rewriting）框架，是第一个把面向Lean定理证明语言的神经自动定理证明器（ATP）引入基准改写流程的方法——改写题目和重新生成答案之后，要求用Lean可验证的形式化证明来保证新题目“有明确定义、可解、且答案正确”，从而给改写过程加上一层机器可验证的正确性保证，而不是像以往方法那样仅凭启发式或人工抽检。实验结果：在GSM8K和MATH上，RePro保留下来的改写题目达到100%的“良定义性、可行性、答案正确性”，而现有改写方法仍会产出无效或错误的题目；同时，多个主流模型在这些经过证明验证的改写题上出现了明显的准确率下降，说明它们原有的高分可能部分来自于对原题的记忆而非真正的数学推理能力。机构与收录：论文作者包括Jinjin Gu等，已被EMNLP 2026主会接收，代码在GitHub开源。",
+    "model": "claude-sonnet-5",
+    "reasoning_effort": "low",
+    "date_added": "2026-09-16",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-09-16-03",
+    "paper_id": "arxiv:2606.12807",
+    "title": "Detect, Remask, Repair: Diffusion Editing for Faithful Summarization of Evolving Contexts",
+    "year": 2026,
+    "venue": "arXiv",
+    "topics": [
+      "summarization"
+    ],
+    "keywords": [
+      "diffusion language model",
+      "faithfulness repair",
+      "evolving context",
+      "localized editing"
+    ],
+    "link": "https://arxiv.org/abs/2606.12807",
+    "brief": "任务：这篇论文研究一个此前被忽视的摘要生成场景——“演化上下文下的摘要保真度修复”（evolving-context summarization），也就是当一篇新闻或事件报道随时间推进不断有新信息补充进来时，已经生成好的摘要中某些内容会逐渐“过时”或与最新事实产生冲突。论文要解决的不是重新生成整篇摘要，而是“局部修复”——只更新摘要里已经不准确的那部分文字，同时尽量保留仍然正确、被支持的内容，这样更高效也更可控。数据集：由于缺乏现成的评测数据，作者专门构建了新基准StreamSum，用合成的事件时间线（event timeline）来模拟真实世界中事实随时间推进而演变的场景，专门用来衡量“局部摘要修复”能力。方法创新：核心方法DETECT-REMASK-REPAIR借助掩码扩散语言模型（masked diffusion language model），分三步走：先检测摘要中可能已经过时的片段（detect），再对这些片段做选择性重掩码（remask），最后基于最新的上下文信息把被掩码的位置重新填充生成（repair/infill）。整个过程不同于传统自回归（autoregressive）生成路线，而是把扩散模型的可控、可解释局部编辑能力用到了事实性修复这个具体问题上，是一个比较新颖的跨范式尝试。实验结果：作者的实验显示，这种局部扩散修复方式能够高效、可控、可解释地修复摘要中的事实不一致问题，并可以作为对现有自回归摘要修复方法的有效补充。机构与收录：论文2026年6月发布于arXiv，目前暂未查到被具体顶会正式收录的公开信息，是本次收录中唯一以arXiv预印本形式纳入的候选（其余两篇均为EMNLP 2026主会论文）。",
+    "model": "claude-sonnet-5",
+    "reasoning_effort": "low",
+    "date_added": "2026-09-16",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
   }
 ]
