@@ -4528,5 +4528,84 @@
     "deep_read": false,
     "deep_read_at": null,
     "interest": null
+  },
+  {
+    "id": "2026-09-17-01",
+    "paper_id": "arxiv:2605.01224",
+    "title": "Lost in the Tower of Babel: The Adverse Effects of Incidental Multilingualism in LLMs",
+    "year": 2026,
+    "venue": "COLM 2026",
+    "topics": [
+      "multilingual"
+    ],
+    "keywords": [
+      "incidental multilingualism",
+      "language support transparency",
+      "agentic deployment",
+      "safe refusal"
+    ],
+    "link": "https://arxiv.org/abs/2605.01224",
+    "brief": "这篇论文提出的核心问题是当今大语言模型\"多语言能力\"的性质其实是一种\"偶然多语言主义\"（incidental multilingualism）：模型之所以看起来能处理多种语言，主要是因为训练语料本身是从海量、分布极不均衡的网络文本中抓取而来，而不是因为多语言/多文化能力被当作核心设计目标去主动优化。作者（来自George Mason University的Anjishnu Mukherjee、Chutong Meng、Antonios Anastasopoulos）设计了一套聚焦的实证研究：让多个主流LLM在多语言prompt下，一方面\"自报\"自己支持哪些语言，另一方面实际观察模型真正用什么语言作答，比较两者之间的差距（gap）。他们发现这种偶然多语言主义系统性地导致了语言间能力不均衡、行为脆弱且不透明——尤其是在需要模型跨语言进行推理、规划、执行动作的agentic部署场景中，这种缺陷的后果会被进一步放大，比如模型可能在不该切换语言时切换、或在实际不具备某语言能力时依然自信作答而非拒绝。论文没有止步于诊断问题，还提出了走向\"设计层面的多语言主义\"（multilingualism by design）的具体建议：明确定义每个模型到底支持哪些语言、建立多语言评测的透明机制、以及在语言支持不足时让模型具备安全拒答（safe refusal）的能力，而不是硬着头皮给出不可靠的回答。这篇论文被COLM 2026主会接收，是一篇偏诊断+立场（position）性质、但基于扎实实证数据支撑的工作，对当前\"多语言LLM评测虚高\"的普遍现象提出了警示，也为多语言安全部署提供了可操作的设计原则，讨论度较高，值得关注。",
+    "model": "claude-sonnet-5",
+    "reasoning_effort": "low",
+    "date_added": "2026-09-17",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-09-17-02",
+    "paper_id": "arxiv:2604.26311",
+    "title": "DreamProver: Evolving Transferable Lemma Libraries via a Wake-Sleep Theorem-Proving Agent",
+    "year": 2026,
+    "venue": "COLM 2026",
+    "topics": [
+      "math"
+    ],
+    "keywords": [
+      "theorem proving",
+      "lemma library",
+      "wake-sleep learning",
+      "formal mathematics"
+    ],
+    "link": "https://arxiv.org/abs/2604.26311",
+    "brief": "DreamProver要解决的是形式化定理证明（formal theorem proving，通常基于Lean等证明助手）中一个长期存在的两难问题：如果使用固定不变的引理库（lemma library），证明系统的适应性会受限，无法应对新出现的证明模式；但如果为每个具体定理单独合成高度定制化的中间引理，这些引理又缺乏泛化性、无法被复用到别的证明任务上。为此，作者（Youyuan Zhang、Jialiang Sun、Hangrui Bi、Chuqin Geng、Wenjie Ma、Zhaoyu Li、Xujie Si，主要来自多伦多大学Xujie Si教授课题组）借鉴认知科学中的\"wake-sleep\"程序归纳范式，设计了一个可以自我进化的定理证明agent。其\"清醒（wake）阶段\"让系统在训练集上的形式化数学定理上尝试证明，在当前引理库的引导下勾勒证明草图，并递归地把复杂问题分解为可以用已有引理解决的小问题；\"睡眠（sleep）阶段\"则对清醒阶段中积累下来的大量引理做结构化表示分析，先按语义相似度聚类、剪枝，再对每个簇做抽象总结，从而蒸馏出一个更紧凑、且经过验证的引理库，供下一轮清醒阶段使用。这种交替进行的两阶段循环使得引理库能够随着证明经验的积累不断进化、迁移到新的定理证明任务上，而不是一次性写死。实验结果显示，DreamProver在多个不同的数学基准上都显著提升了证明成功率，同时生成的证明更简洁、所需的推理计算成本也更低。这篇论文已被COLM 2026接收，是\"AI for数学/自动定理证明\"方向近期比较有意思的一篇工作，其wake-sleep式的引理演化机制为如何让证明agent具备可迁移、可持续增长的\"数学直觉\"提供了一个新颖的思路。",
+    "model": "claude-sonnet-5",
+    "reasoning_effort": "low",
+    "date_added": "2026-09-17",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-09-17-03",
+    "paper_id": "arxiv:2606.32032",
+    "title": "Reinforcement Learning with Metacognitive Feedback Elicits Faithful Uncertainty Expression in LLMs",
+    "year": 2026,
+    "venue": "COLM 2026",
+    "topics": [
+      "reinforcement learning",
+      "reasoning"
+    ],
+    "keywords": [
+      "uncertainty calibration",
+      "metacognition",
+      "preference optimization",
+      "self-judgment"
+    ],
+    "link": "https://arxiv.org/abs/2606.32032",
+    "brief": "这篇论文关注的是大语言模型在\"元认知\"（metacognition）能力上的系统性缺陷：模型经常以很高的自信程度给出错误答案（hallucinate with high confidence），无法准确识别自己知识的边界，也常常在语言表达上错误地传达自己内部真实的不确定性程度，这些问题严重损害了模型的可信度和可靠性。作者（Gabrielle Kaili-May Liu等，主要来自Yale NLP，并有Google Research的Avi Caciularu、Gal Yona、Idan Szpektor及Arman Cohan参与）提出了一个名为RLMF（Reinforcement Learning with Metacognitive Feedback）的训练范式：在偏好优化（preference optimization）过程中，利用模型对自己表现的\"自我判断\"（self-judgment）质量来重新调整候选回答的排序，让那些真正诚实、准确表达自身不确定性的回答获得更高奖励；同时论文还提出了\"元认知数据选择\"（metacognitive data selection）方法，同样借助模型的自我判断来挑选出对训练最有价值的样本，而不是简单地随机采样或依赖人工标注难度。实验在多个跨领域任务上进行，结果显示RLMF在\"忠实校准\"（faithful calibration，即模型表达的置信度与其真实正确率相符的程度）上取得了具有泛化性的最新最优效果，同时并未牺牲模型本身的准确率；更值得关注的是，RLMF比标准RL方法在相关指标上最高提升达63%，并且显著增强了模型评估、表达自身能力边界的能力。这篇论文已被COLM 2026接收，代码已开源（yale-nlp/RLMF），是RL用于提升LLM可信度与自我认知能力方向上一篇实验扎实、结果亮眼的工作，对于希望让模型\"知之为知之，不知为不知\"的对齐研究者来说颇具参考价值。",
+    "model": "claude-sonnet-5",
+    "reasoning_effort": "low",
+    "date_added": "2026-09-17",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
   }
 ]
