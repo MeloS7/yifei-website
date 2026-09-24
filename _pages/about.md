@@ -97,6 +97,11 @@ redirect_from:
 
 ## <a id="publications"></a><span data-i18n="en">Publications</span><span data-i18n="zh">论文</span>
 
+<p class="yf-pub-summary">
+  <span data-i18n="en">5 papers at CORE A* venues, 4 as first author.</span>
+  <span data-i18n="zh">共 5 篇论文发表于 CORE A* 会议，其中 4 篇为第一作者。</span>
+</p>
+
 <ul class="yf-pub-list">
   <li>
     <div class="yf-pub-title"><a href="https://arxiv.org/abs/2608.23390" target="_blank" rel="noopener">Cross-lingual Biography Enrichment via Claim Extraction and Alignment</a></div>
@@ -104,6 +109,7 @@ redirect_from:
     <div class="yf-pub-venue">
       <span data-i18n="en">EMNLP 2026 (Main Conference) &middot; to appear</span>
       <span data-i18n="zh">EMNLP 2026（主会）&middot; 待发表</span>
+      <span class="yf-badge">CORE A*</span>
     </div>
     <div class="yf-pub-links">
       <a href="https://arxiv.org/abs/2608.23390" target="_blank" rel="noopener"><span data-i18n="en">Paper</span><span data-i18n="zh">论文</span></a>
@@ -116,6 +122,7 @@ redirect_from:
     <div class="yf-pub-venue">
       <span data-i18n="en">EMNLP 2026 (Main Conference) &middot; to appear</span>
       <span data-i18n="zh">EMNLP 2026（主会）&middot; 待发表</span>
+      <span class="yf-badge">CORE A*</span>
     </div>
     <div class="yf-pub-links">
       <a href="https://arxiv.org/abs/2608.29948" target="_blank" rel="noopener"><span data-i18n="en">Paper</span><span data-i18n="zh">论文</span></a>
@@ -128,6 +135,7 @@ redirect_from:
     <div class="yf-pub-venue">
       <span data-i18n="en">EMNLP 2026 (Findings) &middot; to appear</span>
       <span data-i18n="zh">EMNLP 2026（Findings）&middot; 待发表</span>
+      <span class="yf-badge">CORE A*</span>
     </div>
     <div class="yf-pub-links">
       <a href="https://arxiv.org/abs/2608.23391" target="_blank" rel="noopener"><span data-i18n="en">Paper</span><span data-i18n="zh">论文</span></a>
@@ -140,6 +148,7 @@ redirect_from:
     <div class="yf-pub-venue">
       <span data-i18n="en">EMNLP 2025 (Main Conference)</span>
       <span data-i18n="zh">EMNLP 2025（主会）</span>
+      <span class="yf-badge">CORE A*</span>
     </div>
     <div class="yf-pub-links">
       <a href="https://aclanthology.org/2025.emnlp-main.720/" target="_blank" rel="noopener"><span data-i18n="en">Paper</span><span data-i18n="zh">论文</span></a>
@@ -152,6 +161,7 @@ redirect_from:
     <div class="yf-pub-venue">
       <span data-i18n="en">EMNLP 2025 (Findings)</span>
       <span data-i18n="zh">EMNLP 2025（Findings）</span>
+      <span class="yf-badge">CORE A*</span>
     </div>
     <div class="yf-pub-links">
       <a href="https://aclanthology.org/2025.findings-emnlp.60/" target="_blank" rel="noopener"><span data-i18n="en">Paper</span><span data-i18n="zh">论文</span></a>
@@ -195,33 +205,5 @@ redirect_from:
       <span data-i18n="en">Building and training custom neural networks with PyTorch and Transformers.</span>
       <span data-i18n="zh">使用 PyTorch 与 Transformers 自定义神经网络并进行训练。</span>
     </p>
-  </li>
-</ul>
-
-## <a id="contact"></a><span data-i18n="en">Contact</span><span data-i18n="zh">联系方式</span>
-
-<ul class="yf-contact-list">
-  <li>
-    <span class="yf-contact-label"><span data-i18n="en">Email</span><span data-i18n="zh">邮箱</span></span>
-    <a href="mailto:yifei.song@loria.fr">yifei.song@loria.fr</a>
-  </li>
-  <li>
-    <span class="yf-contact-label">GitHub</span>
-    <a href="https://github.com/MeloS7" target="_blank" rel="noopener">github.com/MeloS7</a>
-  </li>
-  <li>
-    <span class="yf-contact-label">Google Scholar</span>
-    <a href="https://scholar.google.com/citations?user=9jnPY2IAAAAJ&hl=en" target="_blank" rel="noopener">Yifei Song</a>
-  </li>
-  <li>
-    <span class="yf-contact-label">LinkedIn</span>
-    <a href="https://www.linkedin.com/in/yifei-song-7945a4200/" target="_blank" rel="noopener">yifei-song</a>
-  </li>
-  <li>
-    <span class="yf-contact-label"><span data-i18n="en">Address</span><span data-i18n="zh">地址</span></span>
-    <span>
-      <span data-i18n="en">MosAIk, Loria, Campus scientifique, BP 239, 54506 Vandœuvre-lès-Nancy Cedex, France</span>
-      <span data-i18n="zh">MosAIk, Loria, Campus scientifique, BP 239, 54506 Vandœuvre-lès-Nancy Cedex, 法国</span>
-    </span>
   </li>
 </ul>
