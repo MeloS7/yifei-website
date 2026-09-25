@@ -110,6 +110,7 @@ redirect_from:
       <span data-i18n="en">EMNLP 2026 (Main Conference) &middot; to appear</span>
       <span data-i18n="zh">EMNLP 2026（主会）&middot; 待发表</span>
       <span class="yf-badge">CORE A*</span>
+      <span class="yf-badge yf-badge-alt">Oral</span>
     </div>
     <div class="yf-pub-links">
       <a href="https://arxiv.org/abs/2608.23390" target="_blank" rel="noopener"><span data-i18n="en">Paper</span><span data-i18n="zh">论文</span></a>
@@ -123,6 +124,7 @@ redirect_from:
       <span data-i18n="en">EMNLP 2026 (Main Conference) &middot; to appear</span>
       <span data-i18n="zh">EMNLP 2026（主会）&middot; 待发表</span>
       <span class="yf-badge">CORE A*</span>
+      <span class="yf-badge yf-badge-alt">Poster</span>
     </div>
     <div class="yf-pub-links">
       <a href="https://arxiv.org/abs/2608.29948" target="_blank" rel="noopener"><span data-i18n="en">Paper</span><span data-i18n="zh">论文</span></a>
@@ -136,6 +138,7 @@ redirect_from:
       <span data-i18n="en">EMNLP 2026 (Findings) &middot; to appear</span>
       <span data-i18n="zh">EMNLP 2026（Findings）&middot; 待发表</span>
       <span class="yf-badge">CORE A*</span>
+      <span class="yf-badge yf-badge-alt">Poster</span>
     </div>
     <div class="yf-pub-links">
       <a href="https://arxiv.org/abs/2608.23391" target="_blank" rel="noopener"><span data-i18n="en">Paper</span><span data-i18n="zh">论文</span></a>
@@ -149,6 +152,7 @@ redirect_from:
       <span data-i18n="en">EMNLP 2025 (Main Conference)</span>
       <span data-i18n="zh">EMNLP 2025（主会）</span>
       <span class="yf-badge">CORE A*</span>
+      <span class="yf-badge yf-badge-alt">Poster</span>
     </div>
     <div class="yf-pub-links">
       <a href="https://aclanthology.org/2025.emnlp-main.720/" target="_blank" rel="noopener"><span data-i18n="en">Paper</span><span data-i18n="zh">论文</span></a>
@@ -162,6 +166,7 @@ redirect_from:
       <span data-i18n="en">EMNLP 2025 (Findings)</span>
       <span data-i18n="zh">EMNLP 2025（Findings）</span>
       <span class="yf-badge">CORE A*</span>
+      <span class="yf-badge yf-badge-alt">Poster</span>
     </div>
     <div class="yf-pub-links">
       <a href="https://aclanthology.org/2025.findings-emnlp.60/" target="_blank" rel="noopener"><span data-i18n="en">Paper</span><span data-i18n="zh">论文</span></a>

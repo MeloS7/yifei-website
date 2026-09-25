@@ -121,6 +121,11 @@ html[data-lang="zh"] [data-i18n="zh"] { display: inline; }
   border-radius: 4px;
   vertical-align: middle;
 }
+.yf-badge-alt {
+  color: #3a7fd5;
+  background: rgba(58, 127, 213, 0.14);
+  border-color: rgba(58, 127, 213, 0.4);
+}
 .yf-pub-summary {
   font-size: 14px;
   color: var(--global-text-color-light, #767676);
