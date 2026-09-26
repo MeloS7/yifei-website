@@ -4767,5 +4767,84 @@
     "deep_read": false,
     "deep_read_at": null,
     "interest": null
+  },
+  {
+    "id": "2026-09-26-01",
+    "paper_id": "arxiv:2604.21632",
+    "title": "To See the Unseen: on the Generalization Ability of Transformers in Symbolic Reasoning",
+    "year": 2026,
+    "venue": "COLM 2026",
+    "topics": [
+      "reasoning"
+    ],
+    "keywords": [
+      "symbolic reasoning",
+      "embedding collapse",
+      "generalization",
+      "transformers"
+    ],
+    "link": "https://arxiv.org/abs/2604.21632",
+    "brief": "这篇论文来自 Google DeepMind（Nevena Lazić、Liam Fowl、András György、Csaba Szepesvári），已被 COLM 2026 录用。任务是研究 decoder-only Transformer 在上下文中做抽象符号推理的泛化能力，具体测试场景是命题逻辑题：训练时用一批变量名（如 p、q、r），测试时换成模型从未见过的新变量名，观察模型是否仍能正确推理。作者发现一个此前被忽视的现象——嵌入坍缩：在标准 SGD 训练配合权重衰减和层归一化的设置下，那些训练中从未被监督过的（未见）token 的输出层权重（unembedding）会不可避免地收敛到几乎同一个方向，导致模型在测试时无法区分多个未见变量，从而推理失败。论文不仅通过受控的命题逻辑实验实证了这一现象，还给出了理论证明，说明只要满足 SGD+权重衰减+LayerNorm 这几个常见条件，坍缩就会发生。更有意思的是，作者进一步在开源的 Gemma 3 模型上验证：其保留的 99 个未使用特殊 token 确实表现出同样的坍缩迹象，且对这些 token 做微调时收敛速度远慢于对已见 token 微调，说明这一现象并非玩具实验的特例，而是真实大模型中普遍存在的问题。为解决坍缩，作者提出三项技术的组合：引入具备复制能力的架构改动、在训练数据中提高符号（变量名）多样性、以及冻结或周期性重置未见 token 的嵌入。三者结合后在命题逻辑泛化实验中取得明显改善。论文还指出，这一发现能解释此前主动遗忘（active forgetting）等启发式干预为何有效，并提醒实践者：相关性过高的嵌入初始化对下游任务是不利的。这是一篇偏理论但结论直接可落地的工作，为理解和修复 LLM 在符号/逻辑泛化上的失败提供了机制性解释。",
+    "model": "Claude Sonnet 5",
+    "reasoning_effort": "standard",
+    "date_added": "2026-09-26",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-09-26-02",
+    "paper_id": "arxiv:2603.21383",
+    "title": "PivotRL: High Accuracy Agentic Post-Training at Low Compute Cost",
+    "year": 2026,
+    "venue": "COLM 2026",
+    "topics": [
+      "reinforcement learning"
+    ],
+    "keywords": [
+      "reinforcement learning",
+      "agentic post-training",
+      "SFT",
+      "compute efficiency"
+    ],
+    "link": "https://arxiv.org/abs/2603.21383",
+    "brief": "这篇论文由 Junkeun Yi、Damon Mosk-Aoyama 等共 12 位作者完成，已被 COLM 2026 录用。研究任务是长程 agentic 任务的后训练（post-training）：作者指出监督微调（SFT）计算成本低但域外（OOD）泛化差，端到端强化学习（E2E RL）能保持 OOD 能力却因为要做多轮 on-policy rollout 而代价高昂，二者存在明显的效率—泛化张力。为此作者提出 PivotRL 框架，核心思路是不从零开始 rollout，而是直接在已有的 SFT 轨迹上做文章：首先定位轨迹中的 pivot 点——即那些采样动作在结果上表现出高方差、真正对成败起决定作用的中间轮次，只在这些关键节点上做针对性的强化学习式训练，从而避免在整条轨迹上浪费算力；其次改进奖励设计，对功能等价的动作也给予奖励，而不是要求与参考动作严格字符串匹配，缓解了奖励过于稀疏和脆弱的问题。实验在 SWE-Bench 等 agentic 编程基准、另外四个 agentic 领域以及若干非 agentic 基准上进行。结果显示，相比 SFT 基线，PivotRL 在四个 agentic 领域上平均域内准确率提升 4.17 个百分点，在非 agentic 任务上的域外准确率提升达 10.04 个百分点；与端到端 RL 相比，PivotRL 用少 4 倍的 rollout 轮数就达到了相当的准确率，在 SWE-Bench 上整体 wall-clock 训练时间减少约 5.5 倍。这篇论文的价值在于给 SFT 之后要不要、怎么做 RL 这个工程问题提供了一个计算效率友好的中间方案，对资源有限但又想保留 RL 泛化优势的团队有直接参考意义。",
+    "model": "Claude Sonnet 5",
+    "reasoning_effort": "standard",
+    "date_added": "2026-09-26",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-09-26-03",
+    "paper_id": "arxiv:2609.27032",
+    "title": "LexLattice: Multilingual Extractive Summarization via Neural Cellular Automata on Document Hierarchies",
+    "year": 2026,
+    "venue": "arXiv",
+    "topics": [
+      "summarization",
+      "multilingual"
+    ],
+    "keywords": [
+      "multilingual summarization",
+      "extractive summarization",
+      "neural cellular automata",
+      "legal NLP"
+    ],
+    "link": "https://arxiv.org/abs/2609.27032",
+    "brief": "这篇论文作者为 Sujay Uday Rittikar 与 Sheela Ramanna，目前以 arXiv 预印本形式发布（尚未查到明确的顶会/研讨会录用信息），同时覆盖 summarization 与 multilingual 两个主题。任务是多语言法律文本的抽取式摘要：法律领域对摘要的忠实性要求极高，必须保证摘要内容可以逐字追溯到原文，这也是作者选择抽取式（而非生成式）路线的原因。数据集使用 EUR-Lex-Sum——一个覆盖欧盟 24 种官方语言的法律文书摘要基准，天然适合评测跨语言与低资源语言场景下的摘要能力。方法上的创新点是将文档的层级结构（如条款、段落、句子的嵌套关系）重新表示成一个二维语义网格（lattice），然后用带掩码的二维神经元胞自动机（masked 2D neural cellular automata）在网格上做局部到全局的信息整合，最后再基于整合后的表示挑选出应保留的句子；整个整合器模块只有约 180 万可训练参数，且底层复用一个冻结不动的多语言编码器，这使得模型体积和训练成本远低于常见的指令微调大模型方案。实验结果显示，该方法在 EUR-Lex-Sum 全部 24 种语言上都取得了当前最优的 ROUGE 分数，并且超过了参数量达到十亿级别的指令微调基线模型；更值得关注的是跨语言迁移实验——仅用高资源语言数据训练后，在其余语言上的摘要质量几乎无损（保留率约 0.99），说明该语义网格表示具有较强的语言无关的几何结构，能够自然地泛化到训练时未见过的语言。这篇论文提供了一个小模型、强忠实性、可迁移的多语言摘要新思路，尤其适合法律、医疗等对可追溯性要求高的垂直领域。",
+    "model": "Claude Sonnet 5",
+    "reasoning_effort": "standard",
+    "date_added": "2026-09-26",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
   }
 ]
