@@ -4846,5 +4846,85 @@
     "deep_read": false,
     "deep_read_at": null,
     "interest": null
+  },
+  {
+    "id": "2026-09-27-01",
+    "paper_id": "arxiv:2603.19835",
+    "title": "FIPO: Eliciting Deep Reasoning with Future-KL Influenced Policy Optimization",
+    "year": 2026,
+    "venue": "COLM 2026",
+    "topics": [
+      "reinforcement learning",
+      "math",
+      "reasoning"
+    ],
+    "keywords": [
+      "credit assignment",
+      "policy optimization",
+      "chain-of-thought",
+      "AIME"
+    ],
+    "link": "https://arxiv.org/abs/2603.19835",
+    "brief": "FIPO关注的任务是如何通过强化学习提升大语言模型在数学推理任务上的“深度思考”能力，即让模型生成更长、更充分展开的思维链，而不是走捷径式地直接给出答案。作者指出，当前主流的结果导向强化学习方法（如GRPO一类算法）存在一个结构性缺陷：它们把整条推理轨迹的优势值（advantage）均匀分摊到轨迹中的每一个token上，导致模型无法区分哪些token是真正关键的推理转折点、哪些只是无关紧要的填充内容，这种“一视同仁”的信用分配方式客观上鼓励模型走捷径、抑制了深度探索。为解决这一问题，论文提出FIPO（Future-KL Influenced Policy Optimization）方法，核心创新是引入“未来KL散度”作为信号，为每个token计算一个考虑其对后续轨迹行为影响的稠密优势值，从而实现比传统方法更细粒度的信用分配——真正影响后续推理走向的关键token会获得更高权重，促使模型学会在恰当的位置进行更深入的探索和反思。实验基于Qwen2.5-32B基座模型，使用verl框架训练，结果显示FIPO训练出的模型思维链长度从约4000个token大幅扩展到超过10000个token，在AIME 2024数学竞赛基准上的Pass@1准确率从50%提升到峰值58%（收敛后约56%），超过了DeepSeek-R1-Zero-Math-32B（约47%）和o1-mini（约56%）等对比模型。论文主要作者来自Dartmouth College，并与阿里巴巴通义/Qwen团队的研究者（包括Bolin Ding、Jingren Zhou）合作完成，已被COLM 2026正式接收，代码已在GitHub开源。",
+    "model": "claude-sonnet-5",
+    "reasoning_effort": "standard",
+    "date_added": "2026-09-27",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-09-27-02",
+    "paper_id": "openreview:JY9Fy5tzdo",
+    "title": "Lang-Prune: Unlocking Fair and Powerful Pruning for Multilingual Large Language Models",
+    "year": 2026,
+    "venue": "COLM 2026",
+    "topics": [
+      "multilingual"
+    ],
+    "keywords": [
+      "structured pruning",
+      "model compression",
+      "cross-lingual fairness",
+      "mC4"
+    ],
+    "link": "https://openreview.net/forum?id=JY9Fy5tzdo",
+    "brief": "这篇论文研究的任务是多语言大语言模型的结构化剪枝（structured pruning），即如何在压缩模型规模、降低推理成本的同时，尽量保持模型在多种语言上的能力，而不是像传统剪枝方法那样只针对单一语言（通常是英语）优化裁剪目标。作者观察到，如果剪枝时只用英语或混合语料计算参数重要性，会系统性地损害那些结构模式与英语差异较大的语言（比如阿拉伯语、希伯来语等），造成剪枝后模型的“多语言公平性”严重下降，即使整体困惑度看起来还可以接受。为此，论文提出Lang-Prune方法，创新点在于把重要性计算从“单一语料上算一次”改为“每种参考语言独立计算Taylor重要性分数并做min-max归一化，再用取最大值（Max）的方式跨语言聚合”，这样任何对某一种语言而言关键的模型结构都会被保留下来，而不会因为在其他语言上不重要就被误剪掉，最后再执行全局剪枝达到目标稀疏度。实验以mC4多语料库为参考数据集，选取阿拉伯语、捷克语、德语、英语、西班牙语、印尼语、希伯来语、俄语、中文等9种类型学上差异较大的语言计算重要性，并在多达25种语言上做评测。结果显示，在Aya-Expanse-8B模型上剪到70%稀疏度时，相比传统混合语料剪枝方法平均困惑度降低了62%；在Qwen3-8B上剪到50%稀疏度时，语言间的“干扰因子”（interference factor）从9.00倍大幅降至0.66倍，显著提升了剪枝后模型的多语言公平性。论文已被COLM 2026接收，代码在GitHub开源（JuhaoLiang1997/LangPrune）。",
+    "model": "claude-sonnet-5",
+    "reasoning_effort": "standard",
+    "date_added": "2026-09-27",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-09-27-03",
+    "paper_id": "arxiv:2605.00468",
+    "title": "ReLay: Personalized LLM-Generated Plain-Language Summaries for Better Understanding, but at What Cost?",
+    "year": 2026,
+    "venue": "COLM 2026",
+    "topics": [
+      "summarization"
+    ],
+    "keywords": [
+      "plain-language summary",
+      "personalization",
+      "health literacy",
+      "human evaluation"
+    ],
+    "link": "https://arxiv.org/abs/2605.00468",
+    "brief": "这篇论文的任务是评估大语言模型为普通读者生成“个性化通俗易懂摘要”（personalized plain-language summaries, PLS）这一应用场景，具体聚焦在医学健康研究文献的可及性问题上——专业的Cochrane系统综述对非专业读者来说往往难以理解，而现有工作大多只关注静态的、面向“平均读者”的通俗化摘要，较少系统评估“针对具体某个人做个性化改写”到底带来多大收益、又有什么代价。作者构建了一个以人为中心的新基准RELAY，招募50名非专业参与者，针对来自12个健康主题、119篇Cochrane系统综述中选出的摘要（每人3篇静态版本、3篇交互式个性化版本），收集了300组参与者-摘要配对数据，记录理解程度测试、术语熟悉度、质量评分和交互日志。方法上，论文系统比较了三种个性化路径——基于结构化用户画像的提示、基于叙事背景故事的提示、检索增强生成（区分同用户内和跨用户检索）——并在GPT-4o、GPT-5.2、Qwen3-4B-Instruct、MedGemma-27B、Mistral-7B-Instruct-v0.3等五个模型上做对比，同时从“个性化程度”（可读性匹配、风格匹配、知识对齐）和“安全性”（幻觉/事实性、偏见强化）两个维度评估。结果显示，交互式个性化摘要确实显著提升了理解得分（9.83 vs 静态版9.03，p=.009），在九项质量维度上全面显著提升（尤其是解释性和针对性），但论文也发现了一个关键的“效果-安全”权衡：个性化程度越高的方法（尤其是叙事背景故事提示在小模型如Qwen3上）越容易引入偏见强化和事实性下降，而完全不做个性化的基线反而在安全性上表现最稳健。论文作者来自伊利诺伊大学香槟分校、弗吉尼亚大学、科罗拉多大学安舒茨分校、约翰霍普金斯大学、芝加哥大学Pritzker医学院、美国国立医学图书馆（NIH）、华盛顿大学等多家机构，已被COLM 2026接收。",
+    "model": "claude-sonnet-5",
+    "reasoning_effort": "standard",
+    "date_added": "2026-09-27",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
   }
 ]
