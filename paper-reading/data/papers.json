@@ -4926,5 +4926,83 @@
     "deep_read": false,
     "deep_read_at": null,
     "interest": null
+  },
+  {
+    "id": "2026-09-28-01",
+    "paper_id": "arxiv:2603.09906",
+    "title": "Thinking to Recall: How Reasoning Unlocks Parametric Knowledge in LLMs",
+    "year": 2026,
+    "venue": "COLM 2026",
+    "topics": [
+      "reasoning"
+    ],
+    "keywords": [
+      "knowledge recall",
+      "chain-of-thought",
+      "factual priming",
+      "hallucination"
+    ],
+    "link": "https://arxiv.org/abs/2603.09906",
+    "brief": "这篇论文研究的问题是：为什么让大语言模型先“推理”（生成一段思维链）再回答，能显著提升它们在单跳事实性问题（single-hop factual QA）上的准确率——这类问题本身并不需要复杂的多步逻辑分解，按理说不该从推理中获益这么多。作者用SimpleQA-Verified（1000道经筛选的、90%为单跳的问题）和EntityQuestions（覆盖4种关系、答案空间很大的1000道题）两个基准做了一系列对照实验，试图拆解“推理”到底在起什么作用。核心创新在于分离出两种此前被混在一起的机制：一是“计算缓冲效应”（computational buffer effect）——即使把真实推理轨迹整段替换成毫无语义的重复填充文本（如反复的“Let me think”），模型的pass@k准确率依然大幅提升，说明纯粹的“多算几步”本身就有用，与内容无关；二是“事实启动”（factual priming）——推理过程中生成的相关事实能充当语义桥梁，帮助模型检索出本来提取不出来的参数化知识，但如果这些中间事实是幻觉出来的，反而会显著拖累最终答案的正确率。实验数据显示，在Gemini-2.5-Flash上，仅用无意义的“哑推理”替代真实推理，SimpleQA-Verified上的准确率就从0.206提升到0.262，EntityQuestions上从0.457提升到0.554；而当推理轨迹中混入幻觉事实时，正确率会从41.4%骤降到26.4%（SimpleQA-Verified），EntityQuestions上更是从71.1%暴跌到32.2%。基于这一发现，作者提出测试时优先选择“含真实事实、不含幻觉”的推理轨迹这一简单策略，可再带来12.2%和5.1%的准确率提升。论文还发现能力较弱的模型从推理中获益更多，说明推理更像是在弥补模型参数化知识提取能力的短板，而非单纯提高采样效率。作者来自Google Research、以色列理工学院（Technion）和特拉维夫大学，论文已被COLM 2026接收。",
+    "model": "claude-sonnet-5",
+    "reasoning_effort": "standard",
+    "date_added": "2026-09-28",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-09-28-02",
+    "paper_id": "arxiv:2601.17645",
+    "title": "AVMeme Exam: A Multimodal Multilingual Multicultural Benchmark for LLMs' Contextual and Cultural Knowledge and Thinking",
+    "year": 2026,
+    "venue": "COLM 2026",
+    "topics": [
+      "multilingual"
+    ],
+    "keywords": [
+      "multimodal benchmark",
+      "cultural knowledge",
+      "audio-visual understanding",
+      "internet memes"
+    ],
+    "link": "https://arxiv.org/abs/2601.17645",
+    "brief": "这篇论文关注的任务是评估多模态大语言模型能否真正“看懂、听懂”网络上广为流传的音视频“梗”（memes），而不只是停留在语音转录或画面描述这类表层理解上——具体要考察模型能否读懂其中的文化背景、情感色彩、使用场景乃至相关的世界知识，这是一个专门针对“音视频+跨文化理解”设计的多语言基准。作者为此构建了新数据集AVMeme Exam，包含超过1032条人工精选的经典网络音视频梗，覆盖语音、歌曲、纯音乐、音效及其组合共5类声音形式，并标注了原始发布年份、转录文本、内容摘要和敏感性信息；素材来自东亚、南亚、中东、欧洲、北美等多个文化圈，涉及十余种语言，剔除可以单靠文字线索“作弊”回答的样本后，剩余846条构成核心评测子集meme-main。方法上的创新点在于问答设计采用了从“表层内容理解”到“情感解读”“使用场景”直至“世界知识”的递进式多层次问题结构，并首次系统性地把纯音乐、音效等“非语音”音频内容纳入文化理解评测范围（以往工作大多只关注语音或纯文本），同时引入真人测试者作为对照组，量化模型与人类在“语言层面理解”和“文化/情境层面理解”上的差距。实验结果显示，表现最好的闭源模型Gemini 3 Pro在meme-main上取得76.6分（仅音频）和80.0分（音频+视频），而表现最好的开源模型Qwen3-Omni只有55.4和57.4；几乎所有模型从“语言分析”类问题过渡到“世界知识”类问题时，得分都会出现15%至30%的明显下滑；人类整体表现明显优于绝大多数开源模型，其中Gemini 2.5 Flash在“熟悉的梗”上已能接近人类水平，但面对完全陌生的梗时仍明显落后于人。论文由哥伦比亚大学、伊利诺伊大学厄巴纳-香槟分校、华盛顿大学、约翰霍普金斯大学、纽约大学、伦敦玛丽女王大学与Google、Meta等机构联合完成，已被COLM 2026接收。",
+    "model": "claude-sonnet-5",
+    "reasoning_effort": "standard",
+    "date_added": "2026-09-28",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-09-28-03",
+    "paper_id": "arxiv:2512.04068",
+    "title": "Learning Steerable Clarification Policies with Collaborative Self-play",
+    "year": 2025,
+    "venue": "COLM 2026",
+    "topics": [
+      "reinforcement learning"
+    ],
+    "keywords": [
+      "clarification policy",
+      "self-play",
+      "ambiguous queries",
+      "Reinforced Self-Training"
+    ],
+    "link": "https://arxiv.org/abs/2512.04068",
+    "brief": "这篇论文要解决的问题是：当用户提出的问题存在歧义时，对话式AI助手应该如何应对——是直接猜测用户真实意图并作答、把所有可能的解释都列出来，还是主动反问澄清？以往工作往往针对某一种固定的权衡（比如“尽量少打断用户”或“尽量保证准确”）单独训练一个专用策略，而这篇论文希望训练出一个统一的策略，能够根据运行时给定的“代价系数”动态地在猜测、列举、反问三种行为间切换。实验基于两个数据集：AmbigQA（依赖模型参数化知识的歧义问答）和Pacific（基于表格、依赖上下文的歧义问答）。方法上的核心创新是提出“可控澄清策略”（steerable clarification policy）：模型在推理时把两个代价系数α（多轮交互的代价）和β（回答长度的代价）作为提示的一部分输入，训练后能据此调整行为——多轮代价低时倾向主动提问澄清，回答长度代价低时倾向一次性列出多个可能答案，两者代价都高时才直接给出单一最可能的猜测。为了训练这种策略，作者设计了“协作式自博弈”（collaborative self-play）框架：用一个大模型扮演知晓问题真实含义的“用户”，另一个扮演“助手”，环境会采样一个歧义问题及其所有可能的解释和对应正确答案，通过双方的多轮对话来判断助手最终是否给出了正确回应；具体训练算法基于Reinforced Self-Training（ReST）改造，不是简单挑出单条高回报轨迹，而是寻找能在多种解释下同时最大化期望回报的动作序列，再从兼容这些最优序列的最佳轨迹中提取训练数据，反复迭代多轮。实验结果表明，训练后的模型能够可靠地按照给定的代价系数调整自己的行为，并且这种“可控性”可以泛化到训练阶段从未见过的代价系数组合上；相比直接提示（包括思维链提示）等基线方法，训练后的策略能以更低的交互和长度代价取得更高的问答准确率，验证了用单一可控策略取代“为每种权衡单独训练/提示”的传统做法是可行且更高效的。作者来自Meta、Google DeepMind与Google Research，包括Jonathan Berant、Mirella Lapata、Jacob Eisenstein等，论文已被COLM 2026接收。",
+    "model": "claude-sonnet-5",
+    "reasoning_effort": "standard",
+    "date_added": "2026-09-28",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
   }
 ]
