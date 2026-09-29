@@ -5004,5 +5004,86 @@
     "deep_read": false,
     "deep_read_at": null,
     "interest": null
+  },
+  {
+    "id": "2026-09-29-01",
+    "paper_id": "arxiv:2605.24635",
+    "title": "HiMed: Incentivizing Hindi Reasoning in Medical LLMs",
+    "year": 2026,
+    "venue": "EMNLP 2026",
+    "topics": [
+      "multilingual",
+      "reinforcement learning",
+      "reasoning"
+    ],
+    "keywords": [
+      "Hindi",
+      "medical reasoning",
+      "scaffolding rewards",
+      "low-resource"
+    ],
+    "link": "https://arxiv.org/abs/2605.24635",
+    "brief": "HiMed: Incentivizing Hindi Reasoning in Medical LLMs 关注的任务是印地语（Hindi）医疗领域的推理问答：现有医疗大模型的强项几乎都在英语，低资源语言上的医疗推理准确率明显落后，而这类场景恰恰最需要可靠的医疗辅助。为此作者构建了一个专门的 Hindi 医疗语料与评测基准，内容同时覆盖西医（Western medicine）和印度本土医学体系，这一点在多语言医疗数据里相当少见，也让基准更贴近真实使用场景。方法上，论文训练了 8B 参数的 HiMed-8B，核心创新是“递减式脚手架奖励”（decaying scaffolding rewards）：强化学习早期给模型较多外部引导信号，随后逐步衰减，迫使模型真正学会自己推理，而不是依赖提示或格式捷径。整个训练分为多个阶段，作者通过消融实验分别验证了每个训练阶段与每个奖励组成部分的贡献。摘要给出的主要结论是：Hindi 医疗推理性能有所提升，并且英语—Hindi 之间的准确率差距缩小。需要注意的是，摘要中没有给出具体的数值、数据规模和基线对比；早期机器审稿也指出基准构建细节（题目来源、数据污染检查、翻译痕迹验证）和消融对照（如与纯 SFT 的对比）描述不足，作者承诺在修订中补充，因此具体数字需要读原文确认。代码与数据已在 GitHub 公开。这篇论文的价值在于把 RLVR 类的“过程引导+逐步撤除”思路用在低资源语言的专业领域推理上，可以作为多语言推理与强化学习结合的一个有意思的案例。据 DailyArXiv 汇总，该文已被 EMNLP 2026 接收（具体主会/Findings 未确认）。",
+    "model": "claude-sonnet-5-5",
+    "reasoning_effort": "standard",
+    "date_added": "2026-09-29",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-09-29-02",
+    "paper_id": "arxiv:2605.13165",
+    "title": "STOP: Structured On-Policy Pruning of Long-Form Reasoning in Low-Data Regimes",
+    "year": 2026,
+    "venue": "EMNLP 2026 (Findings)",
+    "topics": [
+      "math",
+      "reasoning"
+    ],
+    "keywords": [
+      "CoT compression",
+      "overthinking",
+      "self-distillation",
+      "GSM8K/AIME"
+    ],
+    "link": "https://arxiv.org/abs/2605.13165",
+    "brief": "STOP: Structured On-Policy Pruning of Long-Form Reasoning in Low-Data Regimes 针对的是长链思维（long CoT）推理模型常见的“过度思考”（overthinking）问题：模型在已经得出正确答案之后还继续生成大量验证、回溯等冗余 token，浪费推理成本。已有的 CoT 压缩方法往往依赖大量数据或强教师模型，而本文关注的是数据很少的低资源微调场景。方法 STOP 包含三个组件：第一，用学生模型自身生成并筛选推理轨迹（self-distilled trace construction），从而减小与教师模型之间的分布差异；第二，通过确定性的节点切分和自动化的类别标注，把推理轨迹切成回溯、验证、探索、澄清、结论等功能单元，并构建成推理树，形成结构化接口；第三，提出 ECN（Earliest Correct Node）剪枝，在节点边界处保留“到最早出现正确答案的节点为止的最短前缀”，这样剪枝不会破坏语义连贯性。实验在 GSM8K、MATH-500 和 AIME 2024 三个数学推理基准上进行，生成 token 数减少 19.4%–42.4%，同时基本保持准确率；例如 Qwen-7B 在 GSM8K 上达到 91.1% 准确率，同时减少 27.8% 的 token。KL 散度分析显示，自蒸馏监督训练出的模型更接近原始模型行为，这解释了它在小数据下优于教师引导方法的原因。作者来自华盛顿大学（University of Washington）与 Halmstad University，代码已开源（ECN-STOP）。据 DailyArXiv 汇总，该文被 Findings of EMNLP 2026 接收。这项工作的亮点在于“结构化+自蒸馏”的低成本效率优化思路，对想让推理模型更省算力的人很有参考价值。",
+    "model": "claude-sonnet-5-5",
+    "reasoning_effort": "standard",
+    "date_added": "2026-09-29",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-09-29-03",
+    "paper_id": "arxiv:2609.21677",
+    "title": "GUARD: Natural Forgetting in Large Reasoning Models via Guided Answer-Reasoning Distillation",
+    "year": 2026,
+    "venue": "EMNLP 2026 (Main Conference)",
+    "topics": [
+      "reasoning"
+    ],
+    "keywords": [
+      "machine unlearning",
+      "large reasoning models",
+      "distillation",
+      "safety"
+    ],
+    "link": "https://arxiv.org/abs/2609.21677",
+    "brief": "GUARD: Natural Forgetting in Large Reasoning Models via Guided Answer-Reasoning Distillation 研究大推理模型（LRM）的机器遗忘（unlearning）问题。作者指出，现有遗忘方法大多只关注“抑制目标内容”，却没有规定模型遗忘之后应该如何表现，结果常常出现幻觉式替代答案、格式残缺或重复输出。为此论文提出“自然遗忘”（natural forgetting）的目标：模型应给出结构稳定、流畅且不含无依据替代内容的回复。方法 GUARD 分三步：先通过离线改写，把不安全或需遗忘的输出转换为自然、不泄露信息的推理轨迹；再用引导 token 对冻结模型做 Guided Trajectory Alignment；最后通过 Answer-Reasoning Distillation 把学到的行为蒸馏进可部署的参数中。论文还提出新指标 Natural Forgetting Response Score（NFRS），衡量结构稳定性、流畅度以及无幻觉替代内容，而不只是泄露率。实验使用 DeepSeek-R1-Distill 的 LLaMA-8B 与 Qwen-14B，在 R-TOFU（隐私/事实遗忘，1%/5%/10% 遗忘比例）和 STAR-1（安全/有害内容遗忘）上评测。GUARD 的 NFRS 超过 0.84，同时保持有竞争力的遗忘效果；对比之下，R²MU 等基线遗忘抑制很强（CFE 0.94），但 NFRS 仅 0.02，说明“遗忘了但答得一团糟”的问题确实普遍存在。安全实验中平均安全分 0.96、NFRS 保持在 0.89–0.90，并且在 MATH500、BBH、GPQA 上的通用推理能力与遗忘前相当。作者来自华东师范大学（East China Normal University）等机构，代码已开源。据 DailyArXiv 汇总，该文被 EMNLP 2026 主会接收。",
+    "model": "claude-sonnet-5-5",
+    "reasoning_effort": "standard",
+    "date_added": "2026-09-29",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
   }
 ]
