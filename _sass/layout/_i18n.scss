@@ -126,6 +126,11 @@ html[data-lang="zh"] [data-i18n="zh"] { display: inline; }
   background: rgba(58, 127, 213, 0.14);
   border-color: rgba(58, 127, 213, 0.4);
 }
+.yf-badge-oral {
+  color: #b7791f;
+  background: rgba(217, 152, 30, 0.16);
+  border-color: rgba(217, 152, 30, 0.45);
+}
 .yf-pub-summary {
   font-size: 14px;
   color: var(--global-text-color-light, #767676);

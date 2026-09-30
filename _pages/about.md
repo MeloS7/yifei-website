@@ -110,7 +110,7 @@ redirect_from:
       <span data-i18n="en">EMNLP 2026 (Main Conference) &middot; to appear</span>
       <span data-i18n="zh">EMNLP 2026（主会）&middot; 待发表</span>
       <span class="yf-badge">CORE A*</span>
-      <span class="yf-badge yf-badge-alt">Oral</span>
+      <span class="yf-badge yf-badge-oral">Oral</span>
     </div>
     <div class="yf-pub-links">
       <a href="https://arxiv.org/abs/2608.23390" target="_blank" rel="noopener"><span data-i18n="en">Paper</span><span data-i18n="zh">论文</span></a>
