@@ -5165,5 +5165,85 @@
     "deep_read": false,
     "deep_read_at": null,
     "interest": null
+  },
+  {
+    "id": "2026-10-01-01",
+    "paper_id": "arxiv:2609.33742",
+    "title": "DuraS2ST: Chain-of-Thought and Reinforcement Learning for Duration-Aligned Speech-to-Speech Translation",
+    "year": 2026,
+    "venue": "EMNLP 2026 (Main Conference)",
+    "topics": [
+      "multilingual",
+      "reinforcement learning",
+      "reasoning"
+    ],
+    "keywords": [
+      "speech-to-speech translation",
+      "duration alignment",
+      "chain-of-thought",
+      "duration reward"
+    ],
+    "link": "https://arxiv.org/abs/2609.33742",
+    "brief": "这篇论文研究的任务是语音到语音翻译（Speech-to-Speech Translation, S2ST），关注英文↔中文双向翻译。S2ST 在配音、同传等场景中有一个常被忽视的难题：译文语音的时长需要与源语音时间对齐，否则无法与画面或说话节奏匹配，而传统端到端模型对生成语音的长度几乎没有显式控制。作者提出 DuraS2ST，让模型在生成语音之前先显式地“规划”：通过 Chain-of-Thought 先推理出目标语言的措辞以及对应的音素/语音时长，再据此生成语音。这是把文本推理中的 CoT 思路迁移到语音翻译里的一个有意思的尝试。在训练上，作者先用 CoT 数据做监督训练，再引入面向多模态的、感知时长的强化学习（duration-aware multimodal RL），并设计了专门的 duration reward，直接把目标语音与源语音的时长一致性作为优化目标。为支撑训练，论文构建了包含 44 万条样本的新数据集 DuraSet-440K。模型基于 Step-Audio 2 构建，代码以 Apache 2.0 协议开源，并在 Hugging Face 上放出了 DuraS2ST-Think-RL 模型和音视频 demo。根据项目页面，该方法能在保持翻译质量的同时显著改善时间对齐。我没能读取到论文正文，因此具体的 BLEU/时长误差等数值请以原文为准。论文已被 EMNLP 2026 主会录用（据项目页称录取率约 15.4%）。它的亮点在于把“多语言翻译 + 推理规划 + RL 奖励设计”三个主题串在一起，且奖励是可直接验证的物理量（时长），这与 RLVR 的思路相通，值得对多语言生成和可控生成感兴趣的读者关注。",
+    "model": "Sonnet 5.5 (claude-sonnet-5-5)",
+    "reasoning_effort": "low",
+    "date_added": "2026-10-01",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-10-01-02",
+    "paper_id": "arxiv:2511.12001",
+    "title": "Critical or Compliant? The Double-Edged Sword of Reasoning in Chain-of-Thought Explanations",
+    "year": 2025,
+    "venue": "EMNLP 2026 (Main Conference)",
+    "topics": [
+      "reasoning"
+    ],
+    "keywords": [
+      "chain-of-thought",
+      "explanation faithfulness",
+      "human-AI trust",
+      "moral judgment"
+    ],
+    "link": "https://arxiv.org/abs/2511.12001",
+    "brief": "这篇论文关注一个常被忽略的问题：Chain-of-Thought（CoT）解释到底是帮助用户判断模型对错，还是让用户更盲目地信任模型。任务设定为视觉语言模型（VLM）做道德判断，论文使用包含 400 个图文道德场景的 MORALISE 基准，并评测了 GPT-4o、Gemini-1.5 Pro、Claude-3.5 Sonnet、LLaVA-1.5、Qwen-VL、BLIP-2 等模型。方法上，作者做了一个受控的人类实验（N=800）：系统性地操纵推理链的正确性（干净推理 vs 遗漏、矛盾、幻觉三类错误）、语气的自信程度（自信/中性/犹豫）以及最终判断是否与真值一致，然后让参与者报告是否发现错误、是否同意以及信任程度。主要发现很有意思：同意度与信任度高度耦合（r=+0.82），而二者都与错误发现率负相关；当最终判断正确时，只有约 31% 的参与者发现推理链中的遗漏错误，同意度仍高达 5.15/7；自信的语气会让错误发现率下降约 7 个百分点，却不降低用户的依赖程度。模型侧也有不对称现象：闭源模型的输出中，遗漏类错误占 36–42%，恰恰是人类最难察觉的一类。结论是人们更看重结果是否一致而非推理是否忠实，风格上的自信足以压过正确性信号，CoT 解释可能助长盲从而非真正理解。作者来自首尔国立大学与卡内基梅隆大学（HCII/LTI，含 Maarten Sap 等）。据 arXiv 每日列表，该文已被 EMNLP 2026 主会录用。对于做可解释推理、人机协作与 AI 安全的读者，这是一篇偏人因与评测视角的好文章。",
+    "model": "Sonnet 5.5 (claude-sonnet-5-5)",
+    "reasoning_effort": "low",
+    "date_added": "2026-10-01",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-10-01-03",
+    "paper_id": "arxiv:2505.17482",
+    "title": "From Reasoning to Generalization: Knowledge-Augmented LLMs for ARC Benchmark",
+    "year": 2025,
+    "venue": "EMNLP 2026 (Main Conference)",
+    "topics": [
+      "reasoning"
+    ],
+    "keywords": [
+      "ARC",
+      "abstract reasoning",
+      "program synthesis",
+      "knowledge augmentation"
+    ],
+    "link": "https://arxiv.org/abs/2505.17482",
+    "brief": "这篇论文评估近期以推理为导向的大模型在 Abstraction and Reasoning Corpus（ARC）上的表现。作者指出，这类模型在数学和科学任务上进步明显，但抽象推理与泛化能力仍缺乏系统研究。任务上，论文把 ARC 形式化为程序合成问题：模型根据少量输入输出示例生成代码，再在测试输入上执行，从而检验其是否真正归纳出了规则而不是过拟合示例。数据集使用的是 ARC 基准本身。方法上，作者设计了九种不同的求解器，并确定“重复采样 + 规划辅助的代码生成”（RSPC）是最强且泛化最稳定的基线。在此基础上提出 KAAR（Knowledge Augmentation for Abstract Reasoning）：用一个本体（ontology）把先验知识按依赖关系分成三个层级，由低到高逐步注入，引导模型利用对象、几何、拓扑等核心先验，而不是一次性塞入全部提示。结果显示，KAAR 相比无知识增强的 RSPC 取得约 5% 的绝对提升，相对提升最高达 64.52%；作者的结论是 ARC 对推理型 LLM 依然很有挑战性。其价值在于既给出了一个横向的系统评测，又说明结构化、分层的先验知识注入比朴素堆提示更有效。该论文 2025 年 5 月上线 arXiv，据 arXiv 每日列表，已被 EMNLP 2026 主会录用。因未能读取全文，作者机构和各模型的详细数值此处从略，请以原文为准。",
+    "model": "Sonnet 5.5 (claude-sonnet-5-5)",
+    "reasoning_effort": "low",
+    "date_added": "2026-10-01",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
   }
 ]
