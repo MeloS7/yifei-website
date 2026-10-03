@@ -5324,5 +5324,84 @@
     "deep_read": false,
     "deep_read_at": null,
     "interest": null
+  },
+  {
+    "id": "2026-10-03-01",
+    "paper_id": "arxiv:2609.00474",
+    "title": "Exploring Collaboration Between a Language and a Non-Language Agent",
+    "year": 2026,
+    "venue": "EMNLP 2026",
+    "topics": [
+      "reasoning"
+    ],
+    "keywords": [
+      "latent state internalization",
+      "LLM-agent collaboration",
+      "chess",
+      "LLAMIA-Bench"
+    ],
+    "link": "https://arxiv.org/abs/2609.00474",
+    "brief": "这篇论文研究的任务是：如何让大语言模型与国际象棋、围棋引擎这类专用的“非语言智能体”有效协作。现有做法通常把子智能体的内部判断先转写成文字摘要再喂给LLM，作者认为这会造成信息丢失，并把这种损失称为“verbalization debt”（语言化债务）。为评估这一问题，作者构建了LLAMIA-Bench，包含六类国际象棋任务，涵盖不同棋力水平的行为克隆、题目难度与趣味性估计、走法带理由的标注，以及整盘棋的评论生成。方法上的创新点是“latent state internalization”：不再把引擎的状态转成文本，而是把子智能体内部神经表示直接投影成一组可学习的state token，插入LLM的token流中，使LLM在自身推理过程中直接读取专用模型的内部表征。与以往把工具输出文本化的多智能体或工具调用范式相比，这条路径保留了连续表征中的细粒度信息。实验上，作者训练的LLAMIA-14B在所有任务上都达到或超过各个基线。一个值得关注的现象是，隐式表征方案与文本化方案之间的差距在训练中不断扩大，收敛时达到2-3倍。在谜题趣味性估计任务上，LLAMIA得到52分，而所有文本化系统都不超过12分。此外，方法在围棋上也有类似的收益，说明并非只对国际象棋有效。作者来自Adobe MDSR、IIIT-Delhi、IIT Kanpur和SUNY Buffalo。论文的arXiv备注为已被EMNLP 2026接收（具体为主会还是Findings备注未明确）。这项工作对“LLM如何调用并融合专用模型的内部状态做推理”提供了一个有启发性的新视角，也提示纯文本接口可能是多智能体系统的瓶颈。",
+    "model": "claude-sonnet-5-5",
+    "reasoning_effort": "standard",
+    "date_added": "2026-10-03",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-10-03-02",
+    "paper_id": "arxiv:2609.00213",
+    "title": "Uncovering and Mitigating Aggregation-Induced Reward Hacking in Multi-Reward Reinforcement Learning",
+    "year": 2026,
+    "venue": "arXiv",
+    "topics": [
+      "reinforcement learning",
+      "math"
+    ],
+    "keywords": [
+      "multi-reward RL",
+      "reward hacking",
+      "GRPO",
+      "adaptive reweighting"
+    ],
+    "link": "https://arxiv.org/abs/2609.00213",
+    "brief": "论文关注的是LLM强化学习中的多奖励优化：当训练同时使用多个奖励维度（如正确性、引用、对齐偏好）时，通常先把它们静态聚合成一个标量奖励。作者指出这会导致“profile aliasing”——不同的奖励组合被压成同一个标量，策略便可以钻空子，只优化最容易提升的维度，形成一种由聚合方式引发的reward hacking。为验证这一点，作者在三个领域做实验：数学推理（用NuminaMath-1.5的1万条子集训练，在MATH-500、AMC、AIME 2024上评测）、带引用的接地问答（ASQA、ELI5），以及开放式对齐（HelpSteer2训练，AlpacaEval、ArenaHard、MT-Bench评测）。方法上提出Adaptive Multi-Reward Projection（AMRP），根据三个信号动态调整各奖励维度的权重：相对差距（relative shortfall）、奖励波动性和近期进展，使训练资源始终倾向于落后的维度，而不是被已饱和的维度主导。与以往固定权重或简单线性加权的做法相比，AMRP把聚合本身当作需要自适应设计的对象。结果上，在Qwen3-4B上AIME准确率从17.92%提升到31.98%，引用问答的总分从51.03提升到59.13；方法与GRPO、GDPO和PPO都兼容，并在较宽的超参数范围内表现稳定。论文致谢提到国家自然科学基金与美团，具体作者机构在抓取内容中不完整。目前未查到录用信息，标注为arXiv预印本。这篇工作对做RLVR和多目标对齐的人有实际参考价值：它提醒我们奖励聚合方式本身可能是reward hacking的来源。",
+    "model": "claude-sonnet-5-5",
+    "reasoning_effort": "standard",
+    "date_added": "2026-10-03",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-10-03-03",
+    "paper_id": "arxiv:2609.00515",
+    "title": "The Interlingua Hypothesis: LLMs Translate via a Latent Task-agnostic Feature Space",
+    "year": 2026,
+    "venue": "arXiv",
+    "topics": [
+      "multilingual"
+    ],
+    "keywords": [
+      "interlingua",
+      "machine translation",
+      "mechanistic interpretability",
+      "monolingual fine-tuning"
+    ],
+    "link": "https://arxiv.org/abs/2609.00515",
+    "brief": "这篇论文研究LLM如何完成机器翻译，提出“Interlingua假说”：模型先把源句读入一个潜在的、与任务无关的特征空间，再从该空间读出目标语句，而不是为每个语言对使用专门机制。作者用三类预测来检验假说。第一，行为层面：翻译质量应当能由源语言和目标语言各自的单语能力预测，且不需要语言间交互项。实验用GlobalMMLU准确率预测BLEU，在Llama上R²为0.739、Aya上为0.510，而加入双线性交互项并没有带来改进。第二，机制层面：影响翻译的组件也应当介导单语任务。作者发现一组注意力头（Llama在13-14层，Aya在15-20层）在56个语言对上表现出一致的因果作用。第三，微调层面：仅用单语数据微调应当能恢复大部分并行语料微调的收益。例如对Xhosa做单语微调，在Llama上恢复了并行微调99%的提升，Aya上为73%。实验使用Llama-3.1-8B、Aya-23-8B和TinyAya-3B，评测数据包括FLORES-101、MultiBLiMP、GlobalMMLU与OPUS MT560。与以往只描述多语言表示“共享”的工作相比，这篇论文把假说拆成可检验的行为、因果与训练三类证据，并给出量化结果。作者来自波士顿大学与克劳斯塔尔工业大学（Brinton、Brinkmann、Crovella、Mueller）。arXiv备注仅注明21页，未查到录用信息，因此标注为arXiv。这项结果对低资源语言很有意义：它暗示提升单语能力本身就可能显著改善翻译。",
+    "model": "claude-sonnet-5-5",
+    "reasoning_effort": "standard",
+    "date_added": "2026-10-03",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
   }
 ]
