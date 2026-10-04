@@ -5403,5 +5403,85 @@
     "deep_read": false,
     "deep_read_at": null,
     "interest": null
+  },
+  {
+    "id": "2026-10-04-01",
+    "paper_id": "arxiv:2605.26934",
+    "title": "Reasoning Depth and Environment Complexity: A Controlled Study of RLVR Data Allocation across Logical Reasoning Tasks",
+    "year": 2026,
+    "venue": "EMNLP 2026 (Main Conference)",
+    "topics": [
+      "reinforcement learning",
+      "reasoning"
+    ],
+    "keywords": [
+      "RLVR",
+      "GRPO",
+      "logical reasoning",
+      "data allocation"
+    ],
+    "link": "https://arxiv.org/abs/2605.26934",
+    "brief": "这篇论文研究的任务是：在用可验证奖励的强化学习（RLVR）对语言模型做后训练时，训练数据应当如何在“推理空间”中分配。作者认为以往只把难度看成单一的“推理深度”过于粗糙，因此提出二维框架：推理深度 D（推理链长度，1–10）与环境复杂度 T（干扰结构的复杂程度，1–6），并覆盖演绎、溯因、归纳、类比四类逻辑推理。数据方面，他们构建了一个受控的合成知识图谱环境，预训练只覆盖浅层区域（D∈{1..4}, T∈{1,2}），评测集包含 4,800 个图，铺满 60 个 (D,T) 网格单元。模型是一个 107M 参数的 Qwen2.5 风格解码器，后训练使用 GRPO，并比较了 15 种数据分布配方，每种配方分配 220K 个任务。方法上的创新在于用完全可控的合成环境把“数据分配策略”这个变量从模型规模、预训练污染等混杂因素中隔离出来，从而得到干净的因果结论。主要发现有三点：第一，同时覆盖深度与复杂度两个维度，比只在单一维度上加数据带来更广泛的 RLVR 收益；第二，不同推理类型的泛化行为差异很大，演绎推理可以稳健地外推到训练分布之外，而溯因推理在训练区域外泛化很差；第三，在固定预算下，均匀混合各难度的数据优于分阶段的课程学习（staged curriculum）。此外，任务两两之间的相关性聚成“演绎–溯因”和“归纳–类比”两组，对现有主流 LLM 的评测也显示出类似的“演绎强于溯因”的不对称。这项工作来自京都大学、东京大学/NII LLMC 与 RIKEN 的团队（Yihua Zhu 等，通讯含 Kurohashi、Shimodaira），已列入 RIKEN AIP 公布的 EMNLP 2026 主会录用论文名单。它不追求刷榜，而是给 RLVR 数据配比提供了可操作的经验法则，对“课程学习是否必要”这一常见做法提出了有价值的反例。",
+    "model": "Claude Sonnet 5.5 (claude-sonnet-5-5)",
+    "reasoning_effort": "low",
+    "date_added": "2026-10-04",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-10-04-02",
+    "paper_id": "arxiv:2609.06381",
+    "title": "Cross-Lingual Representation Alignment by Token-Level Optimal Transport in a Language-Agnostic Space",
+    "year": 2026,
+    "venue": "EMNLP 2026 (Main Conference)",
+    "topics": [
+      "multilingual"
+    ],
+    "keywords": [
+      "CAROT",
+      "optimal transport",
+      "representation alignment",
+      "activation steering"
+    ],
+    "link": "https://arxiv.org/abs/2609.06381",
+    "brief": "这篇论文（方法名 CAROT）关注多语言大模型的一个核心问题：想提升非英语语言的表现，到底应该“对齐什么”以及“在哪里对齐”。作者的思路是把隐藏状态分解为语言特定成分与语言无关成分：先用 LEACE（线性概念擦除）从句子级嵌入中提取语言特定信息，保留它以维持输入输出语言一致，再只对语言无关的部分在 token 级别做跨语言对齐。对齐使用带 Mahalanobis 距离的非平衡最优传输（unbalanced optimal transport），把英语与目标语言的 token 表示对应起来，并辅以基于困惑度的过滤来抑制噪声对齐，以及对低置信度匹配 token 做软插值，避免硬对齐破坏语义。评测覆盖四类任务：KLAR Continent（知识检索）、Global MMLU（推理）、BELEBELE（阅读理解）和 XQuAD（问答），训练用平行语料为 WMT24++ 与 NTREX，模型包括 Llama3.1-8B、Gemma3-4B 和 Qwen3-4B，涉及 12 种分布内语言与 6 种分布外语言。结果显示：在推理时的激活 steering 设定下，CAROT 在单个任务上最多提升 11.2 个准确率点，在多数基准上优于 Lang Vec 与 MLRS 等基线；在训练式设定下，18 个“模型-任务-语言”组合中有 11 个优于标准微调与 MidAlign，但增益小于 steering。与以往直接对整句表示做粗粒度对齐的工作相比，其新意在于先把语言身份剥离再对齐，并且在 token 粒度上用最优传输得到对齐目标，同时不牺牲输出语言的一致性。作者来自东京大学、RIKEN、利物浦大学与东北大学，论文已被 RIKEN AIP 列为 EMNLP 2026 主会录用。它对低资源语言和分布外语言的泛化尤其有参考价值。",
+    "model": "Claude Sonnet 5.5 (claude-sonnet-5-5)",
+    "reasoning_effort": "low",
+    "date_added": "2026-10-04",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-10-04-03",
+    "paper_id": "arxiv:2509.23140",
+    "title": "TagPR: Tagging the Thought for Personalization Reasoning in Large Language Models",
+    "year": 2025,
+    "venue": "EMNLP 2026 (Main Conference)",
+    "topics": [
+      "reasoning",
+      "reinforcement learning"
+    ],
+    "keywords": [
+      "personalization",
+      "process supervision",
+      "reward model",
+      "LaMP"
+    ],
+    "link": "https://arxiv.org/abs/2509.23140",
+    "brief": "TagPR 研究的任务是让大模型做“个性化推理”：根据用户历史画像，对该用户的偏好做显式、以用户为中心的推理，而不是套用通用逻辑。作者指出现有 RL 推理工作大多集中在数学等可验证领域，个性化场景缺少过程级监督。数据方面，他们基于 LaMP 个性化基准的训练集，用 Qwen3-235B 为每个样本生成 16 条候选推理链，经正确性校验与 GPT-4o 质量打分过滤，把推理步骤聚类成 9 类语义标签，用受限标签词表重新标注，得到约 1 万条带标签的推理链；评测使用 LaMP 的多个任务，并另外用 1,000 名用户构建了 3 个中文 Dianping 任务检验跨语言泛化。方法有三个组件：带语义标签的推理数据构造流水线；带可学习用户嵌入的个性化奖励模型 PRMU（用约 1 万条 Profile-Reasoning 偏好和约 1 万条 Personalized-Quality 偏好以 Bradley-Terry 损失训练），在序列级建模用户偏好；以及“SFT → 两阶段 RL”的训练策略，其中 Guided RL 使用可验证、格式、重复惩罚、标签与 PRMU 的复合奖励，Exploratory RL 则简化奖励以跳出平台期。结果上，TagPR 在 LaMP-1 达到 0.803 准确率（高于 Gemini-2.5-Pro 的 0.761 与 GPT-4o 的 0.733），LaMP-2 F1 为 0.598，LaMP-4 ROUGE-1 为 0.234，相对基础模型平均提升 32.65%；消融显示去掉 RL 在 LaMP-1 上下降 8.1%，去掉 SFT 下降 2.56%，用户嵌入也带来稳定增益；在中文数据上零样本也取得最佳，并且对 2–32 条画像长度及 BM25/Contriever/随机检索都保持优势。论文由中国人民大学高瓴人工智能学院、美团与武汉大学合作，已被 EMNLP 2026 主会接收（据社区论文推荐 issue 标注）。它的价值在于把“过程监督 + RL”从数学搬到了个性化这类难以验证的领域。",
+    "model": "Claude Sonnet 5.5 (claude-sonnet-5-5)",
+    "reasoning_effort": "low",
+    "date_added": "2026-10-04",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
   }
 ]
