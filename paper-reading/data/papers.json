@@ -5483,5 +5483,85 @@
     "deep_read": false,
     "deep_read_at": null,
     "interest": null
+  },
+  {
+    "id": "2026-10-05-01",
+    "paper_id": "arxiv:2609.35606",
+    "title": "TCSAlgBench: Benchmarking Automated Proving for Research-Level Theoretical Computer Science",
+    "year": 2026,
+    "venue": "arXiv",
+    "topics": [
+      "math",
+      "reasoning"
+    ],
+    "keywords": [
+      "theorem proving",
+      "research-level benchmark",
+      "theoretical CS",
+      "agentic planning"
+    ],
+    "link": "https://arxiv.org/abs/2609.35606",
+    "brief": "这篇论文关注的任务是：大模型在竞赛数学上已经很强，但“研究级”推理能力很难被系统评测，作者因此把目光投向理论计算机科学（TCS）中的算法定理证明。他们构建了新基准 TCSAlgBench，包含 398 个定理级别的挑战，来源于 STOC 和 COLT 2026 的 138 篇论文，因此几乎不可能出现在模型的训练数据中。选择 TCS 的原因是这类结果带有明确的计算保证（如复杂度界、近似比），可以被可度量地验证，而不必依赖主观打分。方法上的创新有三点：其一，专家为每个定理设计了上下文补全规则，在保留计算假设与定量保证的同时，把论文里的结论改写成独立可证的问题；其二，整个构建流程可刷新，能随新论文发布持续生成带版本号的新基准，缓解数据污染；其三，作者比较了四种 agent 工作流（直接推理、多轮讨论、分解、agentic planning）在匹配算力预算下的表现。实验结果显示，最强的 GPT-5.6 Sol max 在直接推理加 10 轮讨论的设置下，只达到 23.6% 的 verifier 接受覆盖率；多轮讨论和重复采样在各配置下都有提升。使用 GPT-5.5 xhigh 时，分解式工作流优于基于讨论的方式，agentic planning 的五次运行最佳覆盖率达到 25.4%。结论是：即便是前沿模型，在研究级定理证明上仍有四分之三左右的题目无法被验证器接受，该基准为衡量“真正的数学研究能力”提供了一个不易饱和的标尺。作者来自 Amazon 等机构（Boran Han、Bernie Wang 等），目前为 arXiv 预印本，尚未查到录用信息。",
+    "model": "Sonnet 5.5 (claude-sonnet-5-5)",
+    "reasoning_effort": "low",
+    "date_added": "2026-10-05",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-10-05-02",
+    "paper_id": "arxiv:2609.35426",
+    "title": "Frontier Learning: Training LLM Reasoners at the Edge of Capability",
+    "year": 2026,
+    "venue": "arXiv",
+    "topics": [
+      "reinforcement learning",
+      "reasoning"
+    ],
+    "keywords": [
+      "GRPO",
+      "procedural generation",
+      "curriculum",
+      "open-ended training"
+    ],
+    "link": "https://arxiv.org/abs/2609.35426",
+    "brief": "这篇论文研究基于强化学习（GRPO 类方法）的 LLM 推理后训练中的一个根本性问题：传统做法是在固定的题库上微调，但 GRPO 的学习信号只来自“同一道题的多次 rollout 中既有成功又有失败”的情形，随着模型变强，固定题库里真正有用的部分会迅速变得陈旧（全对或全错的题不再提供梯度）。作者提出 Frontier Learning，一种开放式（open-ended）的训练范式：不再使用静态题集，而是用程序化生成器（procedural generators）动态产生与模型当前能力相匹配的训练题。其核心创新是把生成器的参数视为一个可搜索的空间，并利用 regret 信号来决定应当把难度和题型集中在哪里，使训练始终贴近模型能力的“前沿”。这与常见的课程学习或难度过滤不同：后者只是在固定数据池里重新采样或筛选，而本文是主动生成新数据并以在线方式自适应调整分布。在数据方面，作者使用多个可程序化生成的推理任务，并在多个模型家族上进行验证。实验结论是：该方法在多种推理任务和多个模型家族上都稳定优于固定题库基线，说明有效的后训练需要持续在能力前沿生成问题，而不是反复消耗有限的静态数据。这一思路与近期“RL 是否真正扩展推理能力”“饱和数据上 RL 失效”等讨论直接相关，为数据受限场景下的 RLVR 提供了新的扩展路径。作者来自 ETH Zürich 等机构（Ilija Bogunovic、Aurelien Lucchi 等），为 arXiv 预印本（2026 年 9 月 28 日提交），暂未查到顶会录用信息；具体数字请以原文为准。",
+    "model": "Sonnet 5.5 (claude-sonnet-5-5)",
+    "reasoning_effort": "low",
+    "date_added": "2026-10-05",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-10-05-03",
+    "paper_id": "arxiv:2609.22603",
+    "title": "Preserving What Matters: Semantic Scaffolds Beyond Saturation in Summarization Evaluation",
+    "year": 2026,
+    "venue": "arXiv",
+    "topics": [
+      "summarization"
+    ],
+    "keywords": [
+      "summarization evaluation",
+      "LLM-as-a-judge",
+      "metric saturation",
+      "multilingual"
+    ],
+    "link": "https://arxiv.org/abs/2609.22603",
+    "brief": "这篇论文讨论摘要评测中一个越来越突出的问题：随着模型变强，ROUGE 只能反映表层重合，而 LLM-as-a-judge 的分数则趋于“饱和”，不同模型得到几乎一样的分数，导致无法据此做模型选择。作者来自 ServiceNow Canada（Ramin Fahimi、Ying Zhang 等）。他们在专有数据集与公开数据集上，覆盖十种语言，系统记录了这一现象。方法上的创新是提出 Semantic Scaffold：对源文本只抽取一次层级化结构——事实、问题、实体属性，并把每项标注为“主要点”或“支撑细节”——之后用同一个 scaffold 去给所有候选摘要打分，从而得到三个指标：FPS（事实保留，奖励主要事实、惩罚塞入支撑细节）、QPS（问题保留，看主要问题是否被回答）和 EPS（实体保留，追踪属性级的实体忠实度）。因为 scaffold 只构建一次，不同摘要之间的比较是在同一把尺子下完成的，也更便宜。实验在 Contracts 数据集上显示：整体性（holistic）指标的区分范围只有 0.002–0.182，而 scaffold 指标保持 0.32–0.48 的分差；更有意思的是，一个小模型在两个 scaffold 维度上领先，说明团队可能会为一个“结构上更差”的大模型多付费。作者还总结了四类常见失败模式：压缩时把遗漏与捏造混为一谈；ROUGE 与直接打分会选出不同的最优模型；指标存在领域偏差；违反长度约束的模型反而被奖励。该工作更偏评测方法论，对做摘要系统选型和奖励设计的人很有参考价值。目前为 arXiv 预印本，未能确认具体录用信息（页面中的 EMNLP 标注为推断，不可靠）。",
+    "model": "Sonnet 5.5 (claude-sonnet-5-5)",
+    "reasoning_effort": "low",
+    "date_added": "2026-10-05",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
   }
 ]
