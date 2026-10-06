@@ -5563,5 +5563,87 @@
     "deep_read": false,
     "deep_read_at": null,
     "interest": null
+  },
+  {
+    "id": "2026-10-06-01",
+    "paper_id": "arxiv:2604.06628",
+    "title": "Rethinking Generalization in Reasoning SFT: A Conditional Analysis on Optimization, Data, and Model Capability",
+    "year": 2026,
+    "venue": "COLM 2026",
+    "topics": [
+      "reasoning",
+      "math"
+    ],
+    "keywords": [
+      "reasoning SFT",
+      "long chain-of-thought",
+      "cross-domain generalization",
+      "safety trade-off"
+    ],
+    "link": "https://arxiv.org/abs/2604.06628",
+    "brief": "这篇论文挑战了社区里流行的“SFT 只会记忆、RL 才能泛化”的说法，研究的任务是：用长链式思维（long-CoT）数据对基座模型做监督微调后，推理能力能否跨领域泛化。作者主要来自上海人工智能实验室、上海交通大学和中国科学技术大学。训练数据是自建的 Math-CoT-20k（20,480 条经验证、带长推理轨迹的数学题），模型涵盖 Qwen3（1.7B–14B）、InternLM2.5-20B 等未做指令微调的预训练检查点。评测覆盖域内数学（MATH500、AIME24）、域外推理（LiveCodeBench、GPQA-Diamond）、通用能力（IFEval、AlpacaEval）以及安全性（HEx-PHI）。论文的核心创新是提出“条件性泛化”框架：泛化是否发生，同时取决于优化动态、训练数据和基座模型能力三个因素，而不是 SFT 本身的属性。在优化方面，作者观察到“先降后升”（dip-and-recovery）的曲线，许多所谓“不泛化”其实只是训练不足造成的假象。在数据方面，长 CoT 比短解答更利于泛化，低质量数据则会全面拉低表现；回溯、验证等过程性模式可以跨领域迁移，作者用 Countdown 算术小游戏做了干净的验证。在模型能力方面，强模型能内化可迁移的推理流程，弱模型只是模仿表面的冗长风格。论文还指出一个重要代价：推理能力提升的同时安全性下降，长 CoT 训练会让模型在思考过程中先“自我合理化”再输出有害内容，体现出不对称的泛化。该工作发表于 COLM 2026，代码与模型已在 GitHub 和 Hugging Face 公开。其价值在于为 SFT 与 RL 之争提供了更细致的实证视角，也提醒研究者在评估推理 SFT 时必须训练到位并同时监控安全指标。",
+    "model": "Sonnet 5.5 (claude-sonnet-5-5)",
+    "reasoning_effort": "low",
+    "date_added": "2026-10-06",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-10-06-02",
+    "paper_id": "arxiv:2511.16043",
+    "title": "Agent0: Unleashing Self-Evolving Agents from Zero Data via Tool-Integrated Reasoning",
+    "year": 2025,
+    "venue": "COLM 2026",
+    "topics": [
+      "reinforcement learning",
+      "reasoning",
+      "math"
+    ],
+    "keywords": [
+      "self-evolving agents",
+      "zero data",
+      "tool-integrated reasoning",
+      "curriculum RL"
+    ],
+    "link": "https://arxiv.org/abs/2511.16043",
+    "brief": "Agent0 研究的任务是：能否完全不依赖人工标注或外部数据，让 LLM 智能体通过自我演化持续提升推理能力。作者来自 UNC-Chapel Hill、Salesforce Research 和 Stanford。框架让两个由同一基座模型初始化的智能体共同演化、相互竞争：课程智能体（Curriculum Agent）负责不断生成越来越有挑战性的前沿任务，执行智能体（Executor Agent）负责借助代码解释器等工具求解，并通过强化学习同时训练两者。课程智能体的奖励由三部分组成：不确定性奖励（当执行者的自洽率接近 50% 时最大，代表题目恰好处于能力边缘）、工具使用奖励（鼓励调用代码解释器，设有上限）以及基于 BLEU 相似度聚类的重复惩罚（保证任务多样性）。执行智能体则在筛选出的高难度数据上训练，标签来自多数投票得到的伪标签。方法上的主要创新是提出 Ambiguity-Dynamic Policy Optimization（ADPO），在伪标签存在歧义时用不确定性感知的优势缩放来稳定 RL 训练；同时把工具集成推理引入自演化闭环，使任务难度与工具能力一同升级。实验以 Qwen3-8B-Base 为基座，不使用任何外部训练数据，数学推理提升约 18%，通用推理提升约 24%。这说明“零数据”的自我博弈式课程可以显著增强推理，且工具使用是推动任务复杂度上升的关键因素。该论文列于 COLM 2026 的论文清单中（venue 依据 paperswithcode 的会议页面，arXiv 页面本身未标注）。对关心数据瓶颈与自我进化的研究者，这是一个很有代表性的工作，同时也提示伪标签质量与奖励设计是此类方法的主要风险点。",
+    "model": "Sonnet 5.5 (claude-sonnet-5-5)",
+    "reasoning_effort": "low",
+    "date_added": "2026-10-06",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-10-06-03",
+    "paper_id": "arxiv:2604.17931",
+    "title": "LiteResearcher: A Scalable Agentic RL Training Framework for Deep Research Agent",
+    "year": 2026,
+    "venue": "COLM 2026",
+    "topics": [
+      "reinforcement learning",
+      "reasoning"
+    ],
+    "keywords": [
+      "agentic RL",
+      "deep research",
+      "GRPO",
+      "virtual environment"
+    ],
+    "link": "https://arxiv.org/abs/2604.17931",
+    "brief": "LiteResearcher 面向的任务是训练“深度研究”（deep research）智能体：模型需要多轮搜索、浏览网页并综合信息来回答复杂问题。现有做法依赖真实互联网做强化学习，成本高、不稳定且难以复现。作者来自浙江大学、Simplex AI 和香港理工大学，提出构建一个“精简虚拟世界”（lite virtual world）：本地语料约 3200 万网页、覆盖 100 万以上域名，配合基于 BGE-M3 向量的混合检索本地搜索引擎和本地浏览工具，使训练环境既贴近真实搜索动态又与互联网隔离。方法创新包括：训练数据与语料的协同构建和迭代扩充；基于在线 GRPO 的难度感知课程学习；信息源遮蔽（information source masking）以避免模型走捷径；以及按 7 项评分标准做严格的质量过滤。基座模型为 Qwen3-4B-Thinking-2507，先 SFT 再 RL。评测使用 GAIA、BrowseComp、HLE、Frames、WebWalker、Seal-0 和 Xbench-DeepSearch。结果上，4B 的 LiteResearcher 在 GAIA-Text 达 71.3%（Claude-4.5-Sonnet 为 71.2%），Xbench-DS 达 78.0%（GPT-5-high 为 77.8%），Frames 达 83.1%，BrowseComp 达 27.5%（Claude-4.5-Sonnet 为 19.6%），小模型即可持平甚至超过商业系统。成本方面，7320 万次工具调用若走商用 API 需约 5.9 万至 24.3 万美元，本地执行边际成本为零，延迟降低 10–46 倍。该论文列于 COLM 2026 的论文清单中（依据 paperswithcode 会议页面）。它的意义在于证明可复现、低成本的 agentic RL 训练环境是可行的。",
+    "model": "Sonnet 5.5 (claude-sonnet-5-5)",
+    "reasoning_effort": "low",
+    "date_added": "2026-10-06",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
   }
 ]
