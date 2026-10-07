@@ -5645,5 +5645,88 @@
     "deep_read": false,
     "deep_read_at": null,
     "interest": null
+  },
+  {
+    "id": "2026-10-07-01",
+    "paper_id": "arxiv:2608.09271",
+    "title": "SoftmaxGRPO: Learning to Reason using Softmax Advantage Group Estimation",
+    "year": 2026,
+    "venue": "COLM 2026",
+    "topics": [
+      "reinforcement learning",
+      "reasoning",
+      "math"
+    ],
+    "keywords": [
+      "GRPO",
+      "advantage estimation",
+      "non-verifiable rewards",
+      "policy optimization"
+    ],
+    "link": "https://arxiv.org/abs/2608.09271",
+    "brief": "这篇论文研究 LLM 强化学习后训练中最常用的 GRPO 算法的一个结构性缺陷。作者来自 Rice University（Vicente Ordonez 组），论文被 COLM 2026 录用。他们指出，GRPO 用组内 z-score 标准化来计算优势，其隐含的\"题目权重函数\"在题目通过率 p 趋近 1 时发散，导致大量梯度预算被浪费在模型早已会做的简单题上；在 GSM8K 上，GRPO 把 36.4% 的梯度预算分给通过率 ≥0.9 的题目。方法上的创新非常简洁：把标准化优势替换为温度缩放的 softmax 权重，w_i ∝ exp(R_i/τ)，A_i = M·w_i − 1，也就是所谓的 SoftmaxGRPO，实质上只改一行代码。理论部分很扎实：对二元奖励推导出有限组大小 M 下的精确总体目标和有界的题目权重 ω(p)，低温极限恢复 MaxRL，高温极限恢复中心化 REINFORCE；对标量奖励证明大组极限下的更新等价于优化 log moment-generating function，并证明对于 3 个及以上奖励等级不存在通用的有限 M 标量目标。实验覆盖可验证任务和不可验证（弱相似度奖励）任务：GSM8K 75.8%（GRPO 73.5%）、Countdown 58.1%、DeepMath 51.8%（GRPO 50.9%）；在 Poetry 上达到 68.0%，比 GRPO-Sim 高 13.4 个点，MeetingBank 摘要类任务 70% 对 62%。梯度分配分析显示，SoftmaxGRPO 只把 10.0% 的预算给近乎解决的题目，而把 82.7% 给中等难度题目（GRPO 为 58.9%）。局限是主要在 1.5B 基座上验证，且非可验证任务依赖不完美的重叠奖励和 LLM 评审，温度需与 PPO clip、组大小、KL 系数联合调参。整体上这是一篇\"小改动、有理论、有实证\"的 RL 算法论文，也与 DAPO、Dr.GRPO 等修补式变体形成对照。",
+    "model": "claude-sonnet-5-5",
+    "reasoning_effort": "low",
+    "date_added": "2026-10-07",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-10-07-02",
+    "paper_id": "arxiv:2603.24465",
+    "title": "MechMath: Sorrifier-Driven Formal Decomposition Workflow for Automated Theorem Proving",
+    "year": 2026,
+    "venue": "COLM 2026",
+    "topics": [
+      "math",
+      "reasoning"
+    ],
+    "keywords": [
+      "Lean 4",
+      "automated theorem proving",
+      "Putnam",
+      "IMO",
+      "agentic workflow"
+    ],
+    "link": "https://arxiv.org/abs/2603.24465",
+    "brief": "这篇论文做的是基于 LLM 的 Lean 形式化自动定理证明，目标是让 agent 系统高效地解决奥赛级甚至 Putnam 级难题。作者来自中国科学院数学与系统科学研究院及中国科学院大学（高小山、支丽红、冯如勇等），论文被 COLM 2026 收录（论文内部名称为 Mechanic）。核心创新是\"Sorrifier\"：当一份 Lean 证明编译失败时，不是整体重写，也不是把越来越长的错误上下文塞给模型，而是定位最内层的错误，把失败片段替换为 sorry 占位符，立即重新编译以消除由它引发的下游假错误，最终得到一份语法合法但不完整的证明，并把每个 sorry 抽取为独立子目标递归求解。整个流程分四步：非形式化证明（推理器与验证器循环迭代出自然语言证明草稿）、形式化证明（翻译为 Lean，最多 4 轮编译器反馈修复）、子目标拆分（Sorrifier）、子目标递归处理。这样既保留已经正确的证明结构，又让上下文增长受控。实验方面，在 Putnam 2025 的 12 道题上证明了 11 道，平均 114 分钟、API 花费 18.5 美元，在效率指标上优于 Seed、Axiom、Numina 等基线；生成证明平均 656 行、含 14 个辅助引理。在 IMO 2025 测试的 4 道题上全部解出，最难的 P1 只用约 363 分钟，而 Seed-Prover 需要 990 分钟。证明树呈现\"宽而浅\"的形态，便于并行。消融显示非形式化阶段能显著降低难题的证明复杂度，但对简单题会增加开销；框架在 Gemini、Claude 等强模型上 4/4 成功，较弱模型仅 1/4 但相比零样本仍有提升。值得关注的是，它以相当低的成本接近甚至超过大厂专用 prover 的效率，说明\"局部修复加递归分解\"比\"整体重试\"更适合形式化证明。",
+    "model": "claude-sonnet-5-5",
+    "reasoning_effort": "low",
+    "date_added": "2026-10-07",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-10-07-03",
+    "paper_id": "arxiv:2608.08020",
+    "title": "Thought-Level Beam Search for Reasoning",
+    "year": 2026,
+    "venue": "COLM 2026",
+    "topics": [
+      "reasoning",
+      "math"
+    ],
+    "keywords": [
+      "test-time compute",
+      "beam search",
+      "Gambit",
+      "inference efficiency"
+    ],
+    "link": "https://arxiv.org/abs/2608.08020",
+    "brief": "这篇论文关注大推理模型（LRM）的测试时算力扩展：常规做法是独立采样大量长推理轨迹再投票，但大部分算力浪费在注定失败的轨迹上。作者来自 Princeton University、MIT CSAIL 和 Meta AI（Lijie Yang、Hongyin Luo、Jiawei Zhao、Tri Dao、Ravi Netravali），论文发表于 COLM 2026，代码在 Dao-AILab/Gambit 开源。论文把推理形式化为\"对部分轨迹的受限算力分配问题\"，提出推理算法 Gambit，即思维级别（thought-level）的 beam search：周期性地剪掉低分轨迹，并立即从高质量前缀分叉出新分支，这种\"零和\"的剪枝加分叉操作保持活跃轨迹池大小固定，因而硬件利用率始终饱和，并把输出分布逐步推向正确解。系统层面的创新是把逻辑搜索决策与物理执行状态（KV 内存）解耦，避免内存压力下出现贪心坍缩。打分用隐藏状态上的轻量 2 层 MLP 探针，并设有约 12K token 的预热门槛，等推理足够深再做检查点。实验使用 AIME 2025/2026、HMMT 2024/2025 和 GPQA-Diamond，模型包括 Qwen3-4B、DeepSeek-R1-8B 和 Phi-4-14B。相对剪枝类基线，HMMT-24 上准确率提升 6.7 个点，AIME-25 提升 3.3 个点；相对标准并行采样，token 消耗最多降低 68.5%，完成轨迹的吞吐量约为 2 倍，延迟与减法式方法相当。这项工作的价值在于同时兼顾算法和系统：不仅提高精度，还把省下的算力真正转化为吞吐，Tri Dao 的参与也让它在推理系统社区更受关注。",
+    "model": "claude-sonnet-5-5",
+    "reasoning_effort": "low",
+    "date_added": "2026-10-07",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
   }
 ]
