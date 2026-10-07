@@ -1,5 +1,5 @@
 # The following is the order of the links in the header of the website.
-# Publications / Teaching are anchors on the single home page, not separate
+# Publications / Service are anchors on the single home page, not separate
 # pages. Contact info lives in the sidebar only. Paper Reading is a separate
 # static app.
 
@@ -7,8 +7,8 @@ main:
   - title: '<span data-i18n="en">Publications</span><span data-i18n="zh">论文</span>'
     url: /#publications
 
-  - title: '<span data-i18n="en">Teaching</span><span data-i18n="zh">教学</span>'
-    url: /#teaching
+  - title: '<span data-i18n="en">Service</span><span data-i18n="zh">学术服务</span>'
+    url: /#service
 
   - title: '<span data-i18n="en">Paper Reading</span><span data-i18n="zh">论文阅读</span>'
     url: /paper-reading/

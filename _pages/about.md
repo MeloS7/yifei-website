@@ -175,40 +175,25 @@ redirect_from:
   </li>
 </ul>
 
-## <a id="teaching"></a><span data-i18n="en">Teaching</span><span data-i18n="zh">教学</span>
+## <a id="service"></a><span data-i18n="en">Academic Service</span><span data-i18n="zh">学术服务</span>
 
-<ul class="yf-pub-list">
+<ul class="yf-edu-list">
   <li>
-    <div class="yf-pub-title"><a href="https://idmc.univ-lorraine.fr/courses/master-degree-2-nlp/" target="_blank" rel="noopener">Prompt Engineering (Practical &amp; Exercise)</a></div>
-    <div class="yf-pub-venue">
-      <span data-i18n="en">Graduate course, IDMC — Université de Lorraine</span>
-      <span data-i18n="zh">研究生课程，IDMC — 洛林大学</span>
+    <span class="yf-edu-period">Area Chair</span>
+    <div>
+      <div class="yf-edu-degree">ACL Rolling Review (ARR), August 2026</div>
     </div>
-    <p class="yf-pub-summary">
-      <span data-i18n="en">Recent prompt engineering techniques for large language models, applied to classification, LLM-as-a-Judge, preference modeling, and natural language generation.</span>
-      <span data-i18n="zh">面向大语言模型的最新提示工程技术，应用于分类、LLM-as-a-Judge、偏好建模与自然语言生成等任务。</span>
-    </p>
   </li>
   <li>
-    <div class="yf-pub-title"><a href="https://idmc.univ-lorraine.fr/courses/master-degree-2-nlp/" target="_blank" rel="noopener">Generative AI</a></div>
-    <div class="yf-pub-venue">
-      <span data-i18n="en">Graduate course, IDMC — Université de Lorraine</span>
-      <span data-i18n="zh">研究生课程，IDMC — 洛林大学</span>
+    <span class="yf-edu-period">Program Committee</span>
+    <div>
+      <div class="yf-edu-degree">INLG 2025, INLG 2026</div>
     </div>
-    <p class="yf-pub-summary">
-      <span data-i18n="en">LLM inference and training, and evaluation of generative models.</span>
-      <span data-i18n="zh">大语言模型的推理与训练，以及生成模型的评估。</span>
-    </p>
   </li>
   <li>
-    <div class="yf-pub-title"><a href="https://idmc.univ-lorraine.fr/courses/master-degree-2-nlp/" target="_blank" rel="noopener">Data Science</a></div>
-    <div class="yf-pub-venue">
-      <span data-i18n="en">Graduate course, IDMC — Université de Lorraine</span>
-      <span data-i18n="zh">研究生课程，IDMC — 洛林大学</span>
+    <span class="yf-edu-period">Reviewer</span>
+    <div>
+      <div class="yf-edu-degree">ACL Rolling Review (ARR)</div>
     </div>
-    <p class="yf-pub-summary">
-      <span data-i18n="en">Building and training custom neural networks with PyTorch and Transformers.</span>
-      <span data-i18n="zh">使用 PyTorch 与 Transformers 自定义神经网络并进行训练。</span>
-    </p>
   </li>
 </ul>
