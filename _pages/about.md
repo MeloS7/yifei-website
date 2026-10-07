@@ -177,23 +177,23 @@ redirect_from:
 
 ## <a id="service"></a><span data-i18n="en">Academic Service</span><span data-i18n="zh">学术服务</span>
 
-<ul class="yf-edu-list">
+<ul class="yf-service-list">
   <li>
-    <span class="yf-edu-period">Area Chair</span>
+    <span class="yf-service-role">Area Chair</span>
     <div>
-      <div class="yf-edu-degree">ACL Rolling Review (ARR), August 2026</div>
+      <div class="yf-service-venue">ACL Rolling Review (ARR), August 2026</div>
     </div>
   </li>
   <li>
-    <span class="yf-edu-period">Program Committee</span>
+    <span class="yf-service-role">Program Committee</span>
     <div>
-      <div class="yf-edu-degree">INLG 2025, INLG 2026</div>
+      <div class="yf-service-venue">INLG 2025, INLG 2026</div>
     </div>
   </li>
   <li>
-    <span class="yf-edu-period">Reviewer</span>
+    <span class="yf-service-role">Reviewer</span>
     <div>
-      <div class="yf-edu-degree">ACL Rolling Review (ARR)</div>
+      <div class="yf-service-venue">ACL Rolling Review (ARR)</div>
     </div>
   </li>
 </ul>

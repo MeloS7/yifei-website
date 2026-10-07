@@ -82,6 +82,22 @@ html[data-lang="zh"] [data-i18n="zh"] { display: inline; }
   margin-top: 2px;
 }
 
+.yf-service-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.yf-service-list li {
+  display: flex;
+  gap: 14px;
+  margin-bottom: 10px;
+}
+.yf-service-role {
+  flex: 0 0 auto;
+  width: 150px;
+  font-weight: 600;
+}
+
 .yf-pub-list {
   list-style: none;
   margin: 0;
@@ -149,6 +165,13 @@ html[data-lang="zh"] [data-i18n="zh"] { display: inline; }
     gap: 2px;
   }
   .yf-edu-period {
+    width: auto;
+  }
+  .yf-service-list li {
+    flex-direction: column;
+    gap: 2px;
+  }
+  .yf-service-role {
     width: auto;
   }
 }
