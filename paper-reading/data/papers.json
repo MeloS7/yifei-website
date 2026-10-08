@@ -5728,5 +5728,84 @@
     "deep_read": false,
     "deep_read_at": null,
     "interest": null
+  },
+  {
+    "id": "2026-10-08-01",
+    "paper_id": "arxiv:2508.11017",
+    "title": "Beyond the Rosetta Stone: Unification Forces in Generalization Dynamics",
+    "year": 2025,
+    "venue": "COLM 2026 (Oral)",
+    "topics": [
+      "multilingual"
+    ],
+    "keywords": [
+      "cross-lingual transfer",
+      "representation unification",
+      "synthetic data",
+      "hallucination"
+    ],
+    "link": "https://arxiv.org/abs/2508.11017",
+    "brief": "这篇论文关注一个老问题：大模型在一种语言里学到的事实，换一种语言提问时往往答不出来，甚至产生幻觉。作者想弄清楚跨语言知识迁移究竟什么时候会发生。任务设定是在受控环境下研究多语言事实知识的泛化动力学。数据方面，作者没有使用真实语料，而是构造了合成的多语言数据集，从零开始训练小型 Transformer，这样可以精确控制每个因素。核心发现是，模型是否会把不同语言中的同一事实表示为统一的内部表征，取决于两个因素：一是“信息性”（informativeness），即事实与其出现语言之间的相关强度；二是“可提取性”（extractability），即语言身份本身有多容易被模型识别。只有当表征被统一时，事实才能跨语言迁移；当语言与事实高度绑定、语言又很容易被识别时，模型反而会为每种语言分别存储知识，导致迁移失败。创新点在于提出了一个统一的视角，把以往零散的跨语言迁移现象（例如为何有些语言对迁移好、有些差）放在同一个框架下解释，并据此提出可能促进表征统一的训练方法。实验以受控的消融为主，论文摘要中没有给出单一的headline数字，价值主要在机制解释。该文由 Google 的研究者与 Tal Linzen、Martin Wattenberg、Mor Geva 等合作完成，列入 Google 的 COLM 2026 论文名单，并且是口头报告（Oral）。值得精读的原因是它给多语言预训练的数据配比和语言标记设计提供了可检验的理论直觉。",
+    "reasoning_effort": "low",
+    "model": "Sonnet 5.5 (claude-sonnet-5-5)",
+    "date_added": "2026-10-08",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-10-08-02",
+    "paper_id": "arxiv:2604.01430",
+    "title": "Improving Latent Generalization Using Test-time Compute",
+    "year": 2026,
+    "venue": "COLM 2026",
+    "topics": [
+      "reasoning",
+      "reinforcement learning"
+    ],
+    "keywords": [
+      "latent generalization",
+      "reversal curse",
+      "long chain-of-thought",
+      "test-time compute"
+    ],
+    "link": "https://arxiv.org/abs/2604.01430",
+    "brief": "语言模型能把事实记在权重里，却常常无法对这些知识做演绎推理，这种缺陷被作者称为 latent generalization（潜在泛化）不足，逆转诅咒（reversal curse）就是典型例子。以往的补救办法是在训练时做数据增强，但这类方法针对特定任务，泛化能力差。本文换了思路：让模型在测试时“思考”，即用强化学习（以答案正确与否作为反馈）训练模型生成长链式思维（long CoT），再用测试时计算来弥补权重中知识的不足。评估设置覆盖三类情形：分布内的知识、没有经过RL训练的新知识，以及纯粹的逆转任务。主要结论是：思考式方法能解决许多分布内知识上的潜在泛化失败；更重要的是，它可以迁移到RL训练中从未见过的新知识上，而数据增强基线做不到这一点。在纯逆转任务上，思考并不能直接“翻转”知识，但模型会自发形成 generate-and-verify（生成并验证）的行为，使表现明显高于随机水平，不过仍低于把知识直接放进上下文的 in-context learning。摘要里没有给出具体数值，结论以定性为主。作者为 Arslan Chaudhry、Sridhar Thiagarajan、Andrew Lampinen，来自 Google，论文已被 COLM 2026 接收。它的意义在于把“测试时算力”与“知识获取方式”联系起来，说明推理能力可以部分替代训练数据覆盖，对讨论RL是否真正提升推理能力有参考价值。",
+    "reasoning_effort": "low",
+    "model": "Sonnet 5.5 (claude-sonnet-5-5)",
+    "date_added": "2026-10-08",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-10-08-03",
+    "paper_id": "arxiv:2604.22191",
+    "title": "Behavioral Canaries: Auditing Private Retrieved Context Usage in RL Fine-Tuning",
+    "year": 2026,
+    "venue": "COLM 2026",
+    "topics": [
+      "reinforcement learning"
+    ],
+    "keywords": [
+      "RL fine-tuning",
+      "data auditing",
+      "canary",
+      "membership inference"
+    ],
+    "link": "https://arxiv.org/abs/2604.22191",
+    "brief": "随着强化学习微调（RLFT）被广泛用于定制模型，一个现实的问题随之出现：服务提供商有没有在未经授权的情况下，把受保护的检索文档用于RL训练？本文研究的任务就是对“RL微调是否使用了私有检索上下文”做审计。传统的逐字记忆测试和成员推断攻击在这里效果不佳，因为RL训练主要改变的是模型的行为风格，而不是让它记住具体事实。作者提出 Behavioral Canaries（行为金丝雀）框架：审计方在数据中植入金丝雀偏好数据，把特定的文档触发器与奖励某种独特回答风格的反馈配对。如果这些数据进入了RLFT，模型就会学到“触发器→特定风格”的条件偏好，审计方只需检测模型行为的变化即可判断，无需依赖记忆。与以往基于记忆的检测不同，它检测的是训练时的影响而不是内容泄露。结果方面，在仅1%的金丝雀注入率下，检测率达到67%（假阳性率10%），AUROC为0.756，说明即使在很低的污染比例下也有可用的信号，但绝对性能还有提升空间。作者为 Chaoran Chen、Dayu Yuan、Peter Kairouz，来自 Google，论文入选 COLM 2026，代码已在 GitHub 开源（CRChenCode/behavioral_canary）。这篇工作把数据审计从预训练扩展到RL后训练阶段，对隐私合规和数据版权很有现实意义。",
+    "reasoning_effort": "low",
+    "model": "Sonnet 5.5 (claude-sonnet-5-5)",
+    "date_added": "2026-10-08",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
   }
 ]
