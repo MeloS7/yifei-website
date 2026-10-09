@@ -5807,5 +5807,85 @@
     "deep_read": false,
     "deep_read_at": null,
     "interest": null
+  },
+  {
+    "title": "When Trivia Is Not Trivial: Everyday Knowledge Failures in Multilingual LLMs",
+    "paper_id": "arxiv:2607.21445",
+    "year": 2026,
+    "venue": "EMNLP 2026 (Findings)",
+    "topics": [
+      "multilingual"
+    ],
+    "keywords": [
+      "multilingual benchmark",
+      "cultural knowledge",
+      "long-tail knowledge",
+      "TriviaRoomQA"
+    ],
+    "link": "https://arxiv.org/abs/2607.21445",
+    "brief": "这篇论文关心一个很朴素却常被忽略的问题：LLM 在\"问答竞赛式\"的日常文化与长尾知识上，是否真的像在学术基准上那样可靠？作者认为 MMLU 一类的学术基准已经趋于饱和，掩盖了模型在流行文化等\"非学术\"知识上的短板。为此他们构建了新的多语言基准 TriviaRoomQA，覆盖 288 个话题，包含 6 种欧洲语言的 3,300 道平行多项选择题，另外还有 5,340 道仅法语的题目用于更细粒度的个案分析。平行设计的好处是同一道题在不同语言下可以直接比较，从而把\"知识本身\"与\"语言\"分开。作者评测了来自欧洲、亚洲和北美厂商、参数量 7B 到 70B 的 30 个开源模型。结果显示，模型在历史、地理、数学等知识密集型话题上表现不错，但在名人、音乐、电影、新闻等流行文化话题上明显偏弱。更值得注意的是，同样的问题换一种语言，准确率会出现明显差异，说明模型对事实知识的访问并不是完全与语言无关的。这一发现与近期关于多语言模型\"共享语义空间\"的乐观假设形成张力。该工作的创新主要在于基准设计：强调日常、文化、长尾，并用平行题目做跨语言对照，而不是提出新模型。作者来自法国（Djamé Seddah 为 Inria 研究者），论文被 EMNLP 2026 Findings 接收。对做多语言评测、文化对齐和知识探测的人来说，这是一个很实用的诊断工具，也提醒我们\"高分\"可能只是因为基准偏学术。",
+    "id": "2026-10-09-01",
+    "model": "Sonnet 5.5 (claude-sonnet-5-5)",
+    "reasoning_effort": "standard",
+    "date_added": "2026-10-09",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "title": "Correct Answers, Invalid Traces: What Verifiable Grade-School Math Reveals About Chain-of-Thought Traces",
+    "paper_id": "arxiv:2609.38107",
+    "year": 2026,
+    "venue": "arXiv",
+    "topics": [
+      "math",
+      "reasoning"
+    ],
+    "keywords": [
+      "chain-of-thought",
+      "trace validity",
+      "iGSM",
+      "CoT monitoring"
+    ],
+    "link": "https://arxiv.org/abs/2609.38107",
+    "brief": "这篇论文质疑一个被广泛默认的假设：思维链（CoT）是模型得出答案的忠实记录。自然语言的推理轨迹很难被自动验证，因此\"答案对不对\"常被当作\"推理对不对\"的替身。作者（Ratish Puduppully、Subbarao Kambhampati 等）选用合成的小学数学基准 iGSM，它显式给出一道题正确解法所需的全部量和依赖关系，因此可以逐步、程序化地检查轨迹的句法、算术以及语义依赖是否有效。他们仅用有效且最小的推理轨迹训练模型，再比较分布内与分布外的表现。结果是：分布内答案正确性与轨迹有效性高度一致，但在分布外两者明显脱节；在最难的分布外实例上，31.6% 的正确答案对应的轨迹其实是无效的，其中超过一半的无效轨迹能通过句法和算术检查，却过不了语义依赖检查。作者还对训练轨迹做了干预实验：加入非最小轨迹、重复使用查询、对 10% 的轨迹句子做 token 打乱、甚至交换不同题目的轨迹。令人意外的是，打乱 token 后分布外准确率几乎不变，尽管已没有任何轨迹能通过验证；交换轨迹后分布内准确率依然很高。这些结果说明模型可能并不依赖轨迹内容本身，对 CoT 监控与 AI 安全有直接影响：只看最终答案或表面合理的推理文本，可能高估了推理的可靠性。论文目前为 arXiv 预印本（2026-09-29），未见会议信息，但实验设计干净、结论有讨论价值。",
+    "id": "2026-10-09-02",
+    "model": "Sonnet 5.5 (claude-sonnet-5-5)",
+    "reasoning_effort": "standard",
+    "date_added": "2026-10-09",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "title": "StrucSum: Graph-Structured Reasoning for Long Document Extractive Summarization with LLMs",
+    "paper_id": "aclanthology:2026.findings-eacl.192",
+    "year": 2026,
+    "venue": "EACL 2026 (Findings)",
+    "topics": [
+      "summarization",
+      "reasoning"
+    ],
+    "keywords": [
+      "extractive summarization",
+      "graph prompting",
+      "long document",
+      "zero-shot"
+    ],
+    "link": "https://aclanthology.org/2026.findings-eacl.192/",
+    "brief": "这篇论文研究长文档的零样本抽取式摘要。作者指出，LLM 虽然零样本摘要能力不错，但常常忽视文档的结构信息，在长文本中难以找到真正重要的内容。为此他们提出 StrucSum，一种无需训练的提示框架，把句子级别的图结构信息注入 LLM 提示中。方法包含三种策略：Neighbor-Aware Prompting（NAP）为每个句子提供邻近句的局部上下文；Centrality-Aware Prompting（CAP）利用句子在图中的中心性来估计重要程度；Centrality-Guided Masking（CGM）则按中心性屏蔽低重要度内容，从而缩短输入、降低成本。实验在 ArXiv、PubMed 和 Multi-News 三个数据集上进行，比较对象是无监督基线和普通提示。结果显示 StrucSum 同时提升了摘要质量与事实一致性，例如在 ArXiv 上 FactCC 提升 19.2 个点、SummaC 提升 8.0 个点（论文页面对单位表述含糊，具体需看原文）。值得注意的是，把三种策略组合起来并没有带来明显的额外增益，作者也如实报告了这一点。创新点在于不改模型、不微调，仅通过\"结构感知的图提示\"让 LLM 在长文中做更有依据的选句，属于把图推理与摘要结合的轻量方案。作者为 Haohan Yuan、Sukhwa Hong 和 Haopeng Zhang，论文发表于 EACL 2026 Findings（摩洛哥拉巴特）。EACL 不在候选列表内，作为今天摘要方向找不到更近期的会议论文时的补充。",
+    "id": "2026-10-09-03",
+    "model": "Sonnet 5.5 (claude-sonnet-5-5)",
+    "reasoning_effort": "standard",
+    "date_added": "2026-10-09",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
   }
 ]
