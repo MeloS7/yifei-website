@@ -5887,5 +5887,85 @@
     "deep_read": false,
     "deep_read_at": null,
     "interest": null
+  },
+  {
+    "id": "2026-10-10-01",
+    "paper_id": "arxiv:2511.17006",
+    "title": "Budget-Aware Tool Use Enables Effective Agent Scaling",
+    "year": 2025,
+    "venue": "COLM 2026",
+    "topics": [
+      "reasoning",
+      "reinforcement learning"
+    ],
+    "keywords": [
+      "tool-augmented agents",
+      "test-time scaling",
+      "budget awareness",
+      "web search agents"
+    ],
+    "link": "https://arxiv.org/abs/2511.17006",
+    "brief": "这篇论文研究的任务是：当工具调用次数存在明确预算时，如何有效地对带工具的LLM agent（主要是网页搜索agent）做测试时扩展。作者首先发现一个反直觉的现象：单纯提高工具调用预算并不能带来性能提升，因为agent缺乏“预算意识”（budget awareness），很快就撞上性能天花板。针对这个问题，论文提出三个贡献：一是轻量级插件 Budget Tracker，让agent在整个推理过程中持续感知剩余预算；二是在此基础上的 BATS（Budget-Aware Test-time Scaling）框架，使agent根据剩余预算动态调整规划与验证策略，例如何时深入探索、何时收敛并验证答案；三是同时统计token消耗与工具调用消耗的统一成本度量，用来分析不同方法的成本-性能扩展曲线。作者声称这是首个对“预算受限agent”的系统性研究。实验层面，摘要给出的结论是：具备预算意识的方法具有更好的扩展曲线，并推进了成本-性能的Pareto前沿；具体数字与基准需阅读原文（摘要中未列出）。论文作者包括Google Cloud AI Research相关团队成员（Tomas Pfister、Chen-Yu Lee等）与William Yang Wang，代码已在GitHub开源。该论文被列入Google在COLM 2026（2026年10月6–9日，旧金山）的录用论文清单，是这次最近的会议之一。其有意思之处在于：把“资源约束下的agent推理”从工程细节提升为一个可研究、可度量的问题，对做agentic reasoning和测试时计算分配的研究者有直接参考价值。",
+    "model": "Sonnet 5.5 (claude-sonnet-5-5)",
+    "reasoning_effort": "low",
+    "date_added": "2026-10-10",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-10-10-02",
+    "paper_id": "arxiv:2603.23301",
+    "title": "Steering LLMs for Culturally Localized Generation",
+    "year": 2026,
+    "venue": "COLM 2026",
+    "topics": [
+      "multilingual"
+    ],
+    "keywords": [
+      "cultural bias",
+      "sparse autoencoders",
+      "activation steering",
+      "cultural embeddings"
+    ],
+    "link": "https://arxiv.org/abs/2603.23301",
+    "brief": "这篇论文关注的任务是让LLM生成更符合特定文化背景的内容（文化本地化生成）。作者指出，LLM的输出往往偏向训练数据中占优势的文化；常见的提示工程和后训练对齐都是黑盒方法，难以控制，也无法判断失败究竟源于模型“不知道”相关知识，还是源于“没被有效引出”。论文的方法创新是引入机制可解释性工具：用稀疏自编码器（sparse autoencoders）找出编码文化信息的可解释特征，并把这些特征聚合成“Cultural Embeddings（CuE）”。CuE有两种用途：其一用于诊断，揭示模型在信息不足的提示下存在的隐性文化偏见；其二用于白盒式的表征干预（steering），直接在模型内部引导输出向目标文化靠拢。实验在多个模型上进行，结论是CuE steering比单纯提示更能提升文化忠实度，能引出显著更罕见的长尾文化概念，并且与基于提示的本地化方法互补、叠加后还有额外收益。作者据此推测模型内部其实已经表示了不少长尾文化知识，只是需要更好的引出方式，但效果因文化而异。摘要中未给出具体模型、指标与数值，需看原文。作者来自Google（Simran Khanuja、Lun Wang等）。该论文列入Google的COLM 2026录用清单。它的价值在于把多语言/多文化公平性问题从黑盒提示转向可解释、可操控的白盒干预，思路有新意。",
+    "model": "Sonnet 5.5 (claude-sonnet-5-5)",
+    "reasoning_effort": "low",
+    "date_added": "2026-10-10",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-10-10-03",
+    "paper_id": "arxiv:2605.00674",
+    "title": "Beyond Benchmarks: MathArena as an Evaluation Platform for Mathematics with LLMs",
+    "year": 2026,
+    "venue": "arXiv",
+    "topics": [
+      "math",
+      "reasoning"
+    ],
+    "keywords": [
+      "math benchmark",
+      "evaluation platform",
+      "olympiad proofs",
+      "Lean"
+    ],
+    "link": "https://arxiv.org/abs/2605.00674",
+    "brief": "这篇论文讨论的任务是如何持续、可靠地评估LLM的数学能力。作者（Jasper Dekoninck、Martin Vechev等，MathArena团队）认为固定基准已经不适用：它们覆盖面窄、很快饱和、更新不及时，导致模型之间的比较不可靠。因此他们主张用“评估平台”取代单一基准，由平台持续运行并聚合多个基准。方法上，论文把最初只关注最终答案的奥赛题MathArena，扩展为覆盖多种形式的平台：基于证明的竞赛题、研究级别的arXiv问题，以及Lean中的形式化证明；同时保持统一的评估协议，并随着模型进步不断加入新的、更难的基准，以保证平台始终具有区分度。实验结论方面，摘要报告表现最强的模型GPT-5.5在2026年美国数学奥林匹克（USAMO）上达到98%，在研究级问题上达到74%，作者据此认为前沿模型已经能处理非常困难的数学问题。论文的意义在于：它既是对数学推理评测现状的总结，也提出了“动态、多格式、持续更新”的评测范式，对数学推理和定理证明方向的研究者判断模型真实水平很有参考价值。该论文目前为arXiv预印本（cs.CL，2026年5月提交，5月修订），摘要页未标注录用会议。基准饱和速度极快，这篇论文提供的是一个有数据支撑的及时观察。",
+    "model": "Sonnet 5.5 (claude-sonnet-5-5)",
+    "reasoning_effort": "low",
+    "date_added": "2026-10-10",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
   }
 ]
