@@ -5967,5 +5967,84 @@
     "deep_read": false,
     "deep_read_at": null,
     "interest": null
+  },
+  {
+    "id": "2026-10-11-01",
+    "paper_id": "arxiv:2604.02910",
+    "title": "Analysis of Optimality of Large Language Models on Planning Problems",
+    "year": 2026,
+    "venue": "COLM 2026",
+    "topics": [
+      "reasoning"
+    ],
+    "keywords": [
+      "planning",
+      "Blocksworld",
+      "optimality",
+      "reasoning models"
+    ],
+    "link": "https://arxiv.org/abs/2604.02910",
+    "brief": "这篇论文来自 Google DeepMind 团队（Bernd Bohnet、Michael Mozer 等），并出现在 COLM 2026 的 Google 录用论文列表中。任务是评估大模型在规划问题上的“最优性”：以往的规划基准只看模型能否解出任务，而本文问的是前沿推理模型给出的计划是否高效，还是只靠浪费步骤的经验法则。数据方面，作者使用经典的 Blocksworld（需用原子动作重排带标签积木），并构造了形式上等价、但去掉语义线索的 generalized Path-Star (P*) 图任务，通过调节塔的高度、塔的数量和目标积木数量来系统改变难度。方法上的创新在于把“能否解决”换成“距离理论最优解多远”的度量，并用语义剥离的 P* 图排除模型靠常识或记忆作弊的可能。实验发现，具备推理增强的 LLM 在复杂的多目标配置上优于 LAMA 等传统 satisficing 规划器；随着搜索空间增长，经典搜索明显退化，而 LLM 仍然贴近理论最优界限，即使没有语义提示也是如此。作者进一步给出两种解释并提供证据：其一，模型通过推理 token 逐步执行一个算法；其二，模型在内部形成了 P* 拓扑的几何表示，从而绕开完整的组合爆炸。摘要中没有给出具体的准确率数字，结论以定性为主。这一工作的有趣之处在于，它为“推理模型是否真的在做规划而非模式匹配”提供了机理层面的证据，对理解 test-time compute 有启发。需要注意的是，该结论目前主要建立在积木世界和图任务这类合成环境上，能否推广到真实世界规划仍待验证。论文于 2026 年 4 月提交 arXiv（cs.AI/cs.CL）。",
+    "model": "Claude Sonnet 5.5 (claude-sonnet-5-5)",
+    "reasoning_effort": "standard",
+    "date_added": "2026-10-11",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-10-11-02",
+    "paper_id": "arxiv:2604.25800",
+    "title": "Barriers to Universal Reasoning With Transformers (And How to Overcome Them)",
+    "year": 2026,
+    "venue": "COLM 2026",
+    "topics": [
+      "reasoning"
+    ],
+    "keywords": [
+      "chain-of-thought",
+      "length generalization",
+      "expressivity",
+      "Turing machine"
+    ],
+    "link": "https://arxiv.org/abs/2604.25800",
+    "brief": "这篇论文由萨尔大学的 Oliver Kraus、Yash Sarrof、Alexander Koller、Michael Hahn 等人完成，被 COLM 2026 录用（萨尔大学 LST 组公告）。研究问题是：思维链（CoT）在理论上能让 Transformer 达到图灵完备，但当推理轨迹比训练时更长时，它还能泛化吗？这方面的研究很少。论文是理论加小规模实验的工作，没有使用大规模公开数据集，而是在合成的难问题上检验长度泛化。核心理论结果有两部分：第一，在标准位置编码和有限词表下，需要长度泛化的 CoT Transformer 无法解决 TC⁰ 之外的问题；第二，如果词表允许随问题规模增长，作者构造了一个能够长度泛化的图灵机模拟，推理轨迹长度与运行时间呈线性关系（相差常数）。创新点在于识别并解决了两个障碍——重复复制（repeated copying）与最近出现位置检索（last-occurrence retrieval）：为每个纸带位置引入唯一的 signpost token，并且只记录数值变化，使当前符号可以通过计数恢复。实验显示，signpost token 与“只记变化值”的编码确实提高了困难问题上的长度泛化表现。摘要中没有给出具体的准确率数字，量化结果主要是理论界限。这项工作的价值在于把“表达力”与“可学习的泛化”区分开来，并给出了可操作的编码设计，对理解通用推理的上限和 scratchpad 设计有参考意义。论文 2026 年 4 月提交 arXiv（cs.LG/cs.CL），8 月更新到 v2。",
+    "model": "Claude Sonnet 5.5 (claude-sonnet-5-5)",
+    "reasoning_effort": "standard",
+    "date_added": "2026-10-11",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-10-11-03",
+    "paper_id": "arxiv:2606.13782",
+    "title": "MA-ProofBench: A Two-Tiered Evaluation of LLMs for Theorem Proving in Mathematical Analysis",
+    "year": 2026,
+    "venue": "arXiv",
+    "topics": [
+      "math",
+      "reasoning"
+    ],
+    "keywords": [
+      "theorem proving",
+      "Lean",
+      "Mathlib",
+      "benchmark"
+    ],
+    "link": "https://arxiv.org/abs/2606.13782",
+    "brief": "MA-ProofBench 声称是第一个专注于数学分析的形式化定理证明基准，作者为 Lushi Pu、Jie Zhou、Yudong Wang 等人，目前是 arXiv 预印本，摘要中未提及录用的会议。任务是让 LLM 在 Lean/Mathlib 环境中证明数学分析定理。数据集包含 200 个形式化定理，覆盖 6 个核心主题、27 个子类，涉及测度与积分、复分析、泛函分析等；分为两层：本科水平（Level I）和博士资格考试水平（Level II），各 100 题。构造流程为“人主导、LLM 辅助”的形式化，再经独立专家审核，以保证形式化命题忠实于原数学陈述。方法上的创新主要在基准设计：两层难度梯度能区分模型在本科级与研究生级别上的差距，并且提供自然语言版本，便于比较非形式与形式推理能力的落差。实验评估了通用推理模型和专用形式定理证明器，结果整体很差：表现最好的 GPT-5.5 在 Level I 上 Pass@8 为 16%，在 Level II 上仅 5%，多数模型在 Level II 上接近 0%。错误分析显示，主要失败模式是 Mathlib 幻觉（虚构不存在的引理或名称）和证明不完整。自然语言版本的评测则揭示了非形式推理与形式推理之间存在明显差距。这个基准的价值在于暴露了当前模型在高等分析形式化上的短板，也为后续研究 Mathlib 检索与证明修复提供了测试平台。论文 2026 年 6 月提交，cs.AI 类别。",
+    "model": "Claude Sonnet 5.5 (claude-sonnet-5-5)",
+    "reasoning_effort": "standard",
+    "date_added": "2026-10-11",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
   }
 ]
