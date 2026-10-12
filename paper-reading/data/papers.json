@@ -6046,5 +6046,87 @@
     "deep_read": false,
     "deep_read_at": null,
     "interest": null
+  },
+  {
+    "title": "Are We Measuring Strategy or Phrasing? The Gap Between Surface- and Approach-Level Diversity in LLM Math Reasoning",
+    "year": 2026,
+    "venue": "EMNLP 2026 (Main Conference)",
+    "topics": [
+      "math",
+      "reasoning",
+      "reinforcement learning"
+    ],
+    "keywords": [
+      "approach-level diversity",
+      "RLVR",
+      "LLM judge",
+      "test-time scaling"
+    ],
+    "link": "https://arxiv.org/abs/2606.29985",
+    "paper_id": "arxiv:2606.29985",
+    "brief": "这篇论文关注数学推理中“多样性”究竟该怎么衡量的问题：现有的多样性感知训练方法通常用词汇重叠、embedding 距离或不同等式占比等表层信号来度量多样性，但这些信号无法区分模型是真的探索了不同的解题策略，还是只是把同一种解法换了种说法。作者提出“approach-level diversity”（解题思路层面的多样性），即同一道题的多个正确解之间在底层策略上的差异，并用一个经人工标注校准过的 LLM judge 对正确解进行聚类，定义了 Cov@N 指标（N 个正确采样解中不同思路簇的期望数量）。数据方面，作者构建了一个多思路可行的问题集：从 MATH 训练集中经四步流程筛选出 2,467 道题（Qwen3-4B 中等难度、LLM 生成 4 个解题计划、Qwen3-4B 能执行出正确答案、且包含 3 种以上真正不同的思路），其中 2,000 道用于 SFT、467 道作为留出评测集。核心发现有三点：第一，常规多样性指标是 approach-level 多样性的很差代理；第二，在带多样性奖励的 RLVR 训练中，被优化的目标指标保持稳定，而真正的思路多样性却在下降；第三，思路多样的候选集合确实能提升 test-time scaling 的效果。不过，直接用 LLM judge 的多样性奖励去训练，策略反而会学着迎合 judge 的偏好（reward hacking），而不是拓宽策略，因此作者指出直接优化思路层面的多样性仍是开放问题。该文被 EMNLP 2026 主会录用，此前还入选 ICML 2026 AI4Math Workshop 的 Spotlight；作者包括 Sangmook Lee、Kyomin Jung 等，论文页面未列出机构信息，arXiv 摘要中也未给出具体数值，细节需查看全文与代码仓库 helmsman12/LLM_reasoning_diversity。这篇的有趣之处在于它质疑了当前 RLVR 研究里“多样性”这一默认指标本身，对做数学推理强化学习的人有直接的警示意义。",
+    "id": "2026-10-12-01",
+    "model": "Sonnet 5.5 (claude-sonnet-5-5)",
+    "reasoning_effort": "standard",
+    "date_added": "2026-10-12",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "title": "Learning from Own Solutions: Self-Conditioned Credit Assignment for Reinforcement Learning with Verifiable Rewards",
+    "year": 2026,
+    "venue": "EMNLP 2026 (Findings)",
+    "topics": [
+      "reinforcement learning",
+      "reasoning",
+      "math"
+    ],
+    "keywords": [
+      "RLVR",
+      "GRPO",
+      "credit assignment",
+      "self-distillation"
+    ],
+    "link": "https://arxiv.org/abs/2606.18810",
+    "paper_id": "arxiv:2606.18810",
+    "brief": "这篇论文针对 RLVR（可验证奖励强化学习）中 GRPO 类方法的 credit assignment 问题：序列级的 0/1 奖励会被平均地分摊到整条回答的每个 token 上，无法区分哪些 token 真正导致了对错。常见的补救办法要么引入外部 teacher，要么训练过程奖励模型（PRM），成本较高。作者提出 SC-GRPO（Self-Conditioned GRPO），完全利用模型自己的 rollout 构造“teacher”：对于组内既有对也有错的 prompt，用一条已验证正确的 rollout 作为参考；对于全错的组，则随机取一条失败 rollout 作为参考并加入少量多样性信号；单个正确或全部正确的组仍沿用标准 GRPO。随后计算 teacher 与 student 在 token 级别的 KL 散度，并通过 KL/(KL+c) 映射为有界权重，用来缩放 GRPO 的更新幅度，从而把更新集中到真正“有区别”的 token 上。实验使用 Qwen3-8B（关闭 thinking），训练数据包括 DAPO-Math-17k（4,000 个 prompt）、LiveCodeBench v6（131）、AppWorld（90）和 WebShop（2,400 采样），评测覆盖 AIME 2024、AIME 2025、LiveCodeBench v6、AppWorld 和 WebShop，指标为 Avg@8。结果上，SC-GRPO 平均 47.44，高于 GRPO 的 39.37 和 DAPO 的 41.58（分别提升 8.07 和 5.86 个点）；其中 AIME 2024 从 41.67 提升到 51.67，AIME 2025 从 34.16 提升到 42.08，AppWorld 从 12.50 提升到 22.36，说明方法不仅在数学上有效，也能迁移到代码和 agent 任务。该文被 EMNLP 2026 Findings 录用，作者来自 BITHLP 团队（含 Heyan Huang 等），页面未明确给出机构。亮点在于无需外部 teacher 与 PRM 就能得到 token 级信号，实现简单且收益明显。",
+    "id": "2026-10-12-02",
+    "model": "Sonnet 5.5 (claude-sonnet-5-5)",
+    "reasoning_effort": "standard",
+    "date_added": "2026-10-12",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "title": "When Tools Hurt LLM Reasoning: State-Dependent Belief Revision under External Evidence",
+    "year": 2025,
+    "venue": "EMNLP 2026",
+    "topics": [
+      "reasoning"
+    ],
+    "keywords": [
+      "tool use",
+      "belief revision",
+      "confidence arbitration",
+      "CASE"
+    ],
+    "link": "https://arxiv.org/abs/2508.15754",
+    "paper_id": "arxiv:2508.15754",
+    "brief": "这篇论文挑战了“调用工具必然提升 LLM 推理”的默认假设。作者研究在 Python 执行和 Wikipedia 检索两类外部工具下，模型是否应该无条件相信工具返回的证据。核心发现是：当模型自身对答案的初始信念较弱时，外部证据确实有帮助；但当模型本来就以较高信念答对时，外部证据反而可能把正确答案“改错”。作者将其归结为“修订权限（revision authority）”的错配——当模型内部对正确答案的支持度超过工具输出的预期质量时，盲目服从外部证据就是次优的。这一框架预测伤害会集中出现在“不用工具本来就很有把握”的高置信样本上。为验证这一点，作者做了阈值定位实验、对错误推理轨迹的审计，以及“同一线索不同表述”的干预实验，结果表明证据的呈现方式会显著改变误导性证据造成的损害程度。基于此，作者提出一个最小化演示方法 CASE：一个无需标签的控制器，根据模型答案状态的确定性在“无工具轨迹”和“工具辅助轨迹”之间仲裁，并报告其优于现有基于置信度的仲裁基线。结论是混合的无工具/有工具推理应当在两种来源之间仲裁，而不是默认偏向工具证据。需要说明的是，arXiv 页面没有给出具体基准名称和数值，细节需查阅全文与代码。论文 2025 年 8 月首次提交，v2 更新于 2026 年 9 月，被 EMNLP 2026 录用（具体为主会还是 Findings，我检索到的信息只写了 EMNLP 2026）。它对 agent 与工具增强推理的设计很有启发：何时该信工具，本身就是一个需要学习的决策。",
+    "id": "2026-10-12-03",
+    "model": "Sonnet 5.5 (claude-sonnet-5-5)",
+    "reasoning_effort": "standard",
+    "date_added": "2026-10-12",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
   }
 ]
