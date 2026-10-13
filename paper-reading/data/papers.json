@@ -6128,5 +6128,84 @@
     "deep_read": false,
     "deep_read_at": null,
     "interest": null
+  },
+  {
+    "id": "2026-10-13-01",
+    "paper_id": "arxiv:2602.05548",
+    "title": "Unveiling Implicit Advantage Symmetry: Why GRPO Struggles with Exploration and Difficulty Adaptation",
+    "year": 2026,
+    "venue": "NeurIPS 2026",
+    "topics": [
+      "reinforcement learning",
+      "reasoning"
+    ],
+    "keywords": [
+      "GRPO",
+      "RLVR",
+      "advantage estimation",
+      "exploration"
+    ],
+    "link": "https://arxiv.org/abs/2602.05548",
+    "brief": "这篇论文研究的是 RLVR（可验证奖励强化学习）中最常用的 GRPO 算法为什么在探索效率和难度自适应上表现不佳。作者的出发点是：GRPO 使用的组相对优势估计（Group Relative Advantage Estimation, GRAE）内部存在一种被忽略的“隐式对称性”，并据此指出两个具体缺陷。第一是组层面（group level）：正确轨迹与错误轨迹被等权对待，导致未被采样到的动作的 logits 几乎不被更新，模型很难发现新的正确解法，探索受限。第二是样本层面（sample level）：算法隐式地偏向中等难度的样本，无法随训练阶段的变化调整对难题或易题的关注。作者通过受控实验得到两条结论：一是对正确轨迹的优势进行不对称的下调可以鼓励探索，但会带来训练不稳定；二是先易后难的课程式（curriculum）样本安排能提升学习效率。基于这些观察，论文提出 Asymmetric GRAE（A-GRAE），在训练过程中动态调节探索激励的强度以及对不同难度样本的侧重。实验方面，作者在七个基准上验证，覆盖 LLM 与多模态 LLM（MLLM），结果显示 A-GRAE 能稳定地改进 GRPO 及其多种变体；不过 arXiv 页面没有给出具体模型名称、基准名称和提升数值，需要查阅全文。代码已开源（HKU-HealthAI/A-GRAE）。据 DailyArXiv 的标注该文为 NeurIPS 2026 论文（我未能在 arXiv 页面本身核实录用信息）；作者包括 Zhiqi Yu、Liangqiong Qu 等，机构信息页面未列出。它的价值在于从算法结构层面解释了 GRPO 的一个系统性偏置，而不是简单堆叠技巧，对做 RLVR 训练的研究者有直接参考意义。",
+    "model": "Claude Sonnet 5.5 (claude-sonnet-5-5)",
+    "reasoning_effort": "standard",
+    "date_added": "2026-10-13",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-10-13-02",
+    "paper_id": "arxiv:2604.01161",
+    "title": "Reasoning Shift: How Context Silently Shortens LLM Reasoning",
+    "year": 2026,
+    "venue": "COLM 2026 Workshop on Efficient Reasoning (Spotlight)",
+    "topics": [
+      "reasoning"
+    ],
+    "keywords": [
+      "reasoning models",
+      "long context",
+      "self-verification",
+      "robustness"
+    ],
+    "link": "https://arxiv.org/abs/2604.01161",
+    "brief": "这篇论文关注一个很少被注意的现象：具备长链思考和自我验证能力的推理模型，在上下文并不“干净”时，推理会悄悄变短。作者设计了三种场景来检验这一点：把问题埋在很长的无关上下文里；在多轮对话中夹带互不相关的任务；以及把问题作为一个更大任务的子任务给出。在这三种条件下，模型的推理轨迹都明显短于同一问题被单独提出时的轨迹，论文报告最多可缩短约 74%。进一步的分析表明，这种缩短与模型自我检查、处理不确定性行为（例如反复核对答案、回溯）的减少相关联——也就是说，模型在复杂上下文里“更早地认定自己对了”。作者还尝试强制模型增加额外的自检，发现这些自检是否有用，既取决于推理轨迹本身的内容，也取决于上下文中是否存在冗余信息，说明简单地加长思考并不是通用解法。论文的任务属于推理模型鲁棒性诊断，没有提出新的训练方法，而是给出系统性的行为证据；arXiv 摘要页没有列出具体评测的模型与数据集名称，需要看全文确认。作者为 Gleb Rodionov、Roman Garipov、George Yakushev，机构页面未列出；据 DailyArXiv 标注，该文入选 COLM 2026 Workshop on Efficient Reasoning 并获 Spotlight，不是主会论文。它的启示是：在 agent、多轮对话等真实部署场景中，上下文管理会直接影响推理模型的可靠性，而不仅是效率问题。",
+    "model": "Claude Sonnet 5.5 (claude-sonnet-5-5)",
+    "reasoning_effort": "standard",
+    "date_added": "2026-10-13",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-10-13-03",
+    "paper_id": "arxiv:2608.03446",
+    "title": "Predicting Multilingual Classification and Translation Performance of LLMs with Cross-Lingual Alignment -- Is English Enough?",
+    "year": 2026,
+    "venue": "arXiv",
+    "topics": [
+      "multilingual"
+    ],
+    "keywords": [
+      "cross-lingual alignment",
+      "machine translation",
+      "pivot language",
+      "representation"
+    ],
+    "link": "https://arxiv.org/abs/2608.03446",
+    "brief": "这篇论文探讨的问题是：多语言 LLM 的内部表示与英语越对齐，它在非英语任务上的表现是否就越好，以及英语是否真的是模型内部的“枢纽语言”（pivot language）。作者系统比较了 27 种跨语言对齐（cross-lingual alignment, CLA）分数的变体，检验它们对三个任务表现的预测能力。与以往主要关注分类任务的工作不同，作者还把机器翻译纳入研究，因为 LLM 的主要使用方式是生成。为了在不同目标语言之间进行可比的评估，他们提出了一个基于 PMI 的翻译评价指标，并报告该指标与 chrF 有很强的相关性。论文的核心发现是：与英语的对齐程度（CLA with English）对翻译质量的预测能力，与“源语言—目标语言”之间的直接对齐相当，甚至更好，作者将其解读为 LLM 在内部以英语作为枢纽语言的证据。这一结论对多语言训练和评估有实际意义：如果英语表示是质量的主要决定因素，那么提升低资源语言与英语的对齐可能是性价比最高的路径。需要说明的是，arXiv 摘要页没有给出具体使用的模型、数据集和相关系数数值，这些细节需要阅读全文；论文目前标注为 arXiv 预印本（v2，2026 年 8 月更新），未查到会议录用信息。作者为 Adnan Al Ali、Kathy Hämmerl、Jindřich Libovický 和 Alexander Fraser，机构信息页面未列出。",
+    "model": "Claude Sonnet 5.5 (claude-sonnet-5-5)",
+    "reasoning_effort": "standard",
+    "date_added": "2026-10-13",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
   }
 ]
