@@ -6207,5 +6207,86 @@
     "deep_read": false,
     "deep_read_at": null,
     "interest": null
+  },
+  {
+    "id": "2026-10-14-01",
+    "paper_id": "arxiv:2605.22567",
+    "title": "LANG: Reinforcement Learning for Multilingual Reasoning with Language-Adaptive Hint Guidance",
+    "topics": [
+      "multilingual",
+      "reinforcement learning",
+      "math"
+    ],
+    "keywords": [
+      "multilingual reasoning",
+      "RLVR",
+      "hint guidance",
+      "language consistency"
+    ],
+    "link": "https://arxiv.org/abs/2605.22567",
+    "brief": "这篇论文关注多语言推理中的强化学习训练问题：任务是让大模型在非英语输入下既能保持用输入语言作答/推理，又不损失推理质量。作者指出现有方法存在明显的权衡——以推理能力为目标的RL训练往往会让模型的思考过程悄悄“漂移”回英语，而强行约束输出语言又会拉低推理准确率。针对非英语任务中探索困难、奖励稀疏的问题，LANG提出用“语言条件化的提示（hint）”来引导RL探索，即在rollout中给模型提供对应语言的部分解题线索，帮助它在难题上采到正确轨迹。方法上的创新有两点：其一是渐进式的hint衰减（progressive decay）调度，让模型逐步摆脱对提示的依赖，避免训练-推理不一致；其二是语言自适应开关（language-adaptive switch），根据每种语言的难度动态设置学习视野，难的语言多给引导、容易的语言少给。评测主要在具有挑战性的多语言数学推理基准上进行。摘要称LANG在这些基准上取得更强的推理表现，同时不牺牲语言一致性，并且方法可以泛化到数学之外的任务，在模型各层上呈现出更一致的语言对齐。需要说明的是，摘要页面没有给出具体数据集名称与数值，细节需精读原文。作者来自美团等团队（Yuchun Fan、Bei Li、Jingbo Zhu、Tong Xiao等），目前为arXiv预印本，未查到会议录用信息。值得关注之处在于它把“多语言一致性”与“RLVR探索效率”放在同一框架里解决。",
+    "year": 2026,
+    "venue": "arXiv",
+    "model": "Claude Sonnet 5.5 (claude-sonnet-5-5)",
+    "reasoning_effort": "standard",
+    "date_added": "2026-10-14",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-10-14-02",
+    "paper_id": "arxiv:2606.19315",
+    "title": "Diffusion-Proof: Recipe for Formal Theorem Proving Beyond Auto-Regressive Generation",
+    "topics": [
+      "math",
+      "reasoning"
+    ],
+    "keywords": [
+      "theorem proving",
+      "Lean 4",
+      "diffusion LLM",
+      "proof correction"
+    ],
+    "link": "https://arxiv.org/abs/2606.19315",
+    "brief": "这篇论文探索一个很少有人尝试的方向：用扩散语言模型（dLLM）而不是自回归（AR）模型来做形式化定理证明。任务是在Lean 4中为数学命题生成可被验证器检查通过的完整证明。作者称其为首个训练并应用dLLM做形式定理证明的框架，基于Fast-dLLM-V2-7B训练了两个7B模型：dLLM-Prover-7B负责一次性生成整段证明，dLLM-Corrector-7B则利用扩散模型的双向填充（in-filling）能力对证明中出错的局部进行修正，这是AR模型从左到右生成难以自然做到的。训练数据方面，作者从约560万条原始定理-证明记录中筛选出约30万条自然语言与Lean 4混合的数据。评测使用MiniF2F-Test和ProofNet-Test，主要指标为pass@32。结果上，在相同数据训练的AR基线对比下，MiniF2F-Test从43.85%提升到50.00%（+6.14个点），ProofNet-Test从5.91%提升到7.53%；在IMO类题目上从5.00%提升到15.00%；在MiniF2F中证明较长的一半题目上从18.52%提升到24.07%，并成功证明了DeepSeek-Prover-V2-7B未能解出的imo_1962_p2。作者包括Tong Zhang、Shizhe Diao等。目前为arXiv预印本（2026年6月），未查到会议录用信息。有意思之处在于“整体生成+局部修正”的范式与长证明上的增益，说明扩散模型的非自回归特性对形式证明可能是天然优势。",
+    "year": 2026,
+    "venue": "arXiv",
+    "model": "Claude Sonnet 5.5 (claude-sonnet-5-5)",
+    "reasoning_effort": "standard",
+    "date_added": "2026-10-14",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-10-14-03",
+    "paper_id": "arxiv:2607.09932",
+    "title": "Faithful by Design: Evaluating and Improving LLM-Generated Clinical Trial Summaries for Multi-Stakeholder Audiences",
+    "topics": [
+      "summarization"
+    ],
+    "keywords": [
+      "faithfulness",
+      "clinical trial summarization",
+      "knowledge graph RAG",
+      "audience-specific"
+    ],
+    "link": "https://arxiv.org/abs/2607.09932",
+    "brief": "这篇论文研究大模型在临床试验结果摘要中的忠实性（faithfulness）问题，特别是面向不同读者群体（医疗提供者、患者、支付方）生成摘要时是否会出现无依据的内容。任务是受众定制的临床试验摘要生成与忠实性评估。作者构建了一个新的基准：使用针对不同受众的提示词，并设计了六个维度的忠实性标注体系。数据来源为ClinicalTrials.gov的AACT数据库，分层抽样200个试验，用GPT-4o、Claude Sonnet 4.6和Gemini 2.5 Flash三个模型共生成1800篇摘要，并用cross-encoder的NLI模型进行打分。方法上，作者提出了知识图谱增强的检索系统（knowledge-graph-augmented retrieval），与基线对比以降低幻觉。结果显示，所有模型中最常见的失败模式是“Unsupported Claims”（无依据断言），平均标注分为1.55（满分3）；知识图谱增强系统在NLI指标上带来显著提升（蕴含分数提高0.0125，忠实性分数提高0.0130，p<0.0001），且不同模型的提升路径不同：GPT-4o主要靠减少矛盾，Claude Sonnet 4.6和Gemini 2.5 Flash主要靠增加蕴含。作者为独立研究者Robert Williams，目前为arXiv预印本（2026年7月），未查到会议录用信息。绝对提升幅度较小，但其多受众视角和细粒度标注方案对医疗场景摘要评测有参考价值。",
+    "year": 2026,
+    "venue": "arXiv",
+    "model": "Claude Sonnet 5.5 (claude-sonnet-5-5)",
+    "reasoning_effort": "standard",
+    "date_added": "2026-10-14",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
   }
 ]
