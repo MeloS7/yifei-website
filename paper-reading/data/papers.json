@@ -6288,5 +6288,85 @@
     "deep_read": false,
     "deep_read_at": null,
     "interest": null
+  },
+  {
+    "id": "2026-10-15-01",
+    "paper_id": "arxiv:2602.22453",
+    "title": "Identifying Crucial Attention Heads for Multilingual Language Models: Retrieval and Retrieval-Transition Heads",
+    "year": 2026,
+    "venue": "EMNLP 2026 (Findings)",
+    "topics": [
+      "multilingual",
+      "reasoning"
+    ],
+    "keywords": [
+      "retrieval heads",
+      "attention heads",
+      "cross-lingual needle-in-a-haystack",
+      "mechanistic interpretability"
+    ],
+    "link": "https://arxiv.org/abs/2602.22453",
+    "brief": "这篇论文研究的任务是：在多语言大模型内部，哪些注意力头负责“从上下文中检索关键信息，并把它映射成目标语言输出”。此前关于 retrieval heads（检索头）的研究只在英文场景下进行，作者把它扩展到多语言设定。论文首先发现，近一半的 retrieval heads 会在多种语言之间共享，但同时也存在语言特定的检索头。为了找到负责“语言映射”的那类头，作者设计了一个跨语言的 needle-in-the-haystack 任务，并据此识别出一类新的注意力头，称为 Retrieval Transition Heads（RTHs），它们负责检索关键信息并将其转换到目标语言的输出中。RTH 与传统 retrieval heads（RH）并不总是重合，作者认为 RTH 对多语言 chain-of-thought 推理可能更为重要。实验在四个多语言基准上进行：MMLU-ProX 与 MGSM（推理/数学）以及 MLQA 与 XQuAD（抽取式问答），模型为 Qwen2.5-7B-Instruct 和 Llama3.1-8B-Instruct。核心的消融结果很有说服力：在 Llama3.1-8B-Instruct 上，屏蔽 top-25 的 RTH 会使 MMLU-ProX 与 MGSM 的平均推理准确率下降 37.3 个点，而屏蔽同样数量的 RH 只下降 19.5 个点；在抽取式 QA 上，屏蔽 RTH 使 F1 下降 9.0，而屏蔽 RH 下降 5.1。这说明在多语言推理中，“把信息转成目标语言”的环节比单纯的“找到信息”更脆弱。该工作属于可解释性方向，创新点在于把检索头的概念从单语推广到多语，并提出可操作的定位方法（跨语言 NIAH）与新的头类别。作者为 Shaswat Patel、Vishvesh Trivedi、Yue Han、Yihuai Hong、Eunsol Choi，已被 EMNLP 2026 Findings 录用（以 arXiv 评论/社区汇总为准）。需要注意的是，摘要页没有给出机构信息，实验仅覆盖两个 7-8B 模型，结论能否推广到更大模型仍有待验证。",
+    "model": "Sonnet 5.5 (claude-sonnet-5-5)",
+    "reasoning_effort": "low",
+    "date_added": "2026-10-15",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-10-15-02",
+    "paper_id": "arxiv:2606.31285",
+    "title": "Spatial Reasoning via Modality Switching Between Language and Symbolic Representations",
+    "year": 2026,
+    "venue": "EMNLP 2026 (Findings)",
+    "topics": [
+      "reasoning"
+    ],
+    "keywords": [
+      "spatial reasoning",
+      "modality switching",
+      "grid representation",
+      "multi-hop"
+    ],
+    "link": "https://arxiv.org/abs/2606.31285",
+    "brief": "这篇论文关注 LLM 的空间推理（spatial reasoning）：给定多跳的文本空间故事（multi-hop textual spatial stories），模型需要推断物体之间的相对位置关系。作者的出发点是人类推理本身是多模态的——遇到难题时人们会画草图、画网格来辅助思考。因此论文提出两个问题：第一，把文本空间故事先“落地”（ground）成带几何信息的形式，例如布局（layout）或网格（grid），是否比纯自然语言推理更好；第二，模型能否自己判断“什么时候该切换模态”。针对第二个问题，作者设计了一个基于可信度（trustworthiness）与复杂度（complexity）信号的切换指标（switching metric），用来估计把空间故事转换为结构化表示是否可能提升表现，并把它定位为 LLM 推理中“原则化模态选择”的第一步。主要结果是：在作者的各种设置下，从自然语言推理切换到基于网格的表示，LLM 的表现最多可提升 42%。该工作的新意在于不是简单地堆叠符号工具，而是研究“何时”切换表示，这与近期 agent 推理里“何时调用工具/何时用符号表示”的问题一脉相承。作者为 Shreya Rajpal、Tanawan Premsri 和 Parisa Kordjamshidi，论文于 2026 年 6 月提交，9 月更新为 v3，据社区汇总被 EMNLP 2026 Findings 录用。需要说明的是，我只读到了摘要页，具体使用的数据集、基线模型和切换指标的细节没有核实，阅读时建议直接查看原文。",
+    "model": "Sonnet 5.5 (claude-sonnet-5-5)",
+    "reasoning_effort": "low",
+    "date_added": "2026-10-15",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-10-15-03",
+    "paper_id": "arxiv:2603.15547",
+    "title": "Can LLMs Model Incorrect Student Reasoning? A Case Study on Distractor Generation",
+    "year": 2026,
+    "venue": "EMNLP 2026 (Findings)",
+    "topics": [
+      "math",
+      "reasoning"
+    ],
+    "keywords": [
+      "distractor generation",
+      "student misconceptions",
+      "educational NLP",
+      "reasoning traces"
+    ],
+    "link": "https://arxiv.org/abs/2603.15547",
+    "brief": "这篇论文的任务是干扰项生成（distractor generation）：为选择题生成“错误但看起来合理”的错误选项。作者认为，这项任务本质上要求 LLM 模拟学生的错误推理，因此是检验“LLM 能否建模不正确的学生思维”的好案例，对教育 AI 中的学生模拟很重要。论文的核心创新是构建了一个干扰项生成推理策略的分类体系（taxonomy），既基于学习科学文献，也基于对模型输出的经验观察，并把它应用到 LLM 生成的推理轨迹上，分析对象涵盖一个数学选择题数据集和一个科学选择题数据集（摘要页未写明具体数据集名称和规模）。主要发现很有意思：在数学题上，模型的推理过程是“基于误解”的——先解出题目，再识别学生可能犯的错误，模拟这些错误，最后挑选合理的干扰项，这种过程具有较高的诊断价值；而在科学题上，模型更依赖干扰项与正确答案之间的语义相似度，作者认为这种方式不够稳健。失败模式主要有两类：模型自己无法给出正确解答，或者在筛选阶段把本来合理的干扰项丢掉。定量结果方面，只要在提示中提供正确解答，与人工编写干扰项的一致性就有 6.4% 的相对提升，说明“以正确解为锚点”对生成至关重要。作者包括 Yanick Zengaffinen、Andreas Opedal、Donya Rooein、Kv Aditya Srivatsa、Shashank Sonkar 和 Mrinmaya Sachan，论文被 EMNLP 2026 Findings 录用。我只读到了摘要信息，所用模型、机构和具体评价指标没有核实。",
+    "model": "Sonnet 5.5 (claude-sonnet-5-5)",
+    "reasoning_effort": "low",
+    "date_added": "2026-10-15",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
   }
 ]
