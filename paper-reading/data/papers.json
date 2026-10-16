@@ -6368,5 +6368,87 @@
     "deep_read": false,
     "deep_read_at": null,
     "interest": null
+  },
+  {
+    "id": "2026-10-16-01",
+    "paper_id": "arxiv:2604.04898",
+    "title": "QED-Nano: Teaching a Tiny Model to Prove Hard Theorems",
+    "venue": "COLM 2026",
+    "topics": [
+      "math",
+      "reinforcement learning",
+      "reasoning"
+    ],
+    "keywords": [
+      "theorem proving",
+      "rubric reward",
+      "Olympiad proofs",
+      "small models"
+    ],
+    "link": "https://arxiv.org/abs/2604.04898",
+    "brief": "这篇论文关注奥林匹克级别的自然语言数学证明生成（proof writing）任务。背景是：在IMO 2025上拿到金牌水平的系统基本是闭源、依赖超大内部模型、成本高昂且难以复现，作者（LM-Provers团队，含Yuxiao Qu、Amrith Setlur、Jasper Dekoninck、Lewis Tunstall、Aviral Kumar等）想证明一个开源的小模型也能在困难证明题上有竞争力。他们提出QED-Nano，一个仅4B参数的模型，采用三阶段后训练流程。第一阶段是监督微调（SFT），从DeepSeek-Math-V2蒸馏，让模型学会良好的证明写作风格。第二阶段是基于rubric（评分细则）奖励的强化学习：由评分细则对整篇证明打分，作为RL的奖励信号，而不是只看最终答案对错。第三阶段引入“reasoning cache”的RL，把很长的证明拆成多轮“总结—再细化”的迭代循环，从而在测试时支持更强、更长的推理，这一点把summarization机制直接融入了推理过程，设计上相当有意思。数据方面，作者发布了FineProofs-SFT和FineProofs-RL两个数据集，以及QED-Nano和QED-Nano-SFT两个模型和完整的训练、评测代码。实验上，页面摘要给出的定性结论是：QED-Nano在证明生成上超过了更大的开源模型（如Nomos-1和GPT-OSS-120B），并接近Gemini 3 Pro等闭源模型的水平，同时推理成本只有其很小一部分；具体分数需查阅原文。该论文被COLM 2026接收（Tuesday session）。总体而言，它的价值在于给出了一套可复现的“小模型+rubric RL+迭代总结”的证明器配方，对想做低成本数学证明模型的研究者很有参考意义。",
+    "year": 2026,
+    "model": "Sonnet 5.5",
+    "reasoning_effort": "standard",
+    "date_added": "2026-10-16",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-10-16-02",
+    "paper_id": "arxiv:2604.16259",
+    "title": "Beyond Distribution Sharpening: The Importance of Task Rewards",
+    "venue": "COLM 2026",
+    "topics": [
+      "reinforcement learning",
+      "math",
+      "reasoning"
+    ],
+    "keywords": [
+      "RL fine-tuning",
+      "distribution sharpening",
+      "RLOO",
+      "task reward"
+    ],
+    "link": "https://arxiv.org/abs/2604.16259",
+    "brief": "这篇来自Mila与蒙特利尔大学（Sarthak Mittal、Leo Gagnon、Guillaume Lajoie）的论文讨论一个社区里争论很多的问题：RL微调到底是教会LLM新能力，还是仅仅把基座模型已有的输出分布“锐化”（sharpening）？作者把“分布锐化”和“任务奖励优化”放进同一个KL正则化的RL框架里做公平比较，通过改变任务奖励、KL系数和参考分布，得到四种配置：task-reward optimization、tilted sampling、distribution sharpening optimization和tempered sampling。理论与实验都表明，锐化目标的最优解并不理想，而且训练不稳定；可变长度的锐化会因为偏向短序列而在长训练后崩溃。实验使用Llama-3.2-3B-Instruct、Qwen2.5-3B-Instruct和Qwen3-4B-Instruct-2507，训练数据为Hendrycks MATH和DeepScaleR，评测用MATH-500、Minerva Math、AIME 2024/2025和HMMT 2025；训练采用RLOO，group size为8，完全on-policy。关键数字上，Llama-3.2-3B在MATH-500的基座为38.2，beam search 44.8，power sampling 46.3，锐化RL最终检查点仅1.9（早停40.9），而任务奖励RL达到51.5；Qwen3-4B在AIME 2024上基座29.5，任务奖励RL达到40.9，最佳检查点43.4，锐化RL早停才35.4。结论是锐化有时能弥补一部分差距，但不可靠，RL的收益不能完全由锐化解释，真实的任务奖励信号才是稳定提升的关键。论文被COLM 2026接收（Wednesday Oral），对理解RLVR为什么有效是很好的实证补充。",
+    "year": 2026,
+    "model": "Sonnet 5.5",
+    "reasoning_effort": "standard",
+    "date_added": "2026-10-16",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-10-16-03",
+    "paper_id": "arxiv:2602.11149",
+    "title": "Data Repetition Beats Data Scaling in Long-CoT Supervised Fine-Tuning",
+    "venue": "COLM 2026",
+    "topics": [
+      "reasoning"
+    ],
+    "keywords": [
+      "long CoT",
+      "SFT",
+      "data repetition",
+      "memorization"
+    ],
+    "link": "https://arxiv.org/abs/2602.11149",
+    "brief": "这篇论文研究推理模型在长链式思维（long-CoT）数据上做监督微调（SFT）时的数据使用策略，作者为Dawid J. Kopiczko、Sagar Vaze、Tijmen Blankevoort和Yuki M. Asano。核心问题是：在固定的参数更新预算下，是应该在一个很大的数据集上只训一个epoch，还是在一个很小的数据集上反复训练很多个epoch？直觉上后者会过拟合，但作者发现事实相反。实验以Olmo3-7B为基座，对比400条样本训练128个epoch与51,200条样本训练1个epoch，评测基准为AIME'24、AIME'25和GPQA。结果显示，前者在这些基准上比后者高出12到26个百分点，而且并没有观察到额外的灾难性遗忘。作者进一步分析发现，增益会在模型对训练集完全记忆（训练token准确率接近饱和）时趋于平稳，因此提出把训练token accuracy作为实用的停止信号，用来决定重复到什么程度就够了。论文也坦率地把“完全记忆为何会带来更好的泛化”留作开放问题。这一结论挑战了“数据越多越好”的常规认知，对资源有限、想用少量高质量长CoT数据蒸馏推理能力的团队很有实践价值，同时也提示我们长CoT SFT的缩放规律可能与普通SFT不同。该论文被COLM 2026接收（Tuesday session）。局限在于实验集中于单一7B模型，结论的普适性还需更多验证。",
+    "year": 2026,
+    "model": "Sonnet 5.5",
+    "reasoning_effort": "standard",
+    "date_added": "2026-10-16",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
   }
 ]
