@@ -6450,5 +6450,86 @@
     "deep_read": false,
     "deep_read_at": null,
     "interest": null
+  },
+  {
+    "paper_id": "arxiv:2610.09607",
+    "title": "Which Language Should a Skeleton Speak? Language Choices in Multilingual Reasoning",
+    "venue": "EMNLP 2026 (Findings)",
+    "topics": [
+      "multilingual",
+      "math",
+      "reasoning"
+    ],
+    "keywords": [
+      "skeleton-of-thought",
+      "multilingual math reasoning",
+      "prompt language",
+      "LASEF"
+    ],
+    "link": "https://arxiv.org/abs/2610.09607",
+    "brief": "这篇论文研究的任务是：在多语言数学推理中，基于“骨架（skeleton）”的免训练推理提示应当使用哪种语言书写。此前的skeleton式提示（先给出推理结构骨架，再展开求解）几乎只在英文下被研究，而当题目是其他语言时，骨架用英文还是用题目所在语言并没有被系统比较过。作者提出评测框架LASEF，用来系统测试不同“骨架语言”选择对多语言数学推理的影响，覆盖不同规模的模型、不同资源水平的语言以及多个数学基准。创新点在于把“骨架语言”本身当作一个独立的设计变量，并且在多重比较校正之后做统计显著性检验，而不是只报告平均分。主要发现：英文骨架平均而言有轻微优势，尤其体现在较小的模型和低资源语言上；但在做了多重比较校正后，只有少数语言层面的收益仍然显著，而且英文并不总是最优。作者把效应归纳为三类：方向一致的、依赖评测设置或基准的、以及呈不对称负面的。这些差异也不能完全由生成质量来解释。因此结论是骨架语言应被视为一个依赖上下文的设计选择，而不是默认用英文。代码与资源已在GitHub开源。作者为HyeonSeok Lim、SeungWoo Song、Inho Won、Hoyun Song、Jihyo Kim、KyungTae Lim；据arXiv当日列表标注为EMNLP 2026 Findings录用。这是一项偏实证分析、对多语言推理提示设计有实际指导意义的工作，也提醒我们“默认英文最优”的直觉需要经过统计检验。",
+    "id": "2026-10-17-01",
+    "year": 2026,
+    "model": "Sonnet 5.5 (claude-sonnet-5-5)",
+    "reasoning_effort": "standard",
+    "date_added": "2026-10-17",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "paper_id": "arxiv:2610.12360",
+    "title": "Accurate but Not Humble: Evaluating Epistemic Humility in LLM Agents under Knowledge Conflict",
+    "venue": "EMNLP 2026",
+    "topics": [
+      "reasoning"
+    ],
+    "keywords": [
+      "epistemic humility",
+      "LLM agents",
+      "knowledge conflict",
+      "evaluation"
+    ],
+    "link": "https://arxiv.org/abs/2610.12360",
+    "brief": "这篇论文关注LLM智能体（agent）的推理可靠性问题：当检索到的外部证据与模型自身的先验信念相矛盾时，agent会修正答案、表达不确定性，还是固执地坚持错误答案。现有agent评测主要看任务成功率，忽略了这种“认知谦逊（epistemic humility）”。作者提出从轨迹层面衡量三类行为：识别冲突、解决冲突、以及对无法解决的不确定性进行上报（escalation）。实验设计上，他们同时使用受控构造的冲突和自然出现的冲突，并为每种情形配备匹配的无冲突对照组，在四个agent上进行测试。主要发现有三点：第一，准确率更高并不意味着更谦逊，一些高准确率的配置虽然能察觉冲突，却在错误答案中不传达残余的不确定性；第二，agent往往在任务早期就能检测到冲突，但后续难以持续追踪并解决；第三，模型层面的干预可以提升认知谦逊，但通常以牺牲一定准确率为代价。作者的结论是认知谦逊取决于骨干模型、agent框架（harness）和评测环境三者的相互作用。作者包括Kaiser Sun、Bernal Jimenez Gutierrez、Hongjun Liu、Jingyu Zhang、Jie Gao、Mark Dredze和Daniel Khashabi；该论文在arXiv备注中标注为EMNLP 2026 Camera Ready。其价值在于把“知道自己不知道”引入agent评测维度，对构建可信的检索增强和工具型agent很有启发。",
+    "id": "2026-10-17-02",
+    "year": 2026,
+    "model": "Sonnet 5.5 (claude-sonnet-5-5)",
+    "reasoning_effort": "standard",
+    "date_added": "2026-10-17",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "paper_id": "arxiv:2610.21156",
+    "title": "Stop Training Against Soft Users: Mentalized Adversarial Self-Play for Proactive Dialogue",
+    "venue": "EMNLP 2026 (Main Conference)",
+    "topics": [
+      "reinforcement learning",
+      "reasoning"
+    ],
+    "keywords": [
+      "self-play",
+      "proactive dialogue",
+      "user simulator",
+      "BDI mental state"
+    ],
+    "link": "https://arxiv.org/abs/2610.21156",
+    "brief": "这篇论文面向主动式对话（proactive dialogue）规划任务，指出一个常被忽视的问题：规划器通常在固定或过于顺从的用户模拟器上训练和评测，高成功率可能只是反映了“宽松的用户”，而不是系统真正的对话能力。为此作者提出MASP（Mentalized Adversarial Self-Play），把交互建模为系统与“理性抵抗型用户”之间的部分可观测博弈。方法上的创新有几点：用基于BDI（信念-愿望-意图）的潜在状态来表示用户不断变化的心理状态；把教师侧的心智化（mentalization）与学生侧的策略心智化分开处理；并让系统策略与用户策略交替进行自博弈更新，使“对抗抵抗的鲁棒性”本身成为训练目标，而不是靠固定对手。实验在多个主动对话基准上，与SFT和仅规划器（Planner-only）基线比较，MASP提升了成功率（SR）和受理性约束的成功率（RCSR），同时减少了平均对话轮数（AT），并且在目标更难达成的困难用户上表现更好。作者为Zanwu Liu、Dan Zhang、Xiaodi Wang、Yongbo Mao、Xiaoyang Guo、Yonglin Wu、Peiyue Jiang、Yangyang Wei、Zecheng Lin；论文在arXiv备注中标注为EMNLP 2026主会录用。该工作的启发在于：用自博弈和更强的对手建模来避免RL训练中的“软用户”偏差，对对话、谈判类智能体的训练与评测都有参考价值。",
+    "id": "2026-10-17-03",
+    "year": 2026,
+    "model": "Sonnet 5.5 (claude-sonnet-5-5)",
+    "reasoning_effort": "standard",
+    "date_added": "2026-10-17",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
   }
 ]
