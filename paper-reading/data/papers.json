@@ -6531,5 +6531,86 @@
     "deep_read": false,
     "deep_read_at": null,
     "interest": null
+  },
+  {
+    "id": "2026-10-18-01",
+    "paper_id": "arxiv:2609.18677",
+    "title": "Voice of Reason: Reinforcement Learning for Spoken Math",
+    "year": 2026,
+    "venue": "COLM 2026",
+    "topics": [
+      "math",
+      "reinforcement learning",
+      "reasoning"
+    ],
+    "keywords": [
+      "speech language model",
+      "RLVR",
+      "GSM8K",
+      "spoken math"
+    ],
+    "link": "https://arxiv.org/abs/2609.18677",
+    "brief": "这篇论文研究的任务是“语音原生（speech-native）语言模型的数学推理”。作者（Timothée Weisselberger、Edouard Graves、Alexandre Défossez）指出，端到端语音语言模型相比级联式系统（ASR+文本LLM）具有更低延迟、更丰富的口语交互能力，但在数学推理上明显落后于文本模型。论文以 GLM-4-Voice 为基座模型，评测基准是 GSM8K 的口语版本，训练数据则是通过合成方式构造的口语问答数据。方法分两步：先在合成的口语 QA 数据上做监督微调（SFT）作为冷启动，再使用可验证奖励的强化学习（RLVR）继续训练模型。与以往依赖额外推理 token / 推理轨迹来弥补差距的做法不同，作者发现仅靠 RL、不增加额外的推理 token，就已经超过了此前使用补充推理轨迹的语音模型在 GSM8K 上的成绩，说明 RL 能直接提升语音模型内在的推理能力。进一步地，当把 RL 与现有的流式推理（streaming reasoning）技术结合时，模型在自由作答设定下达到 74.8% 的准确率，作者称其为语音原生模型在口语数学任务上的新 SOTA。这项工作的有趣之处在于把近期在文本领域大热的 RLVR 范式迁移到语音模态，并且说明在低延迟的语音交互场景中，不必以牺牲响应速度换取推理能力。论文已被 COLM 2026 接收，arXiv 提交于 2026 年 9 月 16 日（cs.CL）。具体的消融与更细的数字请阅读原文。",
+    "model": "claude-sonnet-5-5",
+    "reasoning_effort": "low",
+    "date_added": "2026-10-18",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-10-18-02",
+    "paper_id": "arxiv:2610.21679",
+    "title": "No Single Tokenizer Feature Reliably Predicts Downstream Language Model Performance",
+    "year": 2026,
+    "venue": "EMNLP 2026 (Findings)",
+    "topics": [
+      "multilingual"
+    ],
+    "keywords": [
+      "tokenizer",
+      "intrinsic metrics",
+      "multilingual evaluation",
+      "downstream performance"
+    ],
+    "link": "https://arxiv.org/abs/2610.21679",
+    "brief": "这篇论文关注多语言语言模型中一个常被默认的假设：分词器（tokenizer）的内在指标（例如压缩率、fertility 等）是否能预测模型的下游表现。作者（Antonio Lopardo、Luis Frentzen Salim、Shikhar Srivastava、Kevin Jiang、Mridul Sharma、Catherine Arnett）做了一项大规模实证分析：他们分析了约 200 个在九种语言上训练的语言模型，同时评估模型本身和它们所用的分词器，下游评测覆盖了多种基准任务。核心结论是否定性的：没有任何一个现有的内在分词器指标，能够在不同模型家族、不同任务、不同语言之间稳定地预测下游性能。也就是说，业界常用来挑选或比较分词器的“代理指标”并不可靠，在多语言场景下尤其如此。在此基础上，作者主张需要新的评估指标，并提出了一个基于语言学的分词器质量度量，据称能够捕捉现有指标遗漏的分词质量维度，不过作者也承认其预测能力会随设置而有所变化。这项工作的价值在于为多语言预训练中“如何选择/设计分词器”这一实践问题泼了冷水，提醒研究者不要过度依赖单一指标，也为后续构建更可靠的多语言分词评估提供了起点。论文共 10 页，已被 Findings of EMNLP 2026 接收，arXiv 提交于 2026 年 10 月 15 日（cs.CL）。由于是离今天最近的 EMNLP 2026 的录用论文，讨论度和时效性都较好；具体数值结果需阅读原文。",
+    "model": "claude-sonnet-5-5",
+    "reasoning_effort": "low",
+    "date_added": "2026-10-18",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-10-18-03",
+    "paper_id": "openreview:pud2pPkedd",
+    "title": "Not All Low-Confidence Tokens Are Equal: Calibrated Confidence for Efficient Test-Time Reasoning",
+    "year": 2026,
+    "venue": "NeurIPS 2026",
+    "topics": [
+      "reasoning",
+      "math"
+    ],
+    "keywords": [
+      "test-time scaling",
+      "confidence calibration",
+      "early stopping",
+      "majority voting"
+    ],
+    "link": "https://openreview.net/forum?id=pud2pPkedd",
+    "brief": "这篇论文面向“高效的测试时扩展（test-time scaling）推理”任务。现有基于置信度的方法通常在 token 级置信度低于阈值时就提前终止生成，并且把所有低置信 token 一视同仁，作者（Tangyu Jiang、Haodi Wang、Yuanbing Zhu、Xiaohua Jia、Xiaojiang Du、Bo Han）认为这种处理过于粗糙。他们提出 Calibrated Confidence（CalConf），一种无需训练（training-free）的方法：基于“有缺陷的推理轨迹往往更长”这一观察，学习一个与长度相关的 token 权重映射，对置信度进行长度校准，从而区分“真正有害的低置信”与“正常的低置信”，并及早终止正在劣化的推理轨迹以节省算力。实验覆盖五个基准（涵盖数学、科学与代码）以及三个开源 LLM。作者报告 CalConf 在准确率上达到或超过离线的 majority voting（多数投票）基线，同时将生成的 token 数量减少 20%–44%。这项工作有意思的地方在于：它不改动模型参数，只在推理阶段通过更细致的置信度信号来分配计算，而且把“长度”作为判断推理轨迹质量的关键线索，对当前长思维链模型“想太久反而出错”的现象提供了一种实用的缓解思路。论文已被 NeurIPS 2026 接收（OpenReview 论坛编号 pud2pPkedd，页面上未见 arXiv 链接），具体作者机构与消融细节请参阅原文。",
+    "model": "claude-sonnet-5-5",
+    "reasoning_effort": "low",
+    "date_added": "2026-10-18",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
   }
 ]
