@@ -6612,5 +6612,86 @@
     "deep_read": false,
     "deep_read_at": null,
     "interest": null
+  },
+  {
+    "paper_id": "arxiv:2607.10169",
+    "title": "Beyond Euclidean Clipping: Overcoming Exploration Collapse in LLM RL via Riemannian Isometric Policy Optimization",
+    "year": 2026,
+    "venue": "ICML 2026",
+    "topics": [
+      "reinforcement learning",
+      "math",
+      "reasoning"
+    ],
+    "keywords": [
+      "RLVR",
+      "PPO-Clip",
+      "policy geometry",
+      "exploration collapse"
+    ],
+    "link": "https://arxiv.org/abs/2607.10169",
+    "brief": "这篇论文研究的任务是用可验证奖励强化学习（RLVR）训练大模型做竞赛级数学推理，关注的核心问题是 PPO-Clip / GRPO 类算法中的“探索坍缩”。作者指出，PPO-Clip 用欧氏度量（固定的 ε 区间）衡量新旧策略的差异，但策略实际位于黎曼流形上，这种度量与流形几何不匹配：低概率 token 的更新被限制得过于保守，高概率 token 的更新又过于激进，导致模型过早收敛、探索能力丧失。方法上，作者提出 Riemannian Isometric Policy Optimization（RIPO）：先对新旧策略的 KL 散度做二阶泰勒展开，得到 Fisher 信息度量，进而推出每个样本的几何距离正比于 π_old·(r−1)²；要求该距离不超过 δ，就得到随旧策略概率变化的动态裁剪边界 ε=√(δ/π_old)，即低概率动作获得更宽的裁剪区间，高概率动作区间更窄。整体目标沿用 DAPO 的 token 级损失与组内相对优势，默认 δ=0.05。作者还论证这种等距裁剪让每个样本的方差贡献近似与概率密度无关（statistical homoscedasticity），从而取得更好的偏差-方差权衡。实验在 DAPO-Math-17k 上训练 Llama3.2-3B-Instruct、Qwen3-1.7B/4B/8B-Base，在 AMC23、AIME24、AIME25、HMMT25、BRUMO25、CMIMC25、SMT25 七个基准上以 Avg@8 评估，并与 GRPO、DAPO、GSPO、GMPO、DCPO 对比。相对 GRPO，七个基准平均分在 Qwen3-1.7B 上由 11.2 提升到 15.4，在 Qwen3-8B 上由 28.5 提升到 38.5；Qwen3-8B 的 AIME24 从 31.7 提升到 43.8，摘要中“最高提升 60%”来自 Qwen3-1.7B 在 AIME24 上的 11.3→18.3。论文来自清华大学 AIR 与字节 Seed 的 SIA-Lab，发表于 ICML 2026。这项工作的亮点是用信息几何的视角解释并改进裁剪机制，改动极小却在多个模型规模上稳定有效，值得做 RLVR 的人关注。",
+    "id": "2026-10-19-01",
+    "model": "Claude Sonnet 5.5 (claude-sonnet-5-5)",
+    "reasoning_effort": "low",
+    "date_added": "2026-10-19",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "paper_id": "arxiv:2610.12304",
+    "title": "Looking Inside LLMs: Small-World Connectivity as a Signature of Reasoning Performance",
+    "year": 2026,
+    "venue": "arXiv",
+    "topics": [
+      "reasoning"
+    ],
+    "keywords": [
+      "small-world network",
+      "attention heads",
+      "interpretability",
+      "LLM pruning"
+    ],
+    "link": "https://arxiv.org/abs/2610.12304",
+    "brief": "这篇论文从神经科学的“小世界网络与智力相关”这一发现出发，探讨大语言模型内部结构是否也存在类似的推理能力signature。任务本质上是对 LLM 推理能力做机理层面的解释，并把发现用于模型剪枝。作者基于注意力头激活之间的相似度构建功能图（functional graph），再计算 small-world index，它综合了局部聚类与全局最短路径两个性质。核心发现是：在不同模型以及同一模型的不同训练 checkpoint 之间，small-world index 越高，模型的流体推理（fluid reasoning）表现越好。进一步的分析表明，对性能重要的注意力头往往具有较高的 core score（社区内部连接强），同时较低的 bridge score（跨社区的权重集中）。基于这两个指标，作者提出 Small-World Allocation（SWA），一种分层分配稀疏度的剪枝方法，目标是在压缩模型时保留其小世界组织结构。在六个 LLM 上的实验显示，SWA 比现有剪枝方法更好地保持了小世界结构与下游性能，并且在 WikiText 上最多可降低约 20% 的困惑度。需要说明的是，我只读到摘要页，具体使用了哪些推理基准、相关系数大小和 SWA 的实现细节没有核实，需要看全文确认。作者来自多所高校（包含 Rex Ying、Yaoqing Yang、Dawei Zhou、Yujun Yan 等），目前是 v1 预印本，尚未标注录用会议。这项工作有意思的地方在于把“推理能力”与可度量的图拓扑指标联系起来，既是解释性研究，又直接给出了可用的剪枝策略，思路比较新。",
+    "id": "2026-10-19-02",
+    "model": "Claude Sonnet 5.5 (claude-sonnet-5-5)",
+    "reasoning_effort": "low",
+    "date_added": "2026-10-19",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "paper_id": "arxiv:2610.19003",
+    "title": "Evaluating Large Language Models for Multilingual Abstractive Summarization: A Comprehensive Study of English and Bengali",
+    "year": 2026,
+    "venue": "arXiv",
+    "topics": [
+      "summarization",
+      "multilingual"
+    ],
+    "keywords": [
+      "XL-Sum",
+      "Bengali",
+      "zero-shot evaluation",
+      "LLM-as-a-judge"
+    ],
+    "link": "https://arxiv.org/abs/2610.19003",
+    "brief": "这篇论文做的是多语言抽象式摘要（abstractive summarization）的系统评测，聚焦英语与孟加拉语（Bengali）这一高资源与低资源语言对比。数据集使用 XL-Sum，每种语言取 1,012 条测试样本。作者构建了一个可复现的零样本评测框架，评估了八个模型：GPT 5.6 Luna、Gemini 3.1 Flash Lite、Gemini 2.5 Flash、Qwen 3.5 Flash、DeepSeek V4 Flash、Qwen 3.6 27B Instruct、GPT-4o Mini 和 LLaMA 3.3 70B Versatile。评估指标比较全面，包括 ROUGE-1/2/L、chrF、BERTScore-Recall（英语用 roberta-base，孟加拉语用 xlm-roberta-base），以及 SummEval 风格的精确率/召回率/F1（孟加拉语使用 BanglaSummEval），并做了显著性检验。结果显示，英语上 GPT 5.6 Luna 的 ROUGE-1（24.12%）和 chrF（31.51%）最高，而 DeepSeek V4 Flash 的 SummEval F1 最高（63.45%）；孟加拉语上则是 LLaMA 3.3 70B 在 ROUGE 系列和 BERTScore-Recall 上领先（ROUGE-1 为 16.23%），GPT-4o Mini 的 chrF 最高（33.74%）。统计检验表明英语 ROUGE-1 的领先差距显著（p<0.0001），孟加拉语 ROUGE-1 的差距也显著（p=0.0067），但 Gemini 2.5 Flash 与 LLaMA 3.3 70B 在孟加拉语事实性上的差距不显著（p=0.92）。一个有意思的结论是：不同语言下的最优模型并不一致，且基于 ROUGE 与基于事实性的排序也会不同，说明只看单一指标会误导模型选择。该工作偏评测与实证，方法上创新有限；以上信息主要来自其公开代码仓库的 README，我未能读取论文摘要页，所以作者机构和具体录用情况未核实，目前按 arXiv 预印本收录。",
+    "id": "2026-10-19-03",
+    "model": "Claude Sonnet 5.5 (claude-sonnet-5-5)",
+    "reasoning_effort": "low",
+    "date_added": "2026-10-19",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
   }
 ]
