@@ -22,6 +22,16 @@ redirect_from:
 
 <ul class="yf-news-list">
   <li>
+    <span class="yf-news-date">2026.10</span>
+    <span data-i18n="en">✈️ Will attend <a href="https://2026.emnlp.org/" target="_blank" rel="noopener"><strong>EMNLP 2026</strong></a>.</span>
+    <span data-i18n="zh">✈️ 将参加 <a href="https://2026.emnlp.org/" target="_blank" rel="noopener"><strong>EMNLP 2026</strong></a>。</span>
+  </li>
+  <li>
+    <span class="yf-news-date">2026.10</span>
+    <span data-i18n="en">✈️ Will attend <a href="https://2026.inlgmeeting.org/" target="_blank" rel="noopener"><strong>INLG 2026</strong></a>.</span>
+    <span data-i18n="zh">✈️ 将参加 <a href="https://2026.inlgmeeting.org/" target="_blank" rel="noopener"><strong>INLG 2026</strong></a>。</span>
+  </li>
+  <li>
     <span class="yf-news-date">2026.08</span>
     <span data-i18n="en">🎉 Three papers accepted at <strong>EMNLP 2026</strong> — two to the Main conference, one to Findings.</span>
     <span data-i18n="zh">🎉 三篇论文被 <strong>EMNLP 2026</strong> 录用——两篇主会，一篇 Findings。</span>
