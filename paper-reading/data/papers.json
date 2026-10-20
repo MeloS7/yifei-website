@@ -6693,5 +6693,85 @@
     "deep_read": false,
     "deep_read_at": null,
     "interest": null
+  },
+  {
+    "paper_id": "openreview:QOoQ0Bo2ls",
+    "title": "Experience Augmented Policy Optimization for LLM Reasoning",
+    "venue": "ICML 2026",
+    "topics": [
+      "reinforcement learning",
+      "reasoning",
+      "math"
+    ],
+    "keywords": [
+      "RLVR",
+      "experience replay",
+      "importance sampling",
+      "GRPO"
+    ],
+    "link": "https://openreview.net/forum?id=QOoQ0Bo2ls",
+    "brief": "这篇论文关注的任务是用可验证奖励的强化学习（RLVR）提升大模型的数学与通用推理能力。作者指出现有RLVR方法大多是on-policy、从零开始学习，既浪费算力，也没有利用此前训练积累的经验；而如果把经验直接作为固定的推理轨迹复用，随着模型更新又会出现策略不匹配（policy mismatch）的问题。为此论文提出Experience-Augmented Policy Optimization（EAPO）：把一个先前已经经过RL优化的策略当作“动作级别的经验先验”，并且只在rollout过程中的关键决策点注入这种经验，而不是整条轨迹照搬。为了让这种混合采样仍然稳定且无偏，作者还设计了适配的重要性采样（importance sampling）方案，对注入经验带来的分布偏移做校正。与以往直接混入离线轨迹或做SFT式蒸馏的方法相比，创新点在于“关键点注入+动作级先验+无偏修正”的组合，使经验复用与在线探索可以共存。实验在Qwen-2.5-Math-7B和Qwen-3-8B两个基座上、跨五个推理基准进行，结果显示EAPO稳定优于当前最先进的RLVR方法。论文已被ICML 2026接收为poster（7月9日展示，OpenReview可查），作者来自阿里巴巴通义团队等机构（含周靖人）。该工作的价值在于为降低RLVR训练成本、复用已有RL检查点提供了一个有原则的思路，也与近期关于GRPO探索不足、多样性塌缩的讨论相呼应。具体基准名称与精确提升数值需查阅全文，摘要中仅给出“全面优于SOTA RLVR方法”的结论。",
+    "id": "2026-10-20-01",
+    "year": 2026,
+    "model": "Claude Sonnet 5.5 (claude-sonnet-5-5)",
+    "reasoning_effort": "standard",
+    "date_added": "2026-10-20",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "paper_id": "openreview:ErMUPz2NaF",
+    "title": "Learning from Self Critique and Refinement for Faithful LLM Summarization",
+    "venue": "ICML 2026 (Workshop: Trustworthy AI for Good)",
+    "topics": [
+      "summarization"
+    ],
+    "keywords": [
+      "faithfulness",
+      "self-distillation",
+      "preference learning",
+      "hallucination"
+    ],
+    "link": "https://openreview.net/forum?id=ErMUPz2NaF",
+    "brief": "这篇论文研究的任务是让大模型在长文本摘要生成中更“忠实”，即减少幻觉、避免生成输入中没有依据的内容。已有方法通常让更强的模型对输出进行批评（critique）并修改（refine），但这会带来额外的测试时开销，或者依赖更强的教师模型。作者提出一个自蒸馏（self-distillation）框架，在不使用任何外部监督的前提下提升忠实度：模型先利用自身的自我精修（self-refinement）和自我奖励（self-rewarding）能力，为同一输入构造偏好数据集（精修后的摘要作为偏好样本，原始摘要作为非偏好样本），再用偏好学习（如DPO类方法）在该数据上训练自己。创新点在于把原本发生在推理阶段的“生成-批评-修改”循环内化为训练信号，使得推理时只需单次生成即可获得精修后的质量，而无需教师模型。实验在XSUM、CNN/DailyMail和SAMSum三个经典摘要数据集上进行，结果表明该方法在忠实度上优于其他自监督基线，同时其他质量指标没有下降；与使用同样精修机制的测试时扩展（test-time scaling）相比，该方法在忠实度和推理效率上都更有优势。作者来自Apple（Ting-Yao Hu、Hadi Pouransari、Oncel Tuzel等），论文发表于ICML 2026的Trustworthy AI for Good研讨会（poster）。需要说明的是，公开页面未给出具体的忠实度分数，细节数字需阅读OpenReview上的全文；但思路简洁、易于落地，对做摘要幻觉缓解和低成本对齐的研究者有参考价值。",
+    "id": "2026-10-20-02",
+    "year": 2026,
+    "model": "Claude Sonnet 5.5 (claude-sonnet-5-5)",
+    "reasoning_effort": "standard",
+    "date_added": "2026-10-20",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "paper_id": "arxiv:2607.02235",
+    "title": "Challenges and Recommendations for LLM-as-a-Judge in Multilingual Settings and for Low-Resource Languages",
+    "venue": "arXiv",
+    "topics": [
+      "multilingual"
+    ],
+    "keywords": [
+      "LLM-as-a-Judge",
+      "low-resource languages",
+      "evaluation",
+      "survey"
+    ],
+    "link": "https://arxiv.org/abs/2607.02235",
+    "brief": "这篇论文讨论的是“LLM-as-a-Judge”（用大模型充当评审者）在多语言和低资源语言场景下的可靠性问题。LLM-as-a-Judge已经成为自然语言生成评测的主流方法，但绝大多数研究集中在英语；随着它被推广到多语言乃至低资源语言，一个关键矛盾浮现：大模型本身在低资源语言上能力较弱，而这些场景往往又缺乏足够的人工验证来校准评审结果。作者没有提出新模型，而是做了一次系统性的文献分析：在ACL Anthology中找到650篇提及LLM-as-a-Judge的论文，其中33篇专注于多语言或低资源设定，逐篇考察其评测设计。分析发现三类突出问题：不同研究的评测结果相互不一致；在多语言场景下对LLM评审结果过度信任；以及很多研究只依赖单一评审模型，缺少交叉验证。基于这些观察，论文最后给出一份面向研究者的实践清单（checklist），建议如何选择评审模型、如何引入人工验证、如何报告评测不确定性。作者包括Seza Doğruöz、Xixian Liao、Verena Blaschke、Jakob Prange、Senyu Li和David Adelani（后者以非洲语言NLP工作闻名）。论文目前为arXiv预印本（2607.02235，v2于2026年9月更新），未标注具体会议录用信息。其价值在于对当前流行的“用GPT打分”式多语言评测敲响警钟，对做多语言生成、翻译和摘要评测的人都很有现实意义。",
+    "id": "2026-10-20-03",
+    "year": 2026,
+    "model": "Claude Sonnet 5.5 (claude-sonnet-5-5)",
+    "reasoning_effort": "standard",
+    "date_added": "2026-10-20",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
   }
 ]
