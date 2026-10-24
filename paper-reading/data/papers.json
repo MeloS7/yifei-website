@@ -6851,5 +6851,88 @@
     "deep_read": false,
     "deep_read_at": null,
     "interest": null
+  },
+  {
+    "id": "2026-10-24-01",
+    "paper_id": "arxiv:2606.03782",
+    "title": "Reasoning over Grammar: Can Synthetic Linguistic Reasoning Traces Enhance Low-Resource Machine Translation?",
+    "year": 2026,
+    "venue": "EMNLP 2026 (Findings)",
+    "topics": [
+      "multilingual",
+      "reasoning",
+      "reinforcement learning"
+    ],
+    "keywords": [
+      "low-resource MT",
+      "linguistic reasoning traces",
+      "Universal Dependencies",
+      "Xibe",
+      "Chintang"
+    ],
+    "link": "https://arxiv.org/abs/2606.03782",
+    "brief": "这篇论文研究的任务是极低资源语言的机器翻译：大模型往往拿到了语法信息却不会在翻译时真正用上。作者提出让模型在翻译前先生成逐步的“语言学推理链”（linguistic reasoning traces），即先做词法、依存结构与语法规则分析，再给出译文，并检验这种显式语法推理是否有帮助。数据方面，作者没有人工标注，而是设计了一条自动化流水线，利用 Universal Dependencies 树库、双语词典和语法规则库合成这些推理轨迹；实验选取了 Xibe（锡伯语）和 Chintang 两种极低资源语言作为测试语言。方法上的创新在于把“语法分析—翻译”拆成可合成、可验证的中间步骤，并系统比较了三种使用方式：上下文学习（ICL）、监督微调（SFT）和强化微调（RFT）。这与以往直接把语法书塞进提示词或只做端到端微调的做法不同，它把语法知识转化成了可训练、可评估的推理过程。结果显示，推理轨迹最适合作为推理时的引导：在 ICL 中放入可靠的轨迹，可以在多个模型、多种语言和多个指标上显著提升翻译质量。相反，把轨迹当作训练数据时收益较小且不稳定，模型学会了轨迹的格式，却常常生成带错误的内容。作者据此认为，真正的瓶颈在于让模型学会产出可靠的语言学分析，而不是翻译这一步本身。这一结论对“推理式训练能否迁移到低资源语言”给出了冷静的反例，也提示强化微调在缺少可靠中间监督时收益有限。论文由 Renhao Pei、Yihong Liu、Sampo Pyysalo、Hinrich Schütze、Shaoxiong Ji 等人完成（作者团队与慕尼黑大学/赫尔辛基大学相关），录用为 EMNLP 2026 Findings，arXiv v2 于 2026年8月更新。摘要中未给出具体数值提升，细节需看正文。",
+    "model": "Sonnet 5.5 (claude-sonnet-5-5)",
+    "reasoning_effort": "low",
+    "date_added": "2026-10-24",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-10-24-02",
+    "paper_id": "arxiv:2602.06533",
+    "title": "LogicSkills: A Structured Benchmark for Formal Reasoning in Large Language Models",
+    "year": 2026,
+    "venue": "EMNLP 2026 (Findings)",
+    "topics": [
+      "reasoning"
+    ],
+    "keywords": [
+      "formal logic",
+      "benchmark",
+      "first-order logic",
+      "countermodel",
+      "Z3"
+    ],
+    "link": "https://arxiv.org/abs/2602.06533",
+    "brief": "这篇论文关注大模型的形式逻辑推理能力，指出常规基准上的整体准确率可能掩盖模型在基础逻辑技能上的缺陷。作者构建了新基准 LogicSkills，把逻辑推理拆成三项相互独立的核心技能：形式符号化（把自然语言前提翻译成一阶逻辑）、反模型构造（通过构造有限反模型来证明论证无效）以及有效性判断（判断结论是否由前提推出）。题目取自不含等词的双变量一阶逻辑片段，并同时提供英语版本和一种“卡罗尔式”的无意义词语言版本，用来排除世界知识和词汇记忆带来的干扰。所有实例都用 Z3 求解器验证过正确性与非平凡性，保证标注可靠。创新点在于不再用单一的“对/错”任务衡量逻辑能力，而是在受控语言下分别探测符号化、构造与判定三种技能，从而暴露出技能剖面的不均衡。实验结果显示，传统指令微调模型在有效性判断上表现不错，但在形式符号化和反模型构造上明显更差；推理增强（reasoning-tuned）的模型则在三项技能上都表现强劲，说明其技能分布更系统。作者的结论是：高任务级准确率可能掩盖底层技能的缺口，评估大模型推理应当细化到技能层面。该论文由 Brian Rabern、Philipp Mondorf、Barbara Plank 完成（Plank 课题组在慕尼黑大学 MaiNLP），被 EMNLP 2026 Findings 录用，arXiv 最新版为 v3（2026年9月）。摘要未报告具体分数，也没有点名所测模型，需要读原文查看细节。",
+    "model": "Sonnet 5.5 (claude-sonnet-5-5)",
+    "reasoning_effort": "low",
+    "date_added": "2026-10-24",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-10-24-03",
+    "paper_id": "arxiv:2606.16011",
+    "title": "Who Flips? Self- and Cross-Model Counterarguments Reveal Answer Instability in LLMs",
+    "year": 2026,
+    "venue": "EMNLP 2026 (Findings)",
+    "topics": [
+      "reasoning"
+    ],
+    "keywords": [
+      "answer stability",
+      "sycophancy",
+      "MMLU",
+      "MaxFlip",
+      "self-attribution"
+    ],
+    "link": "https://arxiv.org/abs/2606.16011",
+    "brief": "这篇论文研究的问题是：大模型答对一道题之后，面对一条听上去合理的反方论证，会不会改口？普通准确率基准无法回答这一点。作者设计了一个受控协议：先挑出模型已经答对的多选题，再给出一段为错误选项辩护的连贯论证，观察模型是否切换答案。该协议把“论证内容本身”与“社会压力”分离开，并系统改变论证长度、论证是否由模型自己写出（self-attribution），以及论证由哪个模型生成（cross-model）。数据方面，实验覆盖7个前沿模型和 MMLU 的57个科目，并发布了协议、挑战记录以及新基准 MaxFlip，后者由跨模型的错误论证池构建而成。创新点包括：把答案稳定性当作独立于准确率的维度来度量；发现自己写的论证更有说服力，使翻转率平均提高7.1个百分点、最多18.7个百分点；以及通过汇集多个模型的错误论证并为每道题挑选最有效的一条，得到比任何单一来源都更强的挑战。结果上，不同模型的翻转率从17.5%到97.3%不等，差距巨大，说明准确率相近的模型稳定性可以天差地别；MaxFlip 相比自生成挑战再把翻转次数最多提高23.6个百分点。这些结果对评估大模型的推理可靠性、谄媚（sycophancy）倾向和多模型辩论类系统都有启发。作者为 Nafiseh Nikeghbal、Amir Hossein Kargaran、Shaghayegh Kolli、Jana Diesner，论文被 EMNLP 2026 Findings 录用（Diesner 课题组位于慕尼黑工业大学）。摘要中未点名具体的七个模型。",
+    "model": "Sonnet 5.5 (claude-sonnet-5-5)",
+    "reasoning_effort": "low",
+    "date_added": "2026-10-24",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
   }
 ]
