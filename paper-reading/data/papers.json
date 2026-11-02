@@ -6934,5 +6934,85 @@
     "deep_read": false,
     "deep_read_at": null,
     "interest": null
+  },
+  {
+    "id": "2026-11-02-01",
+    "paper_id": "aclanthology:2026.emnlp-main.255",
+    "title": "From Accuracy to Robustness: A Study of Rule- and Model-based Verifiers in Mathematical Reasoning",
+    "year": 2026,
+    "venue": "EMNLP 2026 (Main Conference)",
+    "topics": [
+      "math",
+      "reinforcement learning"
+    ],
+    "keywords": [
+      "RLVR",
+      "verifier",
+      "reward hacking",
+      "GRPO"
+    ],
+    "link": "https://aclanthology.org/2026.emnlp-main.255/",
+    "brief": "这篇论文研究 RLVR（可验证奖励强化学习）中一个常被忽视的组件：验证器（verifier）本身是否可靠，并以数学推理作为测试场景。作者来自 HKUST、CUHK 和清华，被 EMNLP 2026 主会录用。任务上，他们同时评估规则型验证器（VERL、Qwen-Math、HuggingFace Math Verifier）和模型型验证器（Qwen2.5、R1-Distill-Qwen、xVerify、general-verifier）在静态分类和 RL 训练两种场景下的表现。数据方面，静态评估用了来自 Math、DeepscaleR、ORZ-Math、Skywork-OR1 的共 8000 条样本，RL 训练主要用 DeepscaleR，策略模型为 Qwen2.5-7B Base，并在 GSM8K、MATH500、OlympiadBench、AIME24、AMC23、GPQA-Diamond 等基准上评测。核心发现有三点：第一，规则型验证器精确率超过 99%，但平均召回率只有约 86%，也就是约 14% 的正确答案因格式不同被误判为错，且随着策略变强这一问题对训练的伤害更大；第二，模型型验证器静态召回更高（Skywork-OR1 上从 84% 提升到 92%），但在 RL 过程中会被策略“钻空子”，R1-Distill-Verifier-1.5B 在约 450 步后训练奖励与 GPT-4o 奖励明显分叉，对抗前缀的攻击成功率达 35.0%，而判别式的 xVerify-3B 只有 0.4%；第三，作者提出先用规则、仅对被拒绝样本再用模型复核的混合验证器，召回提升约 3 个点且精确率保持在 98% 以上，最佳混合设置的 RL 平均准确率达到 57.3，比纯规则验证器高 2.3 点。这项工作的价值在于提醒社区：奖励信号的质量与鲁棒性是 RLVR 的隐形瓶颈，值得和算法改进同等重视。代码已开源（hkust-nlp/RL-Verifier-Robustness）。",
+    "model": "Sonnet 5.5 (claude-sonnet-5-5)",
+    "reasoning_effort": "standard",
+    "date_added": "2026-11-02",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-11-02-02",
+    "paper_id": "aclanthology:2026.emnlp-main.309",
+    "title": "LLM Summaries Systematically Distort Topic Distributions",
+    "year": 2026,
+    "venue": "EMNLP 2026 (Main Conference)",
+    "topics": [
+      "summarization"
+    ],
+    "keywords": [
+      "topic bias",
+      "review summarization",
+      "faithfulness",
+      "LLM evaluation"
+    ],
+    "link": "https://aclanthology.org/2026.emnlp-main.309/",
+    "brief": "这篇论文来自 Harish Tayyar Madabushi（Bath）、Steven Schockaert（Cardiff）等人，发表于 EMNLP 2026 主会，关注一个很实际的问题：用 LLM 对大量用户评论做摘要，来指导购买决策和商业策略时，摘要是否真实反映了评论中各话题的分布。任务是评论摘要的主题忠实性（topic faithfulness）分析。数据方面，作者构建了覆盖 50 个领域的 50,000 条合成评论，用来精确控制每个话题在输入中的出现比例，再用 11 个不同的模型生成摘要；此外还在四个领域的真实评论上做了验证。方法上的创新在于用“受控合成输入 + 话题比例对比”的方式，把摘要偏差定量化，而不是依赖人工打分或 ROUGE 之类的通用指标。主要发现是：无论话题在原文中占多大比例，模型都会系统性地过度强调同一批话题，其中部分话题即使在输入里根本没有出现也会被放大，而这些话题恰好是模型自身认为“重要”的话题，说明偏差来自模型的内在先验而非输入。作者还测试了更大的模型、改写提示词、调整温度、摘要长度和输入长度等多种缓解手段，结果没有一种能把偏差降到可接受的水平。真实评论上的结果与合成数据一致。这篇工作对摘要评估是一个有力的提醒：流畅且“看起来合理”的摘要可能在话题分布上严重失真，尤其在商业决策场景中风险不小，也提示需要专门针对分布保真度设计评估指标和训练目标。",
+    "model": "Sonnet 5.5 (claude-sonnet-5-5)",
+    "reasoning_effort": "standard",
+    "date_added": "2026-11-02",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-11-02-03",
+    "paper_id": "aclanthology:2026.emnlp-main.2153",
+    "title": "Language Shapes Instruction Hierarchy Compliance in Multilingual LLMs",
+    "year": 2026,
+    "venue": "EMNLP 2026 (Main Conference)",
+    "topics": [
+      "multilingual",
+      "reasoning"
+    ],
+    "keywords": [
+      "instruction hierarchy",
+      "XIH-Bench",
+      "cross-lingual conflict",
+      "LLM safety"
+    ],
+    "link": "https://aclanthology.org/2026.emnlp-main.2153/",
+    "brief": "这篇论文由 Jiwon Moon、Yerin Hwang、Kyomin Jung 完成，发表于 EMNLP 2026 主会（Budapest）。它关注指令层级（instruction hierarchy, IH）：当系统提示等高优先级指令与用户等低优先级指令冲突时，模型应优先遵循高优先级者，这对安全可控的部署至关重要。此前的 IH 评测几乎都只在英语上进行，因此不清楚这种能力在其他语言中是否仍然成立。为此作者构建了多语言基准 XIH-Bench，覆盖六种语言、四个领域和三种 IH 设置，并且同时包含同语言冲突与跨语言冲突两类情形，可以分别考察语言选择和语言错位的影响。主要发现有两点：第一，IH 遵循度高度依赖语言，某种语言放在高优先级位置时能提高遵循度，放在低优先级位置时反而可能降低遵循度，说明模型对不同语言的偏好是非对称的；第二，跨语言冲突下的遵循度反而高于同语言冲突，作者将其命名为“Language Boundary Effect”（语言边界效应），即语言不同会让模型更容易区分指令来源。作者进一步指出，语言特化可能使模型偏好语言中的低优先级指令更难被覆盖，这会带来多语言场景下的可靠性与安全隐患，例如攻击者可以利用语言选择来绕过系统指令。这项工作把多语言评估从常见的能力基准扩展到了指令遵循与安全层面，对多语言对齐和提示注入防御都有参考价值。",
+    "model": "Sonnet 5.5 (claude-sonnet-5-5)",
+    "reasoning_effort": "standard",
+    "date_added": "2026-11-02",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
   }
 ]
