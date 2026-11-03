@@ -7014,5 +7014,87 @@
     "deep_read": false,
     "deep_read_at": null,
     "interest": null
+  },
+  {
+    "id": "2026-11-03-01",
+    "paper_id": "aclanthology:2026.emnlp-main.2486",
+    "title": "STEEREVAL: Inference-time Interventions Strengthen Multilingual Generalization in Neural Summarization Metrics",
+    "year": 2026,
+    "venue": "EMNLP 2026 (Main Conference)",
+    "topics": [
+      "summarization",
+      "multilingual"
+    ],
+    "keywords": [
+      "summarization evaluation",
+      "activation steering",
+      "LLM-as-a-judge",
+      "COMET"
+    ],
+    "link": "https://aclanthology.org/2026.emnlp-main.2486/",
+    "brief": "这篇论文关注的任务是多语言摘要评测：现有的神经摘要评价指标在很多非英语语言上可靠性很差，LLM-as-a-Judge 虽然流行，但与人类评分的一致性在多语言场景下依然偏低，这成为多语言摘要研究进展的瓶颈。作者 Silvia Casola、Ryan Soh-Eun Shim、Felicia Körner、Yuchen Mao、Barbara Plank 发表于 EMNLP 2026 主会（Budapest）。核心出发点来自可解释性方面的已有发现：多语言模型内部常以英语作为“枢轴”（pivot）语言进行表征和推理。基于此，作者提出 STEEREVAL，思路是在推理阶段对评测指标模型的内部激活做 activation steering，把表示朝英语方向“拨”一下，看能否提升指标与人类评分在多语言摘要上的相关性。方法的创新点在于：不需要重新训练或微调评价模型，也不需要每种语言单独的数据，只需推理时的干预。实验覆盖了 encoder 型和 decoder 型两类神经指标，涉及五种语言。结果表明 activation steering 对神经指标确实有效，而且仅用一个与语言无关的单一 steering 向量，就能够提升指标与人类判断的一致性，说明这种干预具有跨语言的通用性。此外，该方法对 COMET 这样体量很小的 encoder 指标同样有帮助，而 COMET 本身在人类一致性上已经相当出色，这意味着小模型加推理时干预可能是一个低成本的多语言评测方案。论文摘要未给出具体相关系数数值，细节需阅读正文。它的有趣之处在于把“表示干预”这种机制可解释性技术迁移到评测指标上，为资源受限语言的摘要评估提供了一条轻量路径，值得做摘要评测或多语言可解释性的读者关注。",
+    "model": "Claude Sonnet 5.5 (claude-sonnet-5-5)",
+    "reasoning_effort": "low",
+    "date_added": "2026-11-03",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-11-03-02",
+    "paper_id": "aclanthology:2026.findings-emnlp.579",
+    "title": "FormalMATH: Benchmarking Formal Mathematical Reasoning of Large Language Models",
+    "year": 2026,
+    "venue": "EMNLP 2026 (Findings)",
+    "topics": [
+      "math",
+      "reasoning"
+    ],
+    "keywords": [
+      "Lean4",
+      "theorem proving",
+      "autoformalization",
+      "benchmark"
+    ],
+    "link": "https://aclanthology.org/2026.findings-emnlp.579/",
+    "brief": "这篇论文研究的任务是大模型的形式化数学推理，即在 Lean4 中自动证明定理。作者（Zhouliang Yu、Weiyang Liu、Ge Zhang 等）发表于 EMNLP 2026 Findings，arXiv 版本为 2505.02735。数据集方面，他们构建了 FormalMATH：一个包含 5,560 条经过形式化验证的 Lean4 命题的基准，覆盖从高中奥赛到大学本科的代数、微积分、数论、离散数学等多个领域，规模明显大于以往的 miniF2F 等形式化基准。方法创新体现在数据构建流程：采用人机协同的自动形式化（autoformalization）管线，先由专门的 LLM 把自然语言题目翻译成 Lean4 语句，再用多个 LLM 做语义一致性检查，并通过“否定证明”（尝试证明命题的否定以剔除错误语句）进行过滤，这一步后保留约 72% 的语句，最后再由专家审核。实验方面，作者评测了当前主流的 LLM 定理证明器，发现表现远低于预期：论文报告最强模型在实际采样预算下成功率仅约 16%，在更大采样预算（如 Pass@32）下 DeepSeek-Prover-V2 671B 也只有 28% 左右。模型在不同领域表现不均衡，代数较好而微积分较差，并过度依赖简单的自动化 tactic。一个很有意思的发现是：在思维链设定下，提供人类写的自然语言解题提示反而会降低形式化证明的成功率，作者认为非形式化推理给形式证明引入了噪声。这对“先自然语言思考再形式化”的主流范式提出了质疑，也说明形式化数学推理仍有很大提升空间，是了解定理证明现状的很好参考。",
+    "model": "Claude Sonnet 5.5 (claude-sonnet-5-5)",
+    "reasoning_effort": "low",
+    "date_added": "2026-11-03",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-11-03-03",
+    "paper_id": "aclanthology:2026.findings-emnlp.1745",
+    "title": "RLPgR: Reinforcement Learning from Dependency-Aware Progress Rewards",
+    "year": 2026,
+    "venue": "EMNLP 2026 (Findings)",
+    "topics": [
+      "reinforcement learning",
+      "reasoning",
+      "math"
+    ],
+    "keywords": [
+      "GRPO",
+      "credit assignment",
+      "process reward",
+      "progress dependency graph"
+    ],
+    "link": "https://aclanthology.org/2026.findings-emnlp.1745/",
+    "brief": "这篇论文针对强化学习训练推理模型时的信用分配（credit assignment）问题。作者（Shaofan Liu、Tao Gui、Qi Zhang、Xuanjing Huang 等）发表于 EMNLP 2026 Findings。出发点是：GRPO 对一条推理轨迹里的所有 token 赋予相同的 advantage，但实际上不同推理步骤对最终答案的贡献差异很大；而稠密的过程奖励（process reward）又容易引发 reward hacking。作者提出 RLPgR：先把每条 rollout 切分成若干“里程碑”单元，并用依赖关系把它们连成一张进度依赖图（Progress Dependency Graph），然后在单元级别对 GRPO 的 advantage 做一个有界、且保持符号不变的小幅缩放。因为保持符号且幅度有界，它既引入了细粒度的步骤信息，又避免了过程奖励被模型钻空子。为降低构图成本，作者还训练了一个开源的 Qwen3-8B 进度标注器（progress annotator）。数据集和实验方面，他们在多个模型家族和不同规模上，使用五个数学推理基准进行评测，结果显示在相同训练预算下，RLPgR 与强力的结果奖励 RL 和过程奖励 RL 基线相比具有竞争力。另外三组对照研究（缩放强度、片段级基线、标签扰动）表明，提升来自结构化的信用分配本身，而不是超参数调节。论文摘要没有给出具体提升百分点，需要读正文确认。它的价值在于给“结果奖励太稀疏、过程奖励太脆弱”的两难提供了一个折中方案，适合关注 RLVR 与推理训练的读者。",
+    "model": "Claude Sonnet 5.5 (claude-sonnet-5-5)",
+    "reasoning_effort": "low",
+    "date_added": "2026-11-03",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
   }
 ]
