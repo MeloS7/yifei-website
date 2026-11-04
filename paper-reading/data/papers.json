@@ -7096,5 +7096,86 @@
     "deep_read": false,
     "deep_read_at": null,
     "interest": null
+  },
+  {
+    "id": "2026-11-04-01",
+    "paper_id": "aclanthology:2026.emnlp-main.851",
+    "title": "Architecture-Conditioned Reinforcement Learning Makes Sliding-Window Attention Competitive in Math Reasoning",
+    "topics": [
+      "math",
+      "reinforcement learning",
+      "reasoning"
+    ],
+    "keywords": [
+      "sliding-window attention",
+      "RLVR",
+      "efficient inference",
+      "SWARR"
+    ],
+    "link": "https://aclanthology.org/2026.emnlp-main.851/",
+    "brief": "这篇论文关注的任务是：让推理型/Agent型大模型在长上下文下仍能高效推理，具体做法是把标准全注意力（self-attention）模型改造成线性复杂度的滑动窗口注意力（Sliding-Window Attention, SWA）模型，并保持数学推理能力。背景是长链推理使上下文迅速变长，而全注意力的开销随长度二次增长，部署成本很高。作者提出名为 SWARR 的两阶段配方：第一阶段通过监督微调（SFT）把已有的预训练全注意力模型转换为 SWA，从而避免从头预训练新底座；第二阶段则是“架构感知”的强化学习（architecture-conditioned RL）。作者观察到，仅做 SFT 转换后的 SWA 模型仍明显落后于全注意力模型，他们的假设是：SFT 数据本来是为全注意力模型准备的，含有大量 SWA 难以处理的长程依赖。而 RL 优化的是模型自己生成的轨迹，因此可以在 SWA 的架构约束下让模型自行塑造出更适合局部窗口的推理轨迹，这是与以往“只靠蒸馏/SFT 转换架构”工作的核心区别。实验在数学推理基准上进行，结果显示该方法大幅缩小了 SWA 与全注意力模型之间的差距，找回了转换时损失的大部分准确率，同时保留了 SWA 的线性复杂度效率优势。作者为 Kai Liu、Peijie Dong、Qipeng Guo、Xiaowen Chu、Kai Chen 等（页面未给出机构）。论文发表于 EMNLP 2026 主会（匈牙利布达佩斯，第19713–19731页），Anthology页面未提供具体基准名称与数字，细节需读原文确认。",
+    "year": 2026,
+    "venue": "EMNLP 2026 (Main Conference)",
+    "model": "Claude Sonnet 5.5",
+    "reasoning_effort": "low",
+    "date_added": "2026-11-04",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-11-04-02",
+    "paper_id": "aclanthology:2026.emnlp-main.730",
+    "title": "Mitigating Forgetting Between Supervised and Reinforcement Learning Yields Stronger Reasoners",
+    "topics": [
+      "reinforcement learning",
+      "reasoning"
+    ],
+    "keywords": [
+      "catastrophic forgetting",
+      "SFT+RL",
+      "MIFO",
+      "reasoning post-training"
+    ],
+    "link": "https://aclanthology.org/2026.emnlp-main.730/",
+    "brief": "这篇论文研究的任务是大模型推理能力的后训练流程，即“先SFT再RL”或二者交替的混合流水线，并指出其中一个被忽视的失败模式：灾难性遗忘。作者的诊断是两种训练存在不对称性：SFT 对参数的更新幅度大且冗余，而 RL 的更新小但关键，于是 SFT 阶段很容易覆盖掉 RL 已经学到的重要参数更新。针对这一问题，作者提出即插即用的框架 MIFO，包含两个部分。其一是数据选择：让 RL 与 SFT 交错进行，依据 rollout 准确率挑选有挑战性的样本，并且只在高熵 token 上做 SFT 训练；其二是参数冻结：识别出对 RL 至关重要的参数，在 SFT 阶段暂时冻结它们。该方法与具体的 SFT 或 RL 算法无关，可以套在不同流水线上。论文报告的结果相当抢眼：MIFO 只用了先前方法所需 SFT 数据的 1.5% 和 RL 数据的 20.4%，就达到了最先进的推理表现，并且生成的推理轨迹比标准 SFT→RL 流水线最多短 10 倍。这意味着既提升了数据效率，也缓解了推理过长的问题。作者包括 Xiangchi Yuan、Wenke Lee、Saayan Mitra 等（Anthology页面未列机构）。论文收录于 EMNLP 2026 主会（布达佩斯，第16948–16971页）。具体评测基准与基座模型未在页面摘要中给出，需阅读原文核实。",
+    "year": 2026,
+    "venue": "EMNLP 2026 (Main Conference)",
+    "model": "Claude Sonnet 5.5",
+    "reasoning_effort": "low",
+    "date_added": "2026-11-04",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-11-04-03",
+    "paper_id": "aclanthology:2026.emnlp-main.1344",
+    "title": "INCLUDE-2.0: Disentangling Knowledge Gaps in Multilingual LLM Evaluation",
+    "topics": [
+      "multilingual"
+    ],
+    "keywords": [
+      "multilingual benchmark",
+      "regional knowledge",
+      "91 languages",
+      "evaluation"
+    ],
+    "link": "https://aclanthology.org/2026.emnlp-main.1344/",
+    "brief": "这篇论文的任务是多语言大模型评测。作者认为现有多语言基准只覆盖现代预训练语料中很少一部分语言，并且常常把“语言能力”与“对特定地区知识的掌握”混为一谈，导致分数难以解释。为此他们构建了新基准 INCLUDE-2.0：一个区域感知（region-aware）的事实性知识评测集，覆盖 86 个国家的 91 种语言（共127个语言-国家组合），超过 22 万条样本，且全部来自当地原生的区域性来源，而不是由英文翻译而来。每个样本都标注了区域知识类型与领域，并附带英文翻译，使得研究者可以把“语言熟练度”和“区域知识”两个因素分开分析，这是它区别于此前 INCLUDE 以及其他翻译式基准的关键创新。实验评测了前沿闭源模型与开源权重模型，发现汇总的多语言准确率掩盖了不同知识类型、语言和地区之间的巨大差异：前沿模型在“本地嵌入式知识”上的得分比广泛被记录的事实低约14.5个百分点；对开源模型而言，规模增大能提高准确率，但并不能稳定地消除英语与原语言之间的性能差距。作者团队有 EPFL（Antoine Bosselut）等，共41位作者，论文发表于 EMNLP 2026 主会。数据集已发布在 HuggingFace（epfl-nlp/include-2.0）。",
+    "year": 2026,
+    "venue": "EMNLP 2026 (Main Conference)",
+    "model": "Claude Sonnet 5.5",
+    "reasoning_effort": "low",
+    "date_added": "2026-11-04",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
   }
 ]
