@@ -7177,5 +7177,87 @@
     "deep_read": false,
     "deep_read_at": null,
     "interest": null
+  },
+  {
+    "id": "2026-11-05-01",
+    "paper_id": "aclanthology:2026.emnlp-main.402",
+    "title": "Summarization Is Not Dead Yet",
+    "venue": "EMNLP 2026 (Main Conference)",
+    "topics": [
+      "summarization"
+    ],
+    "keywords": [
+      "LLM-as-Judge",
+      "human evaluation",
+      "factuality",
+      "reference summaries"
+    ],
+    "link": "https://aclanthology.org/2026.emnlp-main.402/",
+    "brief": "这篇论文直面一个在LLM时代越来越常见的论断：大模型生成的摘要是否已经追平甚至超过人类撰写的参考摘要，摘要任务是否“已经解决”。作者（Dongqi Liu, Chenxi Whitehouse, Zheng Zhao, Zhuchen Cao, Jian Li, Yabiao Wang）并没有提出新的摘要模型，而是做了一项多轨道的系统性评估研究。评估覆盖多个不同领域的摘要数据集和当前最先进的LLM，并把四条互补的评估路线组合在一起：受控的人类评测、做过偏差缓解处理的LLM-as-Judge、基于外部知识的事实性核查，以及语料层面的语言学分析。这种组合的价值在于避免了单一指标（例如只看LLM评委打分）带来的系统性偏见。结论相当有意思：人类参考摘要在信息量（informativeness）和忠实度（faithfulness）上仍然领先；LLM输出被偏好的原因主要集中在表层的连贯性与流畅度；在需要推理或综合多处信息的陈述上，人类参考在事实性方面更可靠；此外，不同LLM生成的摘要在风格上呈现明显的同质化。作者据此总结：LLM抬高了摘要质量的“下限”，但“上限”仍低于人类水平。这对当下很多直接用LLM输出取代人工参考摘要、或用LLM评委替代人评的做法是一个重要提醒，也为后续摘要评测基准的设计提供了依据。该论文发表于EMNLP 2026主会（ACL Anthology页面未显示作者机构与获奖信息；摘要页未给出具体数字，具体数据集与模型名单需阅读全文确认）。",
+    "year": 2026,
+    "model": "Sonnet 5.5 (claude-sonnet-5-5)",
+    "reasoning_effort": "standard",
+    "date_added": "2026-11-05",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-11-05-02",
+    "paper_id": "aclanthology:2026.emnlp-main.594",
+    "title": "Gradients Know What Outcomes Don't: Unlocking Reinforcement Learning for LLM Reasoning with Gradient-Aligned Rewards",
+    "venue": "EMNLP 2026 (Main Conference)",
+    "topics": [
+      "reinforcement learning",
+      "reasoning",
+      "math"
+    ],
+    "keywords": [
+      "RLVR",
+      "GRPO",
+      "dense reward",
+      "gradient alignment"
+    ],
+    "link": "https://aclanthology.org/2026.emnlp-main.594/",
+    "brief": "这篇论文关注RLVR（可验证奖励强化学习）训练LLM做链式思考推理时的一个核心痛点：二元的结果奖励（答案对/错）无法区分同样“答对”的不同推理轨迹，信号稀疏且粗糙。作者（Leqi Zheng, Jinbo Su, Fang Niu, Chaokun Wang, Weiping Wang, Jiajun Zhang 等）提出Gradient-Aligned Reward（GAR）：对每条rollout，通过只在输出投影层做截断反向传播，得到一个紧凑的梯度表示；再计算该梯度与“专家锚点”梯度之间的余弦相似度，把它作为稠密奖励。这样每条轨迹都能获得连续的、反映其“学习方向是否与专家一致”的信号，而且额外的wall-clock开销据称不到9%。理论上，作者证明这个余弦相似度可以乘法分解为“预测误差”与“激活模式”两个因子，为奖励为何有效提供了解释。实验在Qwen3-4B和Qwen3-8B上进行，论文报告GAR在竞赛级数学基准上持续优于GRPO及其他基线，并且无需领域特定数据即可迁移到GPQA Diamond和MMLU-Pro。代码已开源（github.com/LQgdwind/GAR）。其亮点在于不依赖额外的过程奖励模型或人工标注，就从模型自身梯度中挖出稠密信号，思路新颖。该论文为EMNLP 2026主会论文（页面未显示作者机构与获奖信息；摘要页未给出具体准确率数字，细节需阅读全文）。",
+    "year": 2026,
+    "model": "Sonnet 5.5 (claude-sonnet-5-5)",
+    "reasoning_effort": "standard",
+    "date_added": "2026-11-05",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-11-05-03",
+    "paper_id": "aclanthology:2026.emnlp-main.999",
+    "title": "How Well Does Mathematical Reasoning Transfer Across Languages in English-Centric LLMs?",
+    "venue": "EMNLP 2026 (Main Conference)",
+    "topics": [
+      "multilingual",
+      "math",
+      "reinforcement learning"
+    ],
+    "keywords": [
+      "cross-lingual transfer",
+      "reinforcement post-training",
+      "transfer efficiency",
+      "multilingual math"
+    ],
+    "link": "https://aclanthology.org/2026.emnlp-main.999/",
+    "brief": "这篇论文研究的问题是：以英语为中心的LLM在经过强化后训练（Reinforcement Post-Training）获得的数学推理提升，能在多大程度上迁移到其他语言。作者（Wen Yang, Junhong Wu, Chong Li, Chengqing Zong, Jiajun Zhang）在多语言数学基准上系统评估了英语为中心的推理模型，分析迁移效果如何随初始模型、目标语言和训练范式而变化。论文提出应当同时报告“绝对性能”和“相对迁移效率”两类指标，因为二者可能给出不同的结论。核心发现包括：更强的英语中心初始化并不一定带来更高的相对迁移效率，即使它的多语言绝对准确率更高；在仅用英语监督的基础上，加入一种平行语言带来的收益最大，继续增加更多语言则只带来更小但稳定的增益。这对多语言推理模型的训练配方有直接指导意义——小成本引入一种平行语言就能拿到大部分跨语言收益。该工作本质上是一项实证分析研究，没有提出全新的训练算法，其价值在于提供了评估框架与可操作的经验结论。发表于EMNLP 2026主会（ACL Anthology页面未显示作者机构、获奖信息，摘要页也未列出具体基准名称与数值，需阅读全文确认）。",
+    "year": 2026,
+    "model": "Sonnet 5.5 (claude-sonnet-5-5)",
+    "reasoning_effort": "standard",
+    "date_added": "2026-11-05",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
   }
 ]
