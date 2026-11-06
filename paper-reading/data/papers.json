@@ -7259,5 +7259,87 @@
     "deep_read": false,
     "deep_read_at": null,
     "interest": null
+  },
+  {
+    "id": "2026-11-06-01",
+    "paper_id": "aclanthology:2026.emnlp-main.1321",
+    "title": "Revisiting Reinforcement Learning with Verifiable Rewards from a Contrastive Perspective",
+    "year": 2026,
+    "venue": "EMNLP 2026 (Main Conference)",
+    "topics": [
+      "reinforcement learning",
+      "reasoning",
+      "math"
+    ],
+    "keywords": [
+      "RLVR",
+      "GRPO",
+      "contrastive learning",
+      "policy optimization"
+    ],
+    "link": "https://aclanthology.org/2026.emnlp-main.1321/",
+    "brief": "这篇论文研究的任务是用带可验证奖励的强化学习（RLVR）对大模型做推理后训练，重点审视目前最常用的GRPO算法。作者先指出GRPO存在等价的判别式形式：策略优化本质上是在最大化同一组rollout中“已验证正例”与“负例”之间的期望得分差。由此暴露出两个问题：一是得分用的是被裁剪的重要性比率，而不是真正决定生成过程的序列似然；二是信用分配没有反映组内当前的得分差距。针对这两点，作者提出ConSPO（Contrastive Sequence-level Policy Optimization）。它用长度归一化的序列对数概率给每条rollout打分，在组内用类似InfoNCE的目标把正例与负例干扰项拉开，并配合按课程式调度的margin（余弦调度，M=0.01），让训练后期仍保持分离压力。实验在DeepScaleR-Preview（约4万道数学题）上训练，另在DAPO-Math-17k上验证泛化，评测基准包括AIME24/25/26、HMMT25、MATH500、AMC和OlympiadBench，模型涵盖DeepSeek-R1-Distill-Qwen-1.5B/7B、R1-Distill-Llama-8B、Qwen3-4B-Base和Llama-3.2-3B-Instruct，对比GRPO、DAPO、Dr. GRPO、DisCO、GMPO、CISPO、SAPO等基线。结果上，1.5B平均44.4，高于GRPO的40.0和最强基线SAPO的42.8，且在7个基准上全部领先；7B平均57.5对GRPO的55.1；Llama-8B为51.8对49.1；Qwen3-4B-Base上HMMT25从基座的0.9提升到8.0。消融显示去掉对比目标会降到42.7，去掉似然对齐打分降到43.4，固定margin为43.9。该工作为EMNLP 2026主会论文，作者来自北京理工大学与阿里巴巴Qwen团队等。",
+    "model": "claude-sonnet-5-5",
+    "reasoning_effort": "standard",
+    "date_added": "2026-11-06",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-11-06-02",
+    "paper_id": "aclanthology:2026.emnlp-main.681",
+    "title": "A Large-Scale Multi-Dimensional Empirical Study of LLMs for Conversation Summarization",
+    "year": 2026,
+    "venue": "EMNLP 2026 (Main Conference)",
+    "topics": [
+      "summarization"
+    ],
+    "keywords": [
+      "conversation summarization",
+      "benchmark",
+      "faithfulness",
+      "reasoning models"
+    ],
+    "link": "https://aclanthology.org/2026.emnlp-main.681/",
+    "brief": "这篇论文关注对话摘要（conversation summarization）中LLM评测的不足：现有评测场景单一、输入偏短、样本量小，且很少覆盖前沿推理模型与小模型，也缺乏细粒度的多维度打分。为此作者构建了OmniCSEval基准，包含1800条对话，来自13个公开对话摘要语料（如SAMSum、DialogSum、MediaSum、SummScreen、QMSum、ACI-Bench、MeetingBank等），分为日常、媒体访谈、剧本、客服、医疗、会议六类真实场景，上下文长度覆盖128到32k tokens。评测方法的创新点是“双向事实核查”：用关键事实匹配衡量完整性（completeness）与简洁性（conciseness），用摘要事实验证衡量忠实度（faithfulness）；关键事实由Gemini 3 Pro抽取并经人工裁定，摘要事实则由多LLM共识验证器分解与投票判定。作者共评测28个LLM，分为大/小推理模型与大/小指令模型四组，共生成50400条摘要。元评测显示DeepSeek-V3.2是最好的事实核查器（匹配Macro F1 0.958），不同裁判下榜单排名高度稳定（Spearman 0.92-1.00）。主要结果：GPT-5最佳，完整性/简洁性/忠实度为81.7/80.5/96.4；DeepSeek-R1相比DeepSeek-V3完整性和简洁性更高（71.7/83.4 vs 60.1/75.8），但忠实度略低（95.7 vs 96.2），说明推理能提升覆盖但带来幻觉风险；模型规模是多维表现的主要驱动因素，思考token更多并不意味着更好。论文为EMNLP 2026主会，作者来自北航与中科院自动化所等。",
+    "model": "claude-sonnet-5-5",
+    "reasoning_effort": "standard",
+    "date_added": "2026-11-06",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-11-06-03",
+    "paper_id": "aclanthology:2026.emnlp-main.1967",
+    "title": "Process Rewarding via Solution-Space Alignment",
+    "year": 2026,
+    "venue": "EMNLP 2026 (Main Conference)",
+    "topics": [
+      "reinforcement learning",
+      "math",
+      "reasoning"
+    ],
+    "keywords": [
+      "process reward",
+      "credit assignment",
+      "GRPO",
+      "reward shaping"
+    ],
+    "link": "https://aclanthology.org/2026.emnlp-main.1967/",
+    "brief": "这篇论文要解决的是多步数学推理中结果级RLVR（如GRPO）奖励过于稀疏的问题：一条前面步骤都对、只在最后出错的轨迹，与完全错误的轨迹得到相同的失败信号。过程奖励模型（PRM）虽能提供稠密反馈，但需要昂贵标注或额外验证器，还容易被reward hacking。作者提出PRSA（Process Rewarding via Solution-Space Alignment），无需人工步骤标注：从模型输出和参考解答中抽取中间取值步骤，按符号等价性归一化后，在“解空间”里按等价与顺序约束进行对齐，以匹配到的最远位置占参考长度的比例估计推理进度；答案正确时奖励为原结果奖励，答案错误时奖励为0.5倍进度分，并把最终答案正确性作为全局锚点。同时引入token级的前缀-后缀信用分配：前缀token获得正向优势减去惩罚项，后缀token获得负向衰减优势。参考解来自组内正确rollout、历史正确rollout，以及全零组时由教师模型给出的验证过的解。实验以Qwen2.5-Math-7B为主，在MATH上训练，评测AIME24/25、AMC23、MATH500、Minerva和OlympiadBench六个基准，对比GRPO、Dr.GRPO、DAPO、GSPO、GRPO-PRM、TreeRPO、DGPO等。平均pass@1上PRSA为40.69，GRPO为37.61，最强基线DGPO为39.79；在Qwen2.5-Math-1.5B（29.39到30.64）和Qwen2.5-3B（25.47到27.66）上也有稳定提升。消融中去掉奖励塑形降到38.86，PRM+结果奖励仅37.81。教师模型选择影响较小，无教师时仍有38.93。该工作为EMNLP 2026主会论文，作者来自北京大学与微软。",
+    "model": "claude-sonnet-5-5",
+    "reasoning_effort": "standard",
+    "date_added": "2026-11-06",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
   }
 ]
