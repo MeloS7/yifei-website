@@ -7341,5 +7341,86 @@
     "deep_read": false,
     "deep_read_at": null,
     "interest": null
+  },
+  {
+    "paper_id": "aclanthology:2026.emnlp-main.916",
+    "title": "Not All Thoughts are Generated Equal: Efficient LLM Reasoning via Synergizing-Oriented Multi-Turn Reinforcement Learning",
+    "venue": "EMNLP 2026 (Main Conference)",
+    "topics": [
+      "reasoning",
+      "reinforcement learning"
+    ],
+    "keywords": [
+      "efficient reasoning",
+      "long CoT compression",
+      "multi-turn RL",
+      "multi-LLM collaboration"
+    ],
+    "link": "https://aclanthology.org/2026.emnlp-main.916/",
+    "brief": "这篇论文关注的任务是高效的大模型长链式思维（long CoT）推理：现有压缩长CoT的方法通常对所有“思考片段”一视同仁地压缩，结果往往损伤简洁而有效的推理。作者首先借助自动化的long-CoT分块与Monte Carlo rollout来分析每个thought的重要性，并提出了一个有理论上界保证的指标，同时衡量单个thought的有效性（effectiveness）与效率（efficiency），发现并非所有thought都同等重要。基于此，他们提出“Long Short”框架：由两个LLM协作，一个long-thought LLM负责生成关键的重要思考，另一个short-thought LLM负责生成其余部分的简短推理。两个模型先用合成的冷启动数据分别学习各自的推理风格，再通过面向协同（synergizing-oriented）的多轮强化学习阶段，让二者在自我演化中学会彼此配合。与以往“统一压缩”或单模型长度惩罚的做法不同，其创新点在于按thought重要性分工，并把协作本身作为RL的优化对象。实验方面，论文在五个推理基准上与七种高效推理基线对比，结论是Long Short全面领先；一个值得关注的结果是，Qwen2.5-7B在使用该框架后，可达到与DeepSeek-R1-Distill-Qwen-7B相当的性能，同时token长度削减超过80%。代码与数据已在GitHub（usail-hkust/LongShort）开源。该文发表于EMNLP 2026主会，作者包括Yansong Ning、Hao Liu等。具体数据集与消融细节建议阅读原文。",
+    "id": "2026-11-07-01",
+    "year": 2026,
+    "model": "Sonnet 5.5 (claude-sonnet-5-5)",
+    "reasoning_effort": "standard",
+    "date_added": "2026-11-07",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "paper_id": "aclanthology:2026.emnlp-main.666",
+    "title": "Benchmarking and Boosting Multilingual Capabilities of LVLMs via OCR-Centric Reinforcement Learning",
+    "venue": "EMNLP 2026 (Main Conference)",
+    "topics": [
+      "multilingual",
+      "reinforcement learning"
+    ],
+    "keywords": [
+      "LVLM",
+      "PM4Bench",
+      "OCR",
+      "GRPO"
+    ],
+    "link": "https://aclanthology.org/2026.emnlp-main.666/",
+    "brief": "这篇论文研究大型视觉语言模型（LVLM）的多语言能力评测与提升。作者指出，现有多语言多模态基准大多基于非平行语料，导致观察到的跨语言性能差异可能来自数据集本身的不一致，而不是模型真正的能力缺陷。为此他们构建了PM4Bench，据称是首个建立在严格平行的10种语言语料上的多模态、多语言、多任务基准，并额外设计了“vision setting”：把文本直接渲染进图像中，用来模拟LVLM智能体仅凭视觉观察工作的场景。作者在PM4Bench上评测了10个LVLM，核心发现是：当文字以视觉形式呈现时，OCR能力是造成跨语言差异的关键因素。针对这一诊断，论文提出以OCR为中心的GRPO训练策略，训练数据完全是合成的、无需标注的OCR数据，不使用任何任务特定的VQA监督。与以往直接堆多语言VQA数据的做法不同，这里的创新在于“先定位瓶颈（OCR），再用可扩展的无标签强化学习针对性补强”。摘要给出的结果是定性的：训练后的模型在通用多语言VQA上变好，在vision setting下跨语言差距缩小，并且收益能迁移到PM4Bench之外的任务；具体数值需查阅全文。该文为EMNLP 2026主会论文，作者包括Junyuan Gao、Lijun Wu、Conghui He等。它把多语言、多模态与RL结合在一起，并强调了平行语料评测的重要性。",
+    "id": "2026-11-07-02",
+    "year": 2026,
+    "model": "Sonnet 5.5 (claude-sonnet-5-5)",
+    "reasoning_effort": "standard",
+    "date_added": "2026-11-07",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "paper_id": "aclanthology:2026.findings-emnlp.94",
+    "title": "Multi-MALLS: A Multilingual Benchmark for Natural Language to First-Order Logic Translation",
+    "venue": "EMNLP 2026 (Findings)",
+    "topics": [
+      "multilingual",
+      "reasoning"
+    ],
+    "keywords": [
+      "NL2FOL",
+      "first-order logic",
+      "multi-agent",
+      "semantic equivalence metric"
+    ],
+    "link": "https://aclanthology.org/2026.findings-emnlp.94/",
+    "brief": "这篇论文研究自然语言到一阶逻辑（NL2FOL）的翻译，这是逻辑推理与形式化验证的基础环节。作者指出，现有模型与基准几乎都以英语为中心，跨语言鲁棒性几乎没有被系统研究。为此，他们在已有的MALLS数据集基础上扩展，构建了Multi-MALLS，据称是首个多语言NL2FOL基准（摘要未给出语言数量与规模）。评测显示，最先进的模型在非英语输入上性能明显下降。为解决这一问题，论文提出MA-FOL多智能体框架，无需在目标语言上做训练，由三个模块组成：与语言无关的结构生成器（先生成逻辑骨架）、与语言相关的谓词组合器（把各语言中的词汇映射成谓词），以及一个精炼模块用于修正输出。其思路是把“逻辑结构”与“语言表层”解耦，从而实现零样本的跨语言泛化。此外，作者认为精确匹配（Exact Match）常常无法反映语义正确性，于是提出基于LLM判定的“语义等价”（SE）指标，由LLM判断生成公式是否保留了原意。结果方面，MA-FOL在Multi-MALLS上优于强基线，且无需多语言微调，SE指标也揭示了传统指标看不到的语义正确性；摘要未给出具体数值。该文发表于EMNLP 2026 Findings，作者包括Haodi Zhang、Yuanfeng Song等。",
+    "id": "2026-11-07-03",
+    "year": 2026,
+    "model": "Sonnet 5.5 (claude-sonnet-5-5)",
+    "reasoning_effort": "standard",
+    "date_added": "2026-11-07",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
   }
 ]
