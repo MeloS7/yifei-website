@@ -7504,5 +7504,87 @@
     "deep_read": false,
     "deep_read_at": null,
     "interest": null
+  },
+  {
+    "id": "2026-11-09-01",
+    "paper_id": "arxiv:2602.08237",
+    "title": "Document Reconstruction Unlocks Scalable Long-Context RLVR",
+    "year": 2026,
+    "venue": "EMNLP 2026 (Main Conference)",
+    "topics": [
+      "reinforcement learning",
+      "reasoning"
+    ],
+    "keywords": [
+      "RLVR",
+      "long-context",
+      "unsupervised RL",
+      "GRPO"
+    ],
+    "link": "https://arxiv.org/abs/2602.08237",
+    "brief": "这篇论文研究如何在不依赖人工标注或强教师模型的前提下，用强化学习提升大模型的长上下文能力。任务是长文档理解：作者提出一种无监督的RLVR训练范式，把长文档中的若干段落替换成占位符，让模型从打乱的候选段落中选出缺失段落并还原正确顺序，原文本身就是可验证的标准答案。奖励设计为：顺序完全正确得1分，给出合法排列但部分正确按正确比例给分，否则为0，并用GRPO训练。训练数据是1.4万篇长文档（书籍8k、arXiv 3k、代码3k，平均约49k token），并采用课程学习，把被遮蔽段落数K从2逐步增加到8。创新点在于：把“重建全局叙事连贯性”作为可自动验证的奖励信号，彻底绕开了昂贵的长文QA标注。评测使用RULER（VT/CWE/FWE/QA，32K/64K/128K）和LongBench v2，模型为Qwen2.5-7B-Instruct-1M与LLaMA-3.1-8B-Instruct。结果显示，Qwen的RULER平均分在课程训练后从68.86提升到72.20，LLaMA从58.76提升到67.12，128K长度下LLaMA提升尤为明显（约40.9到51.2）；在RULER-QA/LongBench v2上，仅用1.4万文档的方法为68.3/33.8，优于用4.6万QA对做SFT的64.5/33.2（Qwen）。不过LLaMA在RULER-QA上落后于SFT，固定K训练甚至会让Qwen变差，说明课程设计很关键。作者来自MiroMind AI、新加坡科技设计大学和A*STAR，论文被EMNLP 2026主会录用，并开源了代码、数据和模型。",
+    "model": "Sonnet 5.5",
+    "reasoning_effort": "standard",
+    "date_added": "2026-11-09",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-11-09-02",
+    "paper_id": "arxiv:2605.30245",
+    "title": "Knowing What to Solve Before How: Preplan Empowered LLM Mathematical Reasoning",
+    "year": 2026,
+    "venue": "EMNLP 2026 (Findings)",
+    "topics": [
+      "math",
+      "reasoning",
+      "reinforcement learning"
+    ],
+    "keywords": [
+      "preplan",
+      "plan-then-CoT",
+      "GRPO",
+      "mathematical reasoning"
+    ],
+    "link": "https://arxiv.org/abs/2605.30245",
+    "brief": "这篇论文关注数学推理中的“先规划再解题”范式。现有plan-based方法采用 question → plan → CoT 的流程，但无论规划还是执行都在决定“怎么解”，而“要解什么”——题目类型、可用工具、可预见的陷阱——始终是隐式的。作者提出PPC（Preplan-Plan-CoT）框架，加入显式的问题理解阶段preplan，形成 question → preplan → plan → CoT 的新范式。为了保证preplan的纯净，他们设计了三阶段合成流程，并用spoiler-score检测器过滤泄露答案的“剧透”样本以构建干净的SFT数据；随后用GRPO训练，复合奖励包含答案正确性、preplan与plan的一致性、格式以及spoiler惩罚。实验覆盖Qwen2.5-7B-Instruct、Qwen2.5-Math-7B-Instruct、LLaMA-3.1-8B-Instruct、Qwen3-4B-Instruct四个骨干，以及AIME25、Minerva-Math、OlympiadBench、MATH-500、GSM8K五个基准，基线包括GRPO、PTA-GRPO、Plan-Tuning等。PPC在40项指标中的39项取得最好成绩，maj@16和pass@16相对最强基线分别提升2.23和3.06；例如LLaMA-3.1-8B在MATH-500上从55.2提升到65.8，Qwen2.5-7B在AIME25上从10.0提升到20.0。消融显示各奖励项逐步累积收益；忠实性实验表明把preplan换成不匹配的内容会让MATH-500准确率从97.2暴跌到46.8，说明模型确实依赖preplan。同时Qwen2.5-7B平均仅用1.47K token，远低于GRPO的3.02K和PTA-GRPO的9.97K，几乎没有额外推理开销。作者来自香港科技大学（广州），论文为EMNLP 2026 Findings。",
+    "model": "Sonnet 5.5",
+    "reasoning_effort": "standard",
+    "date_added": "2026-11-09",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-11-09-03",
+    "paper_id": "arxiv:2510.12680",
+    "title": "Demystifying Hybrid Thinking: Can LLMs Truly Switch Between Think and No-Think?",
+    "year": 2025,
+    "venue": "EMNLP 2026 (Main Conference)",
+    "topics": [
+      "reasoning",
+      "math"
+    ],
+    "keywords": [
+      "hybrid thinking",
+      "think/no-think",
+      "controllability",
+      "SFT"
+    ],
+    "link": "https://arxiv.org/abs/2510.12680",
+    "brief": "这篇论文回答一个很实用的问题：像Qwen3这样的“混合思考”模型，真的能在think与no-think两种模式间干净地切换吗？作者发现答案是否定的——即使在no-think模式下，推理行为依然会泄露，表现为输出变长、出现大量“wait”之类的反思词。为此他们系统研究了影响模式可控性的因素，并总结出四条关键经验：使用更大规模的数据；think与no-think使用不成对（unpaired）的问题；适度提高no-think数据比例；采用两阶段训练，先做纯思考训练，再做混合“思维模式融合”阶段。实验数据来自OpenR1-Math，no-think答案取自NuminaMath，think答案来自DeepSeek-R1，在Qwen2.5-7B-Instruct、Llama3.1-8B-Instruct和Phi-4-14B上训练，并在MATH500、AIME24、GPQA-Diamond、MMLU-STEM、MMLU和TruthfulQA上评测。结果上，新配方在保持两种模式准确率的同时显著缩短no-think输出：MATH500上长度从1085降到585，“wait”计数从5917降到522，think模式准确率从85.88升到86.78。对Qwen3-8B的分析显示其no-think模式在MATH500上仍有646次“wait”。值得注意的是，在MMLU-STEM上新配方的no-think准确率比原配方低约20个百分点，论文对此着墨不多，也说明可控性与准确率之间存在权衡。该工作来自凯斯西储大学、密歇根州立大学和Meta AI，被EMNLP 2026主会录用，代码已开源。",
+    "model": "Sonnet 5.5",
+    "reasoning_effort": "standard",
+    "date_added": "2026-11-09",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
   }
 ]
