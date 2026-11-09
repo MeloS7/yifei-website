@@ -23,13 +23,13 @@ redirect_from:
 <ul class="yf-news-list">
   <li>
     <span class="yf-news-date">2026.10</span>
-    <span data-i18n="en">✈️ Will attend <a href="https://2026.emnlp.org/" target="_blank" rel="noopener"><strong>EMNLP 2026</strong></a>.</span>
-    <span data-i18n="zh">✈️ 将参加 <a href="https://2026.emnlp.org/" target="_blank" rel="noopener"><strong>EMNLP 2026</strong></a>。</span>
+    <span data-i18n="en">✈️ Attended <a href="https://2026.emnlp.org/" target="_blank" rel="noopener"><strong>EMNLP 2026</strong></a>.</span>
+    <span data-i18n="zh">✈️ 参加了 <a href="https://2026.emnlp.org/" target="_blank" rel="noopener"><strong>EMNLP 2026</strong></a>。</span>
   </li>
   <li>
     <span class="yf-news-date">2026.10</span>
-    <span data-i18n="en">✈️ Will attend <a href="https://2026.inlgmeeting.org/" target="_blank" rel="noopener"><strong>INLG 2026</strong></a>.</span>
-    <span data-i18n="zh">✈️ 将参加 <a href="https://2026.inlgmeeting.org/" target="_blank" rel="noopener"><strong>INLG 2026</strong></a>。</span>
+    <span data-i18n="en">✈️ Attended <a href="https://2026.inlgmeeting.org/" target="_blank" rel="noopener"><strong>INLG 2026</strong></a>.</span>
+    <span data-i18n="zh">✈️ 参加了 <a href="https://2026.inlgmeeting.org/" target="_blank" rel="noopener"><strong>INLG 2026</strong></a>。</span>
   </li>
   <li>
     <span class="yf-news-date">2026.08</span>
@@ -114,44 +114,44 @@ redirect_from:
 
 <ul class="yf-pub-list">
   <li>
-    <div class="yf-pub-title"><a href="https://arxiv.org/abs/2608.23390" target="_blank" rel="noopener">Cross-lingual Biography Enrichment via Claim Extraction and Alignment</a></div>
+    <div class="yf-pub-title"><a href="https://aclanthology.org/2026.emnlp-main.441/" target="_blank" rel="noopener">Cross-lingual Biography Enrichment via Claim Extraction and Alignment</a></div>
     <div class="yf-pub-authors"><strong>Yifei Song</strong>, Ziyang Chen, Emil Sayilov, Claire Gardent</div>
     <div class="yf-pub-venue">
-      <span data-i18n="en">EMNLP 2026 (Main Conference) &middot; to appear</span>
-      <span data-i18n="zh">EMNLP 2026（主会）&middot; 待发表</span>
+      <span data-i18n="en">EMNLP 2026 (Main Conference)</span>
+      <span data-i18n="zh">EMNLP 2026（主会）</span>
       <span class="yf-badge">CORE A*</span>
       <span class="yf-badge yf-badge-oral">Oral</span>
     </div>
     <div class="yf-pub-links">
-      <a href="https://arxiv.org/abs/2608.23390" target="_blank" rel="noopener"><span data-i18n="en">Paper</span><span data-i18n="zh">论文</span></a>
+      <a href="https://aclanthology.org/2026.emnlp-main.441/" target="_blank" rel="noopener"><span data-i18n="en">Paper</span><span data-i18n="zh">论文</span></a>
       <a href="https://github.com/MeloS7/cross_lingual_biography_enrichment" target="_blank" rel="noopener"><span data-i18n="en">Code</span><span data-i18n="zh">代码</span></a>
     </div>
   </li>
   <li>
-    <div class="yf-pub-title"><a href="https://arxiv.org/abs/2608.29948" target="_blank" rel="noopener">XQDT: eXplainable and Quantitative Data-Text Alignment Metric with Feedback Signals</a></div>
+    <div class="yf-pub-title"><a href="https://aclanthology.org/2026.emnlp-main.397/" target="_blank" rel="noopener">XQDT: eXplainable and Quantitative Data-Text Alignment Metric with Feedback Signals</a></div>
     <div class="yf-pub-authors">Kun Zhang, <strong>Yifei Song</strong>, Claire Gardent</div>
     <div class="yf-pub-venue">
-      <span data-i18n="en">EMNLP 2026 (Main Conference) &middot; to appear</span>
-      <span data-i18n="zh">EMNLP 2026（主会）&middot; 待发表</span>
+      <span data-i18n="en">EMNLP 2026 (Main Conference)</span>
+      <span data-i18n="zh">EMNLP 2026（主会）</span>
       <span class="yf-badge">CORE A*</span>
       <span class="yf-badge yf-badge-alt">Poster</span>
     </div>
     <div class="yf-pub-links">
-      <a href="https://arxiv.org/abs/2608.29948" target="_blank" rel="noopener"><span data-i18n="en">Paper</span><span data-i18n="zh">论文</span></a>
+      <a href="https://aclanthology.org/2026.emnlp-main.397/" target="_blank" rel="noopener"><span data-i18n="en">Paper</span><span data-i18n="zh">论文</span></a>
       <a href="https://github.com/guihuzhang/xqdt" target="_blank" rel="noopener"><span data-i18n="en">Code</span><span data-i18n="zh">代码</span></a>
     </div>
   </li>
   <li>
-    <div class="yf-pub-title"><a href="https://arxiv.org/abs/2608.23391" target="_blank" rel="noopener">Cross-Domain, Multi-Task Data-to-Text Generation without In-Domain Training Data</a></div>
+    <div class="yf-pub-title"><a href="https://aclanthology.org/2026.findings-emnlp.24/" target="_blank" rel="noopener">Cross-Domain, Multi-Task Data-to-Text Generation without In-Domain Training Data</a></div>
     <div class="yf-pub-authors"><strong>Yifei Song</strong>, Kun Zhang, Claire Gardent</div>
     <div class="yf-pub-venue">
-      <span data-i18n="en">EMNLP 2026 (Findings) &middot; to appear</span>
-      <span data-i18n="zh">EMNLP 2026（Findings）&middot; 待发表</span>
+      <span data-i18n="en">EMNLP 2026 (Findings)</span>
+      <span data-i18n="zh">EMNLP 2026（Findings）</span>
       <span class="yf-badge">CORE A*</span>
       <span class="yf-badge yf-badge-alt">Poster</span>
     </div>
     <div class="yf-pub-links">
-      <a href="https://arxiv.org/abs/2608.23391" target="_blank" rel="noopener"><span data-i18n="en">Paper</span><span data-i18n="zh">论文</span></a>
+      <a href="https://aclanthology.org/2026.findings-emnlp.24/" target="_blank" rel="noopener"><span data-i18n="en">Paper</span><span data-i18n="zh">论文</span></a>
       <a href="https://github.com/MeloS7/Cross-Domain-D2T-DDKD" target="_blank" rel="noopener"><span data-i18n="en">Code</span><span data-i18n="zh">代码</span></a>
     </div>
   </li>
