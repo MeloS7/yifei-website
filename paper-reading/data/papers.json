@@ -7586,5 +7586,86 @@
     "deep_read": false,
     "deep_read_at": null,
     "interest": null
+  },
+  {
+    "paper_id": "aclanthology:2026.emnlp-main.890",
+    "title": "KG-RLVR: Reinforcing LLM Reasoning with Knowledge Graph-Derived Process Rewards",
+    "keywords": [
+      "process reward",
+      "knowledge graph",
+      "RLVR",
+      "knowledge-intensive QA"
+    ],
+    "topics": [
+      "reinforcement learning",
+      "reasoning"
+    ],
+    "link": "https://aclanthology.org/2026.emnlp-main.890/",
+    "venue": "EMNLP 2026 (Main Conference)",
+    "brief": "这篇论文关注的任务是：如何为知识密集型推理（尤其是医学等垂直领域问答）的LLM后训练提供可靠、可扩展的过程级监督。现有做法依赖人工标注的推理轨迹或外部模型生成的rationale，成本高、难以验证、也难以跨领域扩展。作者提出轻量框架KG-RLVR，把“知识图谱增强的LLM后训练”重新表述为“从可追溯的结构化证据中构造可验证奖励”。具体流程是：先从外部知识图谱检索证据，把噪声较大的图邻域整合成有代表性的“证据单元”，再把这些证据单元转换为可在本地直接计算的过程奖励。奖励设计鼓励模型既覆盖与问题直接相关的证据，又能选择性地整合间接但可能有用的辅助证据，从而在不需要任何外部撰写的过程示范的情况下引导推理轨迹。与以往只看最终答案正误的RLVR相比，其创新点在于用知识图谱把过程奖励也做成“可验证、可本地计算”的形式，避免了训练过程奖励模型或人工标注。实验在知识密集型的医学QA以及多领域QA基准上进行，结果显示KG-RLVR稳定优于vanilla RL，说明由KG派生的过程奖励是一种实用且可扩展的监督信号（具体数值请见原文）。该论文发表于EMNLP 2026主会（Budapest），作者包括Aoran Gan、Qi Liu、Guoping Hu等，未见获奖信息。对关注RLVR过程奖励与知识增强推理的读者而言，这是一个思路清晰、工程上易落地的工作。",
+    "id": "2026-11-10-01",
+    "year": 2026,
+    "model": "Sonnet 5.5 (claude-sonnet-5-5)",
+    "reasoning_effort": "low",
+    "date_added": "2026-11-10",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "paper_id": "aclanthology:2026.emnlp-main.2441",
+    "title": "Do Language Models Reason Across Languages?",
+    "keywords": [
+      "cross-lingual reasoning",
+      "multi-hop QA",
+      "sub-question decomposition",
+      "faithfulness"
+    ],
+    "topics": [
+      "multilingual",
+      "reasoning"
+    ],
+    "link": "https://aclanthology.org/2026.emnlp-main.2441/",
+    "venue": "EMNLP 2026 (Main Conference)",
+    "brief": "这篇论文研究一个很实际的问题：现实世界的数据本质上是多语言的，语言模型能否跨语言综合信息进行推理？作者构造了一个简单的两跳问答（two-hop QA）设置，回答问题需要同时利用两篇不同语言的文档——一篇包含答案片段，一篇提供桥接信息。核心发现之一是：尽管两篇文档对回答同样重要，模型对“答案所在文档”的语言变化比对“桥接信息文档”更敏感。进一步的逐步子问题评估显示，在最多33%的多语言样例中，模型第一步并没有推断出桥接信息，却依然答对了最终问题，说明LLM的推理（尤其在多语言情形下）并不遵循忠实的逐步分解；另一方面，在最多18%的样例中，模型两个子问题都答对，却无法组合出正确的最终答案，说明其组合中间结果的能力也有缺陷。为检验显式分解是否有帮助，作者评估了一个三阶段的SUBQ提示方案，在推理时提供相关中间子问题，结果在“组合失败”的样例以及完整评测集上都提升了两跳QA表现。其价值在于不是只报告准确率，而是用子问题层面的诊断揭示答案正确与推理忠实之间的脱节。论文作者为Yan Meng、Wafaa Mohammed、Christof Monz，发表于EMNLP 2026主会，未见获奖信息。",
+    "id": "2026-11-10-02",
+    "year": 2026,
+    "model": "Sonnet 5.5 (claude-sonnet-5-5)",
+    "reasoning_effort": "low",
+    "date_added": "2026-11-10",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "paper_id": "aclanthology:2026.emnlp-main.2342",
+    "title": "To Answer or Not to Answer? Reliability-Oriented Reinforcement Learning for Visual Language Models",
+    "keywords": [
+      "RLVR",
+      "abstention",
+      "vision-language models",
+      "rubric reward"
+    ],
+    "topics": [
+      "reinforcement learning",
+      "reasoning"
+    ],
+    "link": "https://aclanthology.org/2026.emnlp-main.2342/",
+    "venue": "EMNLP 2026 (Main Conference)",
+    "brief": "这篇论文关注视觉语言模型（VLM）在RLVR训练后的可靠性问题：可验证奖励强化学习虽然显著提升了VLM的推理准确率，但现有RLVR依赖确定性奖励，隐含地惩罚了不确定性表达和拒答，导致模型对无法回答的问题也倾向于给出臆测答案。作者通过定量分析发现，vanilla RLVR确实严重损害了VLM对不可回答查询恰当拒答的能力。为系统地研究和解决该问题，论文提出了新基准Reliable-V-Bench，用于评估VLM在具有挑战性且贴近现实的不可回答视觉问题上的拒答能力；同时提出Reliable-V-RL，一个“可靠性感知”的RL框架：把不可回答和有歧义的视觉问题纳入训练，并用细粒度、基于rubric的奖励机制，鼓励模型同时优化推理准确率与可靠判断。与以往只追求准确率的RLVR相比，创新点在于把“该不该回答”显式纳入奖励设计，让模型学会校准。实验结果表明，Reliable-V-RL显著提升了VLM的可靠性与拒答能力，同时没有牺牲在标准多模态基准上的表现（具体数值请见原文）。作者包括Paul Jian、Qingpei Guo、Jianing Li等，发表于EMNLP 2026主会，未见获奖信息。该工作对于“RL越强越爱乱答”这一普遍隐患提供了较有针对性的诊断与解法。",
+    "id": "2026-11-10-03",
+    "year": 2026,
+    "model": "Sonnet 5.5 (claude-sonnet-5-5)",
+    "reasoning_effort": "low",
+    "date_added": "2026-11-10",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
   }
 ]
