@@ -7667,5 +7667,89 @@
     "deep_read": false,
     "deep_read_at": null,
     "interest": null
+  },
+  {
+    "id": "2026-11-11-01",
+    "paper_id": "aclanthology:2026.emnlp-main.1067",
+    "title": "RASPER: Reward-Aligned Summarization of Clinical Notes for EHR Outcome Prediction",
+    "year": 2026,
+    "venue": "EMNLP 2026 (Main Conference)",
+    "topics": [
+      "summarization",
+      "reinforcement learning"
+    ],
+    "keywords": [
+      "clinical summarization",
+      "EHR outcome prediction",
+      "RL from predictor feedback",
+      "soft prompts"
+    ],
+    "link": "https://aclanthology.org/2026.emnlp-main.1067/",
+    "brief": "这篇来自美国University of Kansas EECS团队、发表于EMNLP 2026主会的论文，研究的任务是“面向下游预测的临床笔记摘要”：电子病历（EHR）中的出院小结（discharge notes）冗长、噪声多，直接喂给预测模型效果有限，而通用LLM生成的摘要又未必保留对具体临床预测任务真正有用的证据。作者提出RASPER框架，让一个基于LLM的摘要器从出院笔记中抽取与任务相关的证据，并用强化学习把摘要目标直接对齐到下游预测任务：奖励来自下游预测器的损失——具体是“该患者在预热阶段最低的5次历史损失均值减去当前BCE损失”，经batch归一化并裁剪后，共享给该患者各次就诊的摘要，再用PPO训练摘要器（RL from predictor feedback）。与此同时，一个纵向结构化编码器（RETAIN）把诊断/用药等结构化编码转换为8个soft prompt token，与文本摘要一起输入LLM预测器，从而融合结构化与非结构化两类信息。实现上摘要器和预测器均基于Gemma-2-2B + LoRA，SFT阶段以GPT-5.4 mini写的摘要作为初始监督目标。实验在MIMIC-III（7,537名患者）和MIMIC-IV（15,874名患者）上评测再入院预测（二分类）和用药推荐（多标签）两项任务。结果上，RASPER在MIMIC-III再入院AUROC达到0.704（最强基线RePrompT为0.682），用药推荐F1为0.326（基线0.312）；MIMIC-IV上再入院AUROC 0.725、用药F1 0.388，同样全面领先。消融实验很有说服力：去掉结构化编码器AUROC跌到0.661，直接用原始笔记（不做摘要）为0.674，只用GPT摘要不做RL为0.689，仅SFT为0.684，说明“为预测而优化的摘要”确实优于通用摘要；换成Llama-3.2-1B或Qwen2.5-0.5B骨干时差距很小。这篇工作的有意思之处在于把摘要从“写给人看”转向“写给下游模型用”，用任务损失作为摘要质量的奖励信号，为摘要评价与RL结合提供了一个具体范式；局限是只在两个数据集上验证，且推理开销偏大。",
+    "model": "claude-opus-5-5",
+    "reasoning_effort": "low",
+    "date_added": "2026-11-11",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-11-11-02",
+    "paper_id": "aclanthology:2026.emnlp-main.1",
+    "title": "DeepSEA: A Multilingual Evaluation Benchmark for Southeast Asia",
+    "year": 2026,
+    "venue": "EMNLP 2026 (Main Conference)",
+    "topics": [
+      "multilingual",
+      "math",
+      "summarization",
+      "reasoning"
+    ],
+    "keywords": [
+      "Southeast Asian languages",
+      "low-resource benchmark",
+      "cross-lingual evaluation",
+      "tokenizer fertility"
+    ],
+    "link": "https://aclanthology.org/2026.emnlp-main.1/",
+    "brief": "这篇由Google Research完成（一作Jiuzhou Han来自Monash，实习期间完成）、编号为EMNLP 2026主会第1篇的论文，关注东南亚语言的LLM评测缺口：现有多语言基准往往依赖机器翻译、覆盖语言少，且很少把高资源和低资源东南亚语言放在同一框架下系统比较。作者构建了DeepSEA基准，通过专业人工翻译覆盖12种东南亚语言，分为高资源层（泰语、印尼语、越南语、菲律宾语）和低资源层（宿务语、伊洛卡诺语、爪哇语、高棉语、老挝语、马来语、巽他语、缅甸语）。基准包含五类任务：数学推理（基于MGSM）、科学推理（IndoMMLU STEM子集）、抽取式问答（XQuAD）、跨语言抽象摘要（CrossSum，英文到目标语言）和机器翻译（WMT24++），评测集合计约4.3万条。与以往工作相比，其创新点在于全部人工翻译、按资源层级分组分析，并加入英文枢轴（pivot）提示、英文CoT与母语CoT对比以及跨文字体系的tokenizer fertility分析。实验评测了Gemini-3.7-Flash、GPT-5.6-Luna、Claude-Sonnet-5等前沿闭源模型以及Gemma-3、SEA-LION-v4、Sailor-2、Qwen2.5、Llama-3.1等开源模型。主要发现是：前沿模型在高低资源层之间相当稳健，例如Gemini-3.7-Flash在数学上英文/高资源/低资源分别为99.2/96.5/96.4；而小型开源模型在低资源语言上会“崩塌”，Qwen2.5-7B数学从英文93.2跌到低资源36.2，Llama-3.1-8B跌到38.8。在所有设置中英文CoT都不差于母语CoT，且低资源语言差距最大；摘要任务通过英文枢轴对低资源语言帮助更大（SEA-LION-v4-27B在低资源上+4.4 chrF，高资源仅+1.0）。错误分析发现伊洛卡诺语与宿务语的同形异义词混淆、缅甸语和高棉语QA中开源模型的“grounding崩塌”，以及老挝语在GPT-5 tokenizer上fertility约7.0（Gemini-3-Pro约2.3）。这项工作为东南亚多语言、多任务（含数学推理与摘要）评测提供了高质量资源，也清晰揭示了开源小模型在低资源语言上的短板。",
+    "model": "claude-opus-5-5",
+    "reasoning_effort": "low",
+    "date_added": "2026-11-11",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-11-11-03",
+    "paper_id": "aclanthology:2026.emnlp-main.1312",
+    "title": "SWE-MEM: Learning Adaptive Memory Management for Long-Horizon Coding Agents",
+    "year": 2026,
+    "venue": "EMNLP 2026 (Main Conference, SAC Highlight)",
+    "topics": [
+      "reasoning",
+      "reinforcement learning",
+      "summarization"
+    ],
+    "keywords": [
+      "coding agents",
+      "context management",
+      "memory-aware GRPO",
+      "SWE-Bench"
+    ],
+    "link": "https://aclanthology.org/2026.emnlp-main.1312/",
+    "brief": "这篇由香港中文大学、上海交通大学、清华大学与字节跳动合作完成的论文发表于EMNLP 2026主会，并获得SAC Highlight Award。它研究长程编码agent的上下文/记忆管理问题：在SWE-Bench这类需要几十上百步交互的软件工程任务中，轨迹很快撑满上下文窗口，常见做法是达到阈值后整体压缩或折叠，但这种被动、一刀切的方式容易丢失关键信息或浪费token。作者提出SWE-MEM，给agent提供一个记忆工具compress(analysis, start_step, end_step, content, remaining_work)，让模型自己学会“何时压缩、压缩哪一段、如何总结”，本质上是把轨迹摘要变成agent可主动调用的推理动作。训练数据通过轨迹合成得到：由GPT-5.1作为judge在预算压力（剩余预算低于20%时触发概率逐步升高）或主动时机（子任务完成、信息密度低、注意力退化）下触发压缩并撰写参数，rollout来自基座模型，再经拒绝采样与压缩质量过滤（保留比例须在20%-80%等），共得到约8.7K条SFT样本，并采用两阶段课程式SFT。随后提出Memory-aware GRPO：按记忆操作切分轨迹、按rollout平均损失并使用步级mask，以缓解压缩后轨迹的信用分配问题。实验基于Qwen3-4B-Instruct和Qwen3-Coder-30B-A3B，在OpenHands框架下全程限制32K上下文。结果显示，在SWE-Bench Verified上4B模型达到43.4%（基座ReAct即使有128K上下文也只有7.0%），30B模型达到60.2%，超过SWE-Compressor（57.8）和Context Folding（58.0），甚至高于30B基座使用256K上下文的51.6%。效率方面，SWE-MEM的token消耗仅为基座的94.7%，而阈值压缩方法高达203.9%。在SWE-Bench Multilingual和SWE-Bench Pro上同样有明显提升（如4B在Pro上从2.6提升到15.2）。分析显示约84%的记忆操作由预算触发、16%为主动触发，抽查50条摘要中有6条存在重要遗漏、5条有幻觉。这项工作把“摘要/压缩”与agent推理和RL训练结合起来，是长程agent记忆管理方向一个扎实且有讨论度的工作。",
+    "model": "claude-opus-5-5",
+    "reasoning_effort": "low",
+    "date_added": "2026-11-11",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
   }
 ]
