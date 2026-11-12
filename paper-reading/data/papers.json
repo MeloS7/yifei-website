@@ -7751,5 +7751,84 @@
     "deep_read": false,
     "deep_read_at": null,
     "interest": null
+  },
+  {
+    "id": "2026-11-12-01",
+    "paper_id": "aclanthology:2026.emnlp-main.840",
+    "title": "Where Do Multilingual Vision-Language Encoders Fail on Low-Resource Languages?",
+    "year": 2026,
+    "venue": "EMNLP 2026 (Main Conference)",
+    "topics": [
+      "multilingual"
+    ],
+    "keywords": [
+      "vision-language encoders",
+      "low-resource languages",
+      "activation patching",
+      "cross-lingual retrieval"
+    ],
+    "link": "https://aclanthology.org/2026.emnlp-main.840/",
+    "brief": "这篇EMNLP 2026主会论文来自韩国Dnotitia Inc.（Donghoon Han、SungHyun Moon等五位作者），研究的任务是：为什么多语言视觉-语言编码器（CLIP/SigLIP类模型）在低资源语言上的图文检索效果远差于英语——在XM3600上，孟加拉语、菲律宾语、印地语、斯瓦希里语、泰卢固语等低资源语言的检索R@1要比英语低30多个百分点。一种流行的解释是文本表示中存在一个“线性语言方向”，把不同语言的句子推到嵌入空间的不同区域。作者首先证伪了这个解释：用LEACE/INLP把线性语言方向擦除后，语言分类器准确率从99.8%跌到3–5%（接近随机），但MetaCLIP-2上低资源语言的i2t R@1几乎不变（44.1→43.0），说明语言方向只是“症状”而非“病因”。随后作者用激活修补（activation patching）把问题定位到文本编码器中EOS token隐藏状态随网络深度的逐语言轨迹上：在倒数第4层把低资源语言caption的EOS状态替换为对应英文caption的EOS状态，MetaCLIP-2的低资源语言平均R@1从44.1飙升到73.4（甚至超过英语自身的69.4），斯瓦希里语从22.1%提升到69.1%；SigLIP-2上则从21.7提升到66.6。一系列对照实验很扎实：替换随机高斯向量、随机英文EOS或句中非EOS token都无法复现增益，而用六种高资源语言EOS状态的均值替换甚至能把斯瓦希里语推到88.0%。基于这一机理发现，作者提出一种轻量的训练期修复“trunk calibration”：只微调文本编码器的前几个block（MetaCLIP-2前4层、SigLIP-2前3层），冻结后半部分、投影头和视觉塔，用一个11种语言的中心锚点做InfoNCE加余弦损失，训练数据是用GLM-5.1把100万条CC12M英文caption机器翻译成10种语言。结果在XM3600上低资源语言平均R@1提升+9.6（MetaCLIP-2）和+17.1（SigLIP-2），泰卢固语在SigLIP-2上+26.7，同时高资源语言也没有退化反而略升；在XM3600、Flickr30k-200、XTD-200、Babel-ImageNet四个基准上平均也有+7.8/+14.9的低资源增益，语言间性能差距（tier gap）从0.119缩小到0.022。这篇论文的价值在于“先做机制诊断、再做针对性修复”的完整闭环，并推翻了一个被广泛接受的直觉解释，对多语言多模态表示的可解释性研究很有启发；局限是只深入分析了两个主编码器，视觉塔保持固定。",
+    "model": "claude-opus-5-5",
+    "reasoning_effort": "low",
+    "date_added": "2026-11-12",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-11-12-02",
+    "paper_id": "aclanthology:2026.emnlp-main.1451",
+    "title": "SumRank: Aligning Summarization Models for Long-Document Listwise Reranking",
+    "year": 2026,
+    "venue": "EMNLP 2026 (Main Conference)",
+    "topics": [
+      "summarization",
+      "reinforcement learning"
+    ],
+    "keywords": [
+      "query-aware summarization",
+      "listwise reranking",
+      "GRPO",
+      "long-document retrieval"
+    ],
+    "link": "https://aclanthology.org/2026.emnlp-main.1451/",
+    "brief": "这篇EMNLP 2026主会论文来自中国人民大学高瓴人工智能学院（Jincheng Feng、Wenhan Liu、窦志成），把摘要生成重新定位为检索流水线中的一个可优化模块。任务是长文档的LLM列表式重排序（listwise reranking）：LLM重排器在段落级别效果很好，但面对长文档时，一次要把20篇长文档塞进上下文既昂贵又容易超长，常见做法是截取首段（FirstP）或取最大段（maxP），会丢失关键信息；而用通用摘要模型压缩文档，摘要目标又与“排序是否正确”不一致。作者提出SumRank：先用一个小模型把每篇候选文档压缩成“面向查询、与排序目标对齐”的摘要，再交给LLM重排器做列表排序。训练分三阶段：第一阶段用Qwen2.5-72B-Instruct生成的教师摘要在4万条MS MARCO数据上做冷启动SFT；第二阶段精心构造RL训练数据，保证每个候选列表同时含正例和负例文档；第三阶段用GRPO做“排序驱动”的强化学习对齐，奖励直接取重排器（Qwen2.5-72B）基于摘要给出的NDCG@10，并要求模型对不相关文档输出“No Relevant Information Found”拒答，否则施加0.25的惩罚。SumRank有3B和7B两个版本（基于Qwen2.5-Instruct），推理时由Qwen2.5-32B做滑动窗口重排。实验在TREC DL19–23（域内）和BEIR的covid、news、nfcorpus、robust04、scifact（域外）上重排BM25 top-100。结果：SumRank-7B域内平均NDCG@10为57.32、域外为59.00，明显优于FirstP-256（55.15/53.63）、maxP（54.76/54.06）、PEGASUS摘要（54.54/52.87）和直接用Qwen2.5-7B-Instruct生成摘要（52.71/54.97）；3B版本也达到56.82/58.01。消融显示去掉GRPO阶段下降1.90、去掉冷启动SFT下降0.94，说明排序奖励驱动的RL是主要增益来源；同时端到端延迟也低于截断和seq2seq摘要基线。这项工作的有趣之处在于把“摘要好不好”的评价标准从ROUGE/人工偏好换成了下游任务效用，展示了用RL把摘要器对齐到检索目标的可行路径；局限是未测试14B以上的摘要器，且需要维护两个模型的流水线。",
+    "model": "claude-opus-5-5",
+    "reasoning_effort": "low",
+    "date_added": "2026-11-12",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
+  },
+  {
+    "id": "2026-11-12-03",
+    "paper_id": "aclanthology:2026.emnlp-main.1937",
+    "title": "When Deep Research Agents Stagnate: Enhancing Reasoning with Retrieval-Aware Agent Control",
+    "year": 2026,
+    "venue": "EMNLP 2026 (Main Conference)",
+    "topics": [
+      "reasoning"
+    ],
+    "keywords": [
+      "deep research agents",
+      "reasoning stagnation",
+      "agent control",
+      "BrowseComp-Plus"
+    ],
+    "link": "https://aclanthology.org/2026.emnlp-main.1937/",
+    "brief": "这篇EMNLP 2026主会论文由Radboud University与Thomson Reuters Labs合作完成（Heydar Soudani、Elizabeth Lingg、Faegheh Hasibi、Navid Rekabsaz），关注的是近期非常热门的深度研究智能体（Deep Research Agents, DRA）的多步推理效率问题。作者首先发现一个普遍现象——“推理停滞”（reasoning stagnation）：DRA在信息早已饱和之后仍会不断发起搜索，大多数迭代对最终结果几乎没有贡献，既浪费算力又可能引入噪声。为此作者提出RAAC（Retrieval-Aware Agent Controller），一个可以即插即用到各种DRA上的控制器，在每一步决定“继续（continue）、干预（intervene）还是停止（stop）”。RAAC依赖四种无需监督的信号：文档新颖度（新检索到的文档是否带来新信息，最主要的信号）、连续查询的多样性、标准覆盖率（用一个aspect清单衡量用户需求被覆盖的程度）、以及与原始问题的相似度（作为防跑题的护栏）；由一个基于提示的LLM控制器综合这些信号做决策，选择“干预”时由一个批判性的re-thinker提出换个方向的新查询，选择“停止”时直接让智能体写最终答案。实验覆盖三个数据集：BrowseComp-Plus（约830个查询、10万文档的可验证短答案任务）、NeuCLIR 2024（74个跨语言检索主题、1000万文档）和Thomson Reuters内部的LegalSearch法律检索集；被控制的DRA多达七种，包括ReAct、GLM-4.7、GPT-oss-20b、Tongyi-DR、AgentCPM-Explore、WebWeaver和AgentCPM-Report，检索器为Qwen3-Embedding-4B。结果相当亮眼：在BrowseComp-Plus上，Tongyi-DR的准确率从37.9提升到47.9（+10.0），召回从48.4升到59.0，而平均搜索调用次数从77.8次锐减到33.6次；WebWeaver准确率47.8→51.3、搜索次数75.0→50.7；在LegalSearch上Tongyi-DR召回52.2→56.5、搜索次数53.8→22.8。整体上平均减少约14次搜索调用、准确率平均提升约3%、最高10%。消融表明文档新颖度是最关键的信号，而标准覆盖率只在查询本身带有明确人类标准的BrowseComp-Plus上有用，在另外两个数据集上反而有害。分析还指出约20%–40%的金标文档没有被任何智能体检索到，说明检索本身仍是瓶颈。这篇论文的意义在于把“何时该停止思考/搜索”这一agent推理中的元认知问题做了系统刻画，并给出了简单通用、训练无关的解决方案；局限是控制器基于提示而非学习得到，信号集合也并非穷尽。",
+    "model": "claude-opus-5-5",
+    "reasoning_effort": "low",
+    "date_added": "2026-11-12",
+    "read": false,
+    "read_at": null,
+    "deep_read": false,
+    "deep_read_at": null,
+    "interest": null
   }
 ]
